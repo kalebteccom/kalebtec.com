@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import SectionHeading from '@/components/ui/SectionHeading'
 import AnimatedReveal from '@/components/ui/AnimatedReveal'
 import { cn } from '@/lib/utils'
@@ -7,19 +8,21 @@ import { cn } from '@/lib/utils'
 const team = [
   {
     name: 'Rowin Hernandez',
-    role: 'Co-Founder & Lead Engineer',
+    role: 'Co-Founder & CTO',
     initials: 'RH',
+    photo: '/team/rowin.jpg',
     id: 'RH-001',
-    roleCode: 'LEAD_ENGINEER',
+    roleCode: 'CHIEF_TECHNICAL_OFFICER',
     description:
       'Full-stack engineer and systems architect with a passion for building elegant solutions to complex problems. Rowin leads technical strategy and development.',
   },
   {
     name: 'Mari Hernandez',
-    role: 'Co-Founder & Operations Lead',
+    role: 'Co-Founder & CEO',
     initials: 'MH',
+    photo: '/team/mari.jpeg',
     id: 'MH-002',
-    roleCode: 'OPS_LEAD',
+    roleCode: 'CHIEF_EXECUTIVE_OFFICER',
     description:
       'Operations strategist and project manager who ensures every engagement delivers exceptional results. Mari drives client relationships and business operations.',
   },
@@ -44,44 +47,53 @@ export default function TeamSection() {
             <AnimatedReveal key={member.name} delay={0.15 * index}>
               <div
                 className={cn(
-                  'group p-6 md:p-8 border border-cyber-border',
+                  'group border border-cyber-border',
                   'bg-cyber-surface',
                   'cyber-corners cyber-border-glow',
                   'transition-all duration-500',
                   'hover:border-cyber-muted/30',
-                  'h-full'
+                  'h-full overflow-hidden'
                 )}
               >
-                {/* Avatar with initials — square, no rounding */}
-                <div className="mb-6 flex items-center gap-5">
-                  <div className="flex items-center justify-center w-16 h-16 bg-cyber-faint/10 border border-cyber-border" role="img" aria-label={`${member.name} initials`}>
-                    <span className="font-display text-lg font-bold tracking-wider text-cyber-heading" aria-hidden="true">
-                      {member.initials}
+                {/* Photo with HUD overlay */}
+                <div className="relative aspect-[4/5] overflow-hidden">
+                  <Image
+                    src={member.photo}
+                    alt={member.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  {/* Gradient fade to card bg */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-cyber-surface via-transparent to-transparent" aria-hidden="true" />
+                  {/* Scanline overlay on photo */}
+                  <div className="absolute inset-0 scanlines opacity-30" aria-hidden="true" />
+                  {/* HUD metadata overlay */}
+                  <div className="absolute top-3 left-3 flex flex-col gap-1" aria-hidden="true">
+                    <span className="font-mono text-[10px] text-cyber-cyan/70 tracking-wider">
+                      ID: {member.id}
+                    </span>
+                    <span className="font-mono text-[10px] text-cyber-cyan/70 tracking-wider">
+                      ROLE: {member.roleCode}
                     </span>
                   </div>
-                  <div>
-                    <h3 className="font-display text-xl font-semibold tracking-wide text-cyber-heading">
-                      {member.name}
-                    </h3>
-                    <p className="font-mono text-xs text-cyber-cyan tracking-wide mt-1">
-                      {member.role}
-                    </p>
-                  </div>
+                  {/* Corner brackets on photo */}
+                  <div className="absolute top-2 right-2 w-4 h-4 border-t border-r border-cyber-cyan/40" aria-hidden="true" />
+                  <div className="absolute bottom-2 left-2 w-4 h-4 border-b border-l border-cyber-cyan/40" aria-hidden="true" />
                 </div>
 
-                {/* Data-like metadata — decorative flavor text */}
-                <div className="mb-4 flex items-center gap-4" aria-hidden="true">
-                  <span className="font-mono text-[10px] text-cyber-faint/50 tracking-wider">
-                    ID: {member.id}
-                  </span>
-                  <span className="font-mono text-[10px] text-cyber-faint/50 tracking-wider">
-                    ROLE: {member.roleCode}
-                  </span>
+                {/* Info below photo */}
+                <div className="p-6 md:p-8">
+                  <h3 className="font-display text-xl font-semibold tracking-wide text-cyber-heading">
+                    {member.name}
+                  </h3>
+                  <p className="font-mono text-xs text-cyber-cyan tracking-wide mt-1.5 mb-4">
+                    [{member.role.toUpperCase()}]
+                  </p>
+                  <p className="text-sm leading-relaxed text-cyber-muted">
+                    {member.description}
+                  </p>
                 </div>
-
-                <p className="text-sm leading-relaxed text-cyber-muted">
-                  {member.description}
-                </p>
               </div>
             </AnimatedReveal>
           ))}
