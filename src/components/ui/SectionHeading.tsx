@@ -51,10 +51,10 @@ export default function SectionHeading({
       {/* Section number and label */}
       {sectionNumber && (
         <div className="flex items-center gap-2 mb-4">
-          <span className="font-mono text-sm text-brand-light tracking-wider">
+          <span className="font-mono text-sm text-cyber-faint tracking-wider">
             [{sectionNumber}]
           </span>
-          <span className="font-mono text-sm text-cyber-cyan/50">//</span>
+          <span className="font-mono text-sm text-cyber-faint/50">//</span>
           <span className="font-mono text-sm text-cyber-muted tracking-wider uppercase">
             {title}
           </span>
@@ -69,9 +69,9 @@ export default function SectionHeading({
       {/* Sharp gradient accent line with glowing dot */}
       <div className="mt-6 flex items-center gap-0" aria-hidden="true">
         {/* Glowing dot */}
-        <div className="w-2 h-2 bg-brand shadow-[0_0_8px_rgba(128,0,255,0.6)]" role="presentation" />
+        <div className="w-2 h-2 bg-brand" role="presentation" />
         {/* Gradient line */}
-        <div className="h-px w-24 bg-gradient-to-r from-brand to-cyber-cyan" role="presentation" />
+        <div className="h-px w-24 bg-gradient-to-r from-brand/40 to-transparent" role="presentation" />
       </div>
 
       {subtitle && (

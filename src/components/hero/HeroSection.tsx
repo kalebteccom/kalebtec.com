@@ -84,11 +84,11 @@ export default function HeroSection() {
       {/* Decorative HUD elements */}
       <div className="absolute inset-0 z-[2] pointer-events-none" aria-hidden="true">
         {/* Top-left: SYS.ACTIVE */}
-        <div className="absolute top-6 left-6 font-mono text-[10px] text-brand/30 tracking-wider">
+        <div className="absolute top-6 left-6 font-mono text-[10px] text-cyber-faint/40 tracking-wider">
           SYS.ACTIVE
         </div>
         {/* Top-right: Coordinates */}
-        <div className="absolute top-6 right-6 font-mono text-[10px] text-brand/30 tracking-wider">
+        <div className="absolute top-6 right-6 font-mono text-[10px] text-cyber-faint/40 tracking-wider">
           LAT: 00.0000 | LNG: 00.0000
         </div>
       </div>
@@ -127,13 +127,13 @@ export default function HeroSection() {
             className="mt-5 mb-6 flex items-center gap-0 origin-center"
             aria-hidden="true"
           >
-            <div className="h-px w-12 bg-brand" />
+            <div className="h-px w-12 bg-cyber-muted/40" />
             <motion.div
-              className="w-1.5 h-1.5 bg-cyber-cyan shadow-[0_0_6px_rgba(0,255,255,0.6)]"
+              className="w-1.5 h-1.5 bg-brand shadow-[0_0_6px_rgba(128,0,255,0.6)]"
               animate={{ opacity: [1, 0.3, 1] }}
               transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
             />
-            <div className="h-px w-12 bg-brand" />
+            <div className="h-px w-12 bg-cyber-muted/40" />
           </motion.div>
 
           {/* Monospace Tagline with blinking cursor */}
@@ -157,7 +157,7 @@ export default function HeroSection() {
           <motion.div variants={fadeUpVariants} className="mt-10">
             <a
               href="#contact"
-              className="group relative inline-flex items-center gap-2 border border-brand/40 bg-transparent px-8 py-3.5 font-mono text-sm uppercase tracking-widest text-cyber-heading transition-all duration-300 hover:border-cyber-cyan hover:shadow-[0_0_30px_rgba(0,255,255,0.15)] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyber-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-cyber-bg focus-visible:border-cyber-cyan"
+              className="group relative inline-flex items-center gap-2 border border-cyber-muted/30 bg-transparent px-8 py-3.5 font-mono text-sm uppercase tracking-widest text-cyber-heading transition-all duration-300 hover:border-cyber-heading/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyber-heading/50 focus-visible:ring-offset-2 focus-visible:ring-offset-cyber-bg"
             >
               <span>[INITIATE_CONTACT]</span>
               <svg

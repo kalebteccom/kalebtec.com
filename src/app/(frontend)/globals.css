@@ -10,7 +10,7 @@
   --color-cyber-magenta: #ff00ff;
   --color-cyber-bg: #09090f;
   --color-cyber-surface: #0d0d15;
-  --color-cyber-border: rgba(128, 0, 255, 0.2);
+  --color-cyber-border: rgba(255, 255, 255, 0.08);
 
   /* Semantic text colors — switch with theme */
   --color-cyber-heading: #ffffff;
@@ -29,24 +29,26 @@
 
 [data-theme="dark"] {
   color-scheme: dark;
+  font-weight: 450;
 }
 
 [data-theme="light"] {
   color-scheme: light;
+  font-weight: 400;
   /* Harsh daylight cyberpunk — cool gray with neon burn-in */
-  --color-cyber-bg: #dfe0ea;
-  --color-cyber-surface: #eaebf2;
-  --color-cyber-border: rgba(100, 0, 220, 0.22);
+  --color-cyber-bg: #d8d9e4;
+  --color-cyber-surface: #e4e5ee;
+  --color-cyber-border: rgba(60, 30, 100, 0.12);
   --color-brand-glow: rgba(128, 0, 255, 0.35);
   --color-cyber-cyan: #006878;
   --color-brand-light: #6b00d6;
   --color-cyber-cyan-glow: rgba(0, 104, 120, 0.3);
 
-  /* Text colors for light mode — cooler, ink-like */
-  --color-cyber-heading: #0e0a1f;
-  --color-cyber-body: #2a2545;
-  --color-cyber-muted: #56507a;
-  --color-cyber-faint: #605a82;
+  /* Text colors for light mode — true black-ink with purple undertone */
+  --color-cyber-heading: #08051a;
+  --color-cyber-body: #1a1535;
+  --color-cyber-muted: #443e68;
+  --color-cyber-faint: #544d78;
 
   color: var(--color-cyber-body);
 }
@@ -55,7 +57,7 @@
    BASE STYLES
    ========================================================================== */
 
-/* Cyberpunk crosshair cursor */
+/* Cyberpunk crosshair cursor — light cursor for dark theme */
 html {
   cursor: url('/cursor.svg') 16 16, crosshair;
   scroll-behavior: smooth;
@@ -67,6 +69,22 @@ a, button, [role="button"], input, textarea, select, label, [tabindex] {
 
 a:hover, button:hover, [role="button"]:hover {
   cursor: url('/cursor.svg') 16 16, crosshair;
+}
+
+/* Dark cursor for light theme */
+[data-theme="light"],
+[data-theme="light"] a,
+[data-theme="light"] button,
+[data-theme="light"] [role="button"],
+[data-theme="light"] input,
+[data-theme="light"] textarea,
+[data-theme="light"] select,
+[data-theme="light"] label,
+[data-theme="light"] [tabindex],
+[data-theme="light"] a:hover,
+[data-theme="light"] button:hover,
+[data-theme="light"] [role="button"]:hover {
+  cursor: url('/cursor-dark.svg') 16 16, crosshair;
 }
 
 /* Selection color */
@@ -183,7 +201,7 @@ select:focus-visible,
 }
 
 [data-theme="light"] .hero-text-backdrop {
-  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(223,224,234,0.65) 0%, transparent 70%);
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(216,217,228,0.70) 0%, transparent 70%);
 }
 
 .hero-bottom-fade {
@@ -238,8 +256,8 @@ select:focus-visible,
   position: absolute;
   width: 16px;
   height: 16px;
-  border-color: var(--color-brand);
-  opacity: 0.5;
+  border-color: var(--color-cyber-muted);
+  opacity: 0.35;
   transition: all 0.3s ease;
 }
 
@@ -259,24 +277,22 @@ select:focus-visible,
 
 .cyber-corners:hover::before,
 .cyber-corners:hover::after {
-  opacity: 1;
+  opacity: 0.7;
   width: 20px;
   height: 20px;
-  border-color: var(--color-cyber-cyan);
-  box-shadow: 0 0 8px var(--color-cyber-cyan-glow), 0 0 16px rgba(0, 255, 255, 0.15);
+  border-color: var(--color-brand);
 }
 
 [data-theme="light"] .cyber-corners::before,
 [data-theme="light"] .cyber-corners::after {
-  border-color: var(--color-brand);
-  opacity: 0.5;
+  border-color: var(--color-cyber-faint);
+  opacity: 0.4;
 }
 
 [data-theme="light"] .cyber-corners:hover::before,
 [data-theme="light"] .cyber-corners:hover::after {
-  opacity: 1;
+  opacity: 0.7;
   border-color: var(--color-brand);
-  box-shadow: 0 0 8px rgba(128, 0, 255, 0.3), 0 0 20px rgba(128, 0, 255, 0.15);
 }
 
 /* ==========================================================================
@@ -373,34 +389,25 @@ select:focus-visible,
 
 .cyber-border-glow {
   box-shadow:
-    0 0 0 1px rgba(128, 0, 255, 0.15),
-    inset 0 0 30px rgba(128, 0, 255, 0.03);
+    0 0 0 1px rgba(255, 255, 255, 0.06);
   transition: box-shadow 0.4s ease;
 }
 
 .cyber-border-glow:hover {
   box-shadow:
-    0 0 0 1px rgba(128, 0, 255, 0.7),
-    0 0 20px rgba(128, 0, 255, 0.2),
-    0 0 40px rgba(128, 0, 255, 0.1),
-    0 0 80px rgba(128, 0, 255, 0.05),
-    inset 0 0 30px rgba(128, 0, 255, 0.06),
-    inset 0 0 60px rgba(128, 0, 255, 0.03);
+    0 0 0 1px rgba(128, 0, 255, 0.25),
+    0 0 20px rgba(128, 0, 255, 0.06);
 }
 
 [data-theme="light"] .cyber-border-glow {
   box-shadow:
-    0 0 0 1px rgba(128, 0, 255, 0.18),
-    0 0 8px rgba(128, 0, 255, 0.06),
-    inset 0 0 20px rgba(128, 0, 255, 0.03);
+    0 0 0 1px rgba(0, 0, 0, 0.06);
 }
 
 [data-theme="light"] .cyber-border-glow:hover {
   box-shadow:
-    0 0 0 1px rgba(128, 0, 255, 0.5),
-    0 0 20px rgba(128, 0, 255, 0.15),
-    0 0 40px rgba(128, 0, 255, 0.06),
-    inset 0 0 30px rgba(128, 0, 255, 0.04);
+    0 0 0 1px rgba(128, 0, 255, 0.2),
+    0 0 15px rgba(128, 0, 255, 0.05);
 }
 
 /* ==========================================================================
@@ -625,7 +632,7 @@ select:focus-visible,
 .typing-cursor::after {
   content: '|';
   animation: blink-cursor 1s step-end infinite;
-  color: var(--color-brand);
+  color: var(--color-cyber-muted);
   margin-left: 2px;
 }
 
@@ -642,33 +649,33 @@ select:focus-visible,
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(128, 0, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(128, 0, 255, 0.5);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 [data-theme="light"] ::-webkit-scrollbar-track {
-  background: #d8d9e3;
+  background: #d0d1dc;
 }
 
 [data-theme="light"] ::-webkit-scrollbar-thumb {
-  background: rgba(128, 0, 255, 0.3);
+  background: rgba(0, 0, 0, 0.15);
 }
 
 [data-theme="light"] ::-webkit-scrollbar-thumb:hover {
-  background: rgba(128, 0, 255, 0.5);
+  background: rgba(0, 0, 0, 0.25);
 }
 
 /* Firefox scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(128, 0, 255, 0.3) #09090f;
+  scrollbar-color: rgba(255, 255, 255, 0.15) #09090f;
 }
 
 [data-theme="light"] * {
-  scrollbar-color: rgba(128, 0, 255, 0.3) #d8d9e3;
+  scrollbar-color: rgba(0, 0, 0, 0.15) #d0d1dc;
 }
 
 /* ==========================================================================
@@ -677,15 +684,15 @@ select:focus-visible,
 
 .cyber-grid-bg {
   background-image:
-    linear-gradient(rgba(128, 0, 255, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(128, 0, 255, 0.1) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
 [data-theme="light"] .cyber-grid-bg {
   background-image:
-    linear-gradient(rgba(100, 0, 220, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(100, 0, 220, 0.08) 1px, transparent 1px);
+    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 

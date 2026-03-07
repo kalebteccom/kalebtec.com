@@ -11,7 +11,7 @@ import FloatingGeometry from './FloatingGeometry'
 import ParticleField from './ParticleField'
 
 const DARK_BG = '#09090f'
-const LIGHT_BG = '#dfe0ea'
+const LIGHT_BG = '#d8d9e4'
 
 // Cyberpunk angular shape configurations
 const SHAPES = [
@@ -140,11 +140,13 @@ function SceneContent({ isDark }: { isDark: boolean }) {
           rotationSpeed={[...shape.rotationSpeed]}
           bobSpeed={shape.bobSpeed}
           bobAmount={shape.bobAmount}
-          opacity={isDark ? shape.opacity : shape.opacity * 1.8}
-          emissiveIntensity={isDark ? shape.emissiveIntensity : shape.emissiveIntensity * 0.4}
-          color={isDark ? shape.color : shape.color}
-          edgeColor={isDark ? shape.edgeColor : '#8000FF'}
-          edgeOpacity={isDark ? shape.edgeOpacity : shape.edgeOpacity * 1.6}
+          opacity={isDark ? shape.opacity : shape.opacity * 0.35}
+          emissiveIntensity={isDark ? shape.emissiveIntensity : shape.emissiveIntensity * 0.15}
+          color={isDark ? shape.color : '#b080ff'}
+          edgeColor={isDark ? shape.edgeColor : '#6b00d6'}
+          edgeOpacity={isDark ? shape.edgeOpacity : shape.edgeOpacity * 2.5}
+          metalness={isDark ? 0.8 : 0.1}
+          roughness={isDark ? 0.7 : 0.3}
         />
       ))}
 

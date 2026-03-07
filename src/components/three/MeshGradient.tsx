@@ -86,7 +86,7 @@ void main() {
   darkColor = mix(darkColor, magenta, blend3 * (1.0 - blend2) * 0.2);
 
   // --- LIGHT MODE palette — harsh daylight neon, cool gray base ---
-  vec3 lightBase = vec3(0.875, 0.878, 0.918);        // #dfe0ea — cool steel
+  vec3 lightBase = vec3(0.847, 0.851, 0.894);        // #d8d9e4 — cool steel
   vec3 lightWash = vec3(0.84, 0.84, 0.90);           // darker steel for depth
   vec3 lightPurple = vec3(0.55, 0.25, 0.95);         // vivid purple burn-in
   vec3 lightCyan = vec3(0.2, 0.75, 0.82);            // electric teal

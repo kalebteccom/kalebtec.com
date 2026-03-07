@@ -43,7 +43,7 @@ export default function Header() {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
           scrolled
-            ? 'bg-cyber-bg/90 backdrop-blur-lg border-b border-brand/20'
+            ? 'bg-cyber-bg/90 backdrop-blur-lg border-b border-cyber-border'
             : 'bg-transparent border-b border-transparent'
         )}
         initial={{ y: -100 }}
@@ -61,7 +61,7 @@ export default function Header() {
                 height={32}
                 className="w-8 h-8"
               />
-              <span className="hidden sm:inline font-display text-sm uppercase tracking-widest text-cyber-heading group-hover:text-brand group-hover:neon-glow transition-colors duration-300">
+              <span className="hidden sm:inline font-display text-sm uppercase tracking-widest text-cyber-heading group-hover:text-cyber-heading transition-colors duration-300">
                 KALEBTEC
               </span>
             </a>
@@ -72,11 +72,11 @@ export default function Header() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="group font-mono text-xs uppercase tracking-[0.2em] text-cyber-muted hover:text-cyber-heading transition-all duration-300"
+                  className="group font-mono text-xs uppercase tracking-[0.2em] text-cyber-muted hover:text-brand-light transition-all duration-300"
                 >
-                  <span className="text-brand/50 group-hover:text-brand transition-colors duration-300">[</span>
+                  <span className="text-cyber-faint group-hover:text-cyber-muted transition-colors duration-300">[</span>
                   <span className="group-hover:neon-glow">{link.label}</span>
-                  <span className="text-brand/50 group-hover:text-brand transition-colors duration-300">]</span>
+                  <span className="text-cyber-faint group-hover:text-cyber-muted transition-colors duration-300">]</span>
                 </a>
               ))}
             </nav>
@@ -89,7 +89,7 @@ export default function Header() {
               <button
                 ref={hamburgerRef}
                 onClick={() => setMobileMenuOpen(true)}
-                className="md:hidden p-2 text-cyber-muted hover:text-brand transition-colors"
+                className="md:hidden p-2 text-cyber-muted hover:text-cyber-heading transition-colors"
                 aria-label="Open navigation menu"
                 aria-expanded={mobileMenuOpen}
                 aria-controls="mobile-nav-menu"

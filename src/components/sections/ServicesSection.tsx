@@ -117,12 +117,12 @@ export default function ServicesSection() {
                   'bg-cyber-surface',
                   'cyber-corners cyber-border-glow',
                   'transition-all duration-500 ease-out',
-                  'hover:border-brand/50 hover:shadow-[0_0_30px_rgba(128,0,255,0.1)]',
+                  'hover:border-cyber-muted/30',
                   'h-full'
                 )}
               >
                 {/* Card index number */}
-                <span className="absolute top-4 right-4 font-mono text-[11px] text-brand/30" aria-hidden="true">
+                <span className="absolute top-4 right-4 font-mono text-[11px] text-cyber-faint/40" aria-hidden="true">
                   [{String(index + 1).padStart(2, '0')}]
                 </span>
 

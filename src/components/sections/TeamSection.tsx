@@ -48,14 +48,14 @@ export default function TeamSection() {
                   'bg-cyber-surface',
                   'cyber-corners cyber-border-glow',
                   'transition-all duration-500',
-                  'hover:border-brand/50',
+                  'hover:border-cyber-muted/30',
                   'h-full'
                 )}
               >
                 {/* Avatar with initials — square, no rounding */}
                 <div className="mb-6 flex items-center gap-5">
-                  <div className="flex items-center justify-center w-16 h-16 bg-brand/10 border border-brand/30" role="img" aria-label={`${member.name} initials`}>
-                    <span className="font-display text-lg font-bold tracking-wider text-brand" aria-hidden="true">
+                  <div className="flex items-center justify-center w-16 h-16 bg-cyber-faint/10 border border-cyber-border" role="img" aria-label={`${member.name} initials`}>
+                    <span className="font-display text-lg font-bold tracking-wider text-cyber-heading" aria-hidden="true">
                       {member.initials}
                     </span>
                   </div>
@@ -71,10 +71,10 @@ export default function TeamSection() {
 
                 {/* Data-like metadata — decorative flavor text */}
                 <div className="mb-4 flex items-center gap-4" aria-hidden="true">
-                  <span className="font-mono text-[10px] text-brand/30 tracking-wider">
+                  <span className="font-mono text-[10px] text-cyber-faint/50 tracking-wider">
                     ID: {member.id}
                   </span>
-                  <span className="font-mono text-[10px] text-brand/30 tracking-wider">
+                  <span className="font-mono text-[10px] text-cyber-faint/50 tracking-wider">
                     ROLE: {member.roleCode}
                   </span>
                 </div>

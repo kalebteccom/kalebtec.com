@@ -50,7 +50,7 @@ export default function Footer() {
 
           {/* Middle column: Navigation */}
           <div>
-            <h3 className="font-mono text-xs uppercase tracking-widest text-brand/40 mb-6">
+            <h3 className="font-mono text-xs uppercase tracking-widest text-cyber-faint mb-6">
               // NAVIGATION
             </h3>
             <nav className="flex flex-col gap-3" aria-label="Footer navigation">
@@ -68,13 +68,13 @@ export default function Footer() {
 
           {/* Right column: Contact */}
           <div>
-            <h3 className="font-mono text-xs uppercase tracking-widest text-brand/40 mb-6">
+            <h3 className="font-mono text-xs uppercase tracking-widest text-cyber-faint mb-6">
               // CONTACT
             </h3>
             <div className="space-y-3">
               <a
                 href="mailto:hello@kalebtec.com"
-                className="font-mono text-sm text-cyber-muted hover:text-cyber-cyan hover:neon-glow-cyan transition-all duration-300 block w-fit"
+                className="font-mono text-sm text-cyber-muted hover:text-brand-light hover:neon-glow transition-all duration-300 block w-fit"
               >
                 hello@kalebtec.com
               </a>
@@ -84,7 +84,7 @@ export default function Footer() {
             <div className="flex gap-4 mt-6">
               <a
                 href="#"
-                className="text-cyber-faint hover:text-brand transition-colors duration-300"
+                className="text-cyber-faint hover:text-cyber-heading transition-colors duration-300"
                 aria-label="LinkedIn"
                 rel="noopener noreferrer"
               >
@@ -100,7 +100,7 @@ export default function Footer() {
               </a>
               <a
                 href="#"
-                className="text-cyber-faint hover:text-brand transition-colors duration-300"
+                className="text-cyber-faint hover:text-cyber-heading transition-colors duration-300"
                 aria-label="X (Twitter)"
                 rel="noopener noreferrer"
               >
@@ -116,7 +116,7 @@ export default function Footer() {
               </a>
               <a
                 href="#"
-                className="text-cyber-faint hover:text-brand transition-colors duration-300"
+                className="text-cyber-faint hover:text-cyber-heading transition-colors duration-300"
                 aria-label="GitHub"
                 rel="noopener noreferrer"
               >
@@ -136,7 +136,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-brand/10">
+      <div className="border-t border-cyber-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-6">
             <p className="font-mono text-xs text-cyber-faint">
@@ -151,7 +151,7 @@ export default function Footer() {
             <span className="font-mono text-[10px] text-cyber-faint uppercase tracking-wider">
               SYS.VER 1.0
             </span>
-            <span className="w-px h-3 bg-brand/20" />
+            <span className="w-px h-3 bg-cyber-faint/20" />
             <span className="font-mono text-[10px] text-cyber-faint uppercase tracking-wider">
               LOCATION: REMOTE
             </span>

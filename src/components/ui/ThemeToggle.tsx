@@ -99,9 +99,9 @@ export default function ThemeToggle() {
           className={cn(
             'relative flex h-8 w-8 items-center justify-center',
             'border border-cyber-border bg-cyber-surface',
-            'text-cyber-muted hover:text-brand hover:border-brand/50',
+            'text-cyber-muted hover:text-cyber-heading hover:border-cyber-muted/40',
             'transition-all duration-300',
-            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-cyber-bg',
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyber-heading/50 focus-visible:ring-offset-2 focus-visible:ring-offset-cyber-bg',
             'cyber-border-glow'
           )}
           aria-label={`Theme: ${theme}. Click to change.`}
@@ -115,7 +115,7 @@ export default function ThemeToggle() {
           className={cn(
             'z-[100] min-w-[180px] p-1',
             'border border-cyber-border bg-cyber-surface',
-            'shadow-[0_0_20px_rgba(128,0,255,0.15),0_0_0_1px_rgba(128,0,255,0.1)]',
+            'shadow-[0_0_10px_rgba(0,0,0,0.2),0_0_0_1px_rgba(255,255,255,0.08)]',
             'rounded-none'
           )}
           sideOffset={8}
@@ -137,19 +137,19 @@ export default function ThemeToggle() {
                   'font-mono text-xs uppercase tracking-wider',
                   'transition-colors duration-150',
                   'rounded-none',
-                  isActive ? 'text-brand' : 'text-cyber-muted',
-                  'data-[highlighted]:bg-brand/10 data-[highlighted]:text-cyber-heading'
+                  isActive ? 'text-cyber-heading' : 'text-cyber-muted',
+                  'data-[highlighted]:bg-cyber-heading/10 data-[highlighted]:text-cyber-heading'
                 )}
               >
                 <Icon
                   className={cn(
                     'shrink-0 transition-colors duration-150',
-                    isActive ? 'text-brand' : 'text-cyber-muted'
+                    isActive ? 'text-cyber-heading' : 'text-cyber-muted'
                   )}
                 />
                 <span>{label}</span>
                 {isActive && (
-                  <span className="ml-auto text-brand text-[10px] neon-glow">
+                  <span className="ml-auto text-cyber-heading text-[10px]">
                     &#9646;
                   </span>
                 )}

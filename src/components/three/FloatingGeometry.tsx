@@ -18,6 +18,8 @@ interface FloatingGeometryProps {
   color?: string
   edgeColor?: string
   edgeOpacity?: number
+  metalness?: number
+  roughness?: number
 }
 
 // Shared edge geometry cache keyed by geometry type
@@ -38,6 +40,8 @@ function GeometryWithEdges({
   emissiveIntensity,
   edgeColor,
   edgeOpacity,
+  metalness,
+  roughness,
 }: {
   geometryType: Exclude<GeometryType, 'cross'>
   color: string
@@ -45,6 +49,8 @@ function GeometryWithEdges({
   emissiveIntensity: number
   edgeColor: string
   edgeOpacity: number
+  metalness: number
+  roughness: number
 }) {
   const baseGeometry = useMemo(() => {
     switch (geometryType) {
@@ -73,8 +79,8 @@ function GeometryWithEdges({
           emissiveIntensity={emissiveIntensity}
           transparent
           opacity={opacity}
-          roughness={0.7}
-          metalness={0.8}
+          roughness={roughness}
+          metalness={metalness}
           side={THREE.FrontSide}
         />
       </mesh>
@@ -97,12 +103,16 @@ function CrossGeometry({
   emissiveIntensity,
   edgeColor,
   edgeOpacity,
+  metalness,
+  roughness,
 }: {
   color: string
   opacity: number
   emissiveIntensity: number
   edgeColor: string
   edgeOpacity: number
+  metalness: number
+  roughness: number
 }) {
   const armSize: [number, number, number] = [0.25, 1, 0.25]
 
@@ -116,11 +126,11 @@ function CrossGeometry({
       emissiveIntensity,
       transparent: true as const,
       opacity,
-      roughness: 0.7,
-      metalness: 0.8,
+      roughness,
+      metalness,
       side: THREE.FrontSide as THREE.Side,
     }),
-    [color, emissiveIntensity, opacity]
+    [color, emissiveIntensity, opacity, roughness, metalness]
   )
 
   const edgeMaterialProps = useMemo(
@@ -178,6 +188,8 @@ export default function FloatingGeometry({
   color = '#8000FF',
   edgeColor = '#00ffff',
   edgeOpacity = 0.35,
+  metalness = 0.8,
+  roughness = 0.7,
 }: FloatingGeometryProps) {
   const groupRef = useRef<THREE.Group>(null)
   const [mounted, setMounted] = useState(false)
@@ -232,6 +244,8 @@ export default function FloatingGeometry({
           emissiveIntensity={emissiveIntensity}
           edgeColor={edgeColor}
           edgeOpacity={edgeOpacity}
+          metalness={metalness}
+          roughness={roughness}
         />
       ) : (
         <GeometryWithEdges
@@ -241,6 +255,8 @@ export default function FloatingGeometry({
           emissiveIntensity={emissiveIntensity}
           edgeColor={edgeColor}
           edgeOpacity={edgeOpacity}
+          metalness={metalness}
+          roughness={roughness}
         />
       )}
     </group>

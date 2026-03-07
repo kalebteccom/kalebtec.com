@@ -131,16 +131,16 @@ export default function MobileMenu({ isOpen, onClose, triggerRef }: MobileMenuPr
           transition={{ duration: 0.3 }}
         >
           {/* Corner accents (decorative) */}
-          <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-brand/40" aria-hidden="true" />
-          <div className="absolute top-4 right-4 w-6 h-6 border-t border-r border-brand/40" aria-hidden="true" />
-          <div className="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-brand/40" aria-hidden="true" />
-          <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-brand/40" aria-hidden="true" />
+          <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-cyber-faint/30" aria-hidden="true" />
+          <div className="absolute top-4 right-4 w-6 h-6 border-t border-r border-cyber-faint/30" aria-hidden="true" />
+          <div className="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-cyber-faint/30" aria-hidden="true" />
+          <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-cyber-faint/30" aria-hidden="true" />
 
           {/* Close button */}
           <button
             ref={closeButtonRef}
             onClick={onClose}
-            className="absolute top-6 right-6 p-2 text-cyber-muted hover:text-brand transition-colors z-10"
+            className="absolute top-6 right-6 p-2 text-cyber-muted hover:text-cyber-heading transition-colors z-10"
             aria-label="Close navigation menu"
           >
             <svg
@@ -161,7 +161,7 @@ export default function MobileMenu({ isOpen, onClose, triggerRef }: MobileMenuPr
           <nav className="flex flex-col items-center justify-center h-full gap-0 relative z-10" aria-label="Mobile navigation">
             {/* System label (decorative) */}
             <motion.span
-              className="font-mono text-[10px] uppercase tracking-[0.3em] text-brand/40 mb-10"
+              className="font-mono text-[10px] uppercase tracking-[0.3em] text-cyber-faint mb-10"
               variants={glitchVariants}
               initial="hidden"
               animate="visible"
@@ -188,11 +188,11 @@ export default function MobileMenu({ isOpen, onClose, triggerRef }: MobileMenuPr
                 <a
                   href={link.href}
                   onClick={onClose}
-                  className="block text-center font-mono text-xl xs:text-2xl uppercase tracking-[0.25em] text-cyber-body hover:text-brand hover:neon-glow transition-all duration-300 py-3 glitch-hover"
+                  className="block text-center font-mono text-xl xs:text-2xl uppercase tracking-[0.25em] text-cyber-body hover:text-cyber-heading hover:neon-glow transition-all duration-300 py-3 glitch-hover"
                 >
-                  <span className="text-brand/40" aria-hidden="true">[</span>
+                  <span className="text-cyber-faint" aria-hidden="true">[</span>
                   {link.label}
-                  <span className="text-brand/40" aria-hidden="true">]</span>
+                  <span className="text-cyber-faint" aria-hidden="true">]</span>
                 </a>
               </motion.div>
             ))}

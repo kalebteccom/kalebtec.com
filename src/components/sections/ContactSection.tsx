@@ -42,10 +42,10 @@ export default function ContactSection() {
             transition={{ duration: 0.6, ease: EASE }}
             className="flex items-center justify-center gap-2 mb-6"
           >
-            <span className="font-mono text-sm text-brand-light tracking-wider">
+            <span className="font-mono text-sm text-cyber-faint tracking-wider">
               [04]
             </span>
-            <span className="font-mono text-sm text-cyber-cyan/50">//</span>
+            <span className="font-mono text-sm text-cyber-faint/50">//</span>
             <span className="font-mono text-sm text-cyber-muted tracking-wider uppercase">
               CONTACT
             </span>
@@ -75,8 +75,8 @@ export default function ContactSection() {
             aria-hidden="true"
           >
             <div className="flex items-center gap-0">
-              <div className="w-2 h-2 bg-brand shadow-[0_0_8px_rgba(128,0,255,0.6)]" />
-              <div className="h-px w-16 bg-gradient-to-r from-brand to-cyber-cyan" />
+              <div className="w-2 h-2 bg-brand" />
+              <div className="h-px w-16 bg-gradient-to-r from-brand/40 to-transparent" />
             </div>
           </motion.div>
 
@@ -119,7 +119,7 @@ export default function ContactSection() {
                   required
                   className={cn(
                     'w-full px-4 py-3 text-sm font-mono',
-                    'bg-cyber-surface border border-cyber-border text-cyber-heading placeholder-cyber-faint',
+                    'bg-cyber-surface border border-cyber-faint/40 text-cyber-heading placeholder-cyber-faint',
                     'focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan/30',
                     'transition-all duration-300'
                   )}
@@ -142,7 +142,7 @@ export default function ContactSection() {
                   required
                   className={cn(
                     'w-full px-4 py-3 text-sm font-mono',
-                    'bg-cyber-surface border border-cyber-border text-cyber-heading placeholder-cyber-faint',
+                    'bg-cyber-surface border border-cyber-faint/40 text-cyber-heading placeholder-cyber-faint',
                     'focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan/30',
                     'transition-all duration-300'
                   )}
@@ -164,7 +164,7 @@ export default function ContactSection() {
                   required
                   className={cn(
                     'w-full px-4 py-3 text-sm resize-none font-mono',
-                    'bg-cyber-surface border border-cyber-border text-cyber-heading placeholder-cyber-faint',
+                    'bg-cyber-surface border border-cyber-faint/40 text-cyber-heading placeholder-cyber-faint',
                     'focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan/30',
                     'transition-all duration-300'
                   )}
@@ -177,7 +177,7 @@ export default function ContactSection() {
                 className={cn(
                   'w-full py-3 px-6 font-mono text-sm font-semibold uppercase tracking-wider',
                   'border border-brand bg-brand/10 text-cyber-heading',
-                  'hover:bg-brand hover:shadow-[0_0_30px_rgba(128,0,255,0.2)]',
+                  'hover:bg-brand hover:text-white hover:shadow-[0_0_30px_rgba(128,0,255,0.2)]',
                   'focus:outline-none focus:ring-2 focus:ring-brand/50 focus:ring-offset-2 focus:ring-offset-cyber-bg',
                   'transition-all duration-300',
                   'cursor-pointer'

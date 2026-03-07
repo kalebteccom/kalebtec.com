@@ -1,18 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-  <!-- Outer corner brackets -->
-  <path d="M4 4h6" stroke="#8000FF" stroke-width="1.5"/>
-  <path d="M4 4v6" stroke="#8000FF" stroke-width="1.5"/>
-  <path d="M28 4h-6" stroke="#8000FF" stroke-width="1.5"/>
-  <path d="M28 4v6" stroke="#8000FF" stroke-width="1.5"/>
-  <path d="M4 28h6" stroke="#8000FF" stroke-width="1.5"/>
-  <path d="M4 28v-6" stroke="#8000FF" stroke-width="1.5"/>
-  <path d="M28 28h-6" stroke="#8000FF" stroke-width="1.5"/>
-  <path d="M28 28v-6" stroke="#8000FF" stroke-width="1.5"/>
-  <!-- Crosshair lines -->
-  <line x1="16" y1="6" x2="16" y2="13" stroke="#00ffff" stroke-width="1"/>
-  <line x1="16" y1="19" x2="16" y2="26" stroke="#00ffff" stroke-width="1"/>
-  <line x1="6" y1="16" x2="13" y2="16" stroke="#00ffff" stroke-width="1"/>
-  <line x1="19" y1="16" x2="26" y2="16" stroke="#00ffff" stroke-width="1"/>
-  <!-- Center dot -->
-  <rect x="15" y="15" width="2" height="2" fill="#8000FF"/>
+  <!-- Outer bracket corners — cyan HUD targeting reticle -->
+  <!-- Top-left corner -->
+  <line x1="4" y1="4" x2="10" y2="4" stroke="#00ffff" stroke-width="1.5"/>
+  <line x1="4" y1="4" x2="4" y2="10" stroke="#00ffff" stroke-width="1.5"/>
+  <!-- Top-right corner -->
+  <line x1="22" y1="4" x2="28" y2="4" stroke="#00ffff" stroke-width="1.5"/>
+  <line x1="28" y1="4" x2="28" y2="10" stroke="#00ffff" stroke-width="1.5"/>
+  <!-- Bottom-left corner -->
+  <line x1="4" y1="22" x2="4" y2="28" stroke="#00ffff" stroke-width="1.5"/>
+  <line x1="4" y1="28" x2="10" y2="28" stroke="#00ffff" stroke-width="1.5"/>
+  <!-- Bottom-right corner -->
+  <line x1="28" y1="22" x2="28" y2="28" stroke="#00ffff" stroke-width="1.5"/>
+  <line x1="22" y1="28" x2="28" y2="28" stroke="#00ffff" stroke-width="1.5"/>
+
+  <!-- Inner crosshair lines — white, full opacity -->
+  <line x1="16" y1="6" x2="16" y2="13" stroke="white" stroke-width="1.5"/>
+  <line x1="16" y1="19" x2="16" y2="26" stroke="white" stroke-width="1.5"/>
+  <line x1="6" y1="16" x2="13" y2="16" stroke="white" stroke-width="1.5"/>
+  <line x1="19" y1="16" x2="26" y2="16" stroke="white" stroke-width="1.5"/>
+
+  <!-- Center dot — brand purple -->
+  <rect x="14.5" y="14.5" width="3" height="3" fill="#8000FF"/>
 </svg>
