@@ -22,6 +22,14 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'Kalebtec | Tech Consulting',
   description: 'Expert technology consulting by Rowin and Mari Hernandez. We build digital solutions that matter.',
+  icons: {
+    icon: [
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
+  manifest: '/site.webmanifest',
   openGraph: {
     title: 'Kalebtec | Tech Consulting',
     description: 'Expert technology consulting by Rowin and Mari Hernandez.',
