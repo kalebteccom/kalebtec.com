@@ -23,6 +23,16 @@ This project has **three expert-level skills** that MUST be used when working wi
 
 ---
 
+## Package Manager: pnpm
+
+**Always use `pnpm`** for all package operations. Never use `npm` or `yarn`.
+- Install deps: `pnpm install`
+- Add a package: `pnpm add <pkg>`
+- Add dev dep: `pnpm add -D <pkg>`
+- Run scripts: `pnpm dev`, `pnpm build`, `pnpm generate:types`, `pnpm payload`
+
+---
+
 ## Tech Stack (Pinned Versions)
 
 | Technology | Version | Notes |
@@ -35,6 +45,8 @@ This project has **three expert-level skills** that MUST be used when working wi
 | Three.js | 0.183.2 | |
 | Drei | 10.7.7 | R3F helper components |
 | Framer Motion | 12.35.0 | Page animations and scroll-triggered reveals |
+| Jotai | 2.18.0 | Lightweight atomic state (theme toggle, UI state) |
+| Radix UI | latest | Accessible primitives: DropdownMenu, VisuallyHidden |
 | TypeScript | 5.9.3 | |
 | PostCSS | via @tailwindcss/postcss 4.2.1 | Config in postcss.config.mjs |
 
@@ -85,6 +97,18 @@ This project has **three expert-level skills** that MUST be used when working wi
 | `.glitch-hover` | Glitch shake animation on hover |
 | `.cyber-grid-bg` | 40px grid background pattern in subtle purple |
 | `.typing-cursor` | Blinking pipe cursor `|` appended via `::after` |
+| `.cyber-text-flicker` | Subtle text opacity flicker animation |
+| `.cyber-line-scan` | Horizontal scan line animation across elements |
+| `.cyber-clip` | Angled corner clip-path (top-right, bottom-left) |
+| `.neon-underline` | Glowing gradient underline from brand to cyan |
+
+### Theming System
+- **CSS variable-driven** — dark/light themes use `[data-theme="dark"]` / `[data-theme="light"]` on `<html>`
+- **Jotai atom** for theme state management (`src/lib/theme.ts`) — persists to localStorage
+- **No `next-themes`** — lean custom implementation using CSS custom properties
+- Light theme is "daytime cyberpunk" — bright surfaces with purple/cyan accents, NOT plain white
+- `globals.css` contains `[data-theme="light"]` overrides for all color variables
+- ThemeToggle uses **Radix DropdownMenu** for accessible dropdown with Light/Dark/System options
 
 ---
 
@@ -130,6 +154,11 @@ src/
     ui/
       SectionHeading.tsx  # Numbered section headings [01] // TITLE
       AnimatedReveal.tsx  # Framer Motion scroll reveal wrapper
+      ThemeProvider.tsx    # Jotai-based theme provider (CSS variable-driven)
+      ThemeToggle.tsx      # Radix DropdownMenu theme switcher
+  lib/
+    utils.ts              # cn() helper (clsx + tailwind-merge)
+    theme.ts              # Jotai theme atom + localStorage persistence
   payload.config.ts       # Payload CMS config (collections, globals, DB)
   payload-types.ts        # Auto-generated types (run: pnpm generate:types)
 ```
@@ -154,6 +183,12 @@ src/
 
 8. **Next.js config wraps with `withPayload`** -- see `next.config.ts`. The Payload wrapper handles necessary webpack/turbopack configuration.
 
+9. **Theme system is CSS variable-driven** -- uses `[data-theme]` attribute on `<html>`, managed by a Jotai atom. No `next-themes`. The `globals.css` file contains `[data-theme="light"]` overrides.
+
+10. **Radix UI for accessible primitives** -- use `@radix-ui/react-*` for dropdowns, dialogs, and other interactive controls. Always style with zero border-radius.
+
+11. **Accessibility first** -- all sections have `aria-label`, decorative elements have `aria-hidden="true"`, keyboard navigation has visible `focus-visible` indicators, skip-to-content link in layout, `prefers-reduced-motion` respected.
+
 ---
 
 ## Quick Reminders
@@ -167,4 +202,7 @@ src/
 - **Font variables** (`--font-inter`, `--font-orbitron`, `--font-jetbrains-mono`) are set on `<html>` via `next/font/google`.
 - **Custom scrollbar** is already styled in globals.css (thin purple on dark track).
 - **`sharp`** is included as a dependency for Payload image processing.
-- Scripts: `pnpm dev`, `pnpm build`, `pnpm generate:types`, `pnpm payload`.
+- **Always use `pnpm`** — never `npm` or `yarn`. Scripts: `pnpm dev`, `pnpm build`, `pnpm generate:types`, `pnpm payload`.
+- **Use Jotai for client-side state** — lightweight atoms, no boilerplate. Theme state lives in `src/lib/theme.ts`.
+- **Use Radix UI for interactive primitives** — dropdowns, dialogs, tooltips. Always override border-radius to 0.
+- **Accessibility**: every section needs `aria-label`, decorative SVGs need `aria-hidden="true"`, forms need `autocomplete` attributes.

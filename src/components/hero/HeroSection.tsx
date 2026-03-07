@@ -70,33 +70,19 @@ const glowVariants: Variants = {
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-cyber-bg">
-      {/* Three.js Canvas Background */}
+    <section aria-label="Hero" className="relative min-h-screen w-full overflow-hidden bg-cyber-bg">
+      {/* Three.js Canvas Background — theme-aware */}
       <div className="absolute inset-0 z-0">
         <HeroScene />
       </div>
 
-      {/* Subtle dark radial gradient for text readability only */}
-      <div className="absolute inset-0 z-[1] pointer-events-none">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(9,9,15,0.55) 0%, transparent 70%)',
-          }}
-        />
-        {/* Bottom fade */}
-        <div
-          className="absolute bottom-0 left-0 right-0 h-32"
-          style={{
-            background:
-              'linear-gradient(to top, rgba(9,9,15,1) 0%, transparent 100%)',
-          }}
-        />
-      </div>
+      {/* Radial gradient for text readability */}
+      <div className="absolute inset-0 z-[1] pointer-events-none hero-text-backdrop" aria-hidden="true" />
+      {/* Bottom fade to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 z-[1] pointer-events-none hero-bottom-fade" aria-hidden="true" />
 
       {/* Decorative HUD elements */}
-      <div className="absolute inset-0 z-[2] pointer-events-none">
+      <div className="absolute inset-0 z-[2] pointer-events-none" aria-hidden="true">
         {/* Top-left: SYS.ACTIVE */}
         <div className="absolute top-6 left-6 font-mono text-[10px] text-brand/30 tracking-wider">
           SYS.ACTIVE
@@ -130,7 +116,7 @@ export default function HeroSection() {
           {/* Company Name */}
           <motion.h1
             variants={fadeUpVariants}
-            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-wider text-white neon-glow glitch-hover"
+            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-wider text-cyber-heading neon-glow glitch-hover break-words"
           >
             KALEBTEC
           </motion.h1>
@@ -139,6 +125,7 @@ export default function HeroSection() {
           <motion.div
             variants={lineVariants}
             className="mt-5 mb-6 flex items-center gap-0 origin-center"
+            aria-hidden="true"
           >
             <div className="h-px w-12 bg-brand" />
             <motion.div
@@ -161,7 +148,7 @@ export default function HeroSection() {
           {/* Value Proposition */}
           <motion.p
             variants={fadeUpVariants}
-            className="mt-6 max-w-xl text-base sm:text-lg text-neutral-500 leading-relaxed font-mono"
+            className="mt-6 max-w-xl text-base sm:text-lg text-cyber-muted leading-relaxed font-mono"
           >
             // We architect digital solutions that transform businesses
           </motion.p>
@@ -170,7 +157,7 @@ export default function HeroSection() {
           <motion.div variants={fadeUpVariants} className="mt-10">
             <a
               href="#contact"
-              className="group relative inline-flex items-center gap-2 border border-brand/40 bg-transparent px-8 py-3.5 font-mono text-sm uppercase tracking-widest text-white transition-all duration-300 hover:border-cyber-cyan hover:shadow-[0_0_30px_rgba(0,255,255,0.15)] focus:outline-none focus:ring-2 focus:ring-brand/50 focus:ring-offset-2 focus:ring-offset-cyber-bg"
+              className="group relative inline-flex items-center gap-2 border border-brand/40 bg-transparent px-8 py-3.5 font-mono text-sm uppercase tracking-widest text-cyber-heading transition-all duration-300 hover:border-cyber-cyan hover:shadow-[0_0_30px_rgba(0,255,255,0.15)] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyber-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-cyber-bg focus-visible:border-cyber-cyan"
             >
               <span>[INITIATE_CONTACT]</span>
               <svg
@@ -179,6 +166,7 @@ export default function HeroSection() {
                 viewBox="0 0 24 24"
                 stroke="currentColor"
                 strokeWidth={1.5}
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="square"
@@ -197,17 +185,18 @@ export default function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
+        aria-hidden="true"
       >
         <motion.div
           className="flex flex-col items-center gap-2"
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <span className="font-mono text-xs text-neutral-600 tracking-wider">
+          <span className="font-mono text-xs text-cyber-faint tracking-wider">
             [SCROLL]
           </span>
           <svg
-            className="h-4 w-4 text-neutral-600"
+            className="h-4 w-4 text-cyber-faint"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

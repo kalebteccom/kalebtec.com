@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useRef, useCallback, type RefObject } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const navLinks = [
@@ -43,16 +44,85 @@ const glitchVariants = {
   exit: { opacity: 0, x: 10, skewX: 5, transition: { duration: 0.2 } },
 }
 
+const FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+
 interface MobileMenuProps {
   isOpen: boolean
   onClose: () => void
+  triggerRef?: RefObject<HTMLButtonElement | null>
 }
 
-export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+export default function MobileMenu({ isOpen, onClose, triggerRef }: MobileMenuProps) {
+  const menuRef = useRef<HTMLDivElement>(null)
+  const closeButtonRef = useRef<HTMLButtonElement>(null)
+
+  // Focus trap + keyboard handling
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose()
+        return
+      }
+
+      if (e.key === 'Tab') {
+        const menu = menuRef.current
+        if (!menu) return
+
+        const focusable = Array.from(
+          menu.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)
+        )
+        if (focusable.length === 0) return
+
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
+
+        if (e.shiftKey) {
+          // Shift+Tab: wrap from first to last
+          if (document.activeElement === first) {
+            e.preventDefault()
+            last.focus()
+          }
+        } else {
+          // Tab: wrap from last to first
+          if (document.activeElement === last) {
+            e.preventDefault()
+            first.focus()
+          }
+        }
+      }
+    },
+    [onClose]
+  )
+
+  useEffect(() => {
+    if (isOpen) {
+      // Focus close button when menu opens
+      // Use requestAnimationFrame to wait for Framer Motion render
+      const raf = requestAnimationFrame(() => {
+        closeButtonRef.current?.focus()
+      })
+
+      document.addEventListener('keydown', handleKeyDown)
+
+      return () => {
+        cancelAnimationFrame(raf)
+        document.removeEventListener('keydown', handleKeyDown)
+      }
+    } else {
+      // Return focus to the trigger (hamburger button) when menu closes
+      triggerRef?.current?.focus()
+    }
+  }, [isOpen, handleKeyDown, triggerRef])
+
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
+          ref={menuRef}
+          id="mobile-nav-menu"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation menu"
           className="fixed inset-0 z-50 bg-cyber-bg/98 backdrop-blur-xl scanlines"
           variants={overlayVariants}
           initial="hidden"
@@ -60,20 +130,18 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           exit="exit"
           transition={{ duration: 0.3 }}
         >
-          {/* Corner accent — top left */}
-          <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-brand/40" />
-          {/* Corner accent — top right */}
-          <div className="absolute top-4 right-4 w-6 h-6 border-t border-r border-brand/40" />
-          {/* Corner accent — bottom left */}
-          <div className="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-brand/40" />
-          {/* Corner accent — bottom right */}
-          <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-brand/40" />
+          {/* Corner accents (decorative) */}
+          <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-brand/40" aria-hidden="true" />
+          <div className="absolute top-4 right-4 w-6 h-6 border-t border-r border-brand/40" aria-hidden="true" />
+          <div className="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-brand/40" aria-hidden="true" />
+          <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-brand/40" aria-hidden="true" />
 
           {/* Close button */}
           <button
+            ref={closeButtonRef}
             onClick={onClose}
-            className="absolute top-6 right-6 p-2 text-neutral-400 hover:text-brand transition-colors z-10"
-            aria-label="Close menu"
+            className="absolute top-6 right-6 p-2 text-cyber-muted hover:text-brand transition-colors z-10"
+            aria-label="Close navigation menu"
           >
             <svg
               width="24"
@@ -82,6 +150,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               fill="none"
               stroke="currentColor"
               strokeWidth="1.5"
+              aria-hidden="true"
             >
               <line x1="18" y1="6" x2="6" y2="18" />
               <line x1="6" y1="6" x2="18" y2="18" />
@@ -89,14 +158,15 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           </button>
 
           {/* Navigation links */}
-          <nav className="flex flex-col items-center justify-center h-full gap-0 relative z-10">
-            {/* System label */}
+          <nav className="flex flex-col items-center justify-center h-full gap-0 relative z-10" aria-label="Mobile navigation">
+            {/* System label (decorative) */}
             <motion.span
               className="font-mono text-[10px] uppercase tracking-[0.3em] text-brand/40 mb-10"
               variants={glitchVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
+              aria-hidden="true"
             >
               SYSTEM.NAV
             </motion.span>
@@ -113,23 +183,24 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               >
                 {/* Cyan separator line above each link (except first) */}
                 {i > 0 && (
-                  <div className="w-full h-px bg-cyber-cyan/10 mb-6" />
+                  <div className="w-full h-px bg-cyber-cyan/10 mb-6" aria-hidden="true" />
                 )}
                 <a
                   href={link.href}
                   onClick={onClose}
-                  className="block text-center font-mono text-2xl uppercase tracking-[0.25em] text-neutral-300 hover:text-brand hover:neon-glow transition-all duration-300 py-3 glitch-hover"
+                  className="block text-center font-mono text-xl xs:text-2xl uppercase tracking-[0.25em] text-cyber-body hover:text-brand hover:neon-glow transition-all duration-300 py-3 glitch-hover"
                 >
-                  <span className="text-brand/40">[</span>
+                  <span className="text-brand/40" aria-hidden="true">[</span>
                   {link.label}
-                  <span className="text-brand/40">]</span>
+                  <span className="text-brand/40" aria-hidden="true">]</span>
                 </a>
               </motion.div>
             ))}
 
-            {/* Brand accent line */}
+            {/* Brand accent line (decorative) */}
             <motion.div
               className="w-12 h-px mt-10"
+              aria-hidden="true"
               style={{
                 background: 'linear-gradient(90deg, transparent, #8000FF, #00ffff, transparent)',
               }}

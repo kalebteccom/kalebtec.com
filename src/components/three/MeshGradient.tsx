@@ -16,6 +16,7 @@ const fragmentShader = `
 uniform float u_time;
 uniform vec2 u_resolution;
 uniform vec2 u_mouse;
+uniform float u_isDark;
 
 varying vec2 vUv;
 
@@ -64,56 +65,91 @@ void main() {
   float mouseDist = length(uv - u_mouse);
   float mouseInfluence = smoothstep(0.5, 0.0, mouseDist) * 0.3;
 
-  // Cyberpunk color palette
-  vec3 deepBlack = vec3(0.035, 0.035, 0.06);      // #09090f
-  vec3 darkPurple = vec3(0.15, 0.0, 0.35);         // deep purple
-  vec3 brandPurple = vec3(0.5, 0.0, 1.0);          // #8000FF
-  vec3 cyan = vec3(0.0, 0.8, 0.9);                 // #00cce6
-  vec3 magenta = vec3(0.6, 0.0, 0.5);              // hot pink/magenta
-  vec3 darkCyan = vec3(0.0, 0.15, 0.2);
-
   // Create flowing gradient regions
   float blend1 = smoothstep(-0.3, 0.6, n1 + n3 * 0.5 + mouseInfluence);
   float blend2 = smoothstep(-0.2, 0.7, n2 + n4 * 0.3);
   float blend3 = smoothstep(-0.4, 0.5, n3);
 
-  // Compose the mesh gradient
-  vec3 color = deepBlack;
-  color = mix(color, darkPurple, blend1 * 0.7);
-  color = mix(color, brandPurple, blend1 * blend2 * 0.3);
-  color = mix(color, darkCyan, blend2 * (1.0 - blend1) * 0.5);
-  color = mix(color, cyan, blend2 * blend3 * 0.15);
-  color = mix(color, magenta, blend3 * (1.0 - blend2) * 0.2);
+  // --- DARK MODE palette ---
+  vec3 deepBlack = vec3(0.035, 0.035, 0.06);
+  vec3 darkPurple = vec3(0.15, 0.0, 0.35);
+  vec3 brandPurple = vec3(0.5, 0.0, 1.0);
+  vec3 cyan = vec3(0.0, 0.8, 0.9);
+  vec3 magenta = vec3(0.6, 0.0, 0.5);
+  vec3 darkCyan = vec3(0.0, 0.15, 0.2);
 
-  // Add subtle vignette
-  float vignette = smoothstep(1.5, 0.5, length(uv - 0.5) * 2.0);
-  color *= vignette * 0.8 + 0.2;
+  vec3 darkColor = deepBlack;
+  darkColor = mix(darkColor, darkPurple, blend1 * 0.7);
+  darkColor = mix(darkColor, brandPurple, blend1 * blend2 * 0.3);
+  darkColor = mix(darkColor, darkCyan, blend2 * (1.0 - blend1) * 0.5);
+  darkColor = mix(darkColor, cyan, blend2 * blend3 * 0.15);
+  darkColor = mix(darkColor, magenta, blend3 * (1.0 - blend2) * 0.2);
 
-  // Subtle scanline effect
-  float scanline = sin(uv.y * u_resolution.y * 1.5) * 0.02 + 1.0;
+  // --- LIGHT MODE palette — harsh daylight neon, cool gray base ---
+  vec3 lightBase = vec3(0.875, 0.878, 0.918);        // #dfe0ea — cool steel
+  vec3 lightWash = vec3(0.84, 0.84, 0.90);           // darker steel for depth
+  vec3 lightPurple = vec3(0.55, 0.25, 0.95);         // vivid purple burn-in
+  vec3 lightCyan = vec3(0.2, 0.75, 0.82);            // electric teal
+  vec3 lightViolet = vec3(0.65, 0.45, 0.88);         // mid violet
+  vec3 lightMagenta = vec3(0.7, 0.3, 0.65);          // hot magenta
+
+  vec3 lightColor = lightBase;
+  lightColor = mix(lightColor, lightWash, blend1 * 0.35);
+  lightColor = mix(lightColor, lightViolet, blend1 * blend2 * 0.3);
+  lightColor = mix(lightColor, lightPurple, blend2 * blend3 * 0.2);
+  lightColor = mix(lightColor, lightCyan, blend2 * (1.0 - blend1) * 0.25);
+  lightColor = mix(lightColor, lightMagenta, blend3 * (1.0 - blend2) * 0.15);
+
+  // --- MIX based on theme ---
+  vec3 color = mix(lightColor, darkColor, u_isDark);
+
+  // Add subtle vignette — strong in dark mode, minimal in light mode
+  float vignetteDist = length(uv - 0.5) * 2.0;
+  float darkVignette = smoothstep(1.5, 0.5, vignetteDist) * 0.8 + 0.2;
+  float lightVignette = smoothstep(1.8, 0.3, vignetteDist) * 0.15 + 0.85;
+  float vignette = mix(lightVignette, darkVignette, u_isDark);
+  color *= vignette;
+
+  // Subtle scanline effect (reduced in light mode)
+  float scanlineStrength = mix(0.01, 0.02, u_isDark);
+  float scanline = sin(uv.y * u_resolution.y * 1.5) * scanlineStrength + 1.0;
   color *= scanline;
 
-  // Very subtle noise grain for texture
-  float grain = snoise(uv * 200.0 + u_time) * 0.015;
+  // Very subtle noise grain for texture (reduced in light mode)
+  float grainStrength = mix(0.008, 0.015, u_isDark);
+  float grain = snoise(uv * 200.0 + u_time) * grainStrength;
   color += grain;
 
   gl_FragColor = vec4(color, 1.0);
 }
 `
 
-export default function MeshGradient() {
+interface MeshGradientProps {
+  isDark: boolean
+}
+
+export default function MeshGradient({ isDark }: MeshGradientProps) {
   const meshRef = useRef<THREE.Mesh>(null)
+  const targetIsDark = useRef(isDark ? 1.0 : 0.0)
 
   const uniforms = useMemo(() => ({
     u_time: { value: 0 },
     u_resolution: { value: new THREE.Vector2(1920, 1080) },
     u_mouse: { value: new THREE.Vector2(0.5, 0.5) },
+    u_isDark: { value: isDark ? 1.0 : 0.0 },
   }), [])
+
+  // Update target when prop changes
+  targetIsDark.current = isDark ? 1.0 : 0.0
 
   useFrame((state) => {
     if (!meshRef.current) return
     const material = meshRef.current.material as THREE.ShaderMaterial
     material.uniforms.u_time.value = state.clock.elapsedTime
+
+    // Smooth transition between themes
+    const current = material.uniforms.u_isDark.value
+    material.uniforms.u_isDark.value += (targetIsDark.current - current) * 0.04
 
     // Smooth mouse tracking
     const target = new THREE.Vector2(

@@ -1,12 +1,17 @@
 'use client'
 
-import { Canvas } from '@react-three/fiber'
-import { Suspense } from 'react'
+import { Canvas, useThree } from '@react-three/fiber'
+import { Suspense, useEffect, useState } from 'react'
 import * as THREE from 'three'
+import { useAtomValue } from 'jotai'
+import { resolvedThemeAtom } from '@/lib/theme'
 import MeshGradient from './MeshGradient'
 import GridFloor from './GridFloor'
 import FloatingGeometry from './FloatingGeometry'
 import ParticleField from './ParticleField'
+
+const DARK_BG = '#09090f'
+const LIGHT_BG = '#dfe0ea'
 
 // Cyberpunk angular shape configurations
 const SHAPES = [
@@ -90,23 +95,40 @@ const SHAPES = [
   },
 ]
 
-function SceneContent() {
+/** Syncs the Canvas background and fog color with the current theme */
+function ThemeSync({ isDark }: { isDark: boolean }) {
+  const { scene, gl } = useThree()
+
+  useEffect(() => {
+    const bg = isDark ? DARK_BG : LIGHT_BG
+    gl.setClearColor(bg)
+    if (scene.fog instanceof THREE.Fog) {
+      scene.fog.color.set(bg)
+    }
+  }, [isDark, scene, gl])
+
+  return null
+}
+
+function SceneContent({ isDark }: { isDark: boolean }) {
   return (
     <>
+      <ThemeSync isDark={isDark} />
+
       {/* Layer 1: Mesh gradient background */}
-      <MeshGradient />
+      <MeshGradient isDark={isDark} />
 
       {/* Layer 2: Perspective grid floor */}
-      <GridFloor />
+      <GridFloor isDark={isDark} />
 
-      {/* Lighting */}
-      <ambientLight intensity={0.12} color="#ffffff" />
-      <pointLight position={[5, 5, 5]} intensity={0.8} color="#8000FF" distance={20} decay={2} />
-      <pointLight position={[-5, -3, 3]} intensity={0.5} color="#00ffff" distance={15} decay={2} />
-      <pointLight position={[0, 0, 5]} intensity={0.15} color="#ffffff" distance={12} decay={2} />
+      {/* Lighting — adjusted per theme */}
+      <ambientLight intensity={isDark ? 0.12 : 0.35} color="#ffffff" />
+      <pointLight position={[5, 5, 5]} intensity={isDark ? 0.8 : 0.7} color="#8000FF" distance={20} decay={2} />
+      <pointLight position={[-5, -3, 3]} intensity={isDark ? 0.5 : 0.45} color="#00ffff" distance={15} decay={2} />
+      <pointLight position={[0, 0, 5]} intensity={isDark ? 0.15 : 0.25} color="#ffffff" distance={12} decay={2} />
 
       {/* Fog for depth */}
-      <fog attach="fog" args={['#09090f', 5, 14]} />
+      <fog attach="fog" args={[isDark ? DARK_BG : LIGHT_BG, isDark ? 5 : 6, isDark ? 14 : 16]} />
 
       {/* Layer 3: Floating angular geometry with cyberpunk edge lines */}
       {SHAPES.map((shape, index) => (
@@ -118,21 +140,30 @@ function SceneContent() {
           rotationSpeed={[...shape.rotationSpeed]}
           bobSpeed={shape.bobSpeed}
           bobAmount={shape.bobAmount}
-          opacity={shape.opacity}
-          emissiveIntensity={shape.emissiveIntensity}
-          color={shape.color}
-          edgeColor={shape.edgeColor}
-          edgeOpacity={shape.edgeOpacity}
+          opacity={isDark ? shape.opacity : shape.opacity * 1.8}
+          emissiveIntensity={isDark ? shape.emissiveIntensity : shape.emissiveIntensity * 0.4}
+          color={isDark ? shape.color : shape.color}
+          edgeColor={isDark ? shape.edgeColor : '#8000FF'}
+          edgeOpacity={isDark ? shape.edgeOpacity : shape.edgeOpacity * 1.6}
         />
       ))}
 
       {/* Layer 4: Cyberpunk square particles */}
-      <ParticleField count={200} radius={7} size={0.025} />
+      <ParticleField count={200} radius={7} size={0.025} isDark={isDark} />
     </>
   )
 }
 
 export default function HeroScene() {
+  const resolvedTheme = useAtomValue(resolvedThemeAtom)
+  const isDark = resolvedTheme === 'dark'
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => setMounted(true), [])
+
+  // Default to dark on SSR / before mount
+  const themeDark = mounted ? isDark : true
+
   return (
     <Canvas
       camera={{ position: [0, 0.5, 5], fov: 60, near: 0.1, far: 20 }}
@@ -149,11 +180,11 @@ export default function HeroScene() {
         left: 0,
         width: '100%',
         height: '100%',
-        background: '#09090f',
+        background: themeDark ? DARK_BG : LIGHT_BG,
       }}
     >
       <Suspense fallback={null}>
-        <SceneContent />
+        <SceneContent isDark={themeDark} />
       </Suspense>
     </Canvas>
   )

@@ -12,14 +12,61 @@
   --color-cyber-surface: #0d0d15;
   --color-cyber-border: rgba(128, 0, 255, 0.2);
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  /* Semantic text colors — switch with theme */
+  --color-cyber-heading: #ffffff;
+  --color-cyber-body: #d4d4d8;
+  --color-cyber-muted: #a1a1aa;
+  --color-cyber-faint: #8a8a93;
+
+  --font-sans: var(--font-exo2), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-orbitron), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
 
-/* Smooth scrolling */
+/* ==========================================================================
+   COLOR SCHEME & THEME OVERRIDES
+   ========================================================================== */
+
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  /* Harsh daylight cyberpunk — cool gray with neon burn-in */
+  --color-cyber-bg: #dfe0ea;
+  --color-cyber-surface: #eaebf2;
+  --color-cyber-border: rgba(100, 0, 220, 0.22);
+  --color-brand-glow: rgba(128, 0, 255, 0.35);
+  --color-cyber-cyan: #006878;
+  --color-brand-light: #6b00d6;
+  --color-cyber-cyan-glow: rgba(0, 104, 120, 0.3);
+
+  /* Text colors for light mode — cooler, ink-like */
+  --color-cyber-heading: #0e0a1f;
+  --color-cyber-body: #2a2545;
+  --color-cyber-muted: #56507a;
+  --color-cyber-faint: #605a82;
+
+  color: var(--color-cyber-body);
+}
+
+/* ==========================================================================
+   BASE STYLES
+   ========================================================================== */
+
+/* Cyberpunk crosshair cursor */
 html {
+  cursor: url('/cursor.svg') 16 16, crosshair;
   scroll-behavior: smooth;
+}
+
+a, button, [role="button"], input, textarea, select, label, [tabindex] {
+  cursor: url('/cursor.svg') 16 16, crosshair;
+}
+
+a:hover, button:hover, [role="button"]:hover {
+  cursor: url('/cursor.svg') 16 16, crosshair;
 }
 
 /* Selection color */
@@ -28,7 +75,130 @@ html {
   color: white;
 }
 
-/* Scanline overlay — apply with class .scanlines */
+[data-theme="light"] ::selection {
+  background-color: var(--color-brand);
+  color: white;
+}
+
+/* ==========================================================================
+   RESPONSIVE TYPOGRAPHY
+   ========================================================================== */
+
+h1, .text-display-xl {
+  font-size: clamp(2rem, 5vw + 1rem, 4.5rem);
+  line-height: 1.1;
+}
+
+h2, .text-display-lg {
+  font-size: clamp(1.5rem, 3vw + 0.75rem, 3rem);
+  line-height: 1.15;
+}
+
+h3, .text-display-md {
+  font-size: clamp(1.25rem, 2vw + 0.5rem, 2rem);
+  line-height: 1.2;
+}
+
+h4, .text-display-sm {
+  font-size: clamp(1.1rem, 1.5vw + 0.4rem, 1.5rem);
+  line-height: 1.25;
+}
+
+/* ==========================================================================
+   ACCESSIBILITY -- FOCUS STYLES
+   ========================================================================== */
+
+/* Focus-visible styles for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+/* More prominent focus for interactive elements */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[role="button"]:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--color-brand-glow), 0 0 20px var(--color-brand-glow);
+}
+
+[data-theme="light"] a:focus-visible,
+[data-theme="light"] button:focus-visible,
+[data-theme="light"] input:focus-visible,
+[data-theme="light"] textarea:focus-visible,
+[data-theme="light"] select:focus-visible,
+[data-theme="light"] [role="button"]:focus-visible,
+[data-theme="light"] [tabindex]:focus-visible {
+  box-shadow: 0 0 0 4px var(--color-brand-glow), 0 0 12px var(--color-brand-glow);
+}
+
+/* Skip to content link */
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: 1rem 1.5rem;
+  background: var(--color-brand);
+  color: white;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: none;
+  text-decoration: none;
+}
+
+.skip-to-content:focus {
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   HERO SECTION — THEME-ADAPTIVE GRADIENTS
+   ========================================================================== */
+
+.hero-text-backdrop {
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(9,9,15,0.55) 0%, transparent 70%);
+}
+
+[data-theme="light"] .hero-text-backdrop {
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(223,224,234,0.65) 0%, transparent 70%);
+}
+
+.hero-bottom-fade {
+  background: linear-gradient(to top, rgba(9,9,15,1) 0%, transparent 100%);
+}
+
+[data-theme="light"] .hero-bottom-fade {
+  background: linear-gradient(to top, var(--color-cyber-bg) 0%, transparent 100%);
+}
+
+/* ==========================================================================
+   SCANLINE OVERLAY
+   ========================================================================== */
+
+/* Scanline overlay -- apply with class .scanlines (element must have position: relative) */
 .scanlines::after {
   content: '';
   position: absolute;
@@ -37,68 +207,243 @@ html {
     0deg,
     transparent,
     transparent 2px,
-    rgba(0, 0, 0, 0.03) 2px,
-    rgba(0, 0, 0, 0.03) 4px
+    rgba(0, 0, 0, 0.04) 2px,
+    rgba(0, 0, 0, 0.04) 4px
   );
   pointer-events: none;
   z-index: 1;
 }
 
-/* Cyberpunk corner accents for cards */
+[data-theme="light"] .scanlines::after {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(80, 0, 160, 0.025) 2px,
+    rgba(80, 0, 160, 0.025) 4px
+  );
+}
+
+/* ==========================================================================
+   CYBERPUNK CORNER ACCENTS (ENHANCED -- 16px, glow on hover)
+   ========================================================================== */
+
 .cyber-corners {
   position: relative;
 }
+
 .cyber-corners::before,
 .cyber-corners::after {
   content: '';
   position: absolute;
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
   border-color: var(--color-brand);
   opacity: 0.5;
-  transition: opacity 0.3s;
+  transition: all 0.3s ease;
 }
+
 .cyber-corners::before {
   top: -1px;
   left: -1px;
-  border-top: 1px solid;
-  border-left: 1px solid;
+  border-top: 2px solid;
+  border-left: 2px solid;
 }
+
 .cyber-corners::after {
   bottom: -1px;
   right: -1px;
-  border-bottom: 1px solid;
-  border-right: 1px solid;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
 }
+
 .cyber-corners:hover::before,
 .cyber-corners:hover::after {
   opacity: 1;
+  width: 20px;
+  height: 20px;
   border-color: var(--color-cyber-cyan);
+  box-shadow: 0 0 8px var(--color-cyber-cyan-glow), 0 0 16px rgba(0, 255, 255, 0.15);
 }
 
-/* Neon text glow */
+[data-theme="light"] .cyber-corners::before,
+[data-theme="light"] .cyber-corners::after {
+  border-color: var(--color-brand);
+  opacity: 0.5;
+}
+
+[data-theme="light"] .cyber-corners:hover::before,
+[data-theme="light"] .cyber-corners:hover::after {
+  opacity: 1;
+  border-color: var(--color-brand);
+  box-shadow: 0 0 8px rgba(128, 0, 255, 0.3), 0 0 20px rgba(128, 0, 255, 0.15);
+}
+
+/* ==========================================================================
+   NEON TEXT GLOW (ENHANCED -- triple-layer glow, more intense)
+   ========================================================================== */
+
 .neon-glow {
-  text-shadow: 0 0 7px var(--color-brand-glow), 0 0 20px var(--color-brand-glow);
-}
-.neon-glow-cyan {
-  text-shadow: 0 0 7px var(--color-cyber-cyan-glow), 0 0 20px var(--color-cyber-cyan-glow);
+  text-shadow:
+    0 0 7px var(--color-brand-glow),
+    0 0 20px var(--color-brand-glow),
+    0 0 40px rgba(128, 0, 255, 0.25),
+    0 0 80px rgba(128, 0, 255, 0.1);
 }
 
-/* Animated gradient border */
+.neon-glow-cyan {
+  text-shadow:
+    0 0 7px var(--color-cyber-cyan-glow),
+    0 0 20px var(--color-cyber-cyan-glow),
+    0 0 40px rgba(0, 255, 255, 0.2),
+    0 0 80px rgba(0, 255, 255, 0.08);
+}
+
+.neon-glow-magenta {
+  text-shadow:
+    0 0 7px rgba(255, 0, 255, 0.4),
+    0 0 20px rgba(255, 0, 255, 0.3),
+    0 0 40px rgba(255, 0, 255, 0.2),
+    0 0 80px rgba(255, 0, 255, 0.08);
+}
+
+[data-theme="light"] .neon-glow {
+  text-shadow: none;
+  color: var(--color-cyber-heading);
+}
+
+[data-theme="light"] .neon-glow-cyan {
+  text-shadow: none;
+  color: var(--color-cyber-cyan);
+}
+
+[data-theme="light"] .neon-glow-magenta {
+  text-shadow: none;
+  color: #8a008a;
+}
+
+/* ==========================================================================
+   NEON UNDERLINE (gradient brand-to-cyan with glow)
+   ========================================================================== */
+
+.neon-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.neon-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-brand), var(--color-cyber-cyan));
+  box-shadow:
+    0 0 5px var(--color-brand-glow),
+    0 0 15px var(--color-brand-glow),
+    0 0 5px var(--color-cyber-cyan-glow);
+  transition: box-shadow 0.3s ease, height 0.3s ease;
+}
+
+.neon-underline:hover::after {
+  height: 3px;
+  box-shadow:
+    0 0 8px var(--color-brand-glow),
+    0 0 20px var(--color-brand-glow),
+    0 0 8px var(--color-cyber-cyan-glow),
+    0 0 40px rgba(128, 0, 255, 0.15);
+}
+
+[data-theme="light"] .neon-underline::after {
+  box-shadow:
+    0 0 4px var(--color-brand-glow),
+    0 0 10px var(--color-brand-glow);
+}
+
+[data-theme="light"] .neon-underline:hover::after {
+  box-shadow:
+    0 0 6px var(--color-brand-glow),
+    0 0 14px var(--color-brand-glow);
+}
+
+/* ==========================================================================
+   ANIMATED GRADIENT BORDER (ENHANCED -- more dramatic hover)
+   ========================================================================== */
+
 .cyber-border-glow {
   box-shadow:
     0 0 0 1px rgba(128, 0, 255, 0.15),
     inset 0 0 30px rgba(128, 0, 255, 0.03);
-  transition: box-shadow 0.4s;
-}
-.cyber-border-glow:hover {
-  box-shadow:
-    0 0 0 1px rgba(128, 0, 255, 0.4),
-    0 0 20px rgba(128, 0, 255, 0.1),
-    inset 0 0 30px rgba(128, 0, 255, 0.05);
+  transition: box-shadow 0.4s ease;
 }
 
-/* Glitch text effect */
+.cyber-border-glow:hover {
+  box-shadow:
+    0 0 0 1px rgba(128, 0, 255, 0.7),
+    0 0 20px rgba(128, 0, 255, 0.2),
+    0 0 40px rgba(128, 0, 255, 0.1),
+    0 0 80px rgba(128, 0, 255, 0.05),
+    inset 0 0 30px rgba(128, 0, 255, 0.06),
+    inset 0 0 60px rgba(128, 0, 255, 0.03);
+}
+
+[data-theme="light"] .cyber-border-glow {
+  box-shadow:
+    0 0 0 1px rgba(128, 0, 255, 0.18),
+    0 0 8px rgba(128, 0, 255, 0.06),
+    inset 0 0 20px rgba(128, 0, 255, 0.03);
+}
+
+[data-theme="light"] .cyber-border-glow:hover {
+  box-shadow:
+    0 0 0 1px rgba(128, 0, 255, 0.5),
+    0 0 20px rgba(128, 0, 255, 0.15),
+    0 0 40px rgba(128, 0, 255, 0.06),
+    inset 0 0 30px rgba(128, 0, 255, 0.04);
+}
+
+/* ==========================================================================
+   CYBER CLIP (ANGLED CUT CORNERS -- top-right & bottom-left)
+   ========================================================================== */
+
+.cyber-clip {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 20px) 0,
+    100% 20px,
+    100% 100%,
+    20px 100%,
+    0 calc(100% - 20px)
+  );
+}
+
+.cyber-clip-sm {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% 100%,
+    12px 100%,
+    0 calc(100% - 12px)
+  );
+}
+
+.cyber-clip-lg {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 32px) 0,
+    100% 32px,
+    100% 100%,
+    32px 100%,
+    0 calc(100% - 32px)
+  );
+}
+
+/* ==========================================================================
+   GLITCH TEXT EFFECT
+   ========================================================================== */
+
 @keyframes glitch {
   0%, 100% { transform: translate(0); }
   20% { transform: translate(-2px, 2px); }
@@ -106,15 +451,177 @@ html {
   60% { transform: translate(2px, 2px); }
   80% { transform: translate(2px, -2px); }
 }
+
 .glitch-hover:hover {
   animation: glitch 0.3s ease;
 }
 
-/* Blinking cursor for typing effect */
+/* ==========================================================================
+   CYBER TEXT FLICKER (subtle neon flicker)
+   ========================================================================== */
+
+@keyframes cyber-text-flicker {
+  0%, 100% { opacity: 1; }
+  4% { opacity: 0.9; }
+  6% { opacity: 1; }
+  12% { opacity: 0.85; }
+  14% { opacity: 1; }
+  25% { opacity: 1; }
+  27% { opacity: 0.94; }
+  28% { opacity: 1; }
+  50% { opacity: 1; }
+  52% { opacity: 0.92; }
+  54% { opacity: 1; }
+  67% { opacity: 1; }
+  69% { opacity: 0.96; }
+  70% { opacity: 1; }
+  78% { opacity: 1; }
+  80% { opacity: 0.88; }
+  82% { opacity: 1; }
+  91% { opacity: 1; }
+  93% { opacity: 0.93; }
+  95% { opacity: 1; }
+}
+
+.cyber-text-flicker {
+  animation: cyber-text-flicker 4s linear infinite;
+}
+
+/* ==========================================================================
+   CYBER LINE SCAN (horizontal light scan across element)
+   ========================================================================== */
+
+@keyframes cyber-line-scan {
+  0% {
+    top: -2px;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    top: calc(100% + 2px);
+    opacity: 0;
+  }
+}
+
+.cyber-line-scan {
+  position: relative;
+  overflow: hidden;
+}
+
+.cyber-line-scan::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -2px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-cyber-cyan),
+    var(--color-brand-light),
+    var(--color-cyber-cyan),
+    transparent
+  );
+  box-shadow:
+    0 0 10px var(--color-cyber-cyan-glow),
+    0 0 20px var(--color-brand-glow),
+    0 0 40px rgba(0, 255, 255, 0.1);
+  animation: cyber-line-scan 3s ease-in-out infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
+[data-theme="light"] .cyber-line-scan::before {
+  box-shadow:
+    0 0 8px var(--color-cyber-cyan-glow),
+    0 0 14px var(--color-brand-glow);
+}
+
+/* ==========================================================================
+   CYBER PULSE (pulsing border/glow effect)
+   ========================================================================== */
+
+@keyframes cyber-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px rgba(128, 0, 255, 0.2),
+      0 0 15px rgba(128, 0, 255, 0.05);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(128, 0, 255, 0.5),
+      0 0 30px rgba(128, 0, 255, 0.15),
+      0 0 60px rgba(128, 0, 255, 0.05);
+  }
+}
+
+.cyber-pulse {
+  animation: cyber-pulse 2s ease-in-out infinite;
+}
+
+[data-theme="light"] .cyber-pulse {
+  animation: cyber-pulse-light 2s ease-in-out infinite;
+}
+
+@keyframes cyber-pulse-light {
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px rgba(128, 0, 255, 0.12),
+      0 0 10px rgba(128, 0, 255, 0.03);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(128, 0, 255, 0.3),
+      0 0 20px rgba(128, 0, 255, 0.08);
+  }
+}
+
+/* ==========================================================================
+   CYBER DATA STREAM (vertical scrolling data effect)
+   ========================================================================== */
+
+@keyframes data-stream {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 -200px; }
+}
+
+.cyber-data-stream {
+  position: relative;
+  overflow: hidden;
+}
+
+.cyber-data-stream::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 18px,
+    rgba(128, 0, 255, 0.03) 18px,
+    rgba(128, 0, 255, 0.03) 20px
+  );
+  background-size: 100% 200px;
+  animation: data-stream 8s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   BLINKING CURSOR
+   ========================================================================== */
+
 @keyframes blink-cursor {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
+
 .typing-cursor::after {
   content: '|';
   animation: blink-cursor 1s step-end infinite;
@@ -122,24 +629,149 @@ html {
   margin-left: 2px;
 }
 
-/* Custom scrollbar */
+/* ==========================================================================
+   CUSTOM SCROLLBAR
+   ========================================================================== */
+
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: #09090f;
 }
+
 ::-webkit-scrollbar-thumb {
   background: rgba(128, 0, 255, 0.3);
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(128, 0, 255, 0.5);
 }
 
-/* Grid background pattern */
+[data-theme="light"] ::-webkit-scrollbar-track {
+  background: #d8d9e3;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: rgba(128, 0, 255, 0.3);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(128, 0, 255, 0.5);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(128, 0, 255, 0.3) #09090f;
+}
+
+[data-theme="light"] * {
+  scrollbar-color: rgba(128, 0, 255, 0.3) #d8d9e3;
+}
+
+/* ==========================================================================
+   GRID BACKGROUND PATTERN (ENHANCED -- more visible)
+   ========================================================================== */
+
 .cyber-grid-bg {
   background-image:
-    linear-gradient(rgba(128, 0, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(128, 0, 255, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(128, 0, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(128, 0, 255, 0.1) 1px, transparent 1px);
   background-size: 40px 40px;
+}
+
+[data-theme="light"] .cyber-grid-bg {
+  background-image:
+    linear-gradient(rgba(100, 0, 220, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100, 0, 220, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ==========================================================================
+   CYBER HUD BADGE (bracket-style label)
+   ========================================================================== */
+
+.cyber-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-cyber-cyan);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  background: rgba(0, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.cyber-badge:hover {
+  border-color: rgba(0, 255, 255, 0.5);
+  background: rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+}
+
+[data-theme="light"] .cyber-badge {
+  color: #007a7a;
+  border-color: rgba(0, 150, 150, 0.25);
+  background: rgba(0, 200, 200, 0.06);
+}
+
+[data-theme="light"] .cyber-badge:hover {
+  border-color: rgba(0, 150, 150, 0.45);
+  background: rgba(0, 200, 200, 0.12);
+  box-shadow: 0 0 8px rgba(0, 200, 200, 0.08);
+}
+
+/* ==========================================================================
+   CYBER DIVIDER (glowing horizontal rule)
+   ========================================================================== */
+
+.cyber-divider {
+  height: 1px;
+  border: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-brand),
+    var(--color-cyber-cyan),
+    var(--color-brand),
+    transparent
+  );
+  box-shadow: 0 0 8px var(--color-brand-glow);
+}
+
+[data-theme="light"] .cyber-divider {
+  box-shadow: 0 0 4px var(--color-brand-glow);
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+
+@media print {
+  .scanlines::after,
+  .cyber-line-scan::before,
+  .cyber-data-stream::after,
+  .cyber-corners::before,
+  .cyber-corners::after {
+    display: none !important;
+  }
+
+  .neon-glow,
+  .neon-glow-cyan,
+  .neon-glow-magenta {
+    text-shadow: none !important;
+  }
+
+  .cyber-border-glow {
+    box-shadow: 0 0 0 1px #ccc !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
 }

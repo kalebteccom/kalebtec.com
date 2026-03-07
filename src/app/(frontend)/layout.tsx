@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
-import { Inter, Orbitron, JetBrains_Mono } from 'next/font/google'
+import { Exo_2, Orbitron, JetBrains_Mono } from 'next/font/google'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import ThemeProvider from '@/components/ui/ThemeProvider'
 import './globals.css'
 
-const inter = Inter({
+const exo2 = Exo_2({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-exo2',
 })
 
 const orbitron = Orbitron({
@@ -37,17 +38,32 @@ export const metadata: Metadata = {
   },
 }
 
+// Inline script to prevent flash of wrong theme on load
+const themeScript = `(function(){try{var t=localStorage.getItem('kalebtec-theme')||'dark';if(t==='system'){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','dark')}})();`
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${orbitron.variable} ${jetbrainsMono.variable}`}>
-      <body className="bg-cyber-bg text-white antialiased font-sans">
-        <Header />
-        <main>{children}</main>
-        <Footer />
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${exo2.variable} ${orbitron.variable} ${jetbrainsMono.variable}`}
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body className="bg-cyber-bg text-cyber-body antialiased font-sans transition-colors duration-300">
+        <ThemeProvider>
+          <a href="#main-content" className="skip-to-content">
+            Skip to content
+          </a>
+          <Header />
+          <main id="main-content">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )

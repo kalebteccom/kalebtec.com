@@ -8,12 +8,14 @@ interface ParticleFieldProps {
   count?: number
   radius?: number
   size?: number
+  isDark?: boolean
 }
 
 export default function ParticleField({
   count = 200,
   radius = 6,
   size = 0.025,
+  isDark = true,
 }: ParticleFieldProps) {
   const pointsRef = useRef<THREE.Points>(null)
   const entranceProgress = useRef(0)
@@ -109,6 +111,14 @@ export default function ParticleField({
     return texture
   }, [])
 
+  // Update blending mode when theme changes
+  useEffect(() => {
+    if (!pointsRef.current) return
+    const material = pointsRef.current.material as THREE.PointsMaterial
+    material.blending = isDark ? THREE.AdditiveBlending : THREE.NormalBlending
+    material.needsUpdate = true
+  }, [isDark])
+
   useFrame((state) => {
     if (!pointsRef.current) return
 
@@ -122,7 +132,9 @@ export default function ParticleField({
       entranceProgress.current = Math.min(1, entranceProgress.current + 0.008)
     }
     const material = pointsRef.current.material as THREE.PointsMaterial
-    material.opacity = entranceProgress.current * 0.7
+    // Lower max opacity in light mode so particles are subtle, not blinding
+    const maxOpacity = isDark ? 0.7 : 0.45
+    material.opacity = entranceProgress.current * maxOpacity
 
     // Animate positions and sizes
     for (let i = 0; i < actualCount; i++) {
@@ -178,7 +190,7 @@ export default function ParticleField({
         opacity={0}
         sizeAttenuation
         depthWrite={false}
-        blending={THREE.AdditiveBlending}
+        blending={isDark ? THREE.AdditiveBlending : THREE.NormalBlending}
         map={particleTexture}
       />
     </points>

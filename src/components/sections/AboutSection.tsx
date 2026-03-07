@@ -5,7 +5,7 @@ import AnimatedReveal from '@/components/ui/AnimatedReveal'
 
 export default function AboutSection() {
   return (
-    <section id="about" className="relative py-32 overflow-hidden cyber-grid-bg">
+    <section id="about" aria-label="About Kalebtec" className="relative py-32 overflow-hidden cyber-grid-bg">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeading
           title="WHO WE ARE"
@@ -16,13 +16,13 @@ export default function AboutSection() {
           {/* Text Column */}
           <AnimatedReveal delay={0.15}>
             <div className="space-y-6">
-              <p className="text-lg md:text-xl leading-relaxed text-neutral-300">
+              <p className="text-lg md:text-xl leading-relaxed text-cyber-body">
                 <span className="text-brand font-mono">{'>'}</span>{' '}
                 Kalebtec is a technology consulting firm founded by Rowin and
                 Mari Hernandez. We partner with businesses to architect, build,
                 and scale digital solutions.
               </p>
-              <p className="text-lg md:text-xl leading-relaxed text-neutral-400">
+              <p className="text-lg md:text-xl leading-relaxed text-cyber-muted">
                 <span className="text-brand font-mono">{'//'}</span>{' '}
                 From strategy to execution, we bring technical expertise and
                 creative vision to every project.
@@ -32,7 +32,7 @@ export default function AboutSection() {
 
           {/* Cyberpunk Geometric Decorative Element */}
           <AnimatedReveal delay={0.3}>
-            <div className="relative flex items-center justify-center h-80 lg:h-96">
+            <div className="relative flex items-center justify-center h-80 lg:h-96" aria-hidden="true">
               {/* Wireframe cube with 3D perspective */}
               <div
                 className="absolute w-44 h-44 md:w-52 md:h-52 border border-brand/30"
@@ -103,7 +103,7 @@ export default function AboutSection() {
       </div>
 
       {/* Section divider: gradient line */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-7xl px-6 lg:px-8">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-7xl px-6 lg:px-8" aria-hidden="true">
         <div className="h-px bg-gradient-to-r from-transparent via-brand to-cyber-cyan/50 to-transparent" />
       </div>
     </section>
