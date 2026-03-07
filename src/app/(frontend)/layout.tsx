@@ -20,7 +20,10 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains-mono',
 })
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kalebtec.com'
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: 'Kalebtec | Tech Consulting',
   description: 'Expert technology consulting by Rowin and Mari Hernandez. We build digital solutions that matter.',
   icons: {
@@ -34,7 +37,15 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Kalebtec | Tech Consulting',
     description: 'Expert technology consulting by Rowin and Mari Hernandez.',
+    siteName: 'Kalebtec',
+    locale: 'en_US',
     type: 'website',
+    url: SITE_URL,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Kalebtec | Tech Consulting',
+    description: 'Expert technology consulting by Rowin and Mari Hernandez.',
   },
 }
 

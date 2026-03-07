@@ -8,9 +8,7 @@ import { fileURLToPath } from 'url'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { Projects } from './collections/Projects'
-import { Services } from './collections/Services'
-import { TeamMembers } from './collections/TeamMembers'
-import { SiteSettings } from './globals/SiteSettings'
+import { Industries } from './collections/Industries'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -22,8 +20,8 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Projects, Services, TeamMembers],
-  globals: [SiteSettings],
+  collections: [Users, Media, Projects, Industries],
+  globals: [],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || 'CHANGE-ME-IN-PRODUCTION-kalebtec-secret-key',
   typescript: {

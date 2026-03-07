@@ -39,7 +39,7 @@ export default function TeamSection() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeading
           title="THE TEAM"
-          sectionNumber="03"
+          sectionNumber="04"
         />
 
         <div className="mx-auto max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -62,10 +62,10 @@ export default function TeamSection() {
                     alt={member.name}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover team-photo transition-transform duration-700 group-hover:scale-105"
                   />
                   {/* Gradient fade to card bg */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-cyber-surface via-transparent to-transparent" aria-hidden="true" />
+                  <div className="absolute inset-0 team-photo-fade bg-gradient-to-t from-cyber-surface via-transparent to-transparent" aria-hidden="true" />
                   {/* Scanline overlay on photo */}
                   <div className="absolute inset-0 scanlines opacity-30" aria-hidden="true" />
                   {/* HUD metadata overlay */}

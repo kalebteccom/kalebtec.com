@@ -43,7 +43,7 @@ export default function ContactSection() {
             className="flex items-center justify-center gap-2 mb-6"
           >
             <span className="font-mono text-sm text-cyber-faint tracking-wider">
-              [04]
+              [05]
             </span>
             <span className="font-mono text-sm text-cyber-faint/50">//</span>
             <span className="font-mono text-sm text-cyber-muted tracking-wider uppercase">

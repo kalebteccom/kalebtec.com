@@ -755,6 +755,112 @@ select:focus-visible,
 }
 
 /* ==========================================================================
+   TEAM PHOTO — THEME-ADAPTIVE FILTERS
+   ========================================================================== */
+
+.team-photo {
+  filter: brightness(0.8) saturate(0.65) contrast(1.15);
+  transition: filter 0.7s ease;
+}
+
+.group:hover .team-photo {
+  filter: brightness(0.95) saturate(0.85) contrast(1.05);
+}
+
+[data-theme="light"] .team-photo {
+  filter: brightness(1.0) saturate(0.85) contrast(1.05);
+}
+
+[data-theme="light"] .group:hover .team-photo {
+  filter: brightness(1) saturate(1) contrast(1);
+}
+
+/* ==========================================================================
+   ACCESSIBILITY — PREFERS-CONTRAST
+   Strip decorative overlays and restore natural images for clarity.
+   ========================================================================== */
+
+@media (prefers-contrast: more) {
+  .team-photo {
+    filter: none !important;
+  }
+
+  .scanlines::after {
+    display: none !important;
+  }
+
+  .cyber-corners::before,
+  .cyber-corners::after {
+    border-width: 2px !important;
+  }
+
+  .cyber-border-glow {
+    border-width: 2px !important;
+    border-color: currentColor !important;
+    box-shadow: none !important;
+  }
+
+  .neon-glow,
+  .neon-glow-cyan,
+  .neon-glow-magenta {
+    text-shadow: none !important;
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY — PREFERS-REDUCED-TRANSPARENCY
+   Remove semi-transparent overlays that reduce readability.
+   ========================================================================== */
+
+@media (prefers-reduced-transparency: reduce) {
+  .scanlines::after {
+    display: none !important;
+  }
+
+  .team-photo-fade {
+    opacity: 0 !important;
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY — INVERTED-COLORS
+   Re-invert images/video so they display correctly when system inverts.
+   ========================================================================== */
+
+@media (inverted-colors: inverted) {
+  img,
+  video {
+    filter: invert(100%) !important;
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY — FORCED-COLORS (Windows High Contrast)
+   Strip decorative effects that break in high-contrast mode.
+   ========================================================================== */
+
+@media (forced-colors: active) {
+  .scanlines::after,
+  .cyber-corners::before,
+  .cyber-corners::after,
+  .cyber-line-scan::before,
+  .cyber-data-stream::after {
+    display: none !important;
+  }
+
+  .cyber-border-glow {
+    border: 2px solid ButtonText !important;
+    box-shadow: none !important;
+  }
+
+  .neon-glow,
+  .neon-glow-cyan,
+  .neon-glow-magenta {
+    text-shadow: none !important;
+  }
+}
+
+/* ==========================================================================
    PRINT STYLES
    ========================================================================== */
 
