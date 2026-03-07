@@ -4,10 +4,14 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
+const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94]
+
 interface SectionHeadingProps {
   title: string
   subtitle?: string
   className?: string
+  /** Section number displayed as [01], [02], etc. */
+  sectionNumber?: string
   /** Allow part of the title to be highlighted in brand color */
   highlightWord?: string
 }
@@ -16,6 +20,7 @@ export default function SectionHeading({
   title,
   subtitle,
   className,
+  sectionNumber,
   highlightWord,
 }: SectionHeadingProps) {
   const ref = useRef<HTMLDivElement>(null)
@@ -40,15 +45,37 @@ export default function SectionHeading({
       ref={ref}
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-      transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+      transition={{ duration: 0.7, ease: EASE }}
       className={cn('mb-16', className)}
     >
-      <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-wider uppercase text-white">
+      {/* Section number and label */}
+      {sectionNumber && (
+        <div className="flex items-center gap-2 mb-4">
+          <span className="font-mono text-sm text-brand tracking-wider">
+            [{sectionNumber}]
+          </span>
+          <span className="font-mono text-sm text-cyber-cyan/50">//</span>
+          <span className="font-mono text-sm text-neutral-500 tracking-wider uppercase">
+            {title}
+          </span>
+        </div>
+      )}
+
+      {/* Heading */}
+      <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-wider uppercase text-white neon-glow">
         {renderTitle()}
       </h2>
-      <div className="mt-6 h-0.5 w-16 bg-brand" />
+
+      {/* Sharp gradient accent line with glowing dot */}
+      <div className="mt-6 flex items-center gap-0">
+        {/* Glowing dot */}
+        <div className="w-2 h-2 bg-brand shadow-[0_0_8px_rgba(128,0,255,0.6)]" />
+        {/* Gradient line */}
+        <div className="h-px w-24 bg-gradient-to-r from-brand to-cyber-cyan" />
+      </div>
+
       {subtitle && (
-        <p className="mt-6 text-lg text-neutral-400 max-w-2xl">
+        <p className="mt-6 text-lg text-neutral-400 max-w-2xl font-mono">
           {subtitle}
         </p>
       )}

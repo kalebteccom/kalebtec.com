@@ -27,12 +27,12 @@ const services = [
       'Modern web applications built with cutting-edge technology. Fast, accessible, and beautiful by default.',
     icon: (
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="6" y="10" width="28" height="20" rx="2" stroke="currentColor" strokeWidth="1.5" />
+        <rect x="6" y="10" width="28" height="20" stroke="currentColor" strokeWidth="1.5" />
         <line x1="6" y1="16" x2="34" y2="16" stroke="currentColor" strokeWidth="1.5" />
-        <circle cx="10" cy="13" r="1" fill="currentColor" />
-        <circle cx="14" cy="13" r="1" fill="currentColor" />
-        <polyline points="15,24 19,20 15,20" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-        <line x1="22" y1="26" x2="28" y2="26" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <rect x="9" y="12" width="2" height="2" fill="currentColor" />
+        <rect x="13" y="12" width="2" height="2" fill="currentColor" />
+        <polyline points="15,24 19,20 15,20" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="square" strokeLinejoin="miter" />
+        <line x1="22" y1="26" x2="28" y2="26" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
       </svg>
     ),
   },
@@ -42,8 +42,8 @@ const services = [
       'Leverage artificial intelligence and automation to streamline operations and unlock new possibilities.',
     icon: (
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="12" stroke="currentColor" strokeWidth="1.5" />
-        <circle cx="20" cy="20" r="4" stroke="currentColor" strokeWidth="1.5" />
+        <rect x="8" y="8" width="24" height="24" stroke="currentColor" strokeWidth="1.5" />
+        <rect x="16" y="16" width="8" height="8" stroke="currentColor" strokeWidth="1.5" />
         <line x1="20" y1="8" x2="20" y2="4" stroke="currentColor" strokeWidth="1.5" />
         <line x1="20" y1="36" x2="20" y2="32" stroke="currentColor" strokeWidth="1.5" />
         <line x1="8" y1="20" x2="4" y2="20" stroke="currentColor" strokeWidth="1.5" />
@@ -62,8 +62,8 @@ const services = [
           stroke="currentColor"
           strokeWidth="1.5"
         />
-        <line x1="16" y1="32" x2="24" y2="32" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        <line x1="18" y1="35" x2="22" y2="35" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="16" y1="32" x2="24" y2="32" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
+        <line x1="18" y1="35" x2="22" y2="35" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
       </svg>
     ),
   },
@@ -73,9 +73,9 @@ const services = [
       'Align your technology decisions with business goals. We provide roadmaps that drive real results.',
     icon: (
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <polyline points="6,30 14,22 20,26 28,14 34,10" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="34" cy="10" r="3" stroke="currentColor" strokeWidth="1.5" />
-        <line x1="6" y1="34" x2="34" y2="34" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <polyline points="6,30 14,22 20,26 28,14 34,10" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="square" strokeLinejoin="miter" />
+        <rect x="31" y="7" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
+        <line x1="6" y1="34" x2="34" y2="34" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
       </svg>
     ),
   },
@@ -85,10 +85,10 @@ const services = [
       'Embed senior engineers directly into your team. We scale with you when you need it most.',
     icon: (
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="15" cy="14" r="4" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M8 28C8 23.5817 11.1340 20 15 20C18.866 20 22 23.5817 22 28" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        <circle cx="27" cy="14" r="3" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M22 28C22 24.134 24.2386 21 27 21C29.7614 21 32 24.134 32 28" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <rect x="11" y="10" width="8" height="8" stroke="currentColor" strokeWidth="1.5" />
+        <path d="M8 28C8 23.5817 11.1340 20 15 20C18.866 20 22 23.5817 22 28" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
+        <rect x="24" y="11" width="6" height="6" stroke="currentColor" strokeWidth="1.5" />
+        <path d="M22 28C22 24.134 24.2386 21 27 21C29.7614 21 32 24.134 32 28" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
       </svg>
     ),
   },
@@ -97,31 +97,47 @@ const services = [
 export default function ServicesSection() {
   return (
     <section id="services" className="relative py-32">
-      {/* Subtle top divider */}
+      {/* Gradient top divider */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl px-6 lg:px-8">
-        <div className="h-px bg-neutral-800" />
+        <div className="h-px bg-gradient-to-r from-transparent via-brand to-cyber-cyan/50 to-transparent" />
       </div>
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <SectionHeading title="WHAT WE DO" />
+        <SectionHeading
+          title="WHAT WE DO"
+          sectionNumber="02"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
             <AnimatedReveal key={service.name} delay={0.1 * index}>
               <div
                 className={cn(
-                  'group relative p-8 rounded-lg border border-neutral-800',
-                  'bg-neutral-950 hover:border-brand/50',
+                  'group relative p-8 border border-cyber-border',
+                  'bg-cyber-surface',
+                  'cyber-corners cyber-border-glow',
                   'transition-all duration-500 ease-out',
-                  'hover:shadow-[0_0_30px_-10px_rgba(128,0,255,0.15)]',
+                  'hover:border-brand/50 hover:shadow-[0_0_30px_rgba(128,0,255,0.1)]',
                   'h-full'
                 )}
               >
-                <div className="text-brand mb-6">{service.icon}</div>
+                {/* Card index number */}
+                <span className="absolute top-4 right-4 font-mono text-[11px] text-brand/30">
+                  [{String(index + 1).padStart(2, '0')}]
+                </span>
+
+                {/* Icon */}
+                <div className="text-cyber-cyan mb-6 transition-all duration-300 group-hover:drop-shadow-[0_0_8px_rgba(0,255,255,0.4)]">
+                  {service.icon}
+                </div>
+
+                {/* Service name */}
                 <h3 className="font-display text-lg font-semibold tracking-wide text-white mb-3">
                   {service.name}
                 </h3>
-                <p className="text-sm leading-relaxed text-neutral-400">
+
+                {/* Description */}
+                <p className="text-sm leading-relaxed text-neutral-500">
                   {service.description}
                 </p>
               </div>

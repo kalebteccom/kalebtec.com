@@ -7,15 +7,13 @@ import * as THREE from 'three'
 interface ParticleFieldProps {
   count?: number
   radius?: number
-  color?: string
   size?: number
 }
 
 export default function ParticleField({
-  count = 300,
+  count = 200,
   radius = 6,
-  color = '#8000FF',
-  size = 0.02,
+  size = 0.025,
 }: ParticleFieldProps) {
   const pointsRef = useRef<THREE.Points>(null)
   const entranceProgress = useRef(0)
@@ -27,35 +25,56 @@ export default function ParticleField({
 
   const actualCount = isMobile ? Math.floor(count * 0.5) : count
 
-  // Generate particle positions in a sphere
-  const { positions, velocities, phases } = useMemo(() => {
+  // Generate particle positions -- some grid-aligned, some random
+  const { positions, velocities, phases, colors } = useMemo(() => {
     const pos = new Float32Array(actualCount * 3)
     const vel = new Float32Array(actualCount * 3)
     const pha = new Float32Array(actualCount)
+    const col = new Float32Array(actualCount * 3)
+
+    const purple = new THREE.Color('#8000FF')
+    const cyan = new THREE.Color('#00ffff')
+
+    const gridSpacing = 1.5
 
     for (let i = 0; i < actualCount; i++) {
-      // Distribute in a sphere using spherical coordinates
-      const theta = Math.random() * Math.PI * 2
-      const phi = Math.acos(2 * Math.random() - 1)
-      const r = radius * Math.cbrt(Math.random()) // cube root for uniform volume distribution
+      // ~40% of particles snap near grid intersections
+      if (i < actualCount * 0.4) {
+        // Grid-aligned with slight jitter
+        const gx = (Math.round((Math.random() * 2 - 1) * (radius / gridSpacing)) * gridSpacing)
+        const gy = (Math.round((Math.random() * 2 - 1) * (radius / gridSpacing)) * gridSpacing)
+        const gz = -Math.random() * radius * 0.8
 
-      pos[i * 3] = r * Math.sin(phi) * Math.cos(theta)
-      pos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta)
-      pos[i * 3 + 2] = r * Math.cos(phi)
+        pos[i * 3] = gx + (Math.random() - 0.5) * 0.15
+        pos[i * 3 + 1] = gy + (Math.random() - 0.5) * 0.15
+        pos[i * 3 + 2] = gz
+      } else {
+        // Random distribution in a box volume
+        pos[i * 3] = (Math.random() - 0.5) * radius * 2
+        pos[i * 3 + 1] = (Math.random() - 0.5) * radius * 2
+        pos[i * 3 + 2] = -Math.random() * radius
+      }
 
-      // Random slow drift velocities
-      vel[i * 3] = (Math.random() - 0.5) * 0.002
-      vel[i * 3 + 1] = (Math.random() - 0.5) * 0.002
-      vel[i * 3 + 2] = (Math.random() - 0.5) * 0.002
+      // Linear/mechanical drift -- mostly along one axis
+      const driftAxis = Math.floor(Math.random() * 3)
+      vel[i * 3] = driftAxis === 0 ? (Math.random() - 0.5) * 0.003 : (Math.random() - 0.5) * 0.0005
+      vel[i * 3 + 1] = driftAxis === 1 ? (Math.random() - 0.5) * 0.003 : (Math.random() - 0.5) * 0.0005
+      vel[i * 3 + 2] = driftAxis === 2 ? (Math.random() - 0.5) * 0.002 : (Math.random() - 0.5) * 0.0003
 
-      // Random phase offset for twinkle
+      // Random phase offset for pulse
       pha[i] = Math.random() * Math.PI * 2
+
+      // Alternate between purple and cyan
+      const particleColor = Math.random() > 0.5 ? purple : cyan
+      col[i * 3] = particleColor.r
+      col[i * 3 + 1] = particleColor.g
+      col[i * 3 + 2] = particleColor.b
     }
 
-    return { positions: pos, velocities: vel, phases: pha }
+    return { positions: pos, velocities: vel, phases: pha, colors: col }
   }, [actualCount, radius])
 
-  // Custom sizes for twinkle effect
+  // Custom sizes for pulse effect
   const sizes = useMemo(() => {
     const s = new Float32Array(actualCount)
     for (let i = 0; i < actualCount; i++) {
@@ -63,6 +82,32 @@ export default function ParticleField({
     }
     return s
   }, [actualCount, size])
+
+  // Sharp square particle texture
+  const particleTexture = useMemo(() => {
+    const canvas = document.createElement('canvas')
+    canvas.width = 32
+    canvas.height = 32
+    const ctx = canvas.getContext('2d')!
+    // Sharp square with slight inner glow
+    ctx.fillStyle = 'rgba(255,255,255,0)'
+    ctx.fillRect(0, 0, 32, 32)
+
+    // Inner bright square
+    ctx.fillStyle = 'rgba(255,255,255,1)'
+    ctx.fillRect(4, 4, 24, 24)
+
+    // Slight edge glow
+    ctx.fillStyle = 'rgba(255,255,255,0.6)'
+    ctx.fillRect(2, 2, 28, 28)
+    ctx.fillStyle = 'rgba(255,255,255,1)'
+    ctx.fillRect(6, 6, 20, 20)
+
+    const texture = new THREE.CanvasTexture(canvas)
+    texture.magFilter = THREE.NearestFilter
+    texture.minFilter = THREE.NearestFilter
+    return texture
+  }, [])
 
   useFrame((state) => {
     if (!pointsRef.current) return
@@ -77,11 +122,11 @@ export default function ParticleField({
       entranceProgress.current = Math.min(1, entranceProgress.current + 0.008)
     }
     const material = pointsRef.current.material as THREE.PointsMaterial
-    material.opacity = entranceProgress.current * 0.8
+    material.opacity = entranceProgress.current * 0.7
 
     // Animate positions and sizes
     for (let i = 0; i < actualCount; i++) {
-      // Drift
+      // Linear drift
       posAttr.array[i * 3] += velocities[i * 3]
       posAttr.array[i * 3 + 1] += velocities[i * 3 + 1]
       posAttr.array[i * 3 + 2] += velocities[i * 3 + 2]
@@ -90,18 +135,14 @@ export default function ParticleField({
       const x = posAttr.array[i * 3]
       const y = posAttr.array[i * 3 + 1]
       const z = posAttr.array[i * 3 + 2]
-      const dist = Math.sqrt(x * x + y * y + z * z)
 
-      if (dist > radius * 1.2) {
-        // Reset to opposite side
-        posAttr.array[i * 3] *= -0.5
-        posAttr.array[i * 3 + 1] *= -0.5
-        posAttr.array[i * 3 + 2] *= -0.5
-      }
+      if (Math.abs(x) > radius * 1.2) posAttr.array[i * 3] *= -0.5
+      if (Math.abs(y) > radius * 1.2) posAttr.array[i * 3 + 1] *= -0.5
+      if (z > 1 || z < -radius * 1.2) posAttr.array[i * 3 + 2] = -Math.random() * radius * 0.5
 
-      // Twinkle: modulate size with sine
-      const twinkle = 0.6 + 0.4 * Math.sin(time * 1.5 + phases[i])
-      sizeAttr.array[i] = sizes[i] * twinkle
+      // Pulse: modulate size with step-like function for mechanical feel
+      const pulse = 0.7 + 0.3 * Math.sign(Math.sin(time * 2.0 + phases[i]))
+      sizeAttr.array[i] = sizes[i] * pulse
     }
 
     posAttr.needsUpdate = true
@@ -114,23 +155,6 @@ export default function ParticleField({
     pointsRef.current.rotation.x = mouseY * 0.2
   })
 
-  // Custom shader material for round, glowing particles
-  const particleTexture = useMemo(() => {
-    const canvas = document.createElement('canvas')
-    canvas.width = 64
-    canvas.height = 64
-    const ctx = canvas.getContext('2d')!
-    const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32)
-    gradient.addColorStop(0, 'rgba(255,255,255,1)')
-    gradient.addColorStop(0.3, 'rgba(255,255,255,0.8)')
-    gradient.addColorStop(0.7, 'rgba(255,255,255,0.2)')
-    gradient.addColorStop(1, 'rgba(255,255,255,0)')
-    ctx.fillStyle = gradient
-    ctx.fillRect(0, 0, 64, 64)
-    const texture = new THREE.CanvasTexture(canvas)
-    return texture
-  }, [])
-
   return (
     <points ref={pointsRef}>
       <bufferGeometry>
@@ -142,9 +166,13 @@ export default function ParticleField({
           attach="attributes-size"
           args={[sizes, 1]}
         />
+        <bufferAttribute
+          attach="attributes-color"
+          args={[colors, 3]}
+        />
       </bufferGeometry>
       <pointsMaterial
-        color={color}
+        vertexColors
         size={size}
         transparent
         opacity={0}

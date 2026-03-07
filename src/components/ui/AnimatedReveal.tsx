@@ -3,6 +3,8 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
+const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94]
+
 interface AnimatedRevealProps {
   children: React.ReactNode
   delay?: number
@@ -36,7 +38,7 @@ export default function AnimatedReveal({
       transition={{
         duration: 0.7,
         delay,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: EASE,
       }}
       className={className}
     >

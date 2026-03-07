@@ -7,7 +7,7 @@ import Image from 'next/image'
 const HeroScene = dynamic(() => import('@/components/three/HeroScene'), {
   ssr: false,
   loading: () => (
-    <div className="absolute inset-0 bg-neutral-950" />
+    <div className="absolute inset-0 bg-cyber-bg" />
   ),
 })
 
@@ -70,20 +70,19 @@ const glowVariants: Variants = {
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-neutral-950">
+    <section className="relative min-h-screen w-full overflow-hidden bg-cyber-bg">
       {/* Three.js Canvas Background */}
       <div className="absolute inset-0 z-0">
         <HeroScene />
       </div>
 
-      {/* Gradient overlays for text readability */}
+      {/* Subtle dark radial gradient for text readability only */}
       <div className="absolute inset-0 z-[1] pointer-events-none">
-        {/* Center radial gradient for text area */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(10,10,10,0.55) 0%, transparent 70%)',
+              'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(9,9,15,0.55) 0%, transparent 70%)',
           }}
         />
         {/* Bottom fade */}
@@ -91,17 +90,21 @@ export default function HeroSection() {
           className="absolute bottom-0 left-0 right-0 h-32"
           style={{
             background:
-              'linear-gradient(to top, rgba(10,10,10,1) 0%, transparent 100%)',
+              'linear-gradient(to top, rgba(9,9,15,1) 0%, transparent 100%)',
           }}
         />
-        {/* Top subtle vignette */}
-        <div
-          className="absolute top-0 left-0 right-0 h-24"
-          style={{
-            background:
-              'linear-gradient(to bottom, rgba(10,10,10,0.4) 0%, transparent 100%)',
-          }}
-        />
+      </div>
+
+      {/* Decorative HUD elements */}
+      <div className="absolute inset-0 z-[2] pointer-events-none">
+        {/* Top-left: SYS.ACTIVE */}
+        <div className="absolute top-6 left-6 font-mono text-[10px] text-brand/30 tracking-wider">
+          SYS.ACTIVE
+        </div>
+        {/* Top-right: Coordinates */}
+        <div className="absolute top-6 right-6 font-mono text-[10px] text-brand/30 tracking-wider">
+          LAT: 00.0000 | LNG: 00.0000
+        </div>
       </div>
 
       {/* Text Content Overlay */}
@@ -127,40 +130,49 @@ export default function HeroSection() {
           {/* Company Name */}
           <motion.h1
             variants={fadeUpVariants}
-            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-wider text-white"
+            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-wider text-white neon-glow glitch-hover"
           >
             KALEBTEC
           </motion.h1>
 
-          {/* Animated separator line */}
+          {/* Sharp separator line with blinking dot */}
           <motion.div
             variants={lineVariants}
-            className="mt-5 mb-6 h-px w-24 origin-center bg-gradient-to-r from-transparent via-brand to-transparent"
-          />
+            className="mt-5 mb-6 flex items-center gap-0 origin-center"
+          >
+            <div className="h-px w-12 bg-brand" />
+            <motion.div
+              className="w-1.5 h-1.5 bg-cyber-cyan shadow-[0_0_6px_rgba(0,255,255,0.6)]"
+              animate={{ opacity: [1, 0.3, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            />
+            <div className="h-px w-12 bg-brand" />
+          </motion.div>
 
-          {/* Tagline */}
+          {/* Monospace Tagline with blinking cursor */}
           <motion.p
             variants={fadeUpVariants}
-            className="font-display text-lg sm:text-xl md:text-2xl font-light tracking-widest uppercase text-brand-light"
+            className="font-mono text-sm sm:text-base md:text-lg tracking-[0.2em] text-cyber-cyan"
           >
-            Technology Consulting
+            {'> TECHNOLOGY_CONSULTING'}
+            <span className="typing-cursor" />
           </motion.p>
 
           {/* Value Proposition */}
           <motion.p
             variants={fadeUpVariants}
-            className="mt-6 max-w-xl text-base sm:text-lg text-neutral-400 leading-relaxed font-light"
+            className="mt-6 max-w-xl text-base sm:text-lg text-neutral-500 leading-relaxed font-mono"
           >
-            We architect digital solutions that transform businesses
+            // We architect digital solutions that transform businesses
           </motion.p>
 
           {/* CTA Button */}
           <motion.div variants={fadeUpVariants} className="mt-10">
             <a
               href="#contact"
-              className="group relative inline-flex items-center gap-2 rounded-sm border border-brand/40 bg-brand/10 px-8 py-3.5 text-sm font-medium uppercase tracking-widest text-white transition-all duration-300 hover:bg-brand/20 hover:border-brand/70 hover:shadow-[0_0_30px_rgba(128,0,255,0.2)] focus:outline-none focus:ring-2 focus:ring-brand/50 focus:ring-offset-2 focus:ring-offset-neutral-950"
+              className="group relative inline-flex items-center gap-2 border border-brand/40 bg-transparent px-8 py-3.5 font-mono text-sm uppercase tracking-widest text-white transition-all duration-300 hover:border-cyber-cyan hover:shadow-[0_0_30px_rgba(0,255,255,0.15)] focus:outline-none focus:ring-2 focus:ring-brand/50 focus:ring-offset-2 focus:ring-offset-cyber-bg"
             >
-              <span>Get in Touch</span>
+              <span>[INITIATE_CONTACT]</span>
               <svg
                 className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
                 fill="none"
@@ -169,8 +181,8 @@ export default function HeroSection() {
                 strokeWidth={1.5}
               >
                 <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                  strokeLinecap="square"
+                  strokeLinejoin="miter"
                   d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
                 />
               </svg>
@@ -191,19 +203,19 @@ export default function HeroSection() {
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <span className="text-[10px] uppercase tracking-[0.3em] text-neutral-500">
-            Scroll
+          <span className="font-mono text-xs text-neutral-600 tracking-wider">
+            [SCROLL]
           </span>
           <svg
-            className="h-4 w-4 text-neutral-500"
+            className="h-4 w-4 text-neutral-600"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
             strokeWidth={1.5}
           >
             <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              strokeLinecap="square"
+              strokeLinejoin="miter"
               d="m19.5 8.25-7.5 7.5-7.5-7.5"
             />
           </svg>

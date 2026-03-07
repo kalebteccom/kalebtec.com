@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Space_Grotesk } from 'next/font/google'
+import { Inter, Orbitron, JetBrains_Mono } from 'next/font/google'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import './globals.css'
@@ -9,9 +9,14 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
-const spaceGrotesk = Space_Grotesk({
+const orbitron = Orbitron({
   subsets: ['latin'],
-  variable: '--font-space-grotesk',
+  variable: '--font-orbitron',
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains-mono',
 })
 
 export const metadata: Metadata = {
@@ -30,8 +35,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body className="bg-neutral-950 text-white antialiased font-sans">
+    <html lang="en" className={`${inter.variable} ${orbitron.variable} ${jetbrainsMono.variable}`}>
+      <body className="bg-cyber-bg text-white antialiased font-sans">
         <Header />
         <main>{children}</main>
         <Footer />

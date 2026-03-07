@@ -9,6 +9,8 @@ const team = [
     name: 'Rowin Hernandez',
     role: 'Co-Founder & Lead Engineer',
     initials: 'RH',
+    id: 'RH-001',
+    roleCode: 'LEAD_ENGINEER',
     description:
       'Full-stack engineer and systems architect with a passion for building elegant solutions to complex problems. Rowin leads technical strategy and development.',
   },
@@ -16,6 +18,8 @@ const team = [
     name: 'Mari Hernandez',
     role: 'Co-Founder & Operations Lead',
     initials: 'MH',
+    id: 'MH-002',
+    roleCode: 'OPS_LEAD',
     description:
       'Operations strategist and project manager who ensures every engagement delivers exceptional results. Mari drives client relationships and business operations.',
   },
@@ -24,29 +28,33 @@ const team = [
 export default function TeamSection() {
   return (
     <section id="team" className="relative py-32">
-      {/* Subtle top divider */}
+      {/* Gradient top divider */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl px-6 lg:px-8">
-        <div className="h-px bg-neutral-800" />
+        <div className="h-px bg-gradient-to-r from-transparent via-brand to-cyber-cyan/50 to-transparent" />
       </div>
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <SectionHeading title="THE TEAM" />
+        <SectionHeading
+          title="THE TEAM"
+          sectionNumber="03"
+        />
 
         <div className="mx-auto max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
           {team.map((member, index) => (
             <AnimatedReveal key={member.name} delay={0.15 * index}>
               <div
                 className={cn(
-                  'p-8 rounded-lg border border-neutral-800',
-                  'bg-neutral-950',
+                  'group p-8 border border-cyber-border',
+                  'bg-cyber-surface',
+                  'cyber-corners cyber-border-glow',
                   'transition-all duration-500',
-                  'hover:border-neutral-700',
+                  'hover:border-brand/50',
                   'h-full'
                 )}
               >
-                {/* Avatar with initials */}
+                {/* Avatar with initials — square, no rounding */}
                 <div className="mb-6 flex items-center gap-5">
-                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-brand/15 border border-brand/30">
+                  <div className="flex items-center justify-center w-16 h-16 bg-brand/10 border border-brand/30">
                     <span className="font-display text-lg font-bold tracking-wider text-brand">
                       {member.initials}
                     </span>
@@ -55,10 +63,20 @@ export default function TeamSection() {
                     <h3 className="font-display text-xl font-semibold tracking-wide text-white">
                       {member.name}
                     </h3>
-                    <p className="text-sm text-brand/80 font-medium tracking-wide mt-1">
+                    <p className="font-mono text-xs text-cyber-cyan tracking-wide mt-1">
                       {member.role}
                     </p>
                   </div>
+                </div>
+
+                {/* Data-like metadata */}
+                <div className="mb-4 flex items-center gap-4">
+                  <span className="font-mono text-[10px] text-brand/30 tracking-wider">
+                    ID: {member.id}
+                  </span>
+                  <span className="font-mono text-[10px] text-brand/30 tracking-wider">
+                    ROLE: {member.roleCode}
+                  </span>
                 </div>
 
                 <p className="text-sm leading-relaxed text-neutral-400">

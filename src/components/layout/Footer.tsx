@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -10,7 +9,15 @@ const navLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-neutral-800">
+    <footer className="bg-cyber-surface relative cyber-grid-bg">
+      {/* Top gradient border line */}
+      <div
+        className="h-px w-full"
+        style={{
+          background: 'linear-gradient(90deg, transparent, #8000FF 30%, #00ffff 70%, transparent)',
+        }}
+      />
+
       {/* Main footer content */}
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
@@ -25,16 +32,16 @@ export default function Footer() {
                 className="w-7 h-7"
               />
               <span className="font-display text-sm uppercase tracking-widest text-white">
-                Kalebtec
+                KALEBTEC
               </span>
             </div>
-            <p className="text-sm text-neutral-500 leading-relaxed max-w-xs">
-              Building the future, one solution at a time.
+            <p className="text-sm text-neutral-500 leading-relaxed max-w-xs typing-cursor">
+              Building the future, one solution at a time
             </p>
-            {/* Purple accent dot */}
+            {/* Purple accent square */}
             <div className="flex items-center gap-2 pt-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-brand" />
-              <span className="text-xs text-neutral-600 uppercase tracking-wider">
+              <span className="w-1.5 h-1.5 bg-brand" />
+              <span className="font-mono text-[10px] text-neutral-600 uppercase tracking-wider">
                 Tech Consulting
               </span>
             </div>
@@ -42,37 +49,37 @@ export default function Footer() {
 
           {/* Middle column: Navigation */}
           <div>
-            <h3 className="font-display text-xs uppercase tracking-widest text-neutral-500 mb-6">
-              Navigation
+            <h3 className="font-mono text-xs uppercase tracking-widest text-brand/40 mb-6">
+              // NAVIGATION
             </h3>
             <nav className="flex flex-col gap-3">
               {navLinks.map((link) => (
-                <Link
+                <a
                   key={link.href}
                   href={link.href}
-                  className="text-sm text-neutral-400 hover:text-white transition-colors duration-300 w-fit"
+                  className="font-mono text-sm text-neutral-400 hover:text-white transition-colors duration-300 w-fit"
                 >
                   {link.label}
-                </Link>
+                </a>
               ))}
             </nav>
           </div>
 
           {/* Right column: Contact */}
           <div>
-            <h3 className="font-display text-xs uppercase tracking-widest text-neutral-500 mb-6">
-              Get in Touch
+            <h3 className="font-mono text-xs uppercase tracking-widest text-brand/40 mb-6">
+              // CONTACT
             </h3>
             <div className="space-y-3">
               <a
                 href="mailto:hello@kalebtec.com"
-                className="text-sm text-neutral-400 hover:text-white transition-colors duration-300 block w-fit"
+                className="font-mono text-sm text-neutral-400 hover:text-cyber-cyan hover:neon-glow-cyan transition-all duration-300 block w-fit"
               >
                 hello@kalebtec.com
               </a>
             </div>
 
-            {/* Social links placeholder */}
+            {/* Social links */}
             <div className="flex gap-4 mt-6">
               <a
                 href="#"
@@ -122,14 +129,26 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-neutral-800/50">
+      <div className="border-t border-brand/10">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-neutral-600">
-            &copy; {new Date().getFullYear()} Kalebtec. All rights reserved.
-          </p>
-          <p className="text-xs text-neutral-600">
-            Rowin &amp; Mari Hernandez
-          </p>
+          <div className="flex items-center gap-6">
+            <p className="font-mono text-xs text-neutral-600">
+              &copy; {new Date().getFullYear()} Kalebtec
+            </p>
+            <p className="font-mono text-xs text-neutral-600">
+              Rowin &amp; Mari Hernandez
+            </p>
+          </div>
+          {/* HUD-style markers */}
+          <div className="flex items-center gap-4">
+            <span className="font-mono text-[10px] text-neutral-700 uppercase tracking-wider">
+              SYS.VER 1.0
+            </span>
+            <span className="w-px h-3 bg-brand/20" />
+            <span className="font-mono text-[10px] text-neutral-700 uppercase tracking-wider">
+              LOCATION: REMOTE
+            </span>
+          </div>
         </div>
       </div>
     </footer>

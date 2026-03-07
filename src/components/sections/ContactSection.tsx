@@ -5,6 +5,8 @@ import { motion, useInView } from 'framer-motion'
 import AnimatedReveal from '@/components/ui/AnimatedReveal'
 import { cn } from '@/lib/utils'
 
+const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94]
+
 export default function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 })
@@ -13,51 +15,71 @@ export default function ContactSection() {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative py-32 overflow-hidden"
+      className="relative py-32 overflow-hidden cyber-grid-bg"
     >
-      {/* Subtle top divider */}
+      {/* Gradient top divider */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl px-6 lg:px-8">
-        <div className="h-px bg-neutral-800" />
+        <div className="h-px bg-gradient-to-r from-transparent via-brand to-cyber-cyan/50 to-transparent" />
       </div>
 
-      {/* Subtle radial purple glow background */}
+      {/* Subtle radial cyan-tinted glow background */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(128, 0, 255, 0.06) 0%, transparent 70%)',
+            'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(0, 255, 255, 0.03) 0%, rgba(128, 0, 255, 0.04) 30%, transparent 70%)',
         }}
       />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
+          {/* Section prefix */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, ease: EASE }}
+            className="flex items-center justify-center gap-2 mb-6"
+          >
+            <span className="font-mono text-sm text-brand tracking-wider">
+              [04]
+            </span>
+            <span className="font-mono text-sm text-cyber-cyan/50">//</span>
+            <span className="font-mono text-sm text-neutral-500 tracking-wider uppercase">
+              CONTACT
+            </span>
+          </motion.div>
+
           {/* Heading */}
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-wider uppercase text-white"
+            transition={{ duration: 0.7, ease: EASE }}
+            className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-wider uppercase text-white neon-glow"
           >
             LET&apos;S BUILD{' '}
-            <span className="text-brand">SOMETHING</span>
+            <span className="text-cyber-cyan neon-glow-cyan">SOMETHING</span>
           </motion.h2>
 
+          {/* Accent line */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{
               duration: 0.7,
               delay: 0.1,
-              ease: [0.25, 0.46, 0.45, 0.94],
+              ease: EASE,
             }}
             className="mt-6 flex justify-center"
           >
-            <div className="h-0.5 w-16 bg-brand" />
+            <div className="flex items-center gap-0">
+              <div className="w-2 h-2 bg-brand shadow-[0_0_8px_rgba(128,0,255,0.6)]" />
+              <div className="h-px w-16 bg-gradient-to-r from-brand to-cyber-cyan" />
+            </div>
           </motion.div>
 
           <AnimatedReveal delay={0.2}>
-            <p className="mt-8 text-lg md:text-xl text-neutral-400">
-              Ready to transform your technology? Let&apos;s talk.
+            <p className="mt-8 text-lg md:text-xl text-neutral-400 font-mono">
+              // Ready to transform your technology? Let&apos;s talk.
             </p>
           </AnimatedReveal>
 
@@ -65,10 +87,10 @@ export default function ContactSection() {
           <AnimatedReveal delay={0.3}>
             <a
               href="mailto:hello@kalebtec.com"
-              className="group inline-block mt-8 text-xl md:text-2xl font-display font-medium text-white transition-colors duration-300 hover:text-brand"
+              className="group inline-block mt-8 font-mono text-xl md:text-2xl text-cyber-cyan transition-colors duration-300 hover:neon-glow-cyan"
             >
               hello@kalebtec.com
-              <span className="block h-px w-0 bg-brand transition-all duration-500 group-hover:w-full" />
+              <span className="block h-px w-0 bg-cyber-cyan transition-all duration-500 group-hover:w-full" />
             </a>
           </AnimatedReveal>
 
@@ -81,7 +103,7 @@ export default function ContactSection() {
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-xs uppercase tracking-wider text-neutral-500 mb-2 font-medium"
+                  className="block font-mono text-xs uppercase tracking-wider text-brand/50 mb-2"
                 >
                   Name
                 </label>
@@ -91,19 +113,19 @@ export default function ContactSection() {
                   name="name"
                   required
                   className={cn(
-                    'w-full px-4 py-3 rounded-lg text-sm',
-                    'bg-neutral-900 border border-neutral-800 text-white placeholder-neutral-600',
-                    'focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand/30',
+                    'w-full px-4 py-3 text-sm font-mono',
+                    'bg-cyber-surface border border-cyber-border text-white placeholder-neutral-600',
+                    'focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan/30',
                     'transition-all duration-300'
                   )}
-                  placeholder="Your name"
+                  placeholder="> your name"
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-xs uppercase tracking-wider text-neutral-500 mb-2 font-medium"
+                  className="block font-mono text-xs uppercase tracking-wider text-brand/50 mb-2"
                 >
                   Email
                 </label>
@@ -113,19 +135,19 @@ export default function ContactSection() {
                   name="email"
                   required
                   className={cn(
-                    'w-full px-4 py-3 rounded-lg text-sm',
-                    'bg-neutral-900 border border-neutral-800 text-white placeholder-neutral-600',
-                    'focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand/30',
+                    'w-full px-4 py-3 text-sm font-mono',
+                    'bg-cyber-surface border border-cyber-border text-white placeholder-neutral-600',
+                    'focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan/30',
                     'transition-all duration-300'
                   )}
-                  placeholder="you@company.com"
+                  placeholder="> you@company.com"
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-xs uppercase tracking-wider text-neutral-500 mb-2 font-medium"
+                  className="block font-mono text-xs uppercase tracking-wider text-brand/50 mb-2"
                 >
                   Message
                 </label>
@@ -135,27 +157,27 @@ export default function ContactSection() {
                   rows={5}
                   required
                   className={cn(
-                    'w-full px-4 py-3 rounded-lg text-sm resize-none',
-                    'bg-neutral-900 border border-neutral-800 text-white placeholder-neutral-600',
-                    'focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand/30',
+                    'w-full px-4 py-3 text-sm resize-none font-mono',
+                    'bg-cyber-surface border border-cyber-border text-white placeholder-neutral-600',
+                    'focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan/30',
                     'transition-all duration-300'
                   )}
-                  placeholder="Tell us about your project..."
+                  placeholder="> describe your project..."
                 />
               </div>
 
               <button
                 type="submit"
                 className={cn(
-                  'w-full py-3 px-6 rounded-lg text-sm font-display font-semibold uppercase tracking-wider',
-                  'bg-brand text-white',
-                  'hover:bg-brand-light',
-                  'focus:outline-none focus:ring-2 focus:ring-brand/50 focus:ring-offset-2 focus:ring-offset-neutral-950',
+                  'w-full py-3 px-6 font-mono text-sm font-semibold uppercase tracking-wider',
+                  'border border-brand bg-brand/10 text-white',
+                  'hover:bg-brand hover:shadow-[0_0_30px_rgba(128,0,255,0.2)]',
+                  'focus:outline-none focus:ring-2 focus:ring-brand/50 focus:ring-offset-2 focus:ring-offset-cyber-bg',
                   'transition-all duration-300',
                   'cursor-pointer'
                 )}
               >
-                Send Message
+                [TRANSMIT]
               </button>
             </form>
           </AnimatedReveal>
