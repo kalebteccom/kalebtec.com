@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <!-- Outer bracket corners — HUD targeting reticle -->
+  <!-- Top-left corner -->
+  <line x1="4" y1="4" x2="10" y2="4" stroke="#1a1030" stroke-width="1.5"/>
+  <line x1="4" y1="4" x2="4" y2="10" stroke="#1a1030" stroke-width="1.5"/>
+  <!-- Top-right corner -->
+  <line x1="22" y1="4" x2="28" y2="4" stroke="#1a1030" stroke-width="1.5"/>
+  <line x1="28" y1="4" x2="28" y2="10" stroke="#1a1030" stroke-width="1.5"/>
+  <!-- Bottom-left corner -->
+  <line x1="4" y1="22" x2="4" y2="28" stroke="#1a1030" stroke-width="1.5"/>
+  <line x1="4" y1="28" x2="10" y2="28" stroke="#1a1030" stroke-width="1.5"/>
+  <!-- Bottom-right corner -->
+  <line x1="28" y1="22" x2="28" y2="28" stroke="#1a1030" stroke-width="1.5"/>
+  <line x1="22" y1="28" x2="28" y2="28" stroke="#1a1030" stroke-width="1.5"/>
+
+  <!-- Inner crosshair lines -->
+  <line x1="16" y1="6" x2="16" y2="13" stroke="#1a1030" stroke-width="1.5" opacity="0.7"/>
+  <line x1="16" y1="19" x2="16" y2="26" stroke="#1a1030" stroke-width="1.5" opacity="0.7"/>
+  <line x1="6" y1="16" x2="13" y2="16" stroke="#1a1030" stroke-width="1.5" opacity="0.7"/>
+  <line x1="19" y1="16" x2="26" y2="16" stroke="#1a1030" stroke-width="1.5" opacity="0.7"/>
+
+  <!-- Center dot -->
+  <rect x="15" y="15" width="2" height="2" fill="#6b00d6"/>
+</svg>
