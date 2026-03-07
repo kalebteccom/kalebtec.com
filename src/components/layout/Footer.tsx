@@ -1,11 +1,12 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 const navLinks = [
-  { href: '#about', label: 'About' },
-  { href: '#services', label: 'Services' },
+  { href: '/#about', label: 'About' },
+  { href: '/#services', label: 'Services' },
   { href: '/projects', label: 'Projects' },
-  { href: '#team', label: 'Team' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/#team', label: 'Team' },
+  { href: '/#contact', label: 'Contact' },
 ]
 
 export default function Footer() {
@@ -56,13 +57,13 @@ export default function Footer() {
             </h3>
             <nav className="flex flex-col gap-3" aria-label="Footer navigation">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   className="font-mono text-sm text-cyber-muted hover:text-cyber-heading transition-colors duration-300 w-fit"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>

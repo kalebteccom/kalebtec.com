@@ -2,13 +2,14 @@
 
 import { useEffect, useRef, useCallback, type RefObject } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Link from 'next/link'
 
 const navLinks = [
-  { href: '#about', label: 'ABOUT' },
-  { href: '#services', label: 'SERVICES' },
+  { href: '/#about', label: 'ABOUT' },
+  { href: '/#services', label: 'SERVICES' },
   { href: '/projects', label: 'PROJECTS' },
-  { href: '#team', label: 'TEAM' },
-  { href: '#contact', label: 'CONTACT' },
+  { href: '/#team', label: 'TEAM' },
+  { href: '/#contact', label: 'CONTACT' },
 ]
 
 const overlayVariants = {
@@ -186,7 +187,7 @@ export default function MobileMenu({ isOpen, onClose, triggerRef }: MobileMenuPr
                 {i > 0 && (
                   <div className="w-full h-px bg-cyber-cyan/10 mb-6" aria-hidden="true" />
                 )}
-                <a
+                <Link
                   href={link.href}
                   onClick={onClose}
                   className="block text-center font-mono text-xl xs:text-2xl uppercase tracking-[0.25em] text-cyber-body hover:text-cyber-heading hover:neon-glow transition-all duration-300 py-3 glitch-hover"
@@ -194,7 +195,7 @@ export default function MobileMenu({ isOpen, onClose, triggerRef }: MobileMenuPr
                   <span className="text-cyber-faint" aria-hidden="true">[</span>
                   {link.label}
                   <span className="text-cyber-faint" aria-hidden="true">]</span>
-                </a>
+                </Link>
               </motion.div>
             ))}
 

@@ -3,16 +3,17 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import MobileMenu from './MobileMenu'
 import ThemeToggle from '@/components/ui/ThemeToggle'
 
 const navLinks = [
-  { href: '#about', label: 'ABOUT' },
-  { href: '#services', label: 'SERVICES' },
+  { href: '/#about', label: 'ABOUT' },
+  { href: '/#services', label: 'SERVICES' },
   { href: '/projects', label: 'PROJECTS' },
-  { href: '#team', label: 'TEAM' },
-  { href: '#contact', label: 'CONTACT' },
+  { href: '/#team', label: 'TEAM' },
+  { href: '/#contact', label: 'CONTACT' },
 ]
 
 export default function Header() {
@@ -54,7 +55,7 @@ export default function Header() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Logo + Brand */}
-            <a href="/" className="flex items-center gap-3 group">
+            <Link href="/" className="flex items-center gap-3 group">
               <Image
                 src="/logo.svg"
                 alt="Kalebtec logo"
@@ -65,12 +66,12 @@ export default function Header() {
               <span className="hidden sm:inline font-display text-sm uppercase tracking-widest text-cyber-heading group-hover:text-cyber-heading transition-colors duration-300">
                 KALEBTEC
               </span>
-            </a>
+            </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-6" aria-label="Main navigation">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   className="group font-mono text-xs uppercase tracking-[0.2em] text-cyber-muted hover:text-brand-light transition-all duration-300"
@@ -78,7 +79,7 @@ export default function Header() {
                   <span className="text-cyber-faint group-hover:text-cyber-muted transition-colors duration-300">[</span>
                   <span className="group-hover:neon-glow">{link.label}</span>
                   <span className="text-cyber-faint group-hover:text-cyber-muted transition-colors duration-300">]</span>
-                </a>
+                </Link>
               ))}
             </nav>
 
