@@ -1,5 +1,5 @@
 ---
-description: "Expert Tailwind CSS guidance for building utility-first, responsive, and maintainable UIs. USE THIS SKILL whenever working with Tailwind CSS classes, styling components, responsive design, dark mode, or custom theme configuration."
+description: "Expert Tailwind CSS v4 guidance for utility-first, responsive UIs with CSS-first @theme configuration. USE THIS SKILL whenever working with Tailwind CSS classes, styling components, responsive design, dark mode, cyberpunk design patterns, neon glow effects, custom theme colors (brand, cyber-cyan, cyber-bg), CSS utility classes for HUD/tech aesthetics, or GLSL shader styling integration."
 ---
 
 # Tailwind CSS Expert Skill

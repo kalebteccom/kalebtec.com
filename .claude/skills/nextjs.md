@@ -1,5 +1,5 @@
 ---
-description: "Expert Next.js guidance for building performant, SEO-optimized web applications with the App Router. USE THIS SKILL whenever working with Next.js routing, data fetching, server/client components, middleware, caching, or project structure."
+description: "Expert Next.js 15 App Router guidance for performant, SEO-optimized web applications. USE THIS SKILL whenever working with Next.js routing, data fetching, server/client components, middleware, caching, project structure, React Three Fiber (R3F) / Three.js 3D scene integration, Framer Motion animations, or Payload CMS withPayload configuration."
 ---
 
 # Next.js Expert Skill

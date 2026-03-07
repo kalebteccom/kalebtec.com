@@ -1,5 +1,5 @@
 ---
-description: "Expert Payload CMS guidance for building type-safe, headless content management systems. USE THIS SKILL whenever working with Payload collections, fields, hooks, access control, authentication, APIs, admin panel customization, or database configuration."
+description: "Expert Payload CMS 3.x guidance for type-safe, headless content management running inside Next.js. USE THIS SKILL whenever working with Payload collections, fields, hooks, access control, authentication, Local API, REST/GraphQL APIs, admin panel customization, MongoDB database configuration, or content modeling for projects, services, and team members."
 ---
 
 # Payload CMS Expert Skill
