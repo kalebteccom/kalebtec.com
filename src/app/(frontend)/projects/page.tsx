@@ -4,6 +4,8 @@ import type { Metadata } from 'next'
 import ProjectsFilter from '@/components/projects/ProjectsFilter'
 import type { Project, Industry, Media } from '@/payload-types'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Projects | Kalebtec',
   description:

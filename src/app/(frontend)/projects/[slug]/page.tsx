@@ -6,21 +6,9 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import type { Project, Media, Industry } from '@/payload-types'
 
+export const dynamic = 'force-dynamic'
+
 type Params = Promise<{ slug: string }>
-
-export async function generateStaticParams() {
-  const payload = await getPayload({ config: configPromise })
-  const { docs } = await payload.find({
-    collection: 'projects',
-    where: { status: { equals: 'published' } },
-    limit: 100,
-    select: { slug: true },
-  })
-
-  return docs
-    .filter((doc) => doc.slug)
-    .map((doc) => ({ slug: doc.slug! }))
-}
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { slug } = await params

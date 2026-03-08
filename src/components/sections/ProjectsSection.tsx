@@ -7,17 +7,21 @@ import ProjectsSectionClient from './ProjectsSectionClient'
 import type { Project, Media, Industry } from '@/payload-types'
 
 export default async function ProjectsSection() {
-  const payload = await getPayload({ config: configPromise })
-
-  const { docs: projects } = await payload.find({
-    collection: 'projects',
-    where: {
-      status: { equals: 'published' },
-    },
-    sort: 'order',
-    limit: 4,
-    depth: 2,
-  })
+  let projects: Project[] = []
+  try {
+    const payload = await getPayload({ config: configPromise })
+    const result = await payload.find({
+      collection: 'projects',
+      where: { status: { equals: 'published' } },
+      sort: 'order',
+      limit: 4,
+      depth: 2,
+    })
+    projects = result.docs
+  } catch {
+    // DB unreachable at build time — render nothing
+    return null
+  }
 
   if (projects.length === 0) return null
 
