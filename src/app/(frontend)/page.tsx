@@ -23,12 +23,12 @@ export default function HomePage() {
             {
               '@type': 'Person',
               name: 'Rowin Hernandez',
-              jobTitle: 'Co-Founder & Lead Engineer',
+              jobTitle: 'Co-Founder & CTO',
             },
             {
               '@type': 'Person',
               name: 'Mari Hernandez',
-              jobTitle: 'Co-Founder & Operations Lead',
+              jobTitle: 'Co-Founder & CEO',
             },
           ],
           contactPoint: {
