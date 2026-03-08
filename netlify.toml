@@ -4,3 +4,12 @@
 
 [build.environment]
   NODE_VERSION = "20"
+
+[functions]
+  node_bundler = "nft"
+
+# Keep SSR functions warm to reduce cold starts
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
