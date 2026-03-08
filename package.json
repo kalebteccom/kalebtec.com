@@ -36,6 +36,13 @@
     "tailwindcss": "4.2.1",
     "three": "0.183.2"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp",
+      "unrs-resolver"
+    ]
+  },
   "devDependencies": {
     "@eslint/eslintrc": "3.3.5",
     "@types/node": "22.15.29",
