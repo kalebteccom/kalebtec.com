@@ -7,6 +7,10 @@
 
 [functions]
   node_bundler = "nft"
+  external_node_modules = ["sharp"]
+
+[functions."___netlify-server-handler"]
+  timeout = 26
 
 # Keep SSR functions warm to reduce cold starts
 [[headers]]
