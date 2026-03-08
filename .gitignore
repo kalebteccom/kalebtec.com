@@ -25,3 +25,6 @@ next-env.d.ts
 
 # payload
 /src/payload-types.ts
+
+# Local Netlify folder
+.netlify
