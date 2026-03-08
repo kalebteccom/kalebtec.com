@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "generate:types": "payload generate:types",
-    "payload": "payload"
+    "payload": "payload",
+    "seed": "NODE_OPTIONS='--no-warnings' tsx src/seed/index.ts"
   },
   "dependencies": {
     "@payloadcms/db-mongodb": "3.79.0",
@@ -42,6 +43,7 @@
     "@types/three": "0.183.1",
     "eslint": "9.28.0",
     "eslint-config-next": "15.4.11",
+    "tsx": "^4.21.0",
     "typescript": "5.9.3"
   }
 }
