@@ -14,7 +14,10 @@ import { Industries } from './collections/Industries'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+const serverURL = process.env.NEXT_PUBLIC_SITE_URL || ''
+
 export default buildConfig({
+  serverURL,
   admin: {
     user: 'users',
     importMap: {
