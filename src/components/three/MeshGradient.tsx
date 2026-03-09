@@ -1,8 +1,8 @@
-'use client'
+'use client';
 
-import { useRef, useMemo } from 'react'
-import { useFrame } from '@react-three/fiber'
-import * as THREE from 'three'
+import { useRef, useMemo } from 'react';
+import { useFrame } from '@react-three/fiber';
+import * as THREE from 'three';
 
 const vertexShader = `
 varying vec2 vUv;
@@ -10,7 +10,7 @@ void main() {
   vUv = uv;
   gl_Position = vec4(position.xy, 0.0, 1.0);
 }
-`
+`;
 
 const fragmentShader = `
 uniform float u_time;
@@ -122,48 +122,48 @@ void main() {
 
   gl_FragColor = vec4(color, 1.0);
 }
-`
+`;
 
 interface MeshGradientProps {
-  isDark: boolean
+  isDark: boolean;
 }
 
 export default function MeshGradient({ isDark }: MeshGradientProps) {
-  const meshRef = useRef<THREE.Mesh>(null)
-  const targetIsDark = useRef(isDark ? 1.0 : 0.0)
+  const meshRef = useRef<THREE.Mesh>(null);
+  const targetIsDark = useRef(isDark ? 1.0 : 0.0);
 
-  const uniforms = useMemo(() => ({
-    u_time: { value: 0 },
-    u_resolution: { value: new THREE.Vector2(1920, 1080) },
-    u_mouse: { value: new THREE.Vector2(0.5, 0.5) },
-    u_isDark: { value: isDark ? 1.0 : 0.0 },
-  }), [])
+  const uniforms = useMemo(
+    () => ({
+      u_time: { value: 0 },
+      u_resolution: { value: new THREE.Vector2(1920, 1080) },
+      u_mouse: { value: new THREE.Vector2(0.5, 0.5) },
+      u_isDark: { value: isDark ? 1.0 : 0.0 },
+    }),
+    [],
+  );
 
   // Update target when prop changes
-  targetIsDark.current = isDark ? 1.0 : 0.0
+  targetIsDark.current = isDark ? 1.0 : 0.0;
 
   useFrame((state) => {
-    if (!meshRef.current) return
-    const material = meshRef.current.material as THREE.ShaderMaterial
-    material.uniforms.u_time.value = state.clock.elapsedTime
+    if (!meshRef.current) return;
+    const material = meshRef.current.material as THREE.ShaderMaterial;
+    material.uniforms.u_time.value = state.clock.elapsedTime;
 
     // Smooth transition between themes
-    const current = material.uniforms.u_isDark.value
-    material.uniforms.u_isDark.value += (targetIsDark.current - current) * 0.04
+    const current = material.uniforms.u_isDark.value;
+    material.uniforms.u_isDark.value += (targetIsDark.current - current) * 0.04;
 
     // Smooth mouse tracking
-    const target = new THREE.Vector2(
-      (state.pointer.x + 1) * 0.5,
-      (state.pointer.y + 1) * 0.5
-    )
-    material.uniforms.u_mouse.value.lerp(target, 0.02)
+    const target = new THREE.Vector2((state.pointer.x + 1) * 0.5, (state.pointer.y + 1) * 0.5);
+    material.uniforms.u_mouse.value.lerp(target, 0.02);
 
     // Update resolution
     material.uniforms.u_resolution.value.set(
       state.size.width * state.viewport.dpr,
-      state.size.height * state.viewport.dpr
-    )
-  })
+      state.size.height * state.viewport.dpr,
+    );
+  });
 
   return (
     <mesh ref={meshRef} renderOrder={-1000}>
@@ -176,5 +176,5 @@ export default function MeshGradient({ isDark }: MeshGradientProps) {
         depthTest={false}
       />
     </mesh>
-  )
+  );
 }

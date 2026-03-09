@@ -1,31 +1,32 @@
-import type { Metadata } from 'next'
-import { Exo_2, Orbitron, JetBrains_Mono } from 'next/font/google'
-import Header from '@/components/layout/Header'
-import Footer from '@/components/layout/Footer'
-import ThemeProvider from '@/components/ui/ThemeProvider'
-import './globals.css'
+import type { Metadata } from 'next';
+import { Exo_2, Orbitron, JetBrains_Mono } from 'next/font/google';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import ThemeProvider from '@/components/ui/ThemeProvider';
+import './globals.css';
 
 const exo2 = Exo_2({
   subsets: ['latin'],
   variable: '--font-exo2',
-})
+});
 
 const orbitron = Orbitron({
   subsets: ['latin'],
   variable: '--font-orbitron',
-})
+});
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-jetbrains-mono',
-})
+});
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kalebtec.com'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kalebtec.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: 'Kalebtec | Tech Consulting',
-  description: 'Expert technology consulting by Rowin and Mari Hernandez. We build digital solutions that matter.',
+  description:
+    'Expert technology consulting by Rowin and Mari Hernandez. We build digital solutions that matter.',
   icons: {
     icon: [
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
@@ -47,16 +48,12 @@ export const metadata: Metadata = {
     title: 'Kalebtec | Tech Consulting',
     description: 'Expert technology consulting by Rowin and Mari Hernandez.',
   },
-}
+};
 
 // Inline script to prevent flash of wrong theme on load
-const themeScript = `(function(){try{var t=localStorage.getItem('kalebtec-theme')||'dark';if(t==='system'){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','dark')}})();`
+const themeScript = `(function(){try{var t=localStorage.getItem('kalebtec-theme')||'dark';if(t==='system'){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','dark')}})();`;
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
@@ -77,5 +74,5 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }

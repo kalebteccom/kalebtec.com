@@ -1,17 +1,15 @@
-'use client'
+'use client';
 
-import dynamic from 'next/dynamic'
-import { motion, type Variants } from 'framer-motion'
-import Image from 'next/image'
+import dynamic from 'next/dynamic';
+import { motion, type Variants } from 'framer-motion';
+import Image from 'next/image';
 
 const HeroScene = dynamic(() => import('@/components/three/HeroScene'), {
   ssr: false,
-  loading: () => (
-    <div className="absolute inset-0 bg-cyber-bg" />
-  ),
-})
+  loading: () => <div className="absolute inset-0 bg-cyber-bg" />,
+});
 
-const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94]
+const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94];
 
 const containerVariants: Variants = {
   hidden: {},
@@ -21,7 +19,7 @@ const containerVariants: Variants = {
       delayChildren: 0.3,
     },
   },
-}
+};
 
 const fadeUpVariants: Variants = {
   hidden: {
@@ -36,7 +34,7 @@ const fadeUpVariants: Variants = {
       ease: EASE,
     },
   },
-}
+};
 
 const lineVariants: Variants = {
   hidden: {
@@ -51,7 +49,7 @@ const lineVariants: Variants = {
       ease: EASE,
     },
   },
-}
+};
 
 const glowVariants: Variants = {
   hidden: {
@@ -66,7 +64,7 @@ const glowVariants: Variants = {
       ease: EASE,
     },
   },
-}
+};
 
 export default function HeroSection() {
   return (
@@ -77,9 +75,15 @@ export default function HeroSection() {
       </div>
 
       {/* Radial gradient for text readability */}
-      <div className="absolute inset-0 z-[1] pointer-events-none hero-text-backdrop" aria-hidden="true" />
+      <div
+        className="absolute inset-0 z-[1] pointer-events-none hero-text-backdrop"
+        aria-hidden="true"
+      />
       {/* Bottom fade to next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 z-[1] pointer-events-none hero-bottom-fade" aria-hidden="true" />
+      <div
+        className="absolute bottom-0 left-0 right-0 h-32 z-[1] pointer-events-none hero-bottom-fade"
+        aria-hidden="true"
+      />
 
       {/* Decorative HUD elements */}
       <div className="absolute inset-0 z-[2] pointer-events-none" aria-hidden="true">
@@ -192,9 +196,7 @@ export default function HeroSection() {
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <span className="font-mono text-xs text-cyber-faint tracking-wider">
-            [SCROLL]
-          </span>
+          <span className="font-mono text-xs text-cyber-faint tracking-wider">[SCROLL]</span>
           <svg
             className="h-4 w-4 text-cyber-faint"
             fill="none"
@@ -202,14 +204,10 @@ export default function HeroSection() {
             stroke="currentColor"
             strokeWidth={1.5}
           >
-            <path
-              strokeLinecap="square"
-              strokeLinejoin="miter"
-              d="m19.5 8.25-7.5 7.5-7.5-7.5"
-            />
+            <path strokeLinecap="square" strokeLinejoin="miter" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
           </svg>
         </motion.div>
       </motion.div>
     </section>
-  )
+  );
 }

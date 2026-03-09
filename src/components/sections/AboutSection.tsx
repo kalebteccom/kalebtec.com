@@ -1,38 +1,40 @@
-'use client'
+'use client';
 
-import SectionHeading from '@/components/ui/SectionHeading'
-import AnimatedReveal from '@/components/ui/AnimatedReveal'
+import SectionHeading from '@/components/ui/SectionHeading';
+import AnimatedReveal from '@/components/ui/AnimatedReveal';
 
 export default function AboutSection() {
   return (
-    <section id="about" aria-label="About Kalebtec" className="relative py-32 overflow-hidden cyber-grid-bg">
+    <section
+      id="about"
+      aria-label="About Kalebtec"
+      className="relative py-32 overflow-hidden cyber-grid-bg"
+    >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <SectionHeading
-          title="WHO WE ARE"
-          sectionNumber="01"
-        />
+        <SectionHeading title="WHO WE ARE" sectionNumber="01" />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Text Column */}
           <AnimatedReveal delay={0.15}>
             <div className="space-y-6">
               <p className="text-lg md:text-xl leading-relaxed text-cyber-body">
-                <span className="text-cyber-faint font-mono">{'>'}</span>{' '}
-                Kalebtec is a technology consulting firm founded by Rowin and
-                Mari Hernandez. We partner with businesses to architect, build,
-                and scale digital solutions.
+                <span className="text-cyber-faint font-mono">{'>'}</span> Kalebtec is a technology
+                consulting firm founded by Rowin and Mari Hernandez. We partner with businesses to
+                architect, build, and scale digital solutions.
               </p>
               <p className="text-lg md:text-xl leading-relaxed text-cyber-muted">
-                <span className="text-cyber-faint font-mono">{'//'}</span>{' '}
-                From strategy to execution, we bring technical expertise and
-                creative vision to every project.
+                <span className="text-cyber-faint font-mono">{'//'}</span> From strategy to
+                execution, we bring technical expertise and creative vision to every project.
               </p>
             </div>
           </AnimatedReveal>
 
           {/* Cyberpunk Geometric Decorative Element */}
           <AnimatedReveal delay={0.3}>
-            <div className="relative flex items-center justify-center h-80 lg:h-96" aria-hidden="true">
+            <div
+              className="relative flex items-center justify-center h-80 lg:h-96"
+              aria-hidden="true"
+            >
               {/* Wireframe cube with 3D perspective */}
               <div
                 className="absolute w-44 h-44 md:w-52 md:h-52 border border-cyber-border"
@@ -50,13 +52,15 @@ export default function AboutSection() {
               <div
                 className="absolute w-px h-10 bg-cyber-faint/15"
                 style={{
-                  transform: 'perspective(600px) rotateX(15deg) rotateY(-25deg) translate(-86px, -86px)',
+                  transform:
+                    'perspective(600px) rotateX(15deg) rotateY(-25deg) translate(-86px, -86px)',
                 }}
               />
               <div
                 className="absolute w-px h-10 bg-cyber-faint/15"
                 style={{
-                  transform: 'perspective(600px) rotateX(15deg) rotateY(-25deg) translate(86px, -86px)',
+                  transform:
+                    'perspective(600px) rotateX(15deg) rotateY(-25deg) translate(86px, -86px)',
                 }}
               />
 
@@ -103,9 +107,12 @@ export default function AboutSection() {
       </div>
 
       {/* Section divider: gradient line */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-7xl px-6 lg:px-8" aria-hidden="true">
+      <div
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-7xl px-6 lg:px-8"
+        aria-hidden="true"
+      >
         <div className="h-px bg-gradient-to-r from-transparent via-brand to-cyber-cyan/50 to-transparent" />
       </div>
     </section>
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import { buildRichText, h2, h3, p } from '../lexical'
-import type { ProjectSeedData } from '../types'
+import { buildRichText, h2, h3, p } from '../lexical';
+import type { ProjectSeedData } from '../types';
 
 export const parrolabs: ProjectSeedData = {
   title: 'Parrolabs News & Maps Platform',
@@ -17,21 +17,21 @@ export const parrolabs: ProjectSeedData = {
   content: buildRichText([
     h2('Overview'),
     p(
-      'At Parrolabs, a software consultancy in Medellin, Rowin worked on two distinct client projects: a news platform requiring performance and SEO optimization, and a map-intensive boot camp discovery application.'
+      'At Parrolabs, a software consultancy in Medellin, Rowin worked on two distinct client projects: a news platform requiring performance and SEO optimization, and a map-intensive boot camp discovery application.',
     ),
 
     h2('News Platform'),
 
     h3('Performance & SEO'),
     p(
-      'Fixed issues and improved the codebase of an existing React.js app for a prominent news company, optimizing image loading and enhancing SEO through server-side rendering.'
+      'Fixed issues and improved the codebase of an existing React.js app for a prominent news company, optimizing image loading and enhancing SEO through server-side rendering.',
     ),
 
     h2('Boot Camp Maps Application'),
 
     h3('Interactive Mapping'),
     p(
-      'Further developed a map-intensive React.js application for boot camps in Medellin, Colombia, enhancing functionality, location discovery, and overall user experience.'
+      'Further developed a map-intensive React.js application for boot camps in Medellin, Colombia, enhancing functionality, location discovery, and overall user experience.',
     ),
   ]),
-}
+};

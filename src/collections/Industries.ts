@@ -1,4 +1,4 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig } from 'payload';
 
 const slugify = (value: string): string =>
   value
@@ -6,7 +6,7 @@ const slugify = (value: string): string =>
     .replace(/[^a-z0-9\s-]/g, '')
     .replace(/[\s]+/g, '-')
     .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '')
+    .replace(/^-|-$/g, '');
 
 export const Industries: CollectionConfig = {
   slug: 'industries',
@@ -23,9 +23,9 @@ export const Industries: CollectionConfig = {
     beforeChange: [
       ({ data }) => {
         if (data?.name) {
-          data.slug = slugify(data.name)
+          data.slug = slugify(data.name);
         }
-        return data
+        return data;
       },
     ],
   },
@@ -62,4 +62,4 @@ export const Industries: CollectionConfig = {
       },
     },
   ],
-}
+};

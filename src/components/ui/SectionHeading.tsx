@@ -1,19 +1,19 @@
-'use client'
+'use client';
 
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { cn } from '@/lib/utils'
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
-const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94]
+const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94];
 
 interface SectionHeadingProps {
-  title: string
-  subtitle?: string
-  className?: string
+  title: string;
+  subtitle?: string;
+  className?: string;
   /** Section number displayed as [01], [02], etc. */
-  sectionNumber?: string
+  sectionNumber?: string;
   /** Allow part of the title to be highlighted in brand color */
-  highlightWord?: string
+  highlightWord?: string;
 }
 
 export default function SectionHeading({
@@ -23,22 +23,22 @@ export default function SectionHeading({
   sectionNumber,
   highlightWord,
 }: SectionHeadingProps) {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, amount: 0.1 })
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   const renderTitle = () => {
     if (!highlightWord) {
-      return title
+      return title;
     }
-    const parts = title.split(highlightWord)
+    const parts = title.split(highlightWord);
     return (
       <>
         {parts[0]}
         <span className="text-brand">{highlightWord}</span>
         {parts[1] ?? ''}
       </>
-    )
-  }
+    );
+  };
 
   return (
     <motion.div
@@ -71,14 +71,13 @@ export default function SectionHeading({
         {/* Glowing dot */}
         <div className="w-2 h-2 bg-brand" role="presentation" />
         {/* Gradient line */}
-        <div className="h-px w-24 bg-gradient-to-r from-brand/40 to-transparent" role="presentation" />
+        <div
+          className="h-px w-24 bg-gradient-to-r from-brand/40 to-transparent"
+          role="presentation"
+        />
       </div>
 
-      {subtitle && (
-        <p className="mt-6 text-lg text-cyber-muted max-w-2xl font-mono">
-          {subtitle}
-        </p>
-      )}
+      {subtitle && <p className="mt-6 text-lg text-cyber-muted max-w-2xl font-mono">{subtitle}</p>}
     </motion.div>
-  )
+  );
 }

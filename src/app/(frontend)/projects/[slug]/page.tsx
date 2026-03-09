@@ -1,29 +1,29 @@
-import { notFound } from 'next/navigation'
-import { getPayload } from 'payload'
-import configPromise from '@payload-config'
-import Image from 'next/image'
-import Link from 'next/link'
-import type { Metadata } from 'next'
-import type { Project, Media, Industry } from '@/payload-types'
+import { notFound } from 'next/navigation';
+import { getPayload } from 'payload';
+import configPromise from '@payload-config';
+import Image from 'next/image';
+import Link from 'next/link';
+import type { Metadata } from 'next';
+import type { Project, Media, Industry } from '@/payload-types';
 
-export const dynamic = 'force-dynamic'
+export const dynamic = 'force-dynamic';
 
-type Params = Promise<{ slug: string }>
+type Params = Promise<{ slug: string }>;
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
-  const { slug } = await params
-  const payload = await getPayload({ config: configPromise })
+  const { slug } = await params;
+  const payload = await getPayload({ config: configPromise });
   const { docs } = await payload.find({
     collection: 'projects',
     where: { slug: { equals: slug }, status: { equals: 'published' } },
     limit: 1,
     depth: 1,
-  })
+  });
 
-  const project = docs[0]
-  if (!project) return { title: 'Project Not Found | Kalebtec' }
+  const project = docs[0];
+  if (!project) return { title: 'Project Not Found | Kalebtec' };
 
-  const image = project.featuredImage as Media | null
+  const image = project.featuredImage as Media | null;
 
   return {
     title: `${project.title} | Kalebtec`,
@@ -33,28 +33,28 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
           images: [{ url: image.url, alt: image.alt ?? project.title }],
         }
       : undefined,
-  }
+  };
 }
 
 export default async function ProjectDetailPage({ params }: { params: Params }) {
-  const { slug } = await params
-  const payload = await getPayload({ config: configPromise })
+  const { slug } = await params;
+  const payload = await getPayload({ config: configPromise });
 
   const { docs } = await payload.find({
     collection: 'projects',
     where: { slug: { equals: slug }, status: { equals: 'published' } },
     limit: 1,
     depth: 2,
-  })
+  });
 
-  const project = docs[0]
-  if (!project) notFound()
+  const project = docs[0];
+  if (!project) notFound();
 
-  const image = project.featuredImage as Media | null
+  const image = project.featuredImage as Media | null;
   const industries = (project.industries ?? []).filter(
-    (ind): ind is Industry => typeof ind !== 'string'
-  )
-  const technologies = project.technologies ?? []
+    (ind): ind is Industry => typeof ind !== 'string',
+  );
+  const technologies = project.technologies ?? [];
 
   return (
     <main id="main-content" className="min-h-screen pt-24 pb-32">
@@ -64,10 +64,25 @@ export default async function ProjectDetailPage({ params }: { params: Params }) 
           href="/projects"
           className="inline-flex items-center gap-2 font-mono text-xs text-cyber-muted hover:text-brand-light transition-colors duration-300 mb-8 group"
         >
-          <span className="transition-transform duration-300 group-hover:-translate-x-1" aria-hidden="true">&larr;</span>
-          <span className="text-cyber-faint group-hover:text-cyber-muted transition-colors" aria-hidden="true">[</span>
+          <span
+            className="transition-transform duration-300 group-hover:-translate-x-1"
+            aria-hidden="true"
+          >
+            &larr;
+          </span>
+          <span
+            className="text-cyber-faint group-hover:text-cyber-muted transition-colors"
+            aria-hidden="true"
+          >
+            [
+          </span>
           BACK TO PROJECTS
-          <span className="text-cyber-faint group-hover:text-cyber-muted transition-colors" aria-hidden="true">]</span>
+          <span
+            className="text-cyber-faint group-hover:text-cyber-muted transition-colors"
+            aria-hidden="true"
+          >
+            ]
+          </span>
         </Link>
 
         {/* Hero image */}
@@ -125,7 +140,7 @@ export default async function ProjectDetailPage({ params }: { params: Params }) 
                 >
                   {tech.technology}
                 </span>
-              ) : null
+              ) : null,
             )}
           </div>
 
@@ -153,37 +168,37 @@ export default async function ProjectDetailPage({ params }: { params: Params }) 
         )}
       </div>
     </main>
-  )
+  );
 }
 
 function ProjectContent({ content }: { content: NonNullable<Project['content']> }) {
   // Render Lexical rich text as simple HTML paragraphs
   // For full Lexical rendering, use @payloadcms/richtext-lexical/react
-  const nodes = content.root?.children ?? []
+  const nodes = content.root?.children ?? [];
 
   return (
     <>
       {nodes.map((node, i) => {
         if (node.type === 'paragraph') {
-          const text = extractText(node)
-          if (!text) return null
-          return <p key={i}>{text}</p>
+          const text = extractText(node);
+          if (!text) return null;
+          return <p key={i}>{text}</p>;
         }
         if (node.type === 'heading') {
-          const text = extractText(node)
-          const Tag = (node as any).tag ?? 'h2'
-          return <Tag key={i}>{text}</Tag>
+          const text = extractText(node);
+          const Tag = (node as any).tag ?? 'h2';
+          return <Tag key={i}>{text}</Tag>;
         }
-        return null
+        return null;
       })}
     </>
-  )
+  );
 }
 
 function extractText(node: any): string {
-  if (node.text) return node.text
+  if (node.text) return node.text;
   if (node.children) {
-    return node.children.map(extractText).join('')
+    return node.children.map(extractText).join('');
   }
-  return ''
+  return '';
 }

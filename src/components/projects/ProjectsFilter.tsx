@@ -1,59 +1,63 @@
-'use client'
+'use client';
 
-import { useState, useMemo } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { cn } from '@/lib/utils'
-import AnimatedReveal from '@/components/ui/AnimatedReveal'
-import type { Project, Industry, Media } from '@/payload-types'
+import { useState, useMemo } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { cn } from '@/lib/utils';
+import AnimatedReveal from '@/components/ui/AnimatedReveal';
+import type { Project, Industry, Media } from '@/payload-types';
 
 interface ProjectsFilterProps {
-  projects: Project[]
-  industries: string[]
-  technologies: string[]
+  projects: Project[];
+  industries: string[];
+  technologies: string[];
 }
 
-export default function ProjectsFilter({ projects, industries, technologies }: ProjectsFilterProps) {
-  const [activeIndustries, setActiveIndustries] = useState<Set<string>>(new Set())
-  const [activeTechnologies, setActiveTechnologies] = useState<Set<string>>(new Set())
+export default function ProjectsFilter({
+  projects,
+  industries,
+  technologies,
+}: ProjectsFilterProps) {
+  const [activeIndustries, setActiveIndustries] = useState<Set<string>>(new Set());
+  const [activeTechnologies, setActiveTechnologies] = useState<Set<string>>(new Set());
 
   const toggleIndustry = (name: string) => {
     setActiveIndustries((prev) => {
-      const next = new Set(prev)
-      if (next.has(name)) next.delete(name)
-      else next.add(name)
-      return next
-    })
-  }
+      const next = new Set(prev);
+      if (next.has(name)) next.delete(name);
+      else next.add(name);
+      return next;
+    });
+  };
 
   const toggleTechnology = (name: string) => {
     setActiveTechnologies((prev) => {
-      const next = new Set(prev)
-      if (next.has(name)) next.delete(name)
-      else next.add(name)
-      return next
-    })
-  }
+      const next = new Set(prev);
+      if (next.has(name)) next.delete(name);
+      else next.add(name);
+      return next;
+    });
+  };
 
   const filtered = useMemo(() => {
     return projects.filter((project) => {
       if (activeIndustries.size > 0) {
         const projectIndustries = (project.industries ?? [])
           .filter((ind): ind is Industry => typeof ind !== 'string')
-          .map((ind) => ind.name)
-        if (!projectIndustries.some((name) => activeIndustries.has(name))) return false
+          .map((ind) => ind.name);
+        if (!projectIndustries.some((name) => activeIndustries.has(name))) return false;
       }
       if (activeTechnologies.size > 0) {
         const projectTechs = (project.technologies ?? [])
           .map((t) => t.technology)
-          .filter(Boolean) as string[]
-        if (!projectTechs.some((name) => activeTechnologies.has(name))) return false
+          .filter(Boolean) as string[];
+        if (!projectTechs.some((name) => activeTechnologies.has(name))) return false;
       }
-      return true
-    })
-  }, [projects, activeIndustries, activeTechnologies])
+      return true;
+    });
+  }, [projects, activeIndustries, activeTechnologies]);
 
-  const hasFilters = activeIndustries.size > 0 || activeTechnologies.size > 0
+  const hasFilters = activeIndustries.size > 0 || activeTechnologies.size > 0;
 
   return (
     <>
@@ -74,7 +78,7 @@ export default function ProjectsFilter({ projects, industries, technologies }: P
                       'font-mono text-[11px] uppercase tracking-wider px-3 py-1 border transition-all duration-300',
                       activeIndustries.has(name)
                         ? 'border-brand text-brand-light bg-brand/10'
-                        : 'border-cyber-border text-cyber-muted hover:border-cyber-muted/50 hover:text-cyber-heading'
+                        : 'border-cyber-border text-cyber-muted hover:border-cyber-muted/50 hover:text-cyber-heading',
                     )}
                   >
                     {name}
@@ -98,7 +102,7 @@ export default function ProjectsFilter({ projects, industries, technologies }: P
                       'font-mono text-[11px] uppercase tracking-wider px-3 py-1 border transition-all duration-300',
                       activeTechnologies.has(name)
                         ? 'border-cyber-cyan text-cyber-cyan bg-cyber-cyan/10'
-                        : 'border-cyber-border text-cyber-muted hover:border-cyber-muted/50 hover:text-cyber-heading'
+                        : 'border-cyber-border text-cyber-muted hover:border-cyber-muted/50 hover:text-cyber-heading',
                     )}
                   >
                     {name}
@@ -111,8 +115,8 @@ export default function ProjectsFilter({ projects, industries, technologies }: P
           {hasFilters && (
             <button
               onClick={() => {
-                setActiveIndustries(new Set())
-                setActiveTechnologies(new Set())
+                setActiveIndustries(new Set());
+                setActiveTechnologies(new Set());
               }}
               className="font-mono text-[11px] uppercase tracking-wider text-cyber-faint hover:text-cyber-heading transition-colors duration-300"
             >
@@ -130,11 +134,11 @@ export default function ProjectsFilter({ projects, industries, technologies }: P
       {/* Project grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filtered.map((project, index) => {
-          const image = project.featuredImage as Media | null
+          const image = project.featuredImage as Media | null;
           const projectIndustries = (project.industries ?? []).filter(
-            (ind): ind is Industry => typeof ind !== 'string'
-          )
-          const techs = project.technologies ?? []
+            (ind): ind is Industry => typeof ind !== 'string',
+          );
+          const techs = project.technologies ?? [];
 
           return (
             <AnimatedReveal key={project.id} delay={0.05 * index}>
@@ -146,7 +150,7 @@ export default function ProjectsFilter({ projects, industries, technologies }: P
                   'cyber-corners cyber-border-glow',
                   'transition-all duration-500 ease-out',
                   'hover:border-cyber-muted/30',
-                  'h-full overflow-hidden'
+                  'h-full overflow-hidden',
                 )}
               >
                 {image?.url && (
@@ -158,7 +162,10 @@ export default function ProjectsFilter({ projects, industries, technologies }: P
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-cyber-surface via-transparent to-transparent" aria-hidden="true" />
+                    <div
+                      className="absolute inset-0 bg-gradient-to-t from-cyber-surface via-transparent to-transparent"
+                      aria-hidden="true"
+                    />
                     <div className="absolute inset-0 scanlines opacity-20" aria-hidden="true" />
                   </div>
                 )}
@@ -205,22 +212,24 @@ export default function ProjectsFilter({ projects, industries, technologies }: P
                           >
                             {tech.technology}
                           </span>
-                        ) : null
+                        ) : null,
                       )}
                     </div>
                   )}
                 </div>
               </Link>
             </AnimatedReveal>
-          )
+          );
         })}
       </div>
 
       {filtered.length === 0 && (
         <div className="text-center py-20">
-          <p className="font-mono text-sm text-cyber-faint">No projects match the selected filters.</p>
+          <p className="font-mono text-sm text-cyber-faint">
+            No projects match the selected filters.
+          </p>
         </div>
       )}
     </>
-  )
+  );
 }

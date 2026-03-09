@@ -1,18 +1,18 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import { useEffect } from 'react'
+import Link from 'next/link';
+import { useEffect } from 'react';
 
 export default function Error({
   error,
   reset,
 }: {
-  error: Error & { digest?: string }
-  reset: () => void
+  error: Error & { digest?: string };
+  reset: () => void;
 }) {
   useEffect(() => {
-    console.error('[KALEBTEC_ERROR]', error)
-  }, [error])
+    console.error('[KALEBTEC_ERROR]', error);
+  }, [error]);
 
   return (
     <section
@@ -52,9 +52,7 @@ export default function Error({
       <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-2xl">
         {/* Error label */}
         <div className="flex items-center gap-2 mb-6">
-          <span className="font-mono text-sm text-red-400 tracking-wider">
-            [SYSTEM_FAULT]
-          </span>
+          <span className="font-mono text-sm text-red-400 tracking-wider">[SYSTEM_FAULT]</span>
           <span className="font-mono text-sm text-cyber-faint/50">//</span>
           <span className="font-mono text-sm text-cyber-muted tracking-wider uppercase">
             RUNTIME_EXCEPTION
@@ -87,8 +85,7 @@ export default function Error({
         <div className="mt-8 w-full max-w-md border border-red-500/20 bg-cyber-surface p-4 text-left cyber-corners">
           <div className="font-mono text-[11px] text-cyber-faint space-y-1.5">
             <p>
-              <span className="text-cyber-muted">[DIAG]</span>{' '}
-              Process execution halted
+              <span className="text-cyber-muted">[DIAG]</span> Process execution halted
             </p>
             <p>
               <span className="text-red-400">[FAIL]</span>{' '}
@@ -101,12 +98,9 @@ export default function Error({
               </p>
             )}
             <p>
-              <span className="text-brand-light">[INFO]</span>{' '}
-              Recovery protocol available
+              <span className="text-brand-light">[INFO]</span> Recovery protocol available
             </p>
-            <p className="text-cyber-faint/60 typing-cursor">
-              Awaiting operator action
-            </p>
+            <p className="text-cyber-faint/60 typing-cursor">Awaiting operator action</p>
           </div>
         </div>
 
@@ -158,5 +152,5 @@ export default function Error({
         </div>
       </div>
     </section>
-  )
+  );
 }

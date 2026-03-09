@@ -1,4 +1,4 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig } from 'payload';
 
 const slugify = (value: string): string =>
   value
@@ -6,7 +6,7 @@ const slugify = (value: string): string =>
     .replace(/[^a-z0-9\s-]/g, '')
     .replace(/[\s]+/g, '-')
     .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '')
+    .replace(/^-|-$/g, '');
 
 export const Projects: CollectionConfig = {
   slug: 'projects',
@@ -25,16 +25,16 @@ export const Projects: CollectionConfig = {
       ({ data }) => {
         // Auto-generate slug from title if slug is empty
         if (data?.title && !data.slug) {
-          data.slug = slugify(data.title)
+          data.slug = slugify(data.title);
         }
-        return data
+        return data;
       },
       ({ data }) => {
         // Auto-set publishedDate when status is 'published' and date not already set
         if (data?.status === 'published' && !data.publishedDate) {
-          data.publishedDate = new Date().toISOString()
+          data.publishedDate = new Date().toISOString();
         }
-        return data
+        return data;
       },
       async ({ data, req }) => {
         // Auto-generate order if not set
@@ -43,14 +43,14 @@ export const Projects: CollectionConfig = {
             collection: 'projects',
             sort: '-order',
             limit: 1,
-          })
+          });
           const maxOrder =
             result.docs.length > 0 && typeof result.docs[0].order === 'number'
               ? result.docs[0].order
-              : 0
-          data.order = maxOrder + 1
+              : 0;
+          data.order = maxOrder + 1;
         }
-        return data
+        return data;
       },
     ],
   },
@@ -128,4 +128,4 @@ export const Projects: CollectionConfig = {
       },
     },
   ],
-}
+};

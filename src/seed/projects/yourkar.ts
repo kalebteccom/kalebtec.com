@@ -1,5 +1,5 @@
-import { buildRichText, h2, h3, p, ul } from '../lexical'
-import type { ProjectSeedData } from '../types'
+import { buildRichText, h2, h3, p, ul } from '../lexical';
+import type { ProjectSeedData } from '../types';
 
 export const yourkar: ProjectSeedData = {
   title: 'Yourkar Car Rental Platform',
@@ -17,23 +17,23 @@ export const yourkar: ProjectSeedData = {
   content: buildRichText([
     h2('Overview'),
     p(
-      'Yourkar is a rent-a-car broker operating in the Canary Islands. The project involved building both the web platform and a companion Android app to streamline fleet operations and bookings.'
+      'Yourkar is a rent-a-car broker operating in the Canary Islands. The project involved building both the web platform and a companion Android app to streamline fleet operations and bookings.',
     ),
 
     h2('Web Platform'),
 
     h3('Comprehensive Management System'),
     p(
-      'Architected, led, and developed a comprehensive website for managing contracts, agreements, and fleet operations using Vue.js and real-time WebSocket communication.'
+      'Architected, led, and developed a comprehensive website for managing contracts, agreements, and fleet operations using Vue.js and real-time WebSocket communication.',
     ),
 
     h2('Mobile Application'),
 
     h3('Android Native App'),
     ul([
-      'Developed an Android native mobile application integrated with Yourkar\'s platform',
+      "Developed an Android native mobile application integrated with Yourkar's platform",
       'Enabled rent-a-car companies to manage contracts and handle bookings on the go',
       'Integrated BLE device support for printing documents directly from the app',
     ]),
   ]),
-}
+};

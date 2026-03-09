@@ -1,20 +1,20 @@
-import { buildConfig } from 'payload'
-import { mongooseAdapter } from '@payloadcms/db-mongodb'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import { s3Storage } from '@payloadcms/storage-s3'
-import sharp from 'sharp'
-import path from 'path'
-import { fileURLToPath } from 'url'
+import { buildConfig } from 'payload';
+import { mongooseAdapter } from '@payloadcms/db-mongodb';
+import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import { s3Storage } from '@payloadcms/storage-s3';
+import sharp from 'sharp';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-import { Users } from './collections/Users'
-import { Media } from './collections/Media'
-import { Projects } from './collections/Projects'
-import { Industries } from './collections/Industries'
+import { Users } from './collections/Users';
+import { Media } from './collections/Media';
+import { Projects } from './collections/Projects';
+import { Industries } from './collections/Industries';
 
-const filename = fileURLToPath(import.meta.url)
-const dirname = path.dirname(filename)
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
 
-const serverURL = process.env.NEXT_PUBLIC_SITE_URL || ''
+const serverURL = process.env.NEXT_PUBLIC_SITE_URL || '';
 
 export default buildConfig({
   serverURL,
@@ -50,4 +50,4 @@ export default buildConfig({
       ...(process.env.S3_BUCKET ? {} : { enabled: false }),
     }),
   ],
-})
+});

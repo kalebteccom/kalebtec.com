@@ -1,5 +1,5 @@
-import { buildRichText, h2, h3, p, ul } from '../lexical'
-import type { ProjectSeedData } from '../types'
+import { buildRichText, h2, h3, p, ul } from '../lexical';
+import type { ProjectSeedData } from '../types';
 
 export const fanfestV2: ProjectSeedData = {
   title: 'FanFest 2.0 Platform',
@@ -27,24 +27,24 @@ export const fanfestV2: ProjectSeedData = {
   content: buildRichText([
     h2('Overview'),
     p(
-      'Version 2.0 of the FanFest platform brought real-time event capabilities to fans across all partner organizations, from major football clubs to NFL franchises.'
+      'Version 2.0 of the FanFest platform brought real-time event capabilities to fans across all partner organizations, from major football clubs to NFL franchises.',
     ),
 
     h2('Key Contributions'),
 
     h3('Platform Development & Deployment'),
     p(
-      'Developed and deployed the platform for real-time events utilizing Vue.js, PhenixRTS for low-latency streaming, and Socket.IO for real-time bidirectional communication.'
+      'Developed and deployed the platform for real-time events utilizing Vue.js, PhenixRTS for low-latency streaming, and Socket.IO for real-time bidirectional communication.',
     ),
 
     h3('Crypto Wallet Integrations'),
     p(
-      'Architected and developed integrations with crypto wallets in collaboration with the CEO, enabling token-gated fan experiences with partners like PSG, Manchester City, and The 49ers.'
+      'Architected and developed integrations with crypto wallets in collaboration with the CEO, enabling token-gated fan experiences with partners like PSG, Manchester City, and The 49ers.',
     ),
 
     h3('Screen-Sharing for Producers'),
     p(
-      'Researched and developed screen-sharing capabilities for producers during live shows, integrating streams into simulcasts using Docker and GCP App Engine.'
+      'Researched and developed screen-sharing capabilities for producers during live shows, integrating streams into simulcasts using Docker and GCP App Engine.',
     ),
 
     h3('Platform Modernization'),
@@ -55,4 +55,4 @@ export const fanfestV2: ProjectSeedData = {
       'Triaged issues using LogRocket, GCP Cloud Logging, and New Relic',
     ]),
   ]),
-}
+};

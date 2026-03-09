@@ -1,5 +1,5 @@
-import { buildRichText, h2, h3, p, ul } from '../lexical'
-import type { ProjectSeedData } from '../types'
+import { buildRichText, h2, h3, p, ul } from '../lexical';
+import type { ProjectSeedData } from '../types';
 
 export const humantelligence: ProjectSeedData = {
   title: 'Humantelligence Platform Modernization',
@@ -26,14 +26,14 @@ export const humantelligence: ProjectSeedData = {
   content: buildRichText([
     h2('Overview'),
     p(
-      'Humantelligence provides people analytics and team collaboration tools used by enterprises worldwide. Rowin worked with the company across two separate engagements spanning five years.'
+      'Humantelligence provides people analytics and team collaboration tools used by enterprises worldwide. Rowin worked with the company across two separate engagements spanning five years.',
     ),
 
     h2('Platform Architecture (2023)'),
 
     h3('Mono-Repo Migration'),
     p(
-      'Developed a future-proof architecture using PNPM to set up a mono-repo, segregating different mini-apps from the core platform with integrated linting and formatting tools.'
+      'Developed a future-proof architecture using PNPM to set up a mono-repo, segregating different mini-apps from the core platform with integrated linting and formatting tools.',
     ),
 
     h3('Build System Modernization'),
@@ -45,24 +45,24 @@ export const humantelligence: ProjectSeedData = {
 
     h3('Team Coaching'),
     p(
-      'Coached the team into modern React practices, including caching with SWR and performance profiling techniques.'
+      'Coached the team into modern React practices, including caching with SWR and performance profiling techniques.',
     ),
 
     h2('Mobile & Browser Extensions (2018–2020)'),
 
     h3('Cross-Platform Mobile App'),
     p(
-      'Designed and developed a cross-platform, client-facing mobile application using React Native and MS CodePush for over-the-air updates.'
+      'Designed and developed a cross-platform, client-facing mobile application using React Native and MS CodePush for over-the-air updates.',
     ),
 
     h3('EQ-everywhere Browser Extensions'),
     p(
-      'Designed and developed EQ-everywhere integrations with mailboxes on modern browsers to provide tailored communication and engagement tips, utilizing React.js, content scripts, and an event-driven architecture.'
+      'Designed and developed EQ-everywhere integrations with mailboxes on modern browsers to provide tailored communication and engagement tips, utilizing React.js, content scripts, and an event-driven architecture.',
     ),
 
     h3('Rails to React Migration'),
     p(
-      'Planned and led a long-term migration of a rich UI/UX Ruby on Rails front-end to React.js, enhancing performance and maintainability.'
+      'Planned and led a long-term migration of a rich UI/UX Ruby on Rails front-end to React.js, enhancing performance and maintainability.',
     ),
   ]),
-}
+};

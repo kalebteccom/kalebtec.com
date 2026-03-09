@@ -1,24 +1,24 @@
-'use client'
+'use client';
 
-import Image from 'next/image'
-import Link from 'next/link'
-import AnimatedReveal from '@/components/ui/AnimatedReveal'
-import { cn } from '@/lib/utils'
-import type { Project, Media, Industry } from '@/payload-types'
+import Image from 'next/image';
+import Link from 'next/link';
+import AnimatedReveal from '@/components/ui/AnimatedReveal';
+import { cn } from '@/lib/utils';
+import type { Project, Media, Industry } from '@/payload-types';
 
 interface ProjectsSectionClientProps {
-  projects: Project[]
+  projects: Project[];
 }
 
 export default function ProjectsSectionClient({ projects }: ProjectsSectionClientProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {projects.map((project, index) => {
-        const image = project.featuredImage as Media | null
+        const image = project.featuredImage as Media | null;
         const industries = (project.industries ?? []).filter(
-          (ind): ind is Industry => typeof ind !== 'string'
-        )
-        const technologies = project.technologies ?? []
+          (ind): ind is Industry => typeof ind !== 'string',
+        );
+        const technologies = project.technologies ?? [];
 
         return (
           <AnimatedReveal key={project.id} delay={0.1 * index}>
@@ -30,7 +30,7 @@ export default function ProjectsSectionClient({ projects }: ProjectsSectionClien
                 'cyber-corners cyber-border-glow',
                 'transition-all duration-500 ease-out',
                 'hover:border-cyber-muted/30',
-                'h-full overflow-hidden'
+                'h-full overflow-hidden',
               )}
             >
               {/* Featured image */}
@@ -43,7 +43,10 @@ export default function ProjectsSectionClient({ projects }: ProjectsSectionClien
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-cyber-surface via-transparent to-transparent" aria-hidden="true" />
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t from-cyber-surface via-transparent to-transparent"
+                    aria-hidden="true"
+                  />
                   <div className="absolute inset-0 scanlines opacity-20" aria-hidden="true" />
                 </div>
               )}
@@ -51,7 +54,10 @@ export default function ProjectsSectionClient({ projects }: ProjectsSectionClien
               {/* Card content */}
               <div className="p-6 md:p-8">
                 {/* Card index */}
-                <span className="absolute top-4 right-4 font-mono text-[11px] text-cyber-faint/40 z-10" aria-hidden="true">
+                <span
+                  className="absolute top-4 right-4 font-mono text-[11px] text-cyber-faint/40 z-10"
+                  aria-hidden="true"
+                >
                   [{String(index + 1).padStart(2, '0')}]
                 </span>
 
@@ -98,15 +104,15 @@ export default function ProjectsSectionClient({ projects }: ProjectsSectionClien
                         >
                           {tech.technology}
                         </span>
-                      ) : null
+                      ) : null,
                     )}
                   </div>
                 )}
               </div>
             </Link>
           </AnimatedReveal>
-        )
+        );
       })}
     </div>
-  )
+  );
 }

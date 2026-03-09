@@ -1,12 +1,12 @@
-'use client'
+'use client';
 
-import { useState, useEffect, useRef } from 'react'
-import { motion, useMotionValueEvent, useScroll } from 'framer-motion'
-import Image from 'next/image'
-import Link from 'next/link'
-import { cn } from '@/lib/utils'
-import MobileMenu from './MobileMenu'
-import ThemeToggle from '@/components/ui/ThemeToggle'
+import { useState, useEffect, useRef } from 'react';
+import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import { cn } from '@/lib/utils';
+import MobileMenu from './MobileMenu';
+import ThemeToggle from '@/components/ui/ThemeToggle';
 
 const navLinks = [
   { href: '/#about', label: 'ABOUT' },
@@ -14,29 +14,29 @@ const navLinks = [
   { href: '/projects', label: 'PROJECTS' },
   { href: '/#team', label: 'TEAM' },
   { href: '/#contact', label: 'CONTACT' },
-]
+];
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const { scrollY } = useScroll()
-  const hamburgerRef = useRef<HTMLButtonElement>(null)
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { scrollY } = useScroll();
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    setScrolled(latest > 20)
-  })
+    setScrolled(latest > 20);
+  });
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = ''
+      document.body.style.overflow = '';
     }
     return () => {
-      document.body.style.overflow = ''
-    }
-  }, [mobileMenuOpen])
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
 
   return (
     <>
@@ -46,11 +46,14 @@ export default function Header() {
           'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
           scrolled
             ? 'bg-cyber-bg/90 backdrop-blur-lg border-b border-cyber-border'
-            : 'bg-transparent border-b border-transparent'
+            : 'bg-transparent border-b border-transparent',
         )}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] }}
+        transition={{
+          duration: 0.6,
+          ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
+        }}
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
@@ -76,9 +79,13 @@ export default function Header() {
                   href={link.href}
                   className="group font-mono text-xs uppercase tracking-[0.2em] text-cyber-muted hover:text-brand-light transition-all duration-300"
                 >
-                  <span className="text-cyber-faint group-hover:text-cyber-muted transition-colors duration-300">[</span>
+                  <span className="text-cyber-faint group-hover:text-cyber-muted transition-colors duration-300">
+                    [
+                  </span>
                   <span className="group-hover:neon-glow">{link.label}</span>
-                  <span className="text-cyber-faint group-hover:text-cyber-muted transition-colors duration-300">]</span>
+                  <span className="text-cyber-faint group-hover:text-cyber-muted transition-colors duration-300">
+                    ]
+                  </span>
                 </Link>
               ))}
             </nav>
@@ -122,5 +129,5 @@ export default function Header() {
         triggerRef={hamburgerRef}
       />
     </>
-  )
+  );
 }

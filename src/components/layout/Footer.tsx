@@ -1,5 +1,5 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from 'next/image';
+import Link from 'next/link';
 
 const navLinks = [
   { href: '/#about', label: 'About' },
@@ -7,7 +7,7 @@ const navLinks = [
   { href: '/projects', label: 'Projects' },
   { href: '/#team', label: 'Team' },
   { href: '/#contact', label: 'Contact' },
-]
+];
 
 export default function Footer() {
   return (
@@ -144,9 +144,7 @@ export default function Footer() {
             <p className="font-mono text-xs text-cyber-faint">
               &copy; {new Date().getFullYear()} Kalebtec
             </p>
-            <p className="font-mono text-xs text-cyber-faint">
-              Rowin &amp; Mari Hernandez
-            </p>
+            <p className="font-mono text-xs text-cyber-faint">Rowin &amp; Mari Hernandez</p>
           </div>
           {/* HUD-style markers (decorative) */}
           <div className="flex items-center gap-4" aria-hidden="true">
@@ -161,5 +159,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

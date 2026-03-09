@@ -1,8 +1,8 @@
-'use client'
+'use client';
 
-import { useRef, useMemo } from 'react'
-import { useFrame } from '@react-three/fiber'
-import * as THREE from 'three'
+import { useRef, useMemo } from 'react';
+import { useFrame } from '@react-three/fiber';
+import * as THREE from 'three';
 
 // A GLSL shader grid that scrolls infinitely -- cyberpunk style
 const vertexShader = `
@@ -13,7 +13,7 @@ void main() {
   vPosition = position;
   gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
 }
-`
+`;
 
 const fragmentShader = `
 uniform float u_time;
@@ -42,38 +42,41 @@ void main() {
 
   gl_FragColor = vec4(u_color, alpha);
 }
-`
+`;
 
 interface GridFloorProps {
-  isDark: boolean
+  isDark: boolean;
 }
 
 export default function GridFloor({ isDark }: GridFloorProps) {
-  const meshRef = useRef<THREE.Mesh>(null)
-  const targetAlpha = useRef(isDark ? 0.3 : 0.2)
+  const meshRef = useRef<THREE.Mesh>(null);
+  const targetAlpha = useRef(isDark ? 0.3 : 0.2);
 
-  const uniforms = useMemo(() => ({
-    u_time: { value: 0 },
-    u_color: { value: new THREE.Color('#8000FF') },
-    u_alpha: { value: isDark ? 0.3 : 0.2 },
-  }), [])
+  const uniforms = useMemo(
+    () => ({
+      u_time: { value: 0 },
+      u_color: { value: new THREE.Color('#8000FF') },
+      u_alpha: { value: isDark ? 0.3 : 0.2 },
+    }),
+    [],
+  );
 
   // Update targets when theme changes
-  targetAlpha.current = isDark ? 0.3 : 0.2
+  targetAlpha.current = isDark ? 0.3 : 0.2;
 
   useFrame((state) => {
-    if (!meshRef.current) return
-    const mat = meshRef.current.material as THREE.ShaderMaterial
-    mat.uniforms.u_time.value = state.clock.elapsedTime
+    if (!meshRef.current) return;
+    const mat = meshRef.current.material as THREE.ShaderMaterial;
+    mat.uniforms.u_time.value = state.clock.elapsedTime;
 
     // Smooth transition for alpha
-    const current = mat.uniforms.u_alpha.value
-    mat.uniforms.u_alpha.value += (targetAlpha.current - current) * 0.04
+    const current = mat.uniforms.u_alpha.value;
+    mat.uniforms.u_alpha.value += (targetAlpha.current - current) * 0.04;
 
     // In light mode, use a darker purple for better contrast
-    const targetColor = isDark ? '#8000FF' : '#6600cc'
-    mat.uniforms.u_color.value.lerp(new THREE.Color(targetColor), 0.04)
-  })
+    const targetColor = isDark ? '#8000FF' : '#6600cc';
+    mat.uniforms.u_color.value.lerp(new THREE.Color(targetColor), 0.04);
+  });
 
   return (
     <mesh ref={meshRef} rotation={[-Math.PI / 2.5, 0, 0]} position={[0, -2, -3]}>
@@ -87,5 +90,5 @@ export default function GridFloor({ isDark }: GridFloorProps) {
         side={THREE.DoubleSide}
       />
     </mesh>
-  )
+  );
 }

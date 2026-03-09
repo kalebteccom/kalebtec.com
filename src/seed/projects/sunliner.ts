@@ -1,5 +1,5 @@
-import { buildRichText, h2, h3, p, ul } from '../lexical'
-import type { ProjectSeedData } from '../types'
+import { buildRichText, h2, h3, p, ul } from '../lexical';
+import type { ProjectSeedData } from '../types';
 
 export const sunliner: ProjectSeedData = {
   title: 'Sunliner Travel Platform',
@@ -17,19 +17,19 @@ export const sunliner: ProjectSeedData = {
   content: buildRichText([
     h2('Overview'),
     p(
-      'Sunliner is a prominent tour operator company in the Netherlands, offering vacation packages and travel experiences. The platform needed a complete frontend overhaul to support their growing user base and meet modern performance expectations.'
+      'Sunliner is a prominent tour operator company in the Netherlands, offering vacation packages and travel experiences. The platform needed a complete frontend overhaul to support their growing user base and meet modern performance expectations.',
     ),
 
     h2('Key Contributions'),
 
     h3('Performance Optimization'),
     p(
-      'Resolved performance issues in the existing PHP application, improving image loading and overall site speed for a better user experience.'
+      'Resolved performance issues in the existing PHP application, improving image loading and overall site speed for a better user experience.',
     ),
 
     h3('Modern Frontend Architecture'),
     p(
-      'Architected, led, and developed a React.js front-end application with server-side rendering using Next.js and modern techniques to support a large user base in a scalable and performant way.'
+      'Architected, led, and developed a React.js front-end application with server-side rendering using Next.js and modern techniques to support a large user base in a scalable and performant way.',
     ),
 
     h3('Team & Stakeholder Management'),
@@ -41,4 +41,4 @@ export const sunliner: ProjectSeedData = {
       'Ensured user flows and shopping experiences were tailored to the Netherlands market',
     ]),
   ]),
-}
+};

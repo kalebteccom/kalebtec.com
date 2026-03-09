@@ -1,17 +1,17 @@
-'use client'
+'use client';
 
-import { Canvas, useThree } from '@react-three/fiber'
-import { Suspense, useEffect, useState } from 'react'
-import * as THREE from 'three'
-import { useAtomValue } from 'jotai'
-import { resolvedThemeAtom } from '@/lib/theme'
-import MeshGradient from './MeshGradient'
-import GridFloor from './GridFloor'
-import FloatingGeometry from './FloatingGeometry'
-import ParticleField from './ParticleField'
+import { Canvas, useThree } from '@react-three/fiber';
+import { Suspense, useEffect, useState } from 'react';
+import * as THREE from 'three';
+import { useAtomValue } from 'jotai';
+import { resolvedThemeAtom } from '@/lib/theme';
+import MeshGradient from './MeshGradient';
+import GridFloor from './GridFloor';
+import FloatingGeometry from './FloatingGeometry';
+import ParticleField from './ParticleField';
 
-const DARK_BG = '#09090f'
-const LIGHT_BG = '#d8d9e4'
+const DARK_BG = '#09090f';
+const LIGHT_BG = '#d8d9e4';
 
 // Cyberpunk angular shape configurations
 const SHAPES = [
@@ -84,7 +84,7 @@ const SHAPES = [
     position: [1.5, 0.3, -2.8] as [number, number, number],
     geometryType: 'box' as const,
     scale: 0.25,
-    rotationSpeed: [0.006, 0.010, 0.007] as [number, number, number],
+    rotationSpeed: [0.006, 0.01, 0.007] as [number, number, number],
     bobSpeed: 1.1,
     bobAmount: 0.08,
     opacity: 0.3,
@@ -93,21 +93,21 @@ const SHAPES = [
     edgeColor: '#00ffff',
     edgeOpacity: 0.5,
   },
-]
+];
 
 /** Syncs the Canvas background and fog color with the current theme */
 function ThemeSync({ isDark }: { isDark: boolean }) {
-  const { scene, gl } = useThree()
+  const { scene, gl } = useThree();
 
   useEffect(() => {
-    const bg = isDark ? DARK_BG : LIGHT_BG
-    gl.setClearColor(bg)
+    const bg = isDark ? DARK_BG : LIGHT_BG;
+    gl.setClearColor(bg);
     if (scene.fog instanceof THREE.Fog) {
-      scene.fog.color.set(bg)
+      scene.fog.color.set(bg);
     }
-  }, [isDark, scene, gl])
+  }, [isDark, scene, gl]);
 
-  return null
+  return null;
 }
 
 function SceneContent({ isDark }: { isDark: boolean }) {
@@ -123,9 +123,27 @@ function SceneContent({ isDark }: { isDark: boolean }) {
 
       {/* Lighting — adjusted per theme */}
       <ambientLight intensity={isDark ? 0.12 : 0.35} color="#ffffff" />
-      <pointLight position={[5, 5, 5]} intensity={isDark ? 0.8 : 0.7} color="#8000FF" distance={20} decay={2} />
-      <pointLight position={[-5, -3, 3]} intensity={isDark ? 0.5 : 0.45} color="#00ffff" distance={15} decay={2} />
-      <pointLight position={[0, 0, 5]} intensity={isDark ? 0.15 : 0.25} color="#ffffff" distance={12} decay={2} />
+      <pointLight
+        position={[5, 5, 5]}
+        intensity={isDark ? 0.8 : 0.7}
+        color="#8000FF"
+        distance={20}
+        decay={2}
+      />
+      <pointLight
+        position={[-5, -3, 3]}
+        intensity={isDark ? 0.5 : 0.45}
+        color="#00ffff"
+        distance={15}
+        decay={2}
+      />
+      <pointLight
+        position={[0, 0, 5]}
+        intensity={isDark ? 0.15 : 0.25}
+        color="#ffffff"
+        distance={12}
+        decay={2}
+      />
 
       {/* Fog for depth */}
       <fog attach="fog" args={[isDark ? DARK_BG : LIGHT_BG, isDark ? 5 : 6, isDark ? 14 : 16]} />
@@ -153,18 +171,18 @@ function SceneContent({ isDark }: { isDark: boolean }) {
       {/* Layer 4: Cyberpunk square particles */}
       <ParticleField count={200} radius={7} size={0.025} isDark={isDark} />
     </>
-  )
+  );
 }
 
 export default function HeroScene() {
-  const resolvedTheme = useAtomValue(resolvedThemeAtom)
-  const isDark = resolvedTheme === 'dark'
-  const [mounted, setMounted] = useState(false)
+  const resolvedTheme = useAtomValue(resolvedThemeAtom);
+  const isDark = resolvedTheme === 'dark';
+  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => setMounted(true), [])
+  useEffect(() => setMounted(true), []);
 
   // Default to dark on SSR / before mount
-  const themeDark = mounted ? isDark : true
+  const themeDark = mounted ? isDark : true;
 
   return (
     <Canvas
@@ -189,5 +207,5 @@ export default function HeroScene() {
         <SceneContent isDark={themeDark} />
       </Suspense>
     </Canvas>
-  )
+  );
 }

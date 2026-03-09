@@ -1,5 +1,5 @@
-import { buildRichText, h2, h3, p, ul } from '../lexical'
-import type { ProjectSeedData } from '../types'
+import { buildRichText, h2, h3, p, ul } from '../lexical';
+import type { ProjectSeedData } from '../types';
 
 export const tricampa: ProjectSeedData = {
   title: 'Tricampa Smart Parking Platform',
@@ -17,14 +17,14 @@ export const tricampa: ProjectSeedData = {
   content: buildRichText([
     h2('Overview'),
     p(
-      'Tricampa is a smart parking solution that uses geolocation and QR codes to help drivers find their cars in parking lots and manage ticketing digitally.'
+      'Tricampa is a smart parking solution that uses geolocation and QR codes to help drivers find their cars in parking lots and manage ticketing digitally.',
     ),
 
     h2('Key Contributions'),
 
     h3('Web Platform'),
     p(
-      'Architected and developed the parking platform using Ruby on Rails and Vue.js, leveraging geolocation information to locate cars in parking lots and implementing QR codes for the ticketing system.'
+      'Architected and developed the parking platform using Ruby on Rails and Vue.js, leveraging geolocation information to locate cars in parking lots and implementing QR codes for the ticketing system.',
     ),
 
     h3('Android Mobile App'),
@@ -35,4 +35,4 @@ export const tricampa: ProjectSeedData = {
       'Scanned QR codes for identification and ticketing purposes',
     ]),
   ]),
-}
+};

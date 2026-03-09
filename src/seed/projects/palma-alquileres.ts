@@ -1,5 +1,5 @@
-import { buildRichText, h2, h3, p } from '../lexical'
-import type { ProjectSeedData } from '../types'
+import { buildRichText, h2, h3, p } from '../lexical';
+import type { ProjectSeedData } from '../types';
 
 export const palmaAlquileres: ProjectSeedData = {
   title: 'Palma Alquileres Real Estate Platform',
@@ -17,19 +17,19 @@ export const palmaAlquileres: ProjectSeedData = {
   content: buildRichText([
     h2('Overview'),
     p(
-      'Palma Alquileres is a real estate company in Colombia. The project involved building a performant property listing and sales platform from the ground up.'
+      'Palma Alquileres is a real estate company in Colombia. The project involved building a performant property listing and sales platform from the ground up.',
     ),
 
     h2('Key Contributions'),
 
     h3('Backend Architecture'),
     p(
-      'Architected and developed a high-performance real estate platform using Ruby on Rails and PostgreSQL, utilizing Redis for persistence and caching to optimize the client-facing website.'
+      'Architected and developed a high-performance real estate platform using Ruby on Rails and PostgreSQL, utilizing Redis for persistence and caching to optimize the client-facing website.',
     ),
 
     h3('Sales-Focused Frontend'),
     p(
-      'Developed a sales-focused, client-facing website seamlessly integrated with the Ruby on Rails API to enhance user experience and drive property sales.'
+      'Developed a sales-focused, client-facing website seamlessly integrated with the Ruby on Rails API to enhance user experience and drive property sales.',
     ),
   ]),
-}
+};

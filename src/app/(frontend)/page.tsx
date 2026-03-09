@@ -1,12 +1,12 @@
-import HeroSection from '@/components/hero/HeroSection'
-import AboutSection from '@/components/sections/AboutSection'
-import ServicesSection from '@/components/sections/ServicesSection'
-import ProjectsSection from '@/components/sections/ProjectsSection'
-import TeamSection from '@/components/sections/TeamSection'
-import ContactSection from '@/components/sections/ContactSection'
-import JsonLd from '@/components/seo/JsonLd'
+import HeroSection from '@/components/hero/HeroSection';
+import AboutSection from '@/components/sections/AboutSection';
+import ServicesSection from '@/components/sections/ServicesSection';
+import ProjectsSection from '@/components/sections/ProjectsSection';
+import TeamSection from '@/components/sections/TeamSection';
+import ContactSection from '@/components/sections/ContactSection';
+import JsonLd from '@/components/seo/JsonLd';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kalebtec.com'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kalebtec.com';
 
 export default function HomePage() {
   return (
@@ -44,8 +44,7 @@ export default function HomePage() {
           '@type': 'WebSite',
           name: 'Kalebtec',
           url: SITE_URL,
-          description:
-            'Expert technology consulting by Rowin and Mari Hernandez.',
+          description: 'Expert technology consulting by Rowin and Mari Hernandez.',
         }}
       />
       <HeroSection />
@@ -55,5 +54,5 @@ export default function HomePage() {
       <TeamSection />
       <ContactSection />
     </>
-  )
+  );
 }

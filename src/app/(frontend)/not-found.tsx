@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from 'next/link';
 
 export default function NotFound() {
   return (
@@ -39,9 +39,7 @@ export default function NotFound() {
       <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-2xl">
         {/* Error label */}
         <div className="flex items-center gap-2 mb-6">
-          <span className="font-mono text-sm text-cyber-faint tracking-wider">
-            [ERR]
-          </span>
+          <span className="font-mono text-sm text-cyber-faint tracking-wider">[ERR]</span>
           <span className="font-mono text-sm text-cyber-faint/50">//</span>
           <span className="font-mono text-sm text-cyber-muted tracking-wider uppercase">
             PAGE_NOT_FOUND
@@ -74,24 +72,18 @@ export default function NotFound() {
         <div className="mt-8 w-full max-w-md border border-cyber-border bg-cyber-surface p-4 text-left cyber-corners">
           <div className="font-mono text-[11px] text-cyber-faint space-y-1.5">
             <p>
-              <span className="text-cyber-muted">[TRACE]</span>{' '}
-              Routing lookup initiated...
+              <span className="text-cyber-muted">[TRACE]</span> Routing lookup initiated...
             </p>
             <p>
-              <span className="text-cyber-muted">[TRACE]</span>{' '}
-              Scanning registered paths...
+              <span className="text-cyber-muted">[TRACE]</span> Scanning registered paths...
             </p>
             <p>
-              <span className="text-brand-light">[WARN]</span>{' '}
-              No matching route found
+              <span className="text-brand-light">[WARN]</span> No matching route found
             </p>
             <p>
-              <span className="text-red-400">[FAIL]</span>{' '}
-              Connection terminated — 404
+              <span className="text-red-400">[FAIL]</span> Connection terminated — 404
             </p>
-            <p className="text-cyber-faint/60 typing-cursor">
-              Awaiting operator input
-            </p>
+            <p className="text-cyber-faint/60 typing-cursor">Awaiting operator input</p>
           </div>
         </div>
 
@@ -118,5 +110,5 @@ export default function NotFound() {
         </Link>
       </div>
     </section>
-  )
+  );
 }

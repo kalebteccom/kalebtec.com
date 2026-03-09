@@ -1,6 +1,6 @@
-import type { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kalebtec.com'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kalebtec.com';
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -12,5 +12,5 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
-  }
+  };
 }

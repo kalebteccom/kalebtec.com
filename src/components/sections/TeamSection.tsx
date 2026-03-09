@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import Image from 'next/image'
-import SectionHeading from '@/components/ui/SectionHeading'
-import AnimatedReveal from '@/components/ui/AnimatedReveal'
-import { cn } from '@/lib/utils'
+import Image from 'next/image';
+import SectionHeading from '@/components/ui/SectionHeading';
+import AnimatedReveal from '@/components/ui/AnimatedReveal';
+import { cn } from '@/lib/utils';
 
 const team = [
   {
@@ -26,21 +26,21 @@ const team = [
     description:
       'Operations strategist and project manager who ensures every engagement delivers exceptional results. Mari drives client relationships and business operations.',
   },
-]
+];
 
 export default function TeamSection() {
   return (
     <section id="team" aria-label="Our Team" className="relative py-32">
       {/* Gradient top divider */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl px-6 lg:px-8" aria-hidden="true">
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl px-6 lg:px-8"
+        aria-hidden="true"
+      >
         <div className="h-px bg-gradient-to-r from-transparent via-brand to-cyber-cyan/50 to-transparent" />
       </div>
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <SectionHeading
-          title="THE TEAM"
-          sectionNumber="04"
-        />
+        <SectionHeading title="THE TEAM" sectionNumber="04" />
 
         <div className="mx-auto max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
           {team.map((member, index) => (
@@ -52,7 +52,7 @@ export default function TeamSection() {
                   'cyber-corners cyber-border-glow',
                   'transition-all duration-500',
                   'hover:border-cyber-muted/30',
-                  'h-full overflow-hidden'
+                  'h-full overflow-hidden',
                 )}
               >
                 {/* Photo with HUD overlay */}
@@ -65,7 +65,10 @@ export default function TeamSection() {
                     className="object-cover team-photo transition-transform duration-700 group-hover:scale-105"
                   />
                   {/* Gradient fade to card bg */}
-                  <div className="absolute inset-0 team-photo-fade bg-gradient-to-t from-cyber-surface via-transparent to-transparent" aria-hidden="true" />
+                  <div
+                    className="absolute inset-0 team-photo-fade bg-gradient-to-t from-cyber-surface via-transparent to-transparent"
+                    aria-hidden="true"
+                  />
                   {/* Scanline overlay on photo */}
                   <div className="absolute inset-0 scanlines opacity-30" aria-hidden="true" />
                   {/* HUD metadata overlay */}
@@ -78,8 +81,14 @@ export default function TeamSection() {
                     </span>
                   </div>
                   {/* Corner brackets on photo */}
-                  <div className="absolute top-2 right-2 w-4 h-4 border-t border-r border-cyber-cyan/40" aria-hidden="true" />
-                  <div className="absolute bottom-2 left-2 w-4 h-4 border-b border-l border-cyber-cyan/40" aria-hidden="true" />
+                  <div
+                    className="absolute top-2 right-2 w-4 h-4 border-t border-r border-cyber-cyan/40"
+                    aria-hidden="true"
+                  />
+                  <div
+                    className="absolute bottom-2 left-2 w-4 h-4 border-b border-l border-cyber-cyan/40"
+                    aria-hidden="true"
+                  />
                 </div>
 
                 {/* Info below photo */}
@@ -90,9 +99,7 @@ export default function TeamSection() {
                   <p className="font-mono text-xs text-cyber-cyan tracking-wide mt-1.5 mb-4">
                     [{member.role.toUpperCase()}]
                   </p>
-                  <p className="text-sm leading-relaxed text-cyber-muted">
-                    {member.description}
-                  </p>
+                  <p className="text-sm leading-relaxed text-cyber-muted">{member.description}</p>
                 </div>
               </div>
             </AnimatedReveal>
@@ -100,5 +107,5 @@ export default function TeamSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

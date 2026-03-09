@@ -1,15 +1,15 @@
-'use client'
+'use client';
 
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
-import AnimatedReveal from '@/components/ui/AnimatedReveal'
-import { cn } from '@/lib/utils'
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import AnimatedReveal from '@/components/ui/AnimatedReveal';
+import { cn } from '@/lib/utils';
 
-const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94]
+const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94];
 
 export default function ContactSection() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const isInView = useInView(sectionRef, { once: true, amount: 0.1 })
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
   return (
     <section
@@ -19,7 +19,10 @@ export default function ContactSection() {
       className="relative py-32 overflow-hidden cyber-grid-bg"
     >
       {/* Gradient top divider */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl px-6 lg:px-8" aria-hidden="true">
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl px-6 lg:px-8"
+        aria-hidden="true"
+      >
         <div className="h-px bg-gradient-to-r from-transparent via-brand to-cyber-cyan/50 to-transparent" />
       </div>
 
@@ -42,9 +45,7 @@ export default function ContactSection() {
             transition={{ duration: 0.6, ease: EASE }}
             className="flex items-center justify-center gap-2 mb-6"
           >
-            <span className="font-mono text-sm text-cyber-faint tracking-wider">
-              [05]
-            </span>
+            <span className="font-mono text-sm text-cyber-faint tracking-wider">[05]</span>
             <span className="font-mono text-sm text-cyber-faint/50">//</span>
             <span className="font-mono text-sm text-cyber-muted tracking-wider uppercase">
               CONTACT
@@ -58,8 +59,7 @@ export default function ContactSection() {
             transition={{ duration: 0.7, ease: EASE }}
             className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-wider uppercase text-cyber-heading neon-glow"
           >
-            LET&apos;S BUILD{' '}
-            <span className="text-cyber-cyan neon-glow-cyan">SOMETHING</span>
+            LET&apos;S BUILD <span className="text-cyber-cyan neon-glow-cyan">SOMETHING</span>
           </motion.h2>
 
           {/* Accent line */}
@@ -121,7 +121,7 @@ export default function ContactSection() {
                     'w-full px-4 py-3 text-sm font-mono',
                     'bg-cyber-surface border border-cyber-faint/40 text-cyber-heading placeholder-cyber-faint',
                     'focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan/30',
-                    'transition-all duration-300'
+                    'transition-all duration-300',
                   )}
                   placeholder="> your name"
                 />
@@ -144,7 +144,7 @@ export default function ContactSection() {
                     'w-full px-4 py-3 text-sm font-mono',
                     'bg-cyber-surface border border-cyber-faint/40 text-cyber-heading placeholder-cyber-faint',
                     'focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan/30',
-                    'transition-all duration-300'
+                    'transition-all duration-300',
                   )}
                   placeholder="> you@company.com"
                 />
@@ -166,7 +166,7 @@ export default function ContactSection() {
                     'w-full px-4 py-3 text-sm resize-none font-mono',
                     'bg-cyber-surface border border-cyber-faint/40 text-cyber-heading placeholder-cyber-faint',
                     'focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan/30',
-                    'transition-all duration-300'
+                    'transition-all duration-300',
                   )}
                   placeholder="> describe your project..."
                 />
@@ -180,7 +180,7 @@ export default function ContactSection() {
                   'hover:bg-brand hover:text-white hover:shadow-[0_0_30px_rgba(128,0,255,0.2)]',
                   'focus:outline-none focus:ring-2 focus:ring-brand/50 focus:ring-offset-2 focus:ring-offset-cyber-bg',
                   'transition-all duration-300',
-                  'cursor-pointer'
+                  'cursor-pointer',
                 )}
               >
                 [TRANSMIT]
@@ -190,5 +190,5 @@ export default function ContactSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
