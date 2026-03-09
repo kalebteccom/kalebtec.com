@@ -42,6 +42,9 @@ export default function ProjectsSectionClient({ projects }: ProjectsSectionClien
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    {...(image.blurDataURL
+                      ? { placeholder: 'blur' as const, blurDataURL: image.blurDataURL }
+                      : {})}
                   />
                   <div
                     className="absolute inset-0 bg-gradient-to-t from-cyber-surface via-transparent to-transparent"

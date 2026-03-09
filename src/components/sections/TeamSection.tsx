@@ -1,16 +1,26 @@
 'use client';
 
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import SectionHeading from '@/components/ui/SectionHeading';
 import AnimatedReveal from '@/components/ui/AnimatedReveal';
 import { cn } from '@/lib/utils';
+import rowinPhoto from '../../../public/team/rowin.jpg';
+import mariPhoto from '../../../public/team/mari.jpeg';
 
-const team = [
+const team: {
+  name: string;
+  role: string;
+  initials: string;
+  photo: StaticImageData;
+  id: string;
+  roleCode: string;
+  description: string;
+}[] = [
   {
     name: 'Rowin Hernandez',
     role: 'Co-Founder & CTO',
     initials: 'RH',
-    photo: '/team/rowin.jpg',
+    photo: rowinPhoto,
     id: 'RH-001',
     roleCode: 'CHIEF_TECHNICAL_OFFICER',
     description:
@@ -20,7 +30,7 @@ const team = [
     name: 'Mari Hernandez',
     role: 'Co-Founder & CEO',
     initials: 'MH',
-    photo: '/team/mari.jpeg',
+    photo: mariPhoto,
     id: 'MH-002',
     roleCode: 'CHIEF_EXECUTIVE_OFFICER',
     description:
@@ -61,6 +71,7 @@ export default function TeamSection() {
                     src={member.photo}
                     alt={member.name}
                     fill
+                    placeholder="blur"
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover team-photo transition-transform duration-700 group-hover:scale-105"
                   />

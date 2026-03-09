@@ -95,6 +95,9 @@ export default async function ProjectDetailPage({ params }: { params: Params }) 
               sizes="(max-width: 1024px) 100vw, 960px"
               className="object-cover"
               priority
+              {...(image.blurDataURL
+                ? { placeholder: 'blur' as const, blurDataURL: image.blurDataURL }
+                : {})}
             />
             <div className="absolute inset-0 scanlines opacity-15" aria-hidden="true" />
           </div>
