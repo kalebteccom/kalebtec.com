@@ -1,9 +1,30 @@
 'use client';
 
+import { useCallback, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import SectionHeading from '@/components/ui/SectionHeading';
 import AnimatedReveal from '@/components/ui/AnimatedReveal';
 import { cn } from '@/lib/utils';
+
+type GlitchState = 'idle' | 'enter' | 'exit';
+
+function useCardGlitch() {
+  const [state, setState] = useState<GlitchState>('idle');
+
+  const onMouseEnter = useCallback(() => setState('enter'), []);
+  const onMouseLeave = useCallback(() => setState('exit'), []);
+  const onAnimationEnd = useCallback(
+    (e: React.AnimationEvent<HTMLDivElement>) => {
+      // Only respond to our own card glitch animations, not bubbled child events
+      if (e.target !== e.currentTarget) return;
+      if (e.animationName !== 'card-glitch' && e.animationName !== 'card-glitch-exit') return;
+      setState('idle');
+    },
+    [],
+  );
+
+  return { glitchState: state, onMouseEnter, onMouseLeave, onAnimationEnd };
+}
 
 const serviceKeys = [
   'softwareArchitecture',
@@ -172,6 +193,72 @@ const serviceIcons = [
   </svg>,
 ];
 
+function ServiceCard({
+  index,
+  serviceKey,
+  t,
+}: {
+  index: number;
+  serviceKey: (typeof serviceKeys)[number];
+  t: ReturnType<typeof useTranslations<'services'>>;
+}) {
+  const { glitchState, onMouseEnter, onMouseLeave, onAnimationEnd } = useCardGlitch();
+
+  return (
+    <div
+      className="group h-full"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      <div
+        data-glitch={glitchState}
+        onAnimationEnd={onAnimationEnd}
+        className={cn(
+          'relative p-6 md:p-8 border border-cyber-border',
+          'bg-cyber-surface',
+          'cyber-corners cyber-border-glow',
+          'cyber-scan-hover',
+          'transition-[border-color,box-shadow] duration-500 ease-out',
+          'group-hover:border-cyber-muted/30',
+          'h-full',
+        )}
+      >
+        {/* Scan line sweep on hover */}
+        <div className="scan-line" aria-hidden="true" />
+
+        {/* Data stream background on hover */}
+        <div
+          className="absolute inset-0 cyber-data-stream-hover pointer-events-none"
+          aria-hidden="true"
+        />
+
+        {/* Card index number */}
+        <span
+          className="relative z-10 absolute top-4 right-4 font-mono text-[11px] text-cyber-faint/40 cyber-text-flicker-hover"
+          aria-hidden="true"
+        >
+          [{String(index + 1).padStart(2, '0')}]
+        </span>
+
+        {/* Icon */}
+        <div className="relative z-10 text-cyber-cyan mb-6 transition-all duration-300 group-hover:drop-shadow-[0_0_8px_rgba(0,255,255,0.4)] cyber-glitch-icon">
+          {serviceIcons[index]}
+        </div>
+
+        {/* Service name */}
+        <h3 className="relative z-10 font-display text-lg font-semibold tracking-wide text-cyber-heading mb-3">
+          {t(`${serviceKey}.name`)}
+        </h3>
+
+        {/* Description */}
+        <p className="relative z-10 text-sm leading-relaxed text-cyber-muted">
+          {t(`${serviceKey}.description`)}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export default function ServicesSection() {
   const t = useTranslations('services');
 
@@ -191,49 +278,7 @@ export default function ServicesSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {serviceKeys.map((key, index) => (
             <AnimatedReveal key={key} delay={0.1 * index}>
-              <div
-                className={cn(
-                  'group relative p-6 md:p-8 border border-cyber-border',
-                  'bg-cyber-surface',
-                  'cyber-corners cyber-border-glow',
-                  'cyber-scan-hover',
-                  'transition-all duration-500 ease-out',
-                  'hover:border-cyber-muted/30',
-                  'h-full',
-                )}
-              >
-                {/* Scan line sweep on hover */}
-                <div className="scan-line" aria-hidden="true" />
-
-                {/* Data stream background on hover */}
-                <div
-                  className="absolute inset-0 cyber-data-stream-hover pointer-events-none"
-                  aria-hidden="true"
-                />
-
-                {/* Card index number */}
-                <span
-                  className="relative z-10 absolute top-4 right-4 font-mono text-[11px] text-cyber-faint/40 cyber-text-flicker-hover"
-                  aria-hidden="true"
-                >
-                  [{String(index + 1).padStart(2, '0')}]
-                </span>
-
-                {/* Icon */}
-                <div className="relative z-10 text-cyber-cyan mb-6 transition-all duration-300 group-hover:drop-shadow-[0_0_8px_rgba(0,255,255,0.4)] cyber-glitch-shake">
-                  {serviceIcons[index]}
-                </div>
-
-                {/* Service name */}
-                <h3 className="relative z-10 font-display text-lg font-semibold tracking-wide text-cyber-heading mb-3">
-                  {t(`${key}.name`)}
-                </h3>
-
-                {/* Description */}
-                <p className="relative z-10 text-sm leading-relaxed text-cyber-muted">
-                  {t(`${key}.description`)}
-                </p>
-              </div>
+              <ServiceCard index={index} serviceKey={key} t={t} />
             </AnimatedReveal>
           ))}
         </div>

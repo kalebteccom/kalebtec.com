@@ -933,9 +933,125 @@ select:focus-visible,
   0% {
     top: -10px;
     opacity: 1;
+    height: 2px;
+    filter: none;
+  }
+  15% {
+    height: 3px;
+    filter: brightness(1.5);
+  }
+  40% {
+    opacity: 1;
+    height: 2px;
+  }
+  /* Stutter / glitch pause in the middle */
+  48% {
+    opacity: 1;
+    filter: brightness(2);
+  }
+  50% {
+    opacity: 0;
+  }
+  52% {
+    opacity: 1;
+    filter: none;
   }
   100% {
     top: calc(100% + 10px);
+    opacity: 1;
+    height: 2px;
+    filter: none;
+  }
+}
+
+@keyframes card-glitch {
+  0%,
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+    filter: none;
+  }
+  8% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+  }
+  10% {
+    clip-path: inset(40% 0 30% 0);
+    transform: translate(-2px, 0);
+    filter: hue-rotate(60deg) brightness(1.2);
+  }
+  12% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+    filter: none;
+  }
+  38% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+  }
+  40% {
+    clip-path: inset(70% 0 5% 0);
+    transform: translate(3px, 0);
+    filter: hue-rotate(-90deg);
+  }
+  42% {
+    clip-path: inset(10% 0 70% 0);
+    transform: translate(-1px, 0);
+    filter: hue-rotate(120deg);
+  }
+  44% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+    filter: none;
+  }
+  68% {
+    clip-path: inset(0 0 0 0);
+  }
+  70% {
+    clip-path: inset(25% 0 55% 0);
+    transform: translate(2px, 0);
+    filter: brightness(1.5);
+  }
+  72% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+    filter: none;
+  }
+}
+
+@keyframes card-glitch-exit {
+  0% {
+    clip-path: inset(0 0 0 0);
+    filter: none;
+    opacity: 1;
+  }
+  15% {
+    clip-path: inset(30% 0 50% 0);
+    filter: brightness(1.8) hue-rotate(90deg);
+    transform: translate(4px, 0);
+  }
+  20% {
+    clip-path: inset(0 0 0 0);
+    filter: none;
+    transform: translate(0);
+    opacity: 0.6;
+  }
+  35% {
+    opacity: 1;
+    clip-path: inset(60% 0 15% 0);
+    transform: translate(-3px, 0);
+    filter: hue-rotate(-60deg);
+  }
+  45% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+    filter: none;
+    opacity: 1;
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+    filter: none;
     opacity: 1;
   }
 }
@@ -943,6 +1059,16 @@ select:focus-visible,
 .cyber-scan-hover {
   position: relative;
   overflow: hidden;
+}
+
+/* Enter glitch — driven by data attribute from JS */
+.cyber-scan-hover[data-glitch='enter'] {
+  animation: card-glitch 1.4s ease-out forwards;
+}
+
+/* Exit glitch — quick signal cutout */
+.cyber-scan-hover[data-glitch='exit'] {
+  animation: card-glitch-exit 0.4s ease-out forwards;
 }
 
 /* Scan line uses a child .scan-line element to avoid ::after conflicts with cyber-corners */
@@ -959,8 +1085,10 @@ select:focus-visible,
     transparent
   );
   box-shadow:
-    0 0 10px var(--color-cyber-cyan-glow),
-    0 0 30px var(--color-brand-glow);
+    0 0 8px var(--color-cyber-cyan-glow),
+    0 0 20px var(--color-cyber-cyan-glow),
+    0 0 40px var(--color-brand-glow),
+    0 0 60px var(--color-brand-glow);
   top: -10px;
   opacity: 0;
   transition: none;
@@ -968,10 +1096,9 @@ select:focus-visible,
   z-index: 5;
 }
 
-.cyber-scan-hover:hover > .scan-line,
 .group:hover .cyber-scan-hover > .scan-line {
   opacity: 1;
-  animation: scan-sweep 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: scan-sweep 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 [data-theme='light'] .cyber-scan-hover > .scan-line {
@@ -1186,11 +1313,66 @@ select:focus-visible,
 }
 
 /* ==========================================================================
-   GROUP-HOVER GLITCH SHAKE (for icons inside group-hovered cards)
+   GROUP-HOVER ICON GLITCH (data-corruption effect on hover)
    ========================================================================== */
 
-.group:hover .cyber-glitch-shake {
-  animation: glitch 0.3s ease;
+@keyframes icon-glitch {
+  0% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+    filter: none;
+  }
+  10% {
+    clip-path: inset(20% 0 40% 0);
+    transform: translate(-3px, 0);
+    filter: hue-rotate(90deg);
+  }
+  15% {
+    clip-path: inset(60% 0 10% 0);
+    transform: translate(3px, 0);
+    filter: hue-rotate(-90deg);
+  }
+  20% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+    filter: none;
+    opacity: 0.8;
+  }
+  30% {
+    clip-path: inset(40% 0 20% 0);
+    transform: translate(2px, 0);
+    filter: hue-rotate(180deg);
+  }
+  35% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+    filter: none;
+  }
+  50% {
+    opacity: 0;
+  }
+  52% {
+    opacity: 1;
+  }
+  60% {
+    clip-path: inset(10% 0 60% 0);
+    transform: translate(-2px, 0);
+    filter: hue-rotate(90deg);
+  }
+  65% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+    filter: none;
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+    filter: none;
+  }
+}
+
+.group:hover .cyber-glitch-icon {
+  animation: icon-glitch 0.5s ease-out;
 }
 
 /* ==========================================================================
@@ -1262,7 +1444,9 @@ select:focus-visible,
     display: none !important;
   }
 
-  .cyber-corrupt:hover {
+  .cyber-corrupt:hover,
+  .cyber-scan-hover[data-glitch='enter'],
+  .cyber-scan-hover[data-glitch='exit'] {
     animation: none !important;
     clip-path: none !important;
     filter: none !important;
@@ -1342,7 +1526,9 @@ select:focus-visible,
     text-shadow: none !important;
   }
 
-  .cyber-corrupt:hover {
+  .cyber-corrupt:hover,
+  .cyber-scan-hover[data-glitch='enter'],
+  .cyber-scan-hover[data-glitch='exit'] {
     animation: none !important;
     filter: none !important;
     clip-path: none !important;
