@@ -64,6 +64,7 @@ const teamStatic: TeamMemberStatic[] = [
 
 function useCardTilt(maxTilt = 12) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const flashRef = useRef<HTMLDivElement>(null);
   const flippedRef = useRef(false);
   const [isFlipped, setIsFlipped] = useState(false);
   const rafRef = useRef(0);
@@ -110,7 +111,7 @@ function useCardTilt(maxTilt = 12) {
         if (backShine) {
           backShine.style.opacity = '1';
           const bx = (1 - x) * 100;
-          backShine.style.background = `radial-gradient(circle at ${bx}% ${y * 100}%, rgba(0,255,255,0.1) 0%, rgba(128,0,255,0.06) 30%, transparent 60%)`;
+          backShine.style.background = `radial-gradient(circle at ${bx}% ${y * 100}%, rgba(255,248,220,0.2) 0%, rgba(201,168,76,0.08) 30%, transparent 60%)`;
         }
       });
     },
@@ -142,23 +143,45 @@ function useCardTilt(maxTilt = 12) {
     if (!card) return;
 
     // Hide shines during flip
-    const shines = card.querySelectorAll<HTMLElement>('[data-shine]');
-    shines.forEach((s) => {
+    card.querySelectorAll<HTMLElement>('[data-shine]').forEach((s) => {
       s.style.opacity = '0';
     });
 
     if (reducedMotionRef.current) {
       card.style.transition = 'none';
-    } else {
-      card.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
-    }
-    card.style.transform = next
-      ? 'rotateX(0deg) rotateY(180deg)'
-      : 'rotateX(0deg) rotateY(0deg)';
-
-    setTimeout(() => {
+      card.style.transform = next
+        ? 'rotateX(0deg) rotateY(180deg)'
+        : 'rotateX(0deg) rotateY(0deg)';
       isAnimatingRef.current = false;
-    }, reducedMotionRef.current ? 0 : 600);
+      return;
+    }
+
+    // Animated flip with scale bump via CSS keyframes
+    card.style.transition = 'none';
+    card.classList.remove('card-flip-to-back', 'card-flip-to-front');
+    void card.offsetHeight;
+    card.classList.add(next ? 'card-flip-to-back' : 'card-flip-to-front');
+
+    // Flash
+    const flash = flashRef.current;
+    if (flash) {
+      flash.classList.remove('flip-flash');
+      void flash.offsetHeight;
+      flash.classList.add('flip-flash');
+    }
+
+    const cleanup = (e: Event) => {
+      const ae = e as AnimationEvent;
+      if (ae.animationName !== 'card-flip-to-back' && ae.animationName !== 'card-flip-to-front')
+        return;
+      card.style.transform = next
+        ? 'rotateX(0deg) rotateY(180deg)'
+        : 'rotateX(0deg) rotateY(0deg)';
+      card.classList.remove('card-flip-to-back', 'card-flip-to-front');
+      isAnimatingRef.current = false;
+      card.removeEventListener('animationend', cleanup);
+    };
+    card.addEventListener('animationend', cleanup);
   }, []);
 
   const handleKeyDown = useCallback(
@@ -173,6 +196,7 @@ function useCardTilt(maxTilt = 12) {
 
   return {
     cardRef,
+    flashRef,
     isFlipped,
     handleMouseMove,
     handleMouseLeave,
@@ -183,7 +207,57 @@ function useCardTilt(maxTilt = 12) {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   TeamMemberCard — 3D tilt + flip with trading card back
+   PixelStatBar — chunky 8-bit style stat bar
+   ═══════════════════════════════════════════════════════════════ */
+
+function PixelStatBar({
+  name,
+  level,
+  isFlipped,
+  delay,
+}: {
+  name: string;
+  level: number;
+  isFlipped: boolean;
+  delay: number;
+}) {
+  const segments = 10;
+  const filled = Math.round((level / 100) * segments);
+
+  return (
+    <div className="flex items-center gap-2">
+      <span
+        className="font-mono text-[10px] w-24 shrink-0 tracking-wider"
+        style={{ color: '#5a4a32' }}
+      >
+        {name}
+      </span>
+      <div className="flex gap-[2px] flex-1">
+        {Array.from({ length: segments }).map((_, i) => (
+          <div
+            key={i}
+            className="h-2.5 flex-1"
+            style={{
+              background: i < filled ? '#4a8c3f' : '#3a3224',
+              boxShadow: i < filled ? 'inset 0 -1px 0 #3a7030' : 'inset 0 1px 0 #4a4234',
+              opacity: isFlipped ? 1 : 0,
+              transition: `opacity 0.15s ${delay + i * 0.04}s`,
+            }}
+          />
+        ))}
+      </div>
+      <span
+        className="font-mono text-[10px] w-6 text-right tabular-nums font-bold"
+        style={{ color: '#2d1f10' }}
+      >
+        {level}
+      </span>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TeamMemberCard — 3D tilt + flip with retro 80s back
    ═══════════════════════════════════════════════════════════════ */
 
 function TeamMemberCard({
@@ -195,6 +269,7 @@ function TeamMemberCard({
 }) {
   const {
     cardRef,
+    flashRef,
     isFlipped,
     handleMouseMove,
     handleMouseLeave,
@@ -210,15 +285,27 @@ function TeamMemberCard({
     t(`${member.tKey}.specFocus`),
     t(`${member.tKey}.specMode`),
   ];
+  const totalHP = member.skills.reduce((sum, s) => sum + s.level, 0);
 
   return (
     <div
-      className="h-full"
+      className="h-full relative"
       style={{ perspective: '1200px' }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onTouchStart={handleTouchStart}
     >
+      {/* Flip flash overlay */}
+      <div
+        ref={flashRef}
+        className="absolute inset-0 z-30 pointer-events-none opacity-0"
+        style={{
+          background:
+            'radial-gradient(circle at 50% 50%, rgba(255,248,220,0.9), rgba(201,168,76,0.3) 50%, transparent 70%)',
+        }}
+        aria-hidden="true"
+      />
+
       <div
         ref={cardRef}
         onClick={handleClick}
@@ -321,186 +408,211 @@ function TeamMemberCard({
           </div>
         </div>
 
-        {/* ═══ BACK FACE — TRADING CARD ═══ */}
+        {/* ═══ BACK FACE — RETRO 80s TRADING CARD ═══ */}
         <div
-          className={cn(
-            'absolute inset-0 w-full border',
-            'bg-cyber-surface',
-            'cyber-grid-bg',
-            'overflow-hidden',
-            'card-back-shimmer',
-          )}
+          className="absolute inset-0 w-full overflow-hidden p-1.5 sm:p-2"
           style={{
             backfaceVisibility: 'hidden',
             transform: 'rotateY(180deg)',
+            background: '#e8dcc0',
+            border: '4px solid #c9a84c',
+            imageRendering: 'pixelated',
           }}
         >
-          {/* Holographic shine overlay */}
+          {/* Warm golden shine overlay */}
           <div
             data-shine="back"
             className="absolute inset-0 pointer-events-none z-20 opacity-0 transition-opacity duration-300"
           />
 
-          {/* Scanlines */}
-          <div className="absolute inset-0 scanlines opacity-15" aria-hidden="true" />
-
-          {/* Card frame corners */}
+          {/* Retro diagonal line texture */}
           <div
-            className="absolute top-2 left-2 w-5 h-5 border-t-2 border-l-2 border-brand/50"
-            aria-hidden="true"
-          />
-          <div
-            className="absolute top-2 right-2 w-5 h-5 border-t-2 border-r-2 border-brand/50"
-            aria-hidden="true"
-          />
-          <div
-            className="absolute bottom-2 left-2 w-5 h-5 border-b-2 border-l-2 border-brand/50"
-            aria-hidden="true"
-          />
-          <div
-            className="absolute bottom-2 right-2 w-5 h-5 border-b-2 border-r-2 border-brand/50"
+            className="absolute inset-0 pointer-events-none opacity-40"
+            style={{
+              backgroundImage: `repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 3px,
+                rgba(160,130,70,0.1) 3px,
+                rgba(160,130,70,0.1) 4px
+              )`,
+            }}
             aria-hidden="true"
           />
 
-          {/* Card content */}
-          <div className="relative z-10 h-full flex flex-col p-6 md:p-8">
-            {/* Header bar */}
-            <div className="flex items-center justify-between mb-3">
-              <span className="font-mono text-[10px] text-cyber-cyan tracking-widest">
-                KALEBTEC // OPERATIVE_CARD
-              </span>
-              <div className="flex gap-0.5" aria-label="5 star rating" role="img">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <span key={i} className="text-[10px] text-brand-light">
-                    ★
-                  </span>
-                ))}
-              </div>
-            </div>
+          {/* CRT scanline overlay (retro feel) */}
+          <div
+            className="absolute inset-0 pointer-events-none z-10 opacity-10"
+            style={{
+              backgroundImage:
+                'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 3px)',
+            }}
+            aria-hidden="true"
+          />
 
+          {/* Inner frame — pixel-style double border */}
+          <div
+            className="relative z-10 h-full flex flex-col overflow-hidden"
+            style={{
+              border: '3px solid #b89840',
+              boxShadow: 'inset 0 0 0 2px #d4c090, inset 0 0 0 4px #b8984060',
+            }}
+          >
+            {/* ── Name plate ── */}
             <div
-              className="h-px bg-gradient-to-r from-brand via-cyber-cyan to-brand mb-5"
-              aria-hidden="true"
-            />
+              className="flex items-center justify-between px-3 sm:px-4 py-2"
+              style={{
+                background: 'linear-gradient(180deg, #d4b86a 0%, #c0a050 100%)',
+                borderBottom: '3px solid #b89840',
+              }}
+            >
+              <span
+                className="font-display text-sm font-bold tracking-wider uppercase"
+                style={{ color: '#2d1f10', textShadow: '0 1px 0 rgba(255,255,255,0.3)' }}
+              >
+                {member.name}
+              </span>
+              <span
+                className="font-mono text-xs font-black tracking-tight"
+                style={{ color: '#b83030' }}
+              >
+                HP {totalHP}
+              </span>
+            </div>
 
-            {/* Photo + Name plate */}
-            <div className="flex items-center gap-4 mb-5">
-              <div className="relative w-20 h-20 shrink-0 border border-cyber-cyan/30 overflow-hidden">
-                <Image
-                  src={member.photo}
-                  alt=""
-                  fill
-                  placeholder="blur"
-                  sizes="80px"
-                  className="object-cover team-photo"
-                  aria-hidden="true"
+            {/* ── Photo frame ── */}
+            <div
+              className="mx-3 sm:mx-4 mt-3 relative aspect-[5/3] overflow-hidden"
+              style={{
+                border: '3px solid #b89840',
+                boxShadow: 'inset 0 2px 8px rgba(0,0,0,0.25), 0 1px 0 #d4c090',
+              }}
+            >
+              <Image
+                src={member.photo}
+                alt=""
+                fill
+                placeholder="blur"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+                style={{
+                  filter: 'saturate(0.7) contrast(1.15) brightness(1.05)',
+                  imageRendering: 'auto',
+                }}
+                aria-hidden="true"
+              />
+              {/* CRT-style vignette on photo */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    'radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.25) 100%)',
+                }}
+                aria-hidden="true"
+              />
+            </div>
+
+            {/* ── Type badge + role ── */}
+            <div className="flex items-center gap-2 mx-3 sm:mx-4 mt-2.5">
+              <span
+                className="font-mono text-[9px] px-2 py-0.5 tracking-widest font-bold uppercase"
+                style={{
+                  background: '#b83030',
+                  color: '#fff',
+                  border: '2px solid #8a2020',
+                  boxShadow: 'inset 0 -1px 0 #8a2020',
+                }}
+              >
+                {member.roleCode}
+              </span>
+              <span
+                className="font-mono text-[9px] tracking-wider"
+                style={{ color: '#6b5a3e' }}
+              >
+                {member.handle}
+              </span>
+            </div>
+
+            {/* ── Flavor text ── */}
+            <p
+              className="mx-3 sm:mx-4 mt-2.5 text-[11px] leading-relaxed italic"
+              style={{ color: '#5a4a32' }}
+            >
+              {description}
+            </p>
+
+            {/* ── Stat bars (8-bit chunky segments) ── */}
+            <div
+              className="mx-3 sm:mx-4 mt-3 p-2.5 space-y-1.5"
+              style={{
+                background: '#f5eed6',
+                border: '2px solid #c9a84c80',
+              }}
+            >
+              <span
+                className="font-mono text-[8px] tracking-[0.2em] font-bold block mb-2"
+                style={{ color: '#9a8a60' }}
+              >
+                SKILL MATRIX
+              </span>
+              {member.skills.map((skill, i) => (
+                <PixelStatBar
+                  key={skill.name}
+                  name={skill.name}
+                  level={skill.level}
+                  isFlipped={isFlipped}
+                  delay={0.7 + i * 0.12}
                 />
-              </div>
-              <div>
-                <h3 className="font-display text-lg font-semibold tracking-wide text-cyber-heading">
-                  {member.name}
-                </h3>
-                <p className="font-mono text-[11px] text-cyber-cyan tracking-wide mt-1">
-                  [{role.toUpperCase()}]
-                </p>
-                <p className="font-mono text-[10px] text-cyber-faint tracking-wider mt-1">
-                  {member.handle}
-                </p>
-              </div>
+              ))}
             </div>
 
-            {/* Skill Matrix */}
-            <div className="mb-5">
-              <div className="flex items-center gap-2 mb-3">
-                <span
-                  className="font-mono text-[9px] text-cyber-faint/50 tracking-widest uppercase"
-                  aria-hidden="true"
-                >
-                  // skill_matrix
-                </span>
-                <div className="flex-1 h-px bg-cyber-border" aria-hidden="true" />
-              </div>
-              <div className="space-y-2">
-                {member.skills.map((skill, i) => (
-                  <div key={skill.name} className="space-y-1">
-                    <div className="flex items-center justify-between">
-                      <span className="font-mono text-[10px] text-cyber-faint tracking-wider">
-                        {skill.name}
-                      </span>
-                      <span className="font-mono text-[10px] text-cyber-cyan tracking-wider">
-                        {skill.level}%
-                      </span>
-                    </div>
-                    <div
-                      className="h-1.5 w-full bg-cyber-border overflow-hidden"
-                      role="progressbar"
-                      aria-valuenow={skill.level}
-                      aria-valuemin={0}
-                      aria-valuemax={100}
-                      aria-label={skill.name}
-                    >
-                      <div
-                        className="h-full bg-gradient-to-r from-brand to-cyber-cyan"
-                        style={{
-                          width: isFlipped ? `${skill.level}%` : '0%',
-                          transition: isFlipped
-                            ? `width 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${0.6 + i * 0.1}s`
-                            : 'width 0s',
-                          boxShadow: '0 0 6px rgba(128,0,255,0.3)',
-                        }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Spec Sheet */}
-            <div className="mb-4">
-              <div className="flex items-center gap-2 mb-3">
-                <span
-                  className="font-mono text-[9px] text-cyber-faint/50 tracking-widest uppercase"
-                  aria-hidden="true"
-                >
-                  // spec_sheet
-                </span>
-                <div className="flex-1 h-px bg-cyber-border" aria-hidden="true" />
-              </div>
-              <div className="space-y-1.5">
-                {member.specLabels.map((label, specIndex) => (
-                  <div key={label} className="flex items-center justify-between">
-                    <span className="font-mono text-[10px] text-cyber-faint tracking-wider">
-                      {label}
-                    </span>
-                    <span className="font-mono text-[10px] text-cyber-body tracking-wider">
-                      {specValues[specIndex]}
-                    </span>
-                  </div>
-                ))}
-              </div>
+            {/* ── Spec entries ── */}
+            <div className="mx-3 sm:mx-4 mt-2.5 space-y-1">
+              {member.specLabels.map((label, i) => (
+                <div key={label} className="flex items-center justify-between">
+                  <span
+                    className="font-mono text-[9px] tracking-wider"
+                    style={{ color: '#9a8a60' }}
+                  >
+                    {label}
+                  </span>
+                  <span
+                    className="font-mono text-[9px] tracking-wider font-bold"
+                    style={{ color: '#5a4a32' }}
+                  >
+                    {specValues[i]}
+                  </span>
+                </div>
+              ))}
             </div>
 
             {/* Spacer */}
             <div className="flex-1" />
 
-            {/* Bottom bar */}
-            <div className="pt-3 border-t border-cyber-border">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <span className="font-mono text-[10px] text-cyber-faint/50 tracking-wider">
-                    ID: {member.id}
+            {/* ── Footer ── */}
+            <div
+              className="flex items-center justify-between px-3 sm:px-4 py-2 mt-auto"
+              style={{ borderTop: '2px solid #c9a84c80' }}
+            >
+              <span
+                className="font-mono text-[9px] tracking-wider"
+                style={{ color: '#9a8a60' }}
+              >
+                № {member.id}
+              </span>
+              <div className="flex gap-0.5">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <span key={i} className="text-[10px]" style={{ color: '#c9a84c' }}>
+                    ★
                   </span>
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-1.5 h-1.5 bg-green-400" />
-                    <span className="font-mono text-[10px] text-green-400/80 tracking-wider">
-                      {t('statusOnline')}
-                    </span>
-                  </div>
-                </div>
-                <span className="font-mono text-[10px] text-cyber-faint/40 tracking-wider cyber-text-flicker">
-                  // RETURN ▸
-                </span>
+                ))}
               </div>
+              <span
+                className="font-mono text-[9px] tracking-wider"
+                style={{ color: '#9a8a60' }}
+              >
+                KALEBTEC™
+              </span>
             </div>
           </div>
         </div>
