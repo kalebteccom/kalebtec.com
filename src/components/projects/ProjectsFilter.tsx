@@ -2,9 +2,11 @@
 
 import { useState, useMemo } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import AnimatedReveal from '@/components/ui/AnimatedReveal';
+import CyberSelect from '@/components/ui/CyberSelect';
 import type { Project, Industry, Media } from '@/payload-types';
 
 interface ProjectsFilterProps {
@@ -18,20 +20,12 @@ export default function ProjectsFilter({
   industries,
   technologies,
 }: ProjectsFilterProps) {
+  const t = useTranslations('projects');
   const [activeIndustries, setActiveIndustries] = useState<Set<string>>(new Set());
-  const [activeTechnologies, setActiveTechnologies] = useState<Set<string>>(new Set());
+  const [selectedTechnology, setSelectedTechnology] = useState<string>('');
 
   const toggleIndustry = (name: string) => {
     setActiveIndustries((prev) => {
-      const next = new Set(prev);
-      if (next.has(name)) next.delete(name);
-      else next.add(name);
-      return next;
-    });
-  };
-
-  const toggleTechnology = (name: string) => {
-    setActiveTechnologies((prev) => {
       const next = new Set(prev);
       if (next.has(name)) next.delete(name);
       else next.add(name);
@@ -47,17 +41,17 @@ export default function ProjectsFilter({
           .map((ind) => ind.name);
         if (!projectIndustries.some((name) => activeIndustries.has(name))) return false;
       }
-      if (activeTechnologies.size > 0) {
+      if (selectedTechnology) {
         const projectTechs = (project.technologies ?? [])
           .map((t) => t.technology)
           .filter(Boolean) as string[];
-        if (!projectTechs.some((name) => activeTechnologies.has(name))) return false;
+        if (!projectTechs.includes(selectedTechnology)) return false;
       }
       return true;
     });
-  }, [projects, activeIndustries, activeTechnologies]);
+  }, [projects, activeIndustries, selectedTechnology]);
 
-  const hasFilters = activeIndustries.size > 0 || activeTechnologies.size > 0;
+  const hasFilters = activeIndustries.size > 0 || selectedTechnology !== '';
 
   return (
     <>
@@ -67,15 +61,16 @@ export default function ProjectsFilter({
           {industries.length > 0 && (
             <div>
               <span className="font-mono text-[10px] uppercase tracking-widest text-cyber-faint mb-2 block">
-                // INDUSTRIES
+                {t('industries')}
               </span>
               <div className="flex flex-wrap gap-2">
                 {industries.map((name) => (
                   <button
                     key={name}
                     onClick={() => toggleIndustry(name)}
+                    aria-pressed={activeIndustries.has(name)}
                     className={cn(
-                      'font-mono text-[11px] uppercase tracking-wider px-3 py-1 border transition-all duration-300',
+                      'font-mono text-[11px] uppercase tracking-wider px-3 py-2.5 border transition-all duration-300',
                       activeIndustries.has(name)
                         ? 'border-brand text-brand-light bg-brand/10'
                         : 'border-cyber-border text-cyber-muted hover:border-cyber-muted/50 hover:text-cyber-heading',
@@ -89,46 +84,38 @@ export default function ProjectsFilter({
           )}
 
           {technologies.length > 0 && (
-            <div>
-              <span className="font-mono text-[10px] uppercase tracking-widest text-cyber-faint mb-2 block">
-                // TECHNOLOGIES
-              </span>
-              <div className="flex flex-wrap gap-2">
-                {technologies.map((name) => (
-                  <button
-                    key={name}
-                    onClick={() => toggleTechnology(name)}
-                    className={cn(
-                      'font-mono text-[11px] uppercase tracking-wider px-3 py-1 border transition-all duration-300',
-                      activeTechnologies.has(name)
-                        ? 'border-cyber-cyan text-cyber-cyan bg-cyber-cyan/10'
-                        : 'border-cyber-border text-cyber-muted hover:border-cyber-muted/50 hover:text-cyber-heading',
-                    )}
-                  >
-                    {name}
-                  </button>
-                ))}
-              </div>
-            </div>
+            <CyberSelect
+              id="tech-filter"
+              label={t('technologies')}
+              value={selectedTechnology}
+              onValueChange={(val) =>
+                setSelectedTechnology(val === '__all__' ? '' : val)
+              }
+              placeholder={t('allTechnologies')}
+              options={technologies.map((name) => ({
+                value: name,
+                label: name,
+              }))}
+            />
           )}
 
           {hasFilters && (
             <button
               onClick={() => {
                 setActiveIndustries(new Set());
-                setActiveTechnologies(new Set());
+                setSelectedTechnology('');
               }}
-              className="font-mono text-[11px] uppercase tracking-wider text-cyber-faint hover:text-cyber-heading transition-colors duration-300"
+              className="font-mono text-[11px] uppercase tracking-wider text-cyber-faint hover:text-cyber-heading transition-colors duration-300 px-3 py-2.5"
             >
-              [CLEAR FILTERS]
+              {t('clearFilters')}
             </button>
           )}
         </div>
       )}
 
       {/* Results count */}
-      <p className="font-mono text-xs text-cyber-faint mb-6">
-        {filtered.length} project{filtered.length !== 1 ? 's' : ''} found
+      <p className="font-mono text-xs text-cyber-faint mb-6" aria-live="polite">
+        {t('projectsFound', { count: filtered.length })}
       </p>
 
       {/* Project grid */}
@@ -154,13 +141,15 @@ export default function ProjectsFilter({
                 )}
               >
                 {image?.url && (
-                  <div className="relative aspect-[16/9] overflow-hidden">
+                  <div className="relative aspect-[16/9] overflow-hidden cyber-glitch-image cyber-scan-hover">
+                    <div className="scan-line" aria-hidden="true" />
                     <Image
                       src={image.url}
                       alt={image.alt ?? project.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="object-cover transition-[transform,filter] duration-500 group-hover:scale-105"
+                      style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
                       {...(image.blurDataURL
                         ? { placeholder: 'blur' as const, blurDataURL: image.blurDataURL }
                         : {})}
@@ -229,7 +218,7 @@ export default function ProjectsFilter({
       {filtered.length === 0 && (
         <div className="text-center py-20">
           <p className="font-mono text-sm text-cyber-faint">
-            No projects match the selected filters.
+            {t('noResults')}
           </p>
         </div>
       )}

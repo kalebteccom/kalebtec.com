@@ -1,0 +1,189 @@
+# Kalebtec
+
+> Kalebtec is a technology consulting firm founded by Rowin Hernandez and Mari Hernandez. We partner with businesses to architect, build, and scale digital solutions — from software architecture and web development to AI automation and cloud infrastructure.
+
+Website: https://kalebtec.com
+Contact: hello@kalebtec.com
+Location: Remote (worldwide clients)
+
+## About Kalebtec
+
+Kalebtec is a technology consulting firm founded by Rowin and Mari Hernandez. We partner with businesses to architect, build, and scale digital solutions. From strategy to execution, we bring technical expertise and creative vision to every project.
+
+We believe that great technology should be invisible — it should empower people, not get in the way. Every engagement is driven by that operating philosophy: build systems that work so well, they disappear into the background.
+
+Kalebtec's website features a distinctive cyberpunk-inspired design with neon purple and cyan accents, sharp geometric aesthetics, and immersive 3D WebGL scenes — reflecting our commitment to pushing the boundaries of what web technology can do.
+
+## Services
+
+Kalebtec offers six core technology consulting services:
+
+### Software Architecture
+
+We design scalable, maintainable systems built for growth. From microservices to monoliths, we choose the right architecture for your needs. Whether you're starting from scratch or refactoring an existing system, we ensure your architecture supports your business goals today and tomorrow.
+
+### Web Development
+
+Modern web applications built with cutting-edge technology. Fast, accessible, and beautiful by default. We specialize in Next.js, React, TypeScript, and modern frontend and backend frameworks to deliver production-grade applications that users love.
+
+### AI & Automation
+
+Leverage artificial intelligence and automation to streamline operations and unlock new possibilities. We help businesses integrate AI-powered solutions — from intelligent automation workflows to custom machine learning models — that deliver measurable results.
+
+### Cloud Infrastructure
+
+Cloud-native solutions on AWS, GCP, and Azure. We optimize for performance, security, and cost. From infrastructure-as-code to CI/CD pipelines, container orchestration, and monitoring, we build cloud architectures that scale reliably.
+
+### Technical Strategy
+
+Align your technology decisions with business goals. We provide roadmaps that drive real results. Whether you need a technology assessment, migration plan, or a full digital transformation strategy, we translate business objectives into actionable technical plans.
+
+### Team Augmentation
+
+Embed senior engineers directly into your team. We scale with you when you need it most. Our engineers integrate seamlessly into your workflows, bringing expertise in modern development practices and accelerating your delivery velocity.
+
+## Team
+
+### Rowin Hernandez — Co-Founder & CTO
+
+Full-stack engineer and systems architect with a passion for building elegant solutions to complex problems. Rowin leads technical strategy and development at Kalebtec. With deep expertise across the modern web stack — from React and Next.js to cloud infrastructure and AI — Rowin ensures every project meets the highest engineering standards.
+
+### Mari Hernandez — Co-Founder & CEO
+
+Operations strategist and project manager who ensures every engagement delivers exceptional results. Mari drives client relationships and business operations at Kalebtec. With a focus on clear communication and structured execution, Mari ensures projects stay on track and clients stay informed.
+
+## Technology Stack
+
+Kalebtec's own website is built with the following modern technologies, reflecting the caliber of engineering we bring to client projects:
+
+- Next.js 15 (App Router, React Server Components)
+- React 19
+- TypeScript
+- Tailwind CSS v4
+- Payload CMS 3 (headless CMS with MongoDB)
+- React Three Fiber / Three.js (3D WebGL scenes)
+- Framer Motion (animations)
+- Radix UI (accessible interactive components)
+- Jotai (state management)
+
+## How to Work with Kalebtec
+
+If you're interested in working with Kalebtec, reach out to discuss your project:
+
+1. **Contact us**: Email hello@kalebtec.com or use the contact form on our website at https://kalebtec.com/#contact
+2. **Discovery call**: We'll discuss your needs, timeline, and goals
+3. **Proposal**: We provide a clear scope, timeline, and pricing
+4. **Engagement**: We begin building, with regular check-ins and transparent communication
+
+We work with businesses of all sizes — from startups building their first product to established companies modernizing their technology stack.
+
+## Projects
+
+Kalebtec maintains a portfolio of technology consulting projects spanning web development, AI, cloud infrastructure, and more. Visit https://kalebtec.com/projects to explore our work, filterable by industry and technology.
+
+Each project showcases the client, industry, technologies used, and a detailed description of the work performed. Project detail pages include full case-study content where available.
+
+## Contact Information
+
+- **Email**: hello@kalebtec.com
+- **Website**: https://kalebtec.com
+- **Contact form**: https://kalebtec.com/#contact
+- **Location**: Remote — we work with clients worldwide
+
+## Terms of Service
+
+Last updated: March 2026
+
+### Agreement to Terms
+
+By accessing or using kalebtec.com ("the Site"), you agree to be bound by these Terms of Service. If you do not agree, please do not use the Site.
+
+### Intellectual Property
+
+All content, design, code, graphics, and materials on the Site are the property of Kalebtec and are protected by applicable intellectual property laws. You may not reproduce, distribute, or create derivative works from any content on the Site without prior written permission.
+
+### Use of the Site
+
+You agree to use the Site only for lawful purposes and in a manner that does not infringe on the rights of others. You may not:
+
+- Attempt to gain unauthorized access to any part of the Site
+- Use the Site to transmit harmful or malicious code
+- Interfere with the proper functioning of the Site
+- Scrape or collect data from the Site without permission
+
+### Consulting Services
+
+Consulting engagements with Kalebtec are governed by separate agreements between Kalebtec and the client. These Terms of Service apply only to use of the website.
+
+### Disclaimer of Warranties
+
+The Site is provided "as is" without warranties of any kind, either express or implied. Kalebtec does not warrant that the Site will be uninterrupted, error-free, or free of harmful components.
+
+### Limitation of Liability
+
+Kalebtec shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of the Site.
+
+### Changes to Terms
+
+Kalebtec reserves the right to modify these Terms at any time. Continued use of the Site after changes constitutes acceptance of the modified Terms.
+
+### Contact
+
+For questions about these Terms, contact us at hello@kalebtec.com.
+
+## Privacy Policy
+
+Last updated: March 2026
+
+### Information We Collect
+
+When you use kalebtec.com, we may collect the following information:
+
+- **Contact form submissions**: Name, email address, and message content when you use our contact form
+- **Usage data**: Anonymous analytics data about how you interact with the Site, including pages visited and time spent
+- **Technical data**: Browser type, device information, and IP address for security and performance purposes
+
+### How We Use Your Information
+
+We use collected information to:
+
+- Respond to inquiries submitted through the contact form
+- Improve the Site's performance and user experience
+- Protect the security and integrity of the Site
+- Communicate about our consulting services when requested
+
+### Data Sharing
+
+Kalebtec does not sell your personal information. We may share information only in the following circumstances:
+
+- With service providers who assist in operating the Site (e.g., hosting, analytics)
+- When required by law or to protect our legal rights
+- With your explicit consent
+
+### Data Security
+
+We implement reasonable technical and organizational measures to protect your personal information. However, no method of transmission over the internet is completely secure.
+
+### Cookies
+
+The Site may use cookies for essential functionality such as theme preferences. We do not use third-party advertising cookies.
+
+### Your Rights
+
+You have the right to:
+
+- Request access to the personal information we hold about you
+- Request correction or deletion of your personal information
+- Opt out of non-essential data collection
+
+### Children's Privacy
+
+The Site is not intended for children under 13. We do not knowingly collect information from children.
+
+### Changes to This Policy
+
+Kalebtec may update this Privacy Policy from time to time. Changes will be posted on this page with an updated revision date.
+
+### Contact
+
+For privacy-related inquiries, contact us at hello@kalebtec.com.

@@ -287,7 +287,7 @@ select:focus-visible,
   height: 16px;
   border-color: var(--color-cyber-muted);
   opacity: 0.35;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cyber-corners::before {
@@ -420,7 +420,7 @@ select:focus-visible,
 
 .cyber-border-glow {
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
-  transition: box-shadow 0.4s ease;
+  transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cyber-border-glow:hover {
@@ -847,6 +847,361 @@ select:focus-visible,
 }
 
 /* ==========================================================================
+   RGB SPLIT / CHROMATIC ABERRATION ON HOVER
+   ========================================================================== */
+
+@keyframes rgb-split {
+  0% {
+    transform: translate(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.5;
+    transform: translate(4px, 0);
+  }
+  100% {
+    opacity: 0.5;
+    transform: translate(2px, 0);
+  }
+}
+
+@keyframes rgb-split-reverse {
+  0% {
+    transform: translate(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.5;
+    transform: translate(-4px, 0);
+  }
+  100% {
+    opacity: 0.5;
+    transform: translate(-2px, 0);
+  }
+}
+
+.cyber-glitch-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.cyber-glitch-image::before,
+.cyber-glitch-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.cyber-glitch-image:hover::before,
+.group:hover .cyber-glitch-image::before {
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background: rgba(255, 0, 0, 0.08);
+  transform: translate(2px, 0);
+  animation: rgb-split 0.4s ease-out;
+}
+
+.cyber-glitch-image:hover::after,
+.group:hover .cyber-glitch-image::after {
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background: rgba(0, 255, 255, 0.08);
+  transform: translate(-2px, 0);
+  animation: rgb-split-reverse 0.4s ease-out;
+}
+
+[data-theme='light'] .cyber-glitch-image:hover::before,
+[data-theme='light'] .group:hover .cyber-glitch-image::before {
+  background: rgba(255, 0, 0, 0.05);
+}
+
+[data-theme='light'] .cyber-glitch-image:hover::after,
+[data-theme='light'] .group:hover .cyber-glitch-image::after {
+  background: rgba(0, 255, 255, 0.05);
+}
+
+/* ==========================================================================
+   SCAN LINE SWEEP ON HOVER
+   ========================================================================== */
+
+@keyframes scan-sweep {
+  0% {
+    top: -10px;
+    opacity: 1;
+  }
+  100% {
+    top: calc(100% + 10px);
+    opacity: 1;
+  }
+}
+
+.cyber-scan-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Scan line uses a child .scan-line element to avoid ::after conflicts with cyber-corners */
+.cyber-scan-hover > .scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-cyber-cyan),
+    var(--color-brand-light),
+    transparent
+  );
+  box-shadow:
+    0 0 10px var(--color-cyber-cyan-glow),
+    0 0 30px var(--color-brand-glow);
+  top: -10px;
+  opacity: 0;
+  transition: none;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.cyber-scan-hover:hover > .scan-line,
+.group:hover .cyber-scan-hover > .scan-line {
+  opacity: 1;
+  animation: scan-sweep 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+[data-theme='light'] .cyber-scan-hover > .scan-line {
+  box-shadow:
+    0 0 6px var(--color-cyber-cyan-glow),
+    0 0 16px var(--color-brand-glow);
+}
+
+/* ==========================================================================
+   DATA CORRUPTION GLITCH EFFECT
+   ========================================================================== */
+
+@keyframes corrupt {
+  0% {
+    clip-path: inset(0);
+    filter: none;
+  }
+  10% {
+    clip-path: inset(20% 0 60% 0);
+    filter: hue-rotate(90deg) saturate(2);
+  }
+  15% {
+    clip-path: inset(0);
+    filter: none;
+  }
+  30% {
+    clip-path: inset(50% 0 20% 0);
+    filter: hue-rotate(-90deg);
+  }
+  35% {
+    clip-path: inset(0);
+    filter: none;
+  }
+  50% {
+    clip-path: inset(80% 0 5% 0);
+    filter: brightness(2);
+  }
+  55% {
+    clip-path: inset(0);
+    filter: none;
+  }
+  100% {
+    clip-path: inset(0);
+    filter: none;
+  }
+}
+
+.cyber-corrupt {
+  transition: filter 0.1s;
+}
+
+.cyber-corrupt:hover {
+  animation: corrupt 0.6s ease-out;
+}
+
+[data-theme='light'] .cyber-corrupt:hover {
+  animation: corrupt 0.6s ease-out;
+  /* Same animation but will use lighter filters from context */
+}
+
+/* ==========================================================================
+   HOVER SCALE WITH ELASTIC OVERSHOOT
+   ========================================================================== */
+
+.cyber-scale-hover {
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cyber-scale-hover:hover {
+  transform: scale(1.03);
+}
+
+/* ==========================================================================
+   GLOW INTENSIFY ON HOVER
+   ========================================================================== */
+
+.cyber-glow-intensify {
+  box-shadow:
+    0 0 8px rgba(128, 0, 255, 0.1),
+    0 0 20px rgba(128, 0, 255, 0.05);
+  transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cyber-glow-intensify:hover {
+  box-shadow:
+    0 0 12px rgba(128, 0, 255, 0.35),
+    0 0 30px rgba(128, 0, 255, 0.2),
+    0 0 60px rgba(128, 0, 255, 0.1),
+    0 0 10px rgba(0, 255, 255, 0.15),
+    0 0 40px rgba(0, 255, 255, 0.08);
+}
+
+[data-theme='light'] .cyber-glow-intensify {
+  box-shadow:
+    0 0 6px rgba(128, 0, 255, 0.06),
+    0 0 14px rgba(128, 0, 255, 0.03);
+}
+
+[data-theme='light'] .cyber-glow-intensify:hover {
+  box-shadow:
+    0 0 10px rgba(128, 0, 255, 0.2),
+    0 0 24px rgba(128, 0, 255, 0.1),
+    0 0 8px rgba(0, 104, 120, 0.1),
+    0 0 30px rgba(0, 104, 120, 0.05);
+}
+
+/* ==========================================================================
+   CYBER BRIGHTNESS PULSE (subtle brightness on group hover)
+   ========================================================================== */
+
+@keyframes brightness-pulse {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.04);
+  }
+}
+
+@keyframes brightness-pulse-light {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.02);
+  }
+}
+
+.group:hover .cyber-brightness-pulse {
+  animation: brightness-pulse 2s ease-in-out infinite;
+}
+
+[data-theme='light'] .group:hover .cyber-brightness-pulse {
+  animation: brightness-pulse-light 2s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   CYBER DATA STREAM HOVER (vertical scrolling data — only on group hover)
+   ========================================================================== */
+
+.cyber-data-stream-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.cyber-data-stream-hover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 18px,
+    rgba(128, 0, 255, 0.03) 18px,
+    rgba(128, 0, 255, 0.03) 20px
+  );
+  background-size: 100% 200px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.group:hover .cyber-data-stream-hover::after {
+  opacity: 1;
+  animation: data-stream 8s linear infinite;
+}
+
+[data-theme='light'] .cyber-data-stream-hover::after {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 18px,
+    rgba(128, 0, 255, 0.02) 18px,
+    rgba(128, 0, 255, 0.02) 20px
+  );
+}
+
+/* ==========================================================================
+   STAGGERED CORNER BRACKETS (animate in with delay on group hover)
+   ========================================================================== */
+
+.cyber-bracket-stagger .cyber-bracket {
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(0.7);
+}
+
+.group:hover .cyber-bracket-stagger .cyber-bracket {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.group:hover .cyber-bracket-stagger .cyber-bracket-tl {
+  transition-delay: 0ms;
+}
+
+.group:hover .cyber-bracket-stagger .cyber-bracket-tr {
+  transition-delay: 60ms;
+}
+
+.group:hover .cyber-bracket-stagger .cyber-bracket-bl {
+  transition-delay: 120ms;
+}
+
+.group:hover .cyber-bracket-stagger .cyber-bracket-br {
+  transition-delay: 180ms;
+}
+
+/* ==========================================================================
+   GROUP-HOVER GLITCH SHAKE (for icons inside group-hovered cards)
+   ========================================================================== */
+
+.group:hover .cyber-glitch-shake {
+  animation: glitch 0.3s ease;
+}
+
+/* ==========================================================================
+   GROUP-HOVER TEXT FLICKER (only flickers when parent group is hovered)
+   ========================================================================== */
+
+.group:hover .cyber-text-flicker-hover {
+  animation: cyber-text-flicker 4s linear infinite;
+}
+
+/* ==========================================================================
    TEAM PHOTO — THEME-ADAPTIVE FILTERS
    ========================================================================== */
 
@@ -897,6 +1252,34 @@ select:focus-visible,
   .neon-glow-magenta {
     text-shadow: none !important;
   }
+
+  .cyber-glitch-image::before,
+  .cyber-glitch-image::after {
+    display: none !important;
+  }
+
+  .cyber-scan-hover > .scan-line {
+    display: none !important;
+  }
+
+  .cyber-corrupt:hover {
+    animation: none !important;
+    clip-path: none !important;
+    filter: none !important;
+  }
+
+  .cyber-glow-intensify,
+  .cyber-glow-intensify:hover {
+    box-shadow: 0 0 0 2px currentColor !important;
+  }
+
+  .cyber-data-stream-hover::after {
+    display: none !important;
+  }
+
+  .cyber-brightness-pulse {
+    animation: none !important;
+  }
 }
 
 /* ==========================================================================
@@ -936,7 +1319,10 @@ select:focus-visible,
   .cyber-corners::before,
   .cyber-corners::after,
   .cyber-line-scan::before,
-  .cyber-data-stream::after {
+  .cyber-data-stream::after,
+  .cyber-glitch-image::before,
+  .cyber-glitch-image::after,
+  .cyber-scan-hover > .scan-line {
     display: none !important;
   }
 
@@ -945,11 +1331,180 @@ select:focus-visible,
     box-shadow: none !important;
   }
 
+  .cyber-glow-intensify {
+    box-shadow: none !important;
+    border: 2px solid ButtonText !important;
+  }
+
   .neon-glow,
   .neon-glow-cyan,
   .neon-glow-magenta {
     text-shadow: none !important;
   }
+
+  .cyber-corrupt:hover {
+    animation: none !important;
+    filter: none !important;
+    clip-path: none !important;
+  }
+
+  .cyber-data-stream-hover::after {
+    display: none !important;
+  }
+
+  .cyber-bracket-stagger .cyber-bracket {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ==========================================================================
+   KONAMI CODE EASTER EGG — CYAN OVERRIDE
+   ========================================================================== */
+
+@keyframes konami-flash {
+  0% {
+    background: rgba(0, 255, 255, 0.15);
+  }
+  30% {
+    background: rgba(0, 255, 255, 0.08);
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+@keyframes konami-text {
+  0% {
+    opacity: 0;
+    transform: scale(1.2);
+    filter: blur(8px);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* When Konami code is active, override brand to cyan */
+html.konami-active {
+  --color-brand: #00ffff;
+  --color-brand-light: #33ffff;
+  --color-brand-dark: #00cccc;
+  --color-brand-glow: rgba(0, 255, 255, 0.4);
+}
+
+html.konami-active .neon-glow {
+  text-shadow:
+    0 0 7px rgba(0, 255, 255, 0.4),
+    0 0 20px rgba(0, 255, 255, 0.3),
+    0 0 40px rgba(0, 255, 255, 0.2),
+    0 0 80px rgba(0, 255, 255, 0.08);
+}
+
+/* ==========================================================================
+   LOGO GLITCH EASTER EGG
+   ========================================================================== */
+
+@keyframes logo-glitch-intense {
+  0%,
+  100% {
+    transform: translate(0);
+    filter: none;
+  }
+  10% {
+    transform: translate(-3px, 2px);
+    filter: hue-rotate(90deg);
+  }
+  20% {
+    transform: translate(3px, -2px);
+    filter: hue-rotate(-90deg) saturate(2);
+  }
+  30% {
+    transform: translate(-2px, -3px);
+    filter: hue-rotate(180deg);
+  }
+  40% {
+    transform: translate(2px, 3px);
+    filter: hue-rotate(-180deg) brightness(1.5);
+  }
+  50% {
+    transform: translate(-3px, -2px);
+    filter: hue-rotate(90deg) saturate(1.5);
+  }
+  60% {
+    transform: translate(3px, 2px);
+    filter: hue-rotate(-90deg);
+  }
+  70% {
+    transform: translate(-2px, 3px);
+    filter: hue-rotate(45deg);
+  }
+  80% {
+    transform: translate(2px, -3px);
+    filter: none;
+  }
+  90% {
+    transform: translate(-1px, 1px);
+    filter: hue-rotate(-45deg);
+  }
+}
+
+.logo-glitch-active {
+  animation: logo-glitch-intense 0.5s ease-out !important;
+}
+
+@keyframes glitch-noise-flash {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   CONTACT FIELD EASTER EGG
+   ========================================================================== */
+
+@keyframes contact-hack-flash {
+  0% {
+    border-color: #00ffff;
+    box-shadow:
+      0 0 10px rgba(0, 255, 255, 0.4),
+      0 0 30px rgba(0, 255, 255, 0.2);
+  }
+  100% {
+    border-color: rgba(138, 138, 147, 0.4);
+    box-shadow: none;
+  }
+}
+
+.contact-hack-flash {
+  animation: contact-hack-flash 0.8s ease-out;
+}
+
+@keyframes access-denied-fade {
+  0% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.access-denied-msg {
+  animation: access-denied-fade 1.5s ease-out forwards;
 }
 
 /* ==========================================================================
@@ -960,8 +1515,12 @@ select:focus-visible,
   .scanlines::after,
   .cyber-line-scan::before,
   .cyber-data-stream::after,
+  .cyber-data-stream-hover::after,
   .cyber-corners::before,
-  .cyber-corners::after {
+  .cyber-corners::after,
+  .cyber-glitch-image::before,
+  .cyber-glitch-image::after,
+  .cyber-scan-hover > .scan-line {
     display: none !important;
   }
 
@@ -973,6 +1532,16 @@ select:focus-visible,
 
   .cyber-border-glow {
     box-shadow: 0 0 0 1px #ccc !important;
+  }
+
+  .cyber-glow-intensify {
+    box-shadow: none !important;
+  }
+
+  .cyber-corrupt:hover {
+    animation: none !important;
+    filter: none !important;
+    clip-path: none !important;
   }
 
   body {

@@ -1,7 +1,12 @@
 import type { Metadata } from 'next';
 import { Exo_2, Orbitron, JetBrains_Mono } from 'next/font/google';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import CookieBanner from '@/components/ui/CookieBanner';
+import CursorGlow from '@/components/ui/CursorGlow';
+import KonamiCode from '@/components/ui/KonamiCode';
 import ThemeProvider from '@/components/ui/ThemeProvider';
 import './globals.css';
 
@@ -53,10 +58,23 @@ export const metadata: Metadata = {
 // Inline script to prevent flash of wrong theme on load
 const themeScript = `(function(){try{var t=localStorage.getItem('kalebtec-theme')||'dark';if(t==='system'){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','dark')}})();`;
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+type Params = Promise<{ locale: string }>;
+
+export default async function RootLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Params;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const messages = await getMessages();
+  const t = await getTranslations('common');
+
   return (
     <html
-      lang="en"
+      lang={locale}
       suppressHydrationWarning
       className={`${exo2.variable} ${orbitron.variable} ${jetbrainsMono.variable}`}
     >
@@ -64,14 +82,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="bg-cyber-bg text-cyber-body antialiased font-sans transition-colors duration-300">
-        <ThemeProvider>
-          <a href="#main-content" className="skip-to-content">
-            Skip to content
-          </a>
-          <Header />
-          <main id="main-content">{children}</main>
-          <Footer />
-        </ThemeProvider>
+        <NextIntlClientProvider messages={messages}>
+          <ThemeProvider>
+            <a href="#main-content" className="skip-to-content">
+              {t('skipToContent')}
+            </a>
+            <Header />
+            <main id="main-content">{children}</main>
+            <Footer />
+            <CookieBanner />
+            <CursorGlow />
+            <KonamiCode />
+          </ThemeProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

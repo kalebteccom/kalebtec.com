@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useAtom } from 'jotai';
+import { useTranslations } from 'next-intl';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { cn } from '@/lib/utils';
 import { themeAtom, applyTheme, type Theme } from '@/lib/theme';
@@ -68,25 +69,27 @@ function MonitorIcon({ className }: { className?: string }) {
   );
 }
 
-const themeOptions: { value: Theme; label: string; Icon: typeof SunIcon }[] = [
-  { value: 'light', label: 'LIGHT', Icon: SunIcon },
-  { value: 'dark', label: 'DARK', Icon: MoonIcon },
-  { value: 'system', label: 'SYSTEM', Icon: MonitorIcon },
+const themeOptions: { value: Theme; labelKey: 'light' | 'dark' | 'system'; Icon: typeof SunIcon }[] = [
+  { value: 'light', labelKey: 'light', Icon: SunIcon },
+  { value: 'dark', labelKey: 'dark', Icon: MoonIcon },
+  { value: 'system', labelKey: 'system', Icon: MonitorIcon },
 ];
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useAtom(themeAtom);
   const [mounted, setMounted] = useState(false);
+  const t = useTranslations('theme');
 
   useEffect(() => setMounted(true), []);
 
   if (!mounted) {
-    return <div className="h-8 w-8" aria-hidden="true" />;
+    return <div className="h-11 w-11" aria-hidden="true" />;
   }
 
-  const handleSetTheme = (value: Theme) => {
-    setTheme(value);
-    applyTheme(value);
+  const handleSetTheme = (value: string) => {
+    const themeValue = value as Theme;
+    setTheme(themeValue);
+    applyTheme(themeValue);
   };
 
   const ActiveIcon = theme === 'light' ? SunIcon : theme === 'system' ? MonitorIcon : MoonIcon;
@@ -96,14 +99,14 @@ export default function ThemeToggle() {
       <DropdownMenu.Trigger asChild>
         <button
           className={cn(
-            'relative flex h-8 w-8 items-center justify-center',
+            'relative flex h-11 w-11 items-center justify-center',
             'border border-cyber-border bg-cyber-surface',
             'text-cyber-muted hover:text-cyber-heading hover:border-cyber-muted/40',
             'transition-all duration-300',
             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyber-heading/50 focus-visible:ring-offset-2 focus-visible:ring-offset-cyber-bg',
             'cyber-border-glow',
           )}
-          aria-label={`Theme: ${theme}. Click to change.`}
+          aria-label={t('ariaLabel', { theme: t(theme as 'light' | 'dark' | 'system') })}
         >
           <ActiveIcon />
         </button>
@@ -124,38 +127,40 @@ export default function ThemeToggle() {
             className="px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-cyber-faint select-none"
             aria-hidden="true"
           >
-            [THEME]
+            [{t('label').toUpperCase()}]
           </div>
 
-          {themeOptions.map(({ value, label, Icon }) => {
-            const isActive = theme === value;
+          <DropdownMenu.RadioGroup value={theme} onValueChange={handleSetTheme}>
+            {themeOptions.map(({ value, labelKey, Icon }) => {
+              const isActive = theme === value;
 
-            return (
-              <DropdownMenu.Item
-                key={value}
-                onSelect={() => handleSetTheme(value)}
-                className={cn(
-                  'flex items-center gap-3 px-3 py-2 cursor-pointer outline-none',
-                  'font-mono text-xs uppercase tracking-wider',
-                  'transition-colors duration-150',
-                  'rounded-none',
-                  isActive ? 'text-cyber-heading' : 'text-cyber-muted',
-                  'data-[highlighted]:bg-cyber-heading/10 data-[highlighted]:text-cyber-heading',
-                )}
-              >
-                <Icon
+              return (
+                <DropdownMenu.RadioItem
+                  key={value}
+                  value={value}
                   className={cn(
-                    'shrink-0 transition-colors duration-150',
+                    'flex items-center gap-3 px-3 py-2 cursor-pointer outline-none',
+                    'font-mono text-xs uppercase tracking-wider',
+                    'transition-colors duration-150',
+                    'rounded-none',
                     isActive ? 'text-cyber-heading' : 'text-cyber-muted',
+                    'data-[highlighted]:bg-cyber-heading/10 data-[highlighted]:text-cyber-heading',
                   )}
-                />
-                <span>{label}</span>
-                {isActive && (
-                  <span className="ml-auto text-cyber-heading text-[10px]">&#9646;</span>
-                )}
-              </DropdownMenu.Item>
-            );
-          })}
+                >
+                  <Icon
+                    className={cn(
+                      'shrink-0 transition-colors duration-150',
+                      isActive ? 'text-cyber-heading' : 'text-cyber-muted',
+                    )}
+                  />
+                  <span>{t(labelKey).toUpperCase()}</span>
+                  <DropdownMenu.ItemIndicator className="ml-auto">
+                    <span className="text-cyber-heading text-[10px]">&#9646;</span>
+                  </DropdownMenu.ItemIndicator>
+                </DropdownMenu.RadioItem>
+              );
+            })}
+          </DropdownMenu.RadioGroup>
 
           <div
             className="mx-3 mt-1 mb-1 h-px bg-gradient-to-r from-transparent via-brand/30 to-transparent"

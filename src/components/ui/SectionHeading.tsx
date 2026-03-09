@@ -69,12 +69,9 @@ export default function SectionHeading({
       {/* Sharp gradient accent line with glowing dot */}
       <div className="mt-6 flex items-center gap-0" aria-hidden="true">
         {/* Glowing dot */}
-        <div className="w-2 h-2 bg-brand" role="presentation" />
+        <div className="w-2 h-2 bg-brand" />
         {/* Gradient line */}
-        <div
-          className="h-px w-24 bg-gradient-to-r from-brand/40 to-transparent"
-          role="presentation"
-        />
+        <div className="h-px w-24 bg-gradient-to-r from-brand/40 to-transparent" />
       </div>
 
       {subtitle && <p className="mt-6 text-lg text-cyber-muted max-w-2xl font-mono">{subtitle}</p>}

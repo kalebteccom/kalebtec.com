@@ -1,7 +1,7 @@
 'use client';
 
-import { useRef, useState, useMemo } from 'react';
-import { useFrame } from '@react-three/fiber';
+import { useRef, useState, useMemo, useCallback, useEffect } from 'react';
+import { useFrame, useThree, type ThreeEvent } from '@react-three/fiber';
 import * as THREE from 'three';
 
 export type GeometryType = 'box' | 'octahedron' | 'tetrahedron' | 'cross';
@@ -20,6 +20,7 @@ interface FloatingGeometryProps {
   edgeOpacity?: number;
   metalness?: number;
   roughness?: number;
+  draggable?: boolean;
 }
 
 // Shared edge geometry cache keyed by geometry type
@@ -185,14 +186,150 @@ export default function FloatingGeometry({
   edgeOpacity = 0.35,
   metalness = 0.8,
   roughness = 0.7,
+  draggable = false,
 }: FloatingGeometryProps) {
   const groupRef = useRef<THREE.Group>(null);
   const [mounted, setMounted] = useState(false);
-  const initialY = position[1];
+  const [isHovered, setIsHovered] = useState(false);
   const timeOffset = useRef(Math.random() * Math.PI * 2);
+  const { camera, gl } = useThree();
 
   // Entrance animation state
   const entranceProgress = useRef(0);
+
+  // Persistent home position — updated when drag ends so geometry stays put
+  const homePosition = useRef(new THREE.Vector3(position[0], position[1], position[2]));
+
+  // All drag state lives in refs — never in React state — so window listener
+  // identities are stable and never get torn down mid-drag.
+  const isDraggingRef = useRef(false);
+  const dragPlane = useRef(new THREE.Plane());
+  const dragOffset = useRef(new THREE.Vector3());
+  const dragTarget = useRef(new THREE.Vector3(position[0], position[1], position[2]));
+
+  // Store camera/gl in refs so handlers can access them without dependencies
+  const cameraRef = useRef(camera);
+  const glRef = useRef(gl);
+  cameraRef.current = camera;
+  glRef.current = gl;
+
+  // Glow intensity for drag feedback
+  const glowIntensity = useRef(0);
+
+  // --- Stable window handlers (zero dependencies, use only refs) ---
+
+  const handleWindowPointerMove = useCallback((e: PointerEvent) => {
+    if (!isDraggingRef.current) return;
+
+    const canvas = glRef.current.domElement;
+    const rect = canvas.getBoundingClientRect();
+    const ndc = new THREE.Vector2(
+      ((e.clientX - rect.left) / rect.width) * 2 - 1,
+      -((e.clientY - rect.top) / rect.height) * 2 + 1,
+    );
+    const raycaster = new THREE.Raycaster();
+    raycaster.setFromCamera(ndc, cameraRef.current);
+    const intersection = new THREE.Vector3();
+    if (raycaster.ray.intersectPlane(dragPlane.current, intersection)) {
+      dragTarget.current.copy(intersection).add(dragOffset.current);
+    }
+  }, []); // empty deps — reads everything from refs
+
+  const endDrag = useCallback(() => {
+    if (!isDraggingRef.current || !groupRef.current) return;
+
+    isDraggingRef.current = false;
+    homePosition.current.copy(groupRef.current.position);
+    glRef.current.domElement.style.cursor = '';
+
+    window.removeEventListener('pointermove', handleWindowPointerMove);
+    window.removeEventListener('pointerdown', handleWindowRelease);
+  }, [handleWindowPointerMove]); // handleWindowPointerMove is stable ([] deps)
+
+  // Second click/pointerdown anywhere → release
+  const handleWindowRelease = useCallback(
+    (e: PointerEvent) => {
+      // Ignore the initial pointerdown that started the drag — we skip that
+      // via the setTimeout in startDrag. Any subsequent pointerdown releases.
+      e.stopPropagation();
+      endDrag();
+    },
+    [endDrag],
+  );
+
+  // Start drag — triggered by pointerDown on the hit sphere
+  const handlePointerDown = useCallback(
+    (e: ThreeEvent<PointerEvent>) => {
+      if (!draggable || !groupRef.current) return;
+      e.stopPropagation();
+
+      // If already dragging, this click on the geometry should release
+      if (isDraggingRef.current) {
+        endDrag();
+        return;
+      }
+
+      isDraggingRef.current = true;
+
+      // Set up drag plane perpendicular to camera at the object's current position
+      const camDir = new THREE.Vector3();
+      cameraRef.current.getWorldDirection(camDir);
+      dragPlane.current.setFromNormalAndCoplanarPoint(
+        camDir.negate(),
+        groupRef.current.position,
+      );
+
+      // Calculate offset so geometry doesn't jump to cursor
+      const canvas = glRef.current.domElement;
+      const rect = canvas.getBoundingClientRect();
+      const ndc = new THREE.Vector2(
+        ((e.nativeEvent.clientX - rect.left) / rect.width) * 2 - 1,
+        -((e.nativeEvent.clientY - rect.top) / rect.height) * 2 + 1,
+      );
+      const raycaster = new THREE.Raycaster();
+      raycaster.setFromCamera(ndc, cameraRef.current);
+      const intersection = new THREE.Vector3();
+      if (raycaster.ray.intersectPlane(dragPlane.current, intersection)) {
+        dragOffset.current.subVectors(groupRef.current.position, intersection);
+      }
+
+      // Start tracking cursor globally
+      window.addEventListener('pointermove', handleWindowPointerMove);
+
+      // Delay registering the release handler so the current pointerdown
+      // event doesn't immediately trigger it
+      requestAnimationFrame(() => {
+        if (isDraggingRef.current) {
+          window.addEventListener('pointerdown', handleWindowRelease);
+        }
+      });
+    },
+    [draggable, endDrag, handleWindowPointerMove, handleWindowRelease],
+  );
+
+  // Clean up on unmount — stable references so this only runs on unmount
+  useEffect(() => {
+    const moveFn = handleWindowPointerMove;
+    const releaseFn = handleWindowRelease;
+    return () => {
+      window.removeEventListener('pointermove', moveFn);
+      window.removeEventListener('pointerdown', releaseFn);
+    };
+  }, [handleWindowPointerMove, handleWindowRelease]);
+
+  const handlePointerOver = useCallback(() => {
+    if (draggable && !isDraggingRef.current) {
+      setIsHovered(true);
+      glRef.current.domElement.style.cursor = 'grab';
+    }
+  }, [draggable]);
+
+  const handlePointerOut = useCallback(() => {
+    if (draggable && !isDraggingRef.current) {
+      setIsHovered(false);
+      glRef.current.domElement.style.cursor = '';
+    }
+  }, [draggable]);
 
   useFrame((state) => {
     if (!groupRef.current) return;
@@ -210,34 +347,87 @@ export default function FloatingGeometry({
 
     const time = state.clock.elapsedTime;
 
-    // Rotation -- slightly faster and more mechanical
-    groupRef.current.rotation.x += rotationSpeed[0];
-    groupRef.current.rotation.y += rotationSpeed[1];
-    groupRef.current.rotation.z += rotationSpeed[2];
+    // Glow intensity — smoothly animate toward target
+    const targetGlow = isDraggingRef.current ? 1 : isHovered ? 0.5 : 0;
+    glowIntensity.current += (targetGlow - glowIntensity.current) * 0.08;
 
-    // Bobbing with sine wave
-    groupRef.current.position.y =
-      initialY + Math.sin(time * bobSpeed + timeOffset.current) * bobAmount;
+    if (isDraggingRef.current) {
+      // While dragging: lerp toward drag target for smooth following
+      groupRef.current.position.lerp(dragTarget.current, 0.25);
 
-    // Subtle horizontal drift
-    groupRef.current.position.x = position[0] + Math.sin(time * 0.3 + timeOffset.current) * 0.05;
+      // Spin faster while dragging
+      groupRef.current.rotation.x += rotationSpeed[0] * 3;
+      groupRef.current.rotation.y += rotationSpeed[1] * 3;
+      groupRef.current.rotation.z += rotationSpeed[2] * 3;
 
-    // Mouse parallax -- gentle drift toward mouse
-    const mouseX = state.pointer.x * 0.15;
-    const mouseY = state.pointer.y * 0.1;
-    groupRef.current.position.x += mouseX * (1 + position[2] * 0.1);
-    groupRef.current.position.y += mouseY * (1 + position[2] * 0.1);
+      // Scale up slightly
+      const dragScale = scale * 1.15;
+      groupRef.current.scale.lerp(
+        new THREE.Vector3(dragScale, dragScale, dragScale),
+        0.1,
+      );
+
+      glRef.current.domElement.style.cursor = 'grabbing';
+    } else {
+      // Floating behavior — orbit around homePosition (persists after drag)
+      const home = homePosition.current;
+
+      const orbitX =
+        home.x +
+        Math.sin(time * 0.3 + timeOffset.current) * 0.05 +
+        state.pointer.x * 0.15 * (1 + position[2] * 0.1);
+      const orbitY =
+        home.y +
+        Math.sin(time * bobSpeed + timeOffset.current) * bobAmount +
+        state.pointer.y * 0.1 * (1 + position[2] * 0.1);
+      const orbitZ = home.z;
+
+      // Smoothly lerp to orbit position (handles transition from drag-end)
+      groupRef.current.position.x += (orbitX - groupRef.current.position.x) * 0.05;
+      groupRef.current.position.y += (orbitY - groupRef.current.position.y) * 0.05;
+      groupRef.current.position.z += (orbitZ - groupRef.current.position.z) * 0.05;
+
+      // Normal rotation
+      groupRef.current.rotation.x += rotationSpeed[0];
+      groupRef.current.rotation.y += rotationSpeed[1];
+      groupRef.current.rotation.z += rotationSpeed[2];
+
+      // Return to normal scale
+      groupRef.current.scale.lerp(
+        new THREE.Vector3(scale, scale, scale),
+        0.08,
+      );
+    }
   });
+
+  // Compute boosted emissive for hover/drag feedback
+  const boostedEmissive = emissiveIntensity + glowIntensity.current * 0.8;
+  const boostedEdgeOpacity = Math.min(1, edgeOpacity + glowIntensity.current * 0.4);
+
+  // Invisible hit sphere for easier pointer interaction
+  const hitRadius = scale * 1.2;
 
   return (
     <group ref={groupRef} position={position} scale={0}>
+      {/* Invisible hit area — only for initiating drag + hover cursor */}
+      {draggable && (
+        <mesh
+          onPointerDown={handlePointerDown}
+          onPointerOver={handlePointerOver}
+          onPointerOut={handlePointerOut}
+        >
+          <sphereGeometry args={[hitRadius, 8, 8]} />
+          <meshBasicMaterial visible={false} />
+        </mesh>
+      )}
+
       {geometryType === 'cross' ? (
         <CrossGeometry
           color={color}
           opacity={opacity}
-          emissiveIntensity={emissiveIntensity}
+          emissiveIntensity={boostedEmissive}
           edgeColor={edgeColor}
-          edgeOpacity={edgeOpacity}
+          edgeOpacity={boostedEdgeOpacity}
           metalness={metalness}
           roughness={roughness}
         />
@@ -246,9 +436,9 @@ export default function FloatingGeometry({
           geometryType={geometryType}
           color={color}
           opacity={opacity}
-          emissiveIntensity={emissiveIntensity}
+          emissiveIntensity={boostedEmissive}
           edgeColor={edgeColor}
-          edgeOpacity={edgeOpacity}
+          edgeOpacity={boostedEdgeOpacity}
           metalness={metalness}
           roughness={roughness}
         />

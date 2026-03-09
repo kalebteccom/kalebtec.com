@@ -2,16 +2,18 @@ import { notFound } from 'next/navigation';
 import { getPayload } from 'payload';
 import configPromise from '@payload-config';
 import Image from 'next/image';
-import Link from 'next/link';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
 import type { Metadata } from 'next';
 import type { Project, Media, Industry } from '@/payload-types';
 
 export const dynamic = 'force-dynamic';
 
-type Params = Promise<{ slug: string }>;
+type Params = Promise<{ slug: string; locale: string }>;
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug, locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'metadata' });
   const payload = await getPayload({ config: configPromise });
   const { docs } = await payload.find({
     collection: 'projects',
@@ -21,7 +23,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   });
 
   const project = docs[0];
-  if (!project) return { title: 'Project Not Found | Kalebtec' };
+  if (!project) return { title: t('notFoundTitle') };
 
   const image = project.featuredImage as Media | null;
 
@@ -37,7 +39,10 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function ProjectDetailPage({ params }: { params: Params }) {
-  const { slug } = await params;
+  const { slug, locale } = await params;
+  setRequestLocale(locale);
+
+  const t = await getTranslations('projects');
   const payload = await getPayload({ config: configPromise });
 
   const { docs } = await payload.find({
@@ -57,7 +62,7 @@ export default async function ProjectDetailPage({ params }: { params: Params }) 
   const technologies = project.technologies ?? [];
 
   return (
-    <main id="main-content" className="min-h-screen pt-24 pb-32">
+    <section aria-label={project.title} className="min-h-screen pt-24 pb-32">
       <div className="mx-auto max-w-5xl px-6 lg:px-8">
         {/* Back link */}
         <Link
@@ -76,7 +81,7 @@ export default async function ProjectDetailPage({ params }: { params: Params }) 
           >
             [
           </span>
-          BACK TO PROJECTS
+          {t('backToProjects')}
           <span
             className="text-cyber-faint group-hover:text-cyber-muted transition-colors"
             aria-hidden="true"
@@ -117,7 +122,7 @@ export default async function ProjectDetailPage({ params }: { params: Params }) 
             )}
             {project.publishedDate && (
               <span className="font-mono text-xs text-cyber-faint tracking-wide">
-                {new Date(project.publishedDate).toLocaleDateString('en-US', {
+                {new Date(project.publishedDate).toLocaleDateString(locale, {
                   year: 'numeric',
                   month: 'long',
                 })}
@@ -170,7 +175,7 @@ export default async function ProjectDetailPage({ params }: { params: Params }) 
           </div>
         )}
       </div>
-    </main>
+    </section>
   );
 }
 

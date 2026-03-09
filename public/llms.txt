@@ -1,0 +1,34 @@
+# Kalebtec
+
+> Kalebtec is a technology consulting firm founded by Rowin Hernandez and Mari Hernandez. We partner with businesses to architect, build, and scale digital solutions — from software architecture and web development to AI automation and cloud infrastructure.
+
+Kalebtec provides expert technology consulting services for businesses looking to build, scale, or transform their digital presence. Based remotely, we work with clients worldwide to deliver high-quality engineering and strategic technology guidance.
+
+Website: https://kalebtec.com
+Contact: hello@kalebtec.com
+
+## Services
+
+Kalebtec offers six core consulting services:
+
+- [Software Architecture](/index.md): Designing scalable, maintainable system architectures — from microservices to monoliths
+- [Web Development](/index.md): Full-stack web applications built with modern frameworks, fast, accessible, and beautiful by default
+- [AI & Automation](/index.md): Intelligent automation and AI-powered solutions to streamline operations
+- [Cloud Infrastructure](/index.md): Cloud-native solutions on AWS, GCP, and Azure optimized for performance, security, and cost
+- [Technical Strategy](/index.md): Technology roadmaps and digital transformation aligned with business goals
+- [Team Augmentation](/index.md): Embedded senior engineers who scale with your team when you need it most
+
+## Team
+
+- Rowin Hernandez — Co-Founder & CTO. Full-stack engineer and systems architect.
+- Mari Hernandez — Co-Founder & CEO. Operations strategist and project manager.
+
+## Pages
+
+- [Homepage](/index.md): Full overview of Kalebtec — about, services, team, and contact
+- [Projects](/projects.md): Portfolio of technology consulting projects
+
+## Optional
+
+- [Terms of Service](/terms.md): Legal terms governing use of kalebtec.com
+- [Privacy Policy](/privacy.md): How Kalebtec handles data and privacy

@@ -1,0 +1,387 @@
+{
+  "metadata": {
+    "title": "Kalebtec | Tech Consulting",
+    "description": "Expert technology consulting by Rowin and Mari Hernandez. We build digital solutions that matter.",
+    "ogTitle": "Kalebtec | Tech Consulting",
+    "ogDescription": "Expert technology consulting by Rowin and Mari Hernandez.",
+    "projectsTitle": "Projects | Kalebtec",
+    "projectsDescription": "Explore our portfolio of technology consulting projects spanning web development, AI, cloud infrastructure, and more.",
+    "notFoundTitle": "Project Not Found | Kalebtec"
+  },
+  "nav": {
+    "about": "ABOUT",
+    "services": "SERVICES",
+    "projects": "PROJECTS",
+    "team": "TEAM",
+    "contact": "CONTACT",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
+    "mobileNav": "Mobile navigation",
+    "mobileMenuDialog": "Navigation menu",
+    "mainNav": "Main navigation",
+    "systemNav": "SYSTEM.NAV"
+  },
+  "hero": {
+    "ariaLabel": "Hero",
+    "sysActive": "SYS.ACTIVE",
+    "tagline": "> TECHNOLOGY_CONSULTING",
+    "valueProp": "// We architect digital solutions that transform businesses",
+    "cta": "[INITIATE_CONTACT]",
+    "scroll": "[SCROLL]"
+  },
+  "about": {
+    "ariaLabel": "About Kalebtec",
+    "sectionTitle": "WHO WE ARE",
+    "sectionNumber": "01",
+    "originStory": "We didn't start Kalebtec in a boardroom. We started it at a kitchen table, late at night, fueled by bad coffee and a shared obsession with building things that actually work.",
+    "teamDescription": "<rowin>Rowin</rowin> writes the code. <mari>Mari</mari> runs the show. Together, we take messy, complex technical challenges and turn them into clean, scalable systems that businesses can actually rely on.",
+    "directAttention": "We're not a faceless agency. Every project gets our direct attention -- hands on keyboards, eyes on screens, zero layers of middle management between us and your product. When you work with Kalebtec, you work with <em>us</em>.",
+    "philosophy": "We believe great technology should feel invisible -- fast, reliable, and so well-built that people forget it's even there. No bloated frameworks for the sake of trends. No overengineered solutions to simple problems. Just sharp, purposeful engineering that gets the job done.",
+    "statUptime": "System reliability: 99.9%",
+    "statStackDepth": "Stack depth: Full end-to-end",
+    "statResponseTime": "Response time: Less than 24 hours",
+    "statClearance": "Security clearance: Maximum"
+  },
+  "services": {
+    "ariaLabel": "Our Services",
+    "sectionTitle": "WHAT WE DO",
+    "sectionNumber": "02",
+    "softwareArchitecture": {
+      "name": "Software Architecture",
+      "description": "We design scalable, maintainable systems built for growth. From microservices to monoliths, we choose the right architecture for your needs."
+    },
+    "webDevelopment": {
+      "name": "Web Development",
+      "description": "Modern web applications built with cutting-edge technology. Fast, accessible, and beautiful by default."
+    },
+    "aiAutomation": {
+      "name": "AI & Automation",
+      "description": "Leverage artificial intelligence and automation to streamline operations and unlock new possibilities."
+    },
+    "cloudInfrastructure": {
+      "name": "Cloud Infrastructure",
+      "description": "Cloud-native solutions on AWS, GCP, and Azure. We optimize for performance, security, and cost."
+    },
+    "technicalStrategy": {
+      "name": "Technical Strategy",
+      "description": "Align your technology decisions with business goals. We provide roadmaps that drive real results."
+    },
+    "teamAugmentation": {
+      "name": "Team Augmentation",
+      "description": "Embed senior engineers directly into your team. We scale with you when you need it most."
+    }
+  },
+  "projects": {
+    "ariaLabel": "Our Work",
+    "sectionTitle": "OUR WORK",
+    "sectionNumber": "03",
+    "viewAll": "View All Projects",
+    "backToProjects": "BACK TO PROJECTS",
+    "allLabel": "[ALL]",
+    "pageTitle": "OUR WORK",
+    "industries": "// INDUSTRIES",
+    "technologies": "// TECHNOLOGIES",
+    "clearFilters": "[CLEAR FILTERS]",
+    "projectsFound": "{count} {count, plural, one {project} other {projects}} found",
+    "allTechnologies": "All Technologies",
+    "noResults": "No projects match the selected filters.",
+    "viewProject": "View project: {title}"
+  },
+  "team": {
+    "ariaLabel": "Our Team",
+    "sectionTitle": "THE TEAM",
+    "sectionNumber": "04",
+    "statusOnline": "ONLINE",
+    "rowin": {
+      "role": "Co-Founder & Lead Engineer",
+      "description": "The one who talks to machines. Rowin builds full-stack systems from the ground up -- databases, APIs, interfaces, infrastructure. If it runs on code, he's already halfway through the architecture. Obsessed with clean abstractions, fast deploys, and making complex things feel simple.",
+      "specSpecialty": "Full-Stack Systems",
+      "specFocus": "Architecture & DX",
+      "specMode": "Build & Ship"
+    },
+    "mari": {
+      "role": "Co-Founder & Operations Lead",
+      "description": "The one who makes sure it all actually happens. Mari orchestrates projects, wrangles timelines, and keeps every engagement running like a well-oiled machine. She's the reason deadlines get hit and clients stay happy. Sharp instincts, zero tolerance for chaos.",
+      "specSpecialty": "Operations & Strategy",
+      "specFocus": "Client Success",
+      "specMode": "Plan & Execute"
+    }
+  },
+  "contact": {
+    "ariaLabel": "Contact Us",
+    "sectionNumber": "05",
+    "sectionLabel": "CONTACT",
+    "heading": "LET'S BUILD",
+    "headingHighlight": "SOMETHING",
+    "subtitle": "// Ready to transform your technology? Let's talk.",
+    "nameLabel": "Name",
+    "namePlaceholder": "> your name",
+    "emailLabel": "Email",
+    "emailPlaceholder": "> you@company.com",
+    "messageLabel": "Message",
+    "messagePlaceholder": "> describe your project...",
+    "submit": "[TRANSMIT]",
+    "submitting": "[TRANSMITTING...]",
+    "successMessage": "> TRANSMISSION_COMPLETE // We'll be in touch soon.",
+    "errorMessage": "> TRANSMISSION_FAILED // Please try again or email us directly.",
+    "formAriaLabel": "Contact form"
+  },
+  "footer": {
+    "tagline": "Building the future, one solution at a time",
+    "techConsulting": "Tech Consulting",
+    "navigationLabel": "// NAVIGATION",
+    "contactLabel": "// CONTACT",
+    "footerNav": "Footer navigation",
+    "copyright": "Kalebtec",
+    "founders": "Rowin & Mari Hernandez",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "sysVer": "SYS.VER 1.0",
+    "location": "LOCATION: REMOTE",
+    "linkedinAriaLabel": "LinkedIn",
+    "twitterAriaLabel": "X (Twitter)",
+    "githubAriaLabel": "GitHub"
+  },
+  "error": {
+    "ariaLabel": "Application error",
+    "label": "[SYSTEM_FAULT]",
+    "sublabel": "RUNTIME_EXCEPTION",
+    "heading": "ERROR",
+    "terminalMessage": "> UNEXPECTED_SYSTEM_FAILURE",
+    "description": "// An unhandled exception has disrupted normal operations",
+    "diagProcess": "Process execution halted",
+    "diagRecovery": "Recovery protocol available",
+    "diagAwaiting": "Awaiting operator action",
+    "retry": "[RETRY]",
+    "returnHome": "[RETURN_HOME]"
+  },
+  "notFound": {
+    "ariaLabel": "Page not found",
+    "label": "[ERR]",
+    "sublabel": "PAGE_NOT_FOUND",
+    "heading": "404",
+    "terminalMessage": "> TARGET_RESOURCE: NOT_FOUND",
+    "description": "// The requested path does not exist in this system",
+    "trace1": "Routing lookup initiated...",
+    "trace2": "Scanning registered paths...",
+    "trace3": "No matching route found",
+    "trace4": "Connection terminated — 404",
+    "awaiting": "Awaiting operator input",
+    "returnHome": "[RETURN_HOME]"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "skipToContent": "Skip to content"
+  },
+  "theme": {
+    "ariaLabel": "Theme: {theme}. Click to change.",
+    "label": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "cookie": {
+    "ariaLabel": "Cookie consent",
+    "sysLabel": "[SYS]",
+    "noticeLabel": "COOKIE_NOTICE",
+    "description": "We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. Read our",
+    "privacyPolicy": "Privacy Policy",
+    "and": "and",
+    "termsOfService": "Terms of Service",
+    "decline": "Decline",
+    "accept": "Accept"
+  },
+  "languageSwitcher": {
+    "label": "Language",
+    "ariaLabel": "Language: {locale}. Click to change."
+  },
+  "terms": {
+    "metaTitle": "Terms of Service | Kalebtec",
+    "metaDescription": "Terms of Service for Kalebtec technology consulting services. Read about our service terms, limitations, and user responsibilities.",
+    "pageTitle": "Terms of Service",
+    "effectiveDate": "Effective Date: March 9, 2026 \u2014 Last Updated: March 9, 2026",
+    "section1": {
+      "label": "AGREEMENT",
+      "title": "Acceptance of Terms",
+      "content": "By accessing or using the Kalebtec website (kalebtec.com) and our technology consulting services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our website or services. These terms constitute a legally binding agreement between you and Kalebtec, operated by Rowin Hernandez and Mari Hernandez."
+    },
+    "section2": {
+      "label": "SERVICES",
+      "title": "Description of Services",
+      "content": "Kalebtec provides technology consulting services including but not limited to:",
+      "item1": "Web and mobile application development",
+      "item2": "Cloud infrastructure design and implementation",
+      "item3": "AI and machine learning integration",
+      "item4": "Technical architecture consulting",
+      "item5": "Database design and optimization",
+      "item6": "DevOps and CI/CD pipeline setup",
+      "contentAfter": "The specific scope of services for each engagement will be defined in a separate statement of work or service agreement between Kalebtec and the client."
+    },
+    "section3": {
+      "label": "USER_OBLIGATIONS",
+      "title": "User Responsibilities",
+      "content": "When using our website and services, you agree to:",
+      "item1": "Provide accurate and complete information when contacting us or engaging our services",
+      "item2": "Not use our website for any unlawful purpose or in violation of any applicable laws",
+      "item3": "Not attempt to gain unauthorized access to our systems or infrastructure",
+      "item4": "Not reproduce, distribute, or create derivative works from our website content without permission",
+      "item5": "Respect the intellectual property rights of Kalebtec and its clients"
+    },
+    "section4": {
+      "label": "IP_RIGHTS",
+      "title": "Intellectual Property",
+      "content1": "All content on the Kalebtec website, including but not limited to text, graphics, logos, design elements, 3D visuals, animations, code, and software, is the property of Kalebtec and is protected by applicable intellectual property laws.",
+      "content2": "Intellectual property rights for client deliverables will be governed by the specific terms outlined in each project's statement of work or service agreement. Unless otherwise agreed in writing, Kalebtec retains the right to showcase completed work in its portfolio."
+    },
+    "section5": {
+      "label": "CONFIDENTIALITY",
+      "title": "Confidentiality",
+      "content": "Kalebtec acknowledges that in the course of providing consulting services, we may receive confidential information from clients. We commit to maintaining the confidentiality of such information and will not disclose it to third parties without the client's prior written consent, except as required by law. Specific confidentiality terms may be established in individual service agreements or non-disclosure agreements."
+    },
+    "section6": {
+      "label": "PAYMENT",
+      "title": "Payment Terms",
+      "content": "Payment terms, rates, and schedules for consulting services will be outlined in individual project agreements or statements of work. Unless otherwise specified, invoices are due within thirty (30) days of issuance. Kalebtec reserves the right to suspend services for overdue payments. Late payments may be subject to reasonable interest charges as specified in the applicable service agreement."
+    },
+    "section7": {
+      "label": "LIABILITY",
+      "title": "Limitation of Liability",
+      "content": "To the maximum extent permitted by applicable law, Kalebtec shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, use, or goodwill, arising out of or in connection with:",
+      "item1": "Your use of or inability to use our website or services",
+      "item2": "Any errors or omissions in our website content",
+      "item3": "Unauthorized access to or alteration of your data",
+      "item4": "Any third-party content or services accessed through our website",
+      "contentAfter": "Our total liability for any claims arising from our services shall not exceed the total fees paid by the client for the specific engagement giving rise to the claim."
+    },
+    "section8": {
+      "label": "WARRANTIES",
+      "title": "Disclaimer of Warranties",
+      "content": "Our website and its content are provided \"as is\" and \"as available\" without warranties of any kind, either express or implied. Kalebtec does not warrant that the website will be uninterrupted, error-free, or free of viruses or other harmful components. Specific warranties for consulting services will be defined in individual service agreements."
+    },
+    "section9": {
+      "label": "TERMINATION",
+      "title": "Termination",
+      "content": "We reserve the right to terminate or restrict your access to our website at any time, without notice, for conduct that we believe violates these Terms of Service or is harmful to other users, us, or third parties. Termination of consulting service engagements will be governed by the terms outlined in individual service agreements."
+    },
+    "section10": {
+      "label": "GOVERNING_LAW",
+      "title": "Governing Law",
+      "content": "These Terms of Service shall be governed by and construed in accordance with the laws of the United States, without regard to conflict of law provisions. Any disputes arising under these terms shall be resolved through good-faith negotiation, and if necessary, binding arbitration in accordance with applicable rules."
+    },
+    "section11": {
+      "label": "MODIFICATIONS",
+      "title": "Changes to Terms",
+      "content": "Kalebtec reserves the right to modify these Terms of Service at any time. Changes will be effective immediately upon posting to this page. We will update the \"Last Updated\" date at the top of this page when changes are made. Your continued use of our website or services after changes are posted constitutes your acceptance of the modified terms."
+    },
+    "contact": {
+      "label": "CONTACT",
+      "title": "Contact Us",
+      "content": "If you have any questions about these Terms of Service, please contact us:"
+    },
+    "backToHome": "Back to Home",
+    "privacyPolicyLink": "Privacy Policy"
+  },
+  "privacy": {
+    "metaTitle": "Privacy Policy | Kalebtec",
+    "metaDescription": "Privacy Policy for Kalebtec. Learn about how we collect, use, and protect your personal data.",
+    "pageTitle": "Privacy Policy",
+    "effectiveDate": "Effective Date: March 9, 2026 \u2014 Last Updated: March 9, 2026",
+    "section1": {
+      "label": "OVERVIEW",
+      "title": "Introduction",
+      "content": "Kalebtec (\"we\", \"us\", or \"our\"), operated by Rowin Hernandez and Mari Hernandez, is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website (kalebtec.com) or use our technology consulting services. Please read this policy carefully. By using our website or services, you consent to the practices described herein."
+    },
+    "section2": {
+      "label": "DATA_COLLECTION",
+      "title": "Information We Collect",
+      "content": "We may collect information about you in several ways:",
+      "personalDataTitle": "Personal Data",
+      "personalDataContent": "Information you voluntarily provide to us when contacting us or engaging our services, including:",
+      "personalItem1": "Name and contact information (email address, phone number)",
+      "personalItem2": "Company or organization name",
+      "personalItem3": "Project details and requirements shared through our contact form",
+      "personalItem4": "Billing and payment information for service engagements",
+      "autoDataTitle": "Automatically Collected Data",
+      "autoDataContent": "When you visit our website, we may automatically collect certain information, including:",
+      "autoItem1": "IP address and approximate geographic location",
+      "autoItem2": "Browser type and version",
+      "autoItem3": "Operating system",
+      "autoItem4": "Pages visited and time spent on each page",
+      "autoItem5": "Referring website or source"
+    },
+    "section3": {
+      "label": "DATA_USAGE",
+      "title": "How We Use Your Information",
+      "content": "We use the information we collect for the following purposes:",
+      "item1": "To respond to your inquiries and provide requested services",
+      "item2": "To deliver and manage our consulting engagements",
+      "item3": "To process payments and send invoices",
+      "item4": "To improve our website, services, and user experience",
+      "item5": "To communicate updates about our services or this policy",
+      "item6": "To comply with legal obligations"
+    },
+    "section4": {
+      "label": "COOKIES",
+      "title": "Cookies and Tracking Technologies",
+      "content": "Our website may use cookies and similar tracking technologies to enhance your browsing experience. Cookies are small data files stored on your device.",
+      "typesTitle": "Types of Cookies We Use",
+      "essentialLabel": "Essential Cookies:",
+      "essentialDesc": "Required for the website to function properly (e.g., theme preference, cookie consent status)",
+      "analyticsLabel": "Analytics Cookies:",
+      "analyticsDesc": "Help us understand how visitors interact with our website so we can improve it",
+      "controlContent": "You can control cookies through your browser settings. Disabling cookies may affect some website functionality. We also use localStorage to persist your theme preference and cookie consent choice."
+    },
+    "section5": {
+      "label": "THIRD_PARTIES",
+      "title": "Third-Party Services",
+      "content": "We may use third-party services that collect, monitor, and analyze data to improve our website and services. These third parties have their own privacy policies addressing how they use such information. Third-party services we may use include:",
+      "item1": "Website analytics providers",
+      "item2": "Cloud hosting and infrastructure providers",
+      "item3": "Payment processing services",
+      "item4": "Email and communication platforms",
+      "contentAfter": "We do not sell, trade, or otherwise transfer your personal information to outside parties for marketing purposes."
+    },
+    "section6": {
+      "label": "DATA_SECURITY",
+      "title": "Data Security",
+      "content": "We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of electronic transmission or storage is 100% secure, and we cannot guarantee absolute security. We use industry-standard encryption (HTTPS/TLS) for all data transmitted between your browser and our servers."
+    },
+    "section7": {
+      "label": "DATA_RETENTION",
+      "title": "Data Retention",
+      "content": "We retain your personal information only for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law. Contact information submitted through our website is retained for the duration of our business relationship and for a reasonable period thereafter to address any follow-up inquiries."
+    },
+    "section8": {
+      "label": "YOUR_RIGHTS",
+      "title": "Your Rights",
+      "content": "Depending on your location, you may have certain rights regarding your personal data, including:",
+      "item1": "The right to access the personal data we hold about you",
+      "item2": "The right to request correction of inaccurate data",
+      "item3": "The right to request deletion of your personal data",
+      "item4": "The right to object to or restrict processing of your data",
+      "item5": "The right to data portability",
+      "item6": "The right to withdraw consent at any time",
+      "contentAfterPre": "To exercise any of these rights, please contact us at",
+      "contentAfterPost": ". We will respond to your request within a reasonable timeframe."
+    },
+    "section9": {
+      "label": "CHILDREN",
+      "title": "Children's Privacy",
+      "contentPre": "Our website and services are not directed at individuals under the age of 13. We do not knowingly collect personal information from children. If we become aware that a child under 13 has provided us with personal information, we will take steps to delete such information promptly. If you believe we have inadvertently collected information from a child, please contact us at",
+      "contentPost": "."
+    },
+    "section10": {
+      "label": "MODIFICATIONS",
+      "title": "Changes to This Policy",
+      "content": "We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated \"Last Updated\" date. We encourage you to review this policy periodically. Your continued use of our website or services after any changes constitutes acceptance of the updated policy."
+    },
+    "contact": {
+      "label": "CONTACT",
+      "title": "Contact Us",
+      "content": "If you have any questions or concerns about this Privacy Policy, please contact us:"
+    },
+    "backToHome": "Back to Home",
+    "termsLink": "Terms of Service"
+  }
+}

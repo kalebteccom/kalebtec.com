@@ -3,24 +3,50 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import MobileMenu from './MobileMenu';
 import ThemeToggle from '@/components/ui/ThemeToggle';
-
-const navLinks = [
-  { href: '/#about', label: 'ABOUT' },
-  { href: '/#services', label: 'SERVICES' },
-  { href: '/projects', label: 'PROJECTS' },
-  { href: '/#team', label: 'TEAM' },
-  { href: '/#contact', label: 'CONTACT' },
-];
+import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 
 export default function Header() {
+  const t = useTranslations('nav');
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [logoGlitching, setLogoGlitching] = useState(false);
   const { scrollY } = useScroll();
   const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const logoClicksRef = useRef<number[]>([]);
+  const logoRef = useRef<HTMLAnchorElement>(null);
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    const now = Date.now();
+    logoClicksRef.current.push(now);
+
+    // Keep only clicks within the last 2 seconds
+    logoClicksRef.current = logoClicksRef.current.filter((t) => now - t < 2000);
+
+    if (logoClicksRef.current.length >= 5) {
+      logoClicksRef.current = [];
+
+      // Check reduced motion preference
+      const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (motionQuery.matches) return;
+
+      e.preventDefault();
+      setLogoGlitching(true);
+      setTimeout(() => setLogoGlitching(false), 500);
+    }
+  };
+
+  const navLinks = [
+    { href: '/#about', label: t('about') },
+    { href: '/#services', label: t('services') },
+    { href: '/projects', label: t('projects') },
+    { href: '/#team', label: t('team') },
+    { href: '/#contact', label: t('contact') },
+  ];
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     setScrolled(latest > 20);
@@ -41,7 +67,6 @@ export default function Header() {
   return (
     <>
       <motion.header
-        role="banner"
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
           scrolled
@@ -58,7 +83,12 @@ export default function Header() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Logo + Brand */}
-            <Link href="/" className="flex items-center gap-3 group">
+            <Link
+              href="/"
+              ref={logoRef}
+              onClick={handleLogoClick}
+              className={cn('flex items-center gap-3 group', logoGlitching && 'logo-glitch-active')}
+            >
               <Image
                 src="/logo.svg"
                 alt="Kalebtec logo"
@@ -71,8 +101,25 @@ export default function Header() {
               </span>
             </Link>
 
+            {/* Glitch noise flash overlay */}
+            {logoGlitching && (
+              <div
+                aria-hidden="true"
+                style={{
+                  position: 'fixed',
+                  inset: 0,
+                  zIndex: 9998,
+                  pointerEvents: 'none',
+                  background:
+                    'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(128, 0, 255, 0.03) 2px, rgba(128, 0, 255, 0.03) 4px)',
+                  mixBlendMode: 'overlay',
+                  animation: 'glitch-noise-flash 0.5s ease-out forwards',
+                }}
+              />
+            )}
+
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-6" aria-label="Main navigation">
+            <nav className="hidden md:flex items-center gap-6" aria-label={t('mainNav')}>
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -90,16 +137,17 @@ export default function Header() {
               ))}
             </nav>
 
-            {/* Theme Toggle + Mobile Hamburger */}
+            {/* Language Switcher + Theme Toggle + Mobile Hamburger */}
             <div className="flex items-center gap-3">
+              <LanguageSwitcher />
               <ThemeToggle />
 
               {/* Mobile Hamburger — angular staggered lines */}
               <button
                 ref={hamburgerRef}
                 onClick={() => setMobileMenuOpen(true)}
-                className="md:hidden p-2 text-cyber-muted hover:text-cyber-heading transition-colors"
-                aria-label="Open navigation menu"
+                className="md:hidden inline-flex items-center justify-center min-h-[44px] min-w-[44px] p-2.5 text-cyber-muted hover:text-cyber-heading transition-colors"
+                aria-label={t('openMenu')}
                 aria-expanded={mobileMenuOpen}
                 aria-controls="mobile-nav-menu"
               >

@@ -148,7 +148,7 @@ function SceneContent({ isDark }: { isDark: boolean }) {
       {/* Fog for depth */}
       <fog attach="fog" args={[isDark ? DARK_BG : LIGHT_BG, isDark ? 5 : 6, isDark ? 14 : 16]} />
 
-      {/* Layer 3: Floating angular geometry with cyberpunk edge lines */}
+      {/* Layer 3: Floating angular geometry with cyberpunk edge lines — draggable */}
       {SHAPES.map((shape, index) => (
         <FloatingGeometry
           key={index}
@@ -165,6 +165,7 @@ function SceneContent({ isDark }: { isDark: boolean }) {
           edgeOpacity={isDark ? shape.edgeOpacity : shape.edgeOpacity * 2.5}
           metalness={isDark ? 0.8 : 0.1}
           roughness={isDark ? 0.7 : 0.3}
+          draggable
         />
       ))}
 

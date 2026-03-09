@@ -1,0 +1,387 @@
+{
+  "metadata": {
+    "title": "Kalebtec | Consultoría Tecnolóxica",
+    "description": "Consultoría tecnolóxica experta por Rowin e Mari Hernandez. Construímos solucións dixitais que importan.",
+    "ogTitle": "Kalebtec | Consultoría Tecnolóxica",
+    "ogDescription": "Consultoría tecnolóxica experta por Rowin e Mari Hernandez.",
+    "projectsTitle": "Proxectos | Kalebtec",
+    "projectsDescription": "Explora o noso portafolio de proxectos de consultoría tecnolóxica en desenvolvemento web, IA, infraestrutura cloud e máis.",
+    "notFoundTitle": "Proxecto Non Atopado | Kalebtec"
+  },
+  "nav": {
+    "about": "SOBRE NÓS",
+    "services": "SERVIZOS",
+    "projects": "PROXECTOS",
+    "team": "EQUIPO",
+    "contact": "CONTACTO",
+    "openMenu": "Abrir menú de navegación",
+    "closeMenu": "Pechar menú de navegación",
+    "mobileNav": "Navegación móbil",
+    "mobileMenuDialog": "Menú de navegación",
+    "mainNav": "Navegación principal",
+    "systemNav": "SYSTEM.NAV"
+  },
+  "hero": {
+    "ariaLabel": "Heroe",
+    "sysActive": "SYS.ACTIVE",
+    "tagline": "> CONSULTORÍA_TECNOLÓXICA",
+    "valueProp": "// Deseñamos solucións dixitais que transforman negocios",
+    "cta": "[INICIAR_CONTACTO]",
+    "scroll": "[SCROLL]"
+  },
+  "about": {
+    "ariaLabel": "Sobre Kalebtec",
+    "sectionTitle": "QUEN SOMOS",
+    "sectionNumber": "01",
+    "originStory": "Non fundamos Kalebtec nunha sala de xuntas. Comezámolo nunha mesa de cociña, ben entrada a noite, alimentados por mal café e unha obsesión compartida por construír cousas que realmente funcionen.",
+    "teamDescription": "<rowin>Rowin</rowin> escribe o código. <mari>Mari</mari> dirixe o espectáculo. Xuntos, collemos retos técnicos complexos e desordenados e convertímolos en sistemas limpos e escalables nos que as empresas poden confiar de verdade.",
+    "directAttention": "Non somos unha axencia sen rostro. Cada proxecto recibe a nosa atención directa -- mans nos teclados, ollos nas pantallas, cero capas de mandos intermedios entre nós e o teu produto. Cando traballas con Kalebtec, traballas con <em>nós</em>.",
+    "philosophy": "Cremos que a gran tecnoloxía debe sentirse invisible -- rápida, fiable e tan ben construída que a xente esquece que está aí. Nada de frameworks inflados por seguir tendencias. Nada de solucións sobreenxeñadas para problemas simples. Só enxeñaría precisa e con propósito que fai o traballo.",
+    "statUptime": "Fiabilidade do sistema: 99,9%",
+    "statStackDepth": "Profundidade do stack: Full end-to-end",
+    "statResponseTime": "Tempo de resposta: Menos de 24 horas",
+    "statClearance": "Nivel de seguridade: Máximo"
+  },
+  "services": {
+    "ariaLabel": "Os Nosos Servizos",
+    "sectionTitle": "O QUE FACEMOS",
+    "sectionNumber": "02",
+    "softwareArchitecture": {
+      "name": "Arquitectura de Software",
+      "description": "Deseñamos sistemas escalables e mantibles construídos para crecer. Desde microservizos ata monolitos, escollemos a arquitectura adecuada para as túas necesidades."
+    },
+    "webDevelopment": {
+      "name": "Desenvolvemento Web",
+      "description": "Aplicacións web modernas construídas con tecnoloxía de vangarda. Rápidas, accesibles e elegantes por defecto."
+    },
+    "aiAutomation": {
+      "name": "IA e Automatización",
+      "description": "Aproveita a intelixencia artificial e a automatización para optimizar operacións e desbloquear novas posibilidades."
+    },
+    "cloudInfrastructure": {
+      "name": "Infraestrutura Cloud",
+      "description": "Solucións nativas na nube en AWS, GCP e Azure. Optimizamos rendemento, seguridade e custos."
+    },
+    "technicalStrategy": {
+      "name": "Estratexia Técnica",
+      "description": "Aliña as túas decisións tecnolóxicas cos obxectivos do negocio. Proporcionamos follas de ruta que xeran resultados reais."
+    },
+    "teamAugmentation": {
+      "name": "Ampliación de Equipo",
+      "description": "Integramos enxeñeiros sénior directamente no teu equipo. Escalamos contigo cando máis o necesitas."
+    }
+  },
+  "projects": {
+    "ariaLabel": "O Noso Traballo",
+    "sectionTitle": "O NOSO TRABALLO",
+    "sectionNumber": "03",
+    "viewAll": "Ver Todos os Proxectos",
+    "backToProjects": "VOLVER AOS PROXECTOS",
+    "allLabel": "[TODOS]",
+    "pageTitle": "O NOSO TRABALLO",
+    "industries": "// INDUSTRIAS",
+    "technologies": "// TECNOLOXÍAS",
+    "clearFilters": "[LIMPAR FILTROS]",
+    "projectsFound": "{count} {count, plural, one {proxecto} other {proxectos}} atopados",
+    "allTechnologies": "Todas as Tecnoloxias",
+    "noResults": "Ningún proxecto coincide cos filtros seleccionados.",
+    "viewProject": "Ver proxecto: {title}"
+  },
+  "team": {
+    "ariaLabel": "O Noso Equipo",
+    "sectionTitle": "O EQUIPO",
+    "sectionNumber": "04",
+    "statusOnline": "ONLINE",
+    "rowin": {
+      "role": "Cofundador e Enxeñeiro Principal",
+      "description": "O que fala coas máquinas. Rowin constrúe sistemas full-stack desde cero -- bases de datos, APIs, interfaces, infraestrutura. Se funciona con código, el xa vai pola metade da arquitectura. Obsesionado con abstraccións limpas, despregamentos rápidos e facer que o complexo pareza simple.",
+      "specSpecialty": "Sistemas Full-Stack",
+      "specFocus": "Arquitectura e DX",
+      "specMode": "Construír e Despregar"
+    },
+    "mari": {
+      "role": "Cofundadora e Líder de Operacións",
+      "description": "A que se asegura de que todo realmente suceda. Mari orquestra proxectos, xestiona prazos e mantén cada compromiso funcionando como unha máquina ben engraxada. Ela é a razón pola que se cumpren os prazos e os clientes están contentos. Instintos afiados, tolerancia cero ao caos.",
+      "specSpecialty": "Operacións e Estratexia",
+      "specFocus": "Éxito do Cliente",
+      "specMode": "Planificar e Executar"
+    }
+  },
+  "contact": {
+    "ariaLabel": "Contacta connosco",
+    "sectionNumber": "05",
+    "sectionLabel": "CONTACTO",
+    "heading": "CONSTRUAMOS",
+    "headingHighlight": "ALGO",
+    "subtitle": "// Listo para transformar a túa tecnoloxía? Falemos.",
+    "nameLabel": "Nome",
+    "namePlaceholder": "> o teu nome",
+    "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "> ti@empresa.com",
+    "messageLabel": "Mensaxe",
+    "messagePlaceholder": "> describe o teu proxecto...",
+    "submit": "[TRANSMITIR]",
+    "submitting": "[TRANSMITINDO...]",
+    "successMessage": "> TRANSMISIÓN_COMPLETA // Porémonos en contacto pronto.",
+    "errorMessage": "> TRANSMISIÓN_FALLIDA // Téntao de novo ou escríbenos directamente.",
+    "formAriaLabel": "Formulario de contacto"
+  },
+  "footer": {
+    "tagline": "Construíndo o futuro, unha solución á vez",
+    "techConsulting": "Consultoría Tecnolóxica",
+    "navigationLabel": "// NAVEGACIÓN",
+    "contactLabel": "// CONTACTO",
+    "footerNav": "Navegación do pé de páxina",
+    "copyright": "Kalebtec",
+    "founders": "Rowin & Mari Hernandez",
+    "privacyPolicy": "Politica de Privacidade",
+    "termsOfService": "Termos do Servizo",
+    "sysVer": "SYS.VER 1.0",
+    "location": "LOCALIZACIÓN: REMOTO",
+    "linkedinAriaLabel": "LinkedIn",
+    "twitterAriaLabel": "X (Twitter)",
+    "githubAriaLabel": "GitHub"
+  },
+  "error": {
+    "ariaLabel": "Erro de aplicación",
+    "label": "[FALLO_DO_SISTEMA]",
+    "sublabel": "EXCEPCIÓN_EN_EXECUCIÓN",
+    "heading": "ERRO",
+    "terminalMessage": "> FALLO_INESPERADO_DO_SISTEMA",
+    "description": "// Unha excepción non controlada interrompeu as operacións normais",
+    "diagProcess": "Execución do proceso detida",
+    "diagRecovery": "Protocolo de recuperación dispoñible",
+    "diagAwaiting": "Agardando acción do operador",
+    "retry": "[REINTENTAR]",
+    "returnHome": "[VOLVER_AO_INICIO]"
+  },
+  "notFound": {
+    "ariaLabel": "Páxina non atopada",
+    "label": "[ERR]",
+    "sublabel": "PÁXINA_NON_ATOPADA",
+    "heading": "404",
+    "terminalMessage": "> RECURSO_OBXECTIVO: NON_ATOPADO",
+    "description": "// A ruta solicitada non existe neste sistema",
+    "trace1": "Busca de ruta iniciada...",
+    "trace2": "Escaneando rutas rexistradas...",
+    "trace3": "Non se atopou ningunha ruta coincidente",
+    "trace4": "Conexión terminada — 404",
+    "awaiting": "Agardando entrada do operador",
+    "returnHome": "[VOLVER_AO_INICIO]"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Produciuse un erro",
+    "skipToContent": "Ir ao contido"
+  },
+  "theme": {
+    "ariaLabel": "Tema: {theme}. Clic para cambiar.",
+    "label": "Tema",
+    "light": "Claro",
+    "dark": "Escuro",
+    "system": "Sistema"
+  },
+  "cookie": {
+    "ariaLabel": "Consentimento de cookies",
+    "sysLabel": "[SYS]",
+    "noticeLabel": "AVISO_DE_COOKIES",
+    "description": "Usamos cookies para mellorar a tua experiencia. Ao continuar visitando este sitio aceptas o noso uso de cookies. Le a nosa",
+    "privacyPolicy": "Politica de Privacidade",
+    "and": "e",
+    "termsOfService": "Termos do Servizo",
+    "decline": "Rexeitar",
+    "accept": "Aceptar"
+  },
+  "languageSwitcher": {
+    "label": "Idioma",
+    "ariaLabel": "Idioma: {locale}. Clic para cambiar."
+  },
+  "terms": {
+    "metaTitle": "Termos do Servizo | Kalebtec",
+    "metaDescription": "Termos do Servizo dos servizos de consultoría tecnolóxica de Kalebtec. Infórmate sobre os nosos termos de servizo, limitacións e responsabilidades do usuario.",
+    "pageTitle": "Termos do Servizo",
+    "effectiveDate": "Data de vixencia: 9 de marzo de 2026 \u2014 Última actualización: 9 de marzo de 2026",
+    "section1": {
+      "label": "ACORDO",
+      "title": "Aceptación dos Termos",
+      "content": "Ao acceder ou utilizar o sitio web de Kalebtec (kalebtec.com) e os nosos servizos de consultoría tecnolóxica, aceptas quedar vinculado por estes Termos do Servizo. Se non estás de acordo con estes termos, por favor non utilices o noso sitio web nin os nosos servizos. Estes termos constitúen un acordo legalmente vinculante entre ti e Kalebtec, operado por Rowin Hernandez e Mari Hernandez."
+    },
+    "section2": {
+      "label": "SERVIZOS",
+      "title": "Descrición dos Servizos",
+      "content": "Kalebtec ofrece servizos de consultoría tecnolóxica que inclúen, entre outros:",
+      "item1": "Desenvolvemento de aplicacións web e móbiles",
+      "item2": "Deseño e implementación de infraestrutura na nube",
+      "item3": "Integración de IA e aprendizaxe automática",
+      "item4": "Consultoría en arquitectura técnica",
+      "item5": "Deseño e optimización de bases de datos",
+      "item6": "Configuración de DevOps e pipelines CI/CD",
+      "contentAfter": "O alcance específico dos servizos para cada proxecto definirase nunha declaración de traballo ou acordo de servizo independente entre Kalebtec e o cliente."
+    },
+    "section3": {
+      "label": "OBRIGAS_USUARIO",
+      "title": "Responsabilidades do Usuario",
+      "content": "Ao utilizar o noso sitio web e servizos, aceptas:",
+      "item1": "Proporcionar información precisa e completa ao contactar connosco ou contratar os nosos servizos",
+      "item2": "Non utilizar o noso sitio web con fins ilegais nin en violación das leis aplicables",
+      "item3": "Non intentar obter acceso non autorizado aos nosos sistemas ou infraestrutura",
+      "item4": "Non reproducir, distribuír nin crear obras derivadas do contido do noso sitio web sen permiso",
+      "item5": "Respectar os dereitos de propiedade intelectual de Kalebtec e os seus clientes"
+    },
+    "section4": {
+      "label": "PROPIEDADE_INTELECTUAL",
+      "title": "Propiedade Intelectual",
+      "content1": "Todo o contido do sitio web de Kalebtec, incluíndo, entre outros, textos, gráficos, logotipos, elementos de deseño, elementos visuais 3D, animacións, código e software, é propiedade de Kalebtec e está protexido polas leis de propiedade intelectual aplicables.",
+      "content2": "Os dereitos de propiedade intelectual dos entregables ao cliente rexeranse polos termos específicos establecidos na declaración de traballo ou acordo de servizo de cada proxecto. Agás acordo por escrito en contrario, Kalebtec resérvase o dereito de mostrar os traballos completados no seu portafolio."
+    },
+    "section5": {
+      "label": "CONFIDENCIALIDADE",
+      "title": "Confidencialidade",
+      "content": "Kalebtec recoñece que durante a prestación de servizos de consultoría podemos recibir información confidencial dos clientes. Comprometémonos a manter a confidencialidade de dita información e non a divulgaremos a terceiros sen o consentimento previo por escrito do cliente, agás cando o esixa a lei. Os termos de confidencialidade específicos poderanse establecer en acordos de servizo individuais ou acordos de non divulgación."
+    },
+    "section6": {
+      "label": "PAGAMENTO",
+      "title": "Condicións de Pagamento",
+      "content": "As condicións de pagamento, tarifas e calendarios dos servizos de consultoría detallaranse nos acordos de proxecto ou declaracións de traballo individuais. Agás que se especifique o contrario, as facturas deberán aboarse nun prazo de trinta (30) días desde a súa emisión. Kalebtec resérvase o dereito de suspender os servizos en caso de pagamentos atrasados. Os pagamentos tardíos poderán estar suxeitos a cargos por intereses razoables segundo se especifique no acordo de servizo aplicable."
+    },
+    "section7": {
+      "label": "RESPONSABILIDADE",
+      "title": "Limitación de Responsabilidade",
+      "content": "Na máxima medida permitida pola lei aplicable, Kalebtec non será responsable de ningún dano indirecto, incidental, especial, consecuente ou punitivo, incluíndo, entre outros, a perda de beneficios, datos, uso ou fondo de comercio, que xurda de ou en relación con:",
+      "item1": "O teu uso ou incapacidade para usar o noso sitio web ou servizos",
+      "item2": "Calquera erro ou omisión no contido do noso sitio web",
+      "item3": "Acceso non autorizado ou alteración dos teus datos",
+      "item4": "Calquera contido ou servizo de terceiros ao que se acceda a través do noso sitio web",
+      "contentAfter": "A nosa responsabilidade total por calquera reclamación derivada dos nosos servizos non excederá o total de honorarios pagados polo cliente polo proxecto específico que deu orixe á reclamación."
+    },
+    "section8": {
+      "label": "GARANTÍAS",
+      "title": "Renuncia de Garantías",
+      "content": "O noso sitio web e o seu contido proporciónanse \"tal cal\" e \"segundo dispoñibilidade\", sen garantías de ningún tipo, xa sexan expresas ou implícitas. Kalebtec non garante que o sitio web funcionará de forma ininterrompida, sen erros nin libre de virus ou outros compoñentes daniños. As garantías específicas para os servizos de consultoría definiranse nos acordos de servizo individuais."
+    },
+    "section9": {
+      "label": "TERMINACIÓN",
+      "title": "Terminación",
+      "content": "Reservámonos o dereito de finalizar ou restrinxir o teu acceso ao noso sitio web en calquera momento, sen previo aviso, por condutas que consideremos que violan estes Termos do Servizo ou que sexan prexudiciais para outros usuarios, para nós ou para terceiros. A terminación dos compromisos de servizos de consultoría rexerase polos termos establecidos nos acordos de servizo individuais."
+    },
+    "section10": {
+      "label": "LEI_APLICABLE",
+      "title": "Lei Aplicable",
+      "content": "Estes Termos do Servizo rexeranse e interpretaranse de conformidade coas leis dos Estados Unidos, sen ter en conta as disposicións sobre conflito de leis. Calquera disputa que xurda en virtude destes termos resolverase mediante negociación de boa fe e, se fose necesario, mediante arbitraxe vinculante de acordo coas normas aplicables."
+    },
+    "section11": {
+      "label": "MODIFICACIÓNS",
+      "title": "Cambios nos Termos",
+      "content": "Kalebtec resérvase o dereito de modificar estes Termos do Servizo en calquera momento. Os cambios entrarán en vigor inmediatamente unha vez publicados nesta páxina. Actualizaremos a data de \"Última actualización\" na parte superior desta páxina cando se realicen cambios. O uso continuado do noso sitio web ou servizos despois da publicación dos cambios constitúe a túa aceptación dos termos modificados."
+    },
+    "contact": {
+      "label": "CONTACTO",
+      "title": "Contacta connosco",
+      "content": "Se tes algunha pregunta sobre estes Termos do Servizo, contacta connosco:"
+    },
+    "backToHome": "Volver ao Inicio",
+    "privacyPolicyLink": "Política de Privacidade"
+  },
+  "privacy": {
+    "metaTitle": "Política de Privacidade | Kalebtec",
+    "metaDescription": "Política de Privacidade de Kalebtec. Coñece como recompilamos, usamos e protexemos os teus datos persoais.",
+    "pageTitle": "Política de Privacidade",
+    "effectiveDate": "Data de vixencia: 9 de marzo de 2026 \u2014 Última actualización: 9 de marzo de 2026",
+    "section1": {
+      "label": "DESCRICIÓN",
+      "title": "Introdución",
+      "content": "Kalebtec (\"nós\", \"nos\" ou \"noso\"), operado por Rowin Hernandez e Mari Hernandez, comprométese a protexer a túa privacidade. Esta Política de Privacidade explica como recompilamos, usamos, divulgamos e protexemos a túa información cando visitas o noso sitio web (kalebtec.com) ou utilizas os nosos servizos de consultoría tecnolóxica. Por favor, le esta política detidamente. Ao usar o noso sitio web ou servizos, consintes as prácticas descritas no presente documento."
+    },
+    "section2": {
+      "label": "RECOMPILACIÓN_DATOS",
+      "title": "Información que Recompilamos",
+      "content": "Podemos recompilar información sobre ti de varias maneiras:",
+      "personalDataTitle": "Datos Persoais",
+      "personalDataContent": "Información que nos proporcionas voluntariamente ao contactar connosco ou contratar os nosos servizos, incluíndo:",
+      "personalItem1": "Nome e información de contacto (enderezo de correo electrónico, número de teléfono)",
+      "personalItem2": "Nome da empresa ou organización",
+      "personalItem3": "Detalles do proxecto e requisitos compartidos a través do noso formulario de contacto",
+      "personalItem4": "Información de facturación e pagamento para os compromisos de servizo",
+      "autoDataTitle": "Datos Recompilados Automaticamente",
+      "autoDataContent": "Cando visitas o noso sitio web, podemos recompilar automaticamente certa información, incluíndo:",
+      "autoItem1": "Enderezo IP e localización xeográfica aproximada",
+      "autoItem2": "Tipo e versión do navegador",
+      "autoItem3": "Sistema operativo",
+      "autoItem4": "Páxinas visitadas e tempo de permanencia en cada páxina",
+      "autoItem5": "Sitio web ou fonte de referencia"
+    },
+    "section3": {
+      "label": "USO_DATOS",
+      "title": "Como Utilizamos a Túa Información",
+      "content": "Utilizamos a información que recompilamos para os seguintes fins:",
+      "item1": "Para responder ás túas consultas e proporcionar os servizos solicitados",
+      "item2": "Para entregar e xestionar os nosos compromisos de consultoría",
+      "item3": "Para procesar pagamentos e enviar facturas",
+      "item4": "Para mellorar o noso sitio web, servizos e experiencia de usuario",
+      "item5": "Para comunicar actualizacións sobre os nosos servizos ou esta política",
+      "item6": "Para cumprir con obrigas legais"
+    },
+    "section4": {
+      "label": "COOKIES",
+      "title": "Cookies e Tecnoloxías de Seguimento",
+      "content": "O noso sitio web pode utilizar cookies e tecnoloxías de seguimento similares para mellorar a túa experiencia de navegación. As cookies son pequenos ficheiros de datos almacenados no teu dispositivo.",
+      "typesTitle": "Tipos de Cookies que Utilizamos",
+      "essentialLabel": "Cookies Esenciais:",
+      "essentialDesc": "Necesarias para que o sitio web funcione correctamente (p. ex., preferencia de tema, estado de consentimento de cookies)",
+      "analyticsLabel": "Cookies de Análise:",
+      "analyticsDesc": "Axúdannos a comprender como os visitantes interactúan co noso sitio web para poder melloralo",
+      "controlContent": "Podes controlar as cookies a través da configuración do teu navegador. Desactivar as cookies pode afectar a algunhas funcionalidades do sitio web. Tamén utilizamos localStorage para conservar a túa preferencia de tema e a túa elección de consentimento de cookies."
+    },
+    "section5": {
+      "label": "TERCEIROS",
+      "title": "Servizos de Terceiros",
+      "content": "Podemos utilizar servizos de terceiros que recompilan, monitorizan e analizan datos para mellorar o noso sitio web e servizos. Estes terceiros teñen as súas propias políticas de privacidade que abordan como utilizan dita información. Os servizos de terceiros que podemos utilizar inclúen:",
+      "item1": "Provedores de análise web",
+      "item2": "Provedores de aloxamento e infraestrutura na nube",
+      "item3": "Servizos de procesamento de pagamentos",
+      "item4": "Plataformas de correo electrónico e comunicación",
+      "contentAfter": "Non vendemos, intercambiamos nin transferimos de ningún outro modo a túa información persoal a terceiros con fins de márketing."
+    },
+    "section6": {
+      "label": "SEGURIDADE_DATOS",
+      "title": "Seguridade dos Datos",
+      "content": "Implementamos medidas de seguridade técnicas e organizativas adecuadas para protexer a túa información persoal contra accesos non autorizados, alteración, divulgación ou destrución. Con todo, ningún método de transmisión electrónica ou almacenamento é 100% seguro, e non podemos garantir unha seguridade absoluta. Utilizamos cifrado estándar do sector (HTTPS/TLS) para todos os datos transmitidos entre o teu navegador e os nosos servidores."
+    },
+    "section7": {
+      "label": "RETENCIÓN_DATOS",
+      "title": "Retención de Datos",
+      "content": "Conservamos a túa información persoal unicamente durante o tempo necesario para cumprir os fins descritos nesta Política de Privacidade, a menos que a lei esixa ou permita un período de retención máis prolongado. A información de contacto enviada a través do noso sitio web consérvase durante a duración da nosa relación comercial e durante un período razoable posterior para atender calquera consulta de seguimento."
+    },
+    "section8": {
+      "label": "OS_TEUS_DEREITOS",
+      "title": "Os Teus Dereitos",
+      "content": "Dependendo da túa localización, podes ter certos dereitos respecto aos teus datos persoais, incluíndo:",
+      "item1": "O dereito a acceder aos datos persoais que temos sobre ti",
+      "item2": "O dereito a solicitar a corrección de datos inexactos",
+      "item3": "O dereito a solicitar a eliminación dos teus datos persoais",
+      "item4": "O dereito a opoñerte ou restrinxir o tratamento dos teus datos",
+      "item5": "O dereito á portabilidade dos datos",
+      "item6": "O dereito a retirar o consentimento en calquera momento",
+      "contentAfterPre": "Para exercer calquera destes dereitos, contacta connosco en",
+      "contentAfterPost": ". Responderemos á túa solicitude nun prazo razoable."
+    },
+    "section9": {
+      "label": "MENORES",
+      "title": "Privacidade dos Menores",
+      "contentPre": "O noso sitio web e servizos non están dirixidos a persoas menores de 13 anos. Non recompilamos deliberadamente información persoal de menores. Se temos coñecemento de que un menor de 13 anos nos proporcionou información persoal, tomaremos medidas para eliminar dita información de inmediato. Se cres que recompilamos inadvertidamente información dun menor, contacta connosco en",
+      "contentPost": "."
+    },
+    "section10": {
+      "label": "MODIFICACIÓNS",
+      "title": "Cambios nesta Política",
+      "content": "Podemos actualizar esta Política de Privacidade periodicamente. Calquera cambio publicarase nesta páxina cunha data de \"Última actualización\" actualizada. Recomendámosche que revises esta política periodicamente. O uso continuado do noso sitio web ou servizos despois de calquera cambio constitúe a aceptación da política actualizada."
+    },
+    "contact": {
+      "label": "CONTACTO",
+      "title": "Contacta connosco",
+      "content": "Se tes algunha pregunta ou preocupación sobre esta Política de Privacidade, contacta connosco:"
+    },
+    "backToHome": "Volver ao Inicio",
+    "termsLink": "Termos do Servizo"
+  }
+}

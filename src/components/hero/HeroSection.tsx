@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic';
 import { motion, type Variants } from 'framer-motion';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 const HeroScene = dynamic(() => import('@/components/three/HeroScene'), {
   ssr: false,
@@ -67,10 +68,12 @@ const glowVariants: Variants = {
 };
 
 export default function HeroSection() {
+  const t = useTranslations('hero');
+
   return (
-    <section aria-label="Hero" className="relative min-h-screen w-full overflow-hidden bg-cyber-bg">
-      {/* Three.js Canvas Background — theme-aware */}
-      <div className="absolute inset-0 z-0">
+    <section aria-label={t('ariaLabel')} className="relative min-h-screen w-full overflow-hidden bg-cyber-bg">
+      {/* Three.js Canvas Background — theme-aware, interactive (draggable geometries) */}
+      <div className="absolute inset-0 z-0" aria-hidden="true">
         <HeroScene />
       </div>
 
@@ -89,7 +92,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-[2] pointer-events-none" aria-hidden="true">
         {/* Top-left: SYS.ACTIVE */}
         <div className="absolute top-6 left-6 font-mono text-[10px] text-cyber-faint/40 tracking-wider">
-          SYS.ACTIVE
+          {t('sysActive')}
         </div>
         {/* Top-right: Coordinates */}
         <div className="absolute top-6 right-6 font-mono text-[10px] text-cyber-faint/40 tracking-wider">
@@ -97,8 +100,8 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Text Content Overlay */}
-      <div className="relative z-[2] flex min-h-screen items-center justify-center px-6">
+      {/* Text Content Overlay — pointer-events-none so canvas receives drag events */}
+      <div className="relative z-[2] flex min-h-screen items-center justify-center px-6 pointer-events-none">
         <motion.div
           className="flex flex-col items-center text-center max-w-3xl"
           variants={containerVariants}
@@ -145,7 +148,7 @@ export default function HeroSection() {
             variants={fadeUpVariants}
             className="font-mono text-sm sm:text-base md:text-lg tracking-[0.2em] text-cyber-cyan"
           >
-            {'> TECHNOLOGY_CONSULTING'}
+            {t('tagline')}
             <span className="typing-cursor" />
           </motion.p>
 
@@ -154,16 +157,16 @@ export default function HeroSection() {
             variants={fadeUpVariants}
             className="mt-6 max-w-xl text-base sm:text-lg text-cyber-muted leading-relaxed font-mono"
           >
-            // We architect digital solutions that transform businesses
+            {t('valueProp')}
           </motion.p>
 
           {/* CTA Button */}
-          <motion.div variants={fadeUpVariants} className="mt-10">
+          <motion.div variants={fadeUpVariants} className="mt-10 pointer-events-auto">
             <a
               href="#contact"
               className="group relative inline-flex items-center gap-2 border border-cyber-muted/30 bg-transparent px-8 py-3.5 font-mono text-sm uppercase tracking-widest text-cyber-heading transition-all duration-300 hover:border-cyber-heading/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyber-heading/50 focus-visible:ring-offset-2 focus-visible:ring-offset-cyber-bg"
             >
-              <span>[INITIATE_CONTACT]</span>
+              <span>{t('cta')}</span>
               <svg
                 className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
                 fill="none"
@@ -196,7 +199,7 @@ export default function HeroSection() {
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <span className="font-mono text-xs text-cyber-faint tracking-wider">[SCROLL]</span>
+          <span className="font-mono text-xs text-cyber-faint tracking-wider">{t('scroll')}</span>
           <svg
             className="h-4 w-4 text-cyber-faint"
             fill="none"

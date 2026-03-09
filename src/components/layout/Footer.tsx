@@ -1,15 +1,21 @@
-import Image from 'next/image';
-import Link from 'next/link';
+'use client';
 
-const navLinks = [
-  { href: '/#about', label: 'About' },
-  { href: '/#services', label: 'Services' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/#team', label: 'Team' },
-  { href: '/#contact', label: 'Contact' },
-];
+import Image from 'next/image';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 
 export default function Footer() {
+  const t = useTranslations('footer');
+  const navT = useTranslations('nav');
+
+  const navLinks = [
+    { href: '/#about' as const, labelKey: 'about' as const },
+    { href: '/#services' as const, labelKey: 'services' as const },
+    { href: '/projects' as const, labelKey: 'projects' as const },
+    { href: '/#team' as const, labelKey: 'team' as const },
+    { href: '/#contact' as const, labelKey: 'contact' as const },
+  ];
+
   return (
     <footer className="bg-cyber-surface relative cyber-grid-bg">
       {/* Top gradient border line (decorative) */}
@@ -39,13 +45,13 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm text-cyber-muted leading-relaxed max-w-xs typing-cursor">
-              Building the future, one solution at a time
+              {t('tagline')}
             </p>
             {/* Purple accent square (decorative) */}
             <div className="flex items-center gap-2 pt-2" aria-hidden="true">
               <span className="w-1.5 h-1.5 bg-brand" />
               <span className="font-mono text-[10px] text-cyber-faint uppercase tracking-wider">
-                Tech Consulting
+                {t('techConsulting')}
               </span>
             </div>
           </div>
@@ -53,16 +59,16 @@ export default function Footer() {
           {/* Middle column: Navigation */}
           <div>
             <h3 className="font-mono text-xs uppercase tracking-widest text-cyber-faint mb-6">
-              // NAVIGATION
+              {t('navigationLabel')}
             </h3>
-            <nav className="flex flex-col gap-3" aria-label="Footer navigation">
+            <nav className="flex flex-col gap-3" aria-label={t('footerNav')}>
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   className="font-mono text-sm text-cyber-muted hover:text-cyber-heading transition-colors duration-300 w-fit"
                 >
-                  {link.label}
+                  {navT(link.labelKey)}
                 </Link>
               ))}
             </nav>
@@ -71,7 +77,7 @@ export default function Footer() {
           {/* Right column: Contact */}
           <div>
             <h3 className="font-mono text-xs uppercase tracking-widest text-cyber-faint mb-6">
-              // CONTACT
+              {t('contactLabel')}
             </h3>
             <div className="space-y-3">
               <a
@@ -85,9 +91,10 @@ export default function Footer() {
             {/* Social links */}
             <div className="flex gap-4 mt-6">
               <a
-                href="#"
-                className="text-cyber-faint hover:text-cyber-heading transition-colors duration-300"
-                aria-label="LinkedIn"
+                href="https://linkedin.com/company/kalebtec"
+                target="_blank"
+                className="p-2 inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-cyber-faint hover:text-cyber-heading transition-colors duration-300"
+                aria-label={t('linkedinAriaLabel')}
                 rel="noopener noreferrer"
               >
                 <svg
@@ -101,9 +108,10 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="#"
-                className="text-cyber-faint hover:text-cyber-heading transition-colors duration-300"
-                aria-label="X (Twitter)"
+                href="https://x.com/kalebtec"
+                target="_blank"
+                className="p-2 inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-cyber-faint hover:text-cyber-heading transition-colors duration-300"
+                aria-label={t('twitterAriaLabel')}
                 rel="noopener noreferrer"
               >
                 <svg
@@ -117,9 +125,10 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="#"
-                className="text-cyber-faint hover:text-cyber-heading transition-colors duration-300"
-                aria-label="GitHub"
+                href="https://github.com/kalebtec"
+                target="_blank"
+                className="p-2 inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-cyber-faint hover:text-cyber-heading transition-colors duration-300"
+                aria-label={t('githubAriaLabel')}
                 rel="noopener noreferrer"
               >
                 <svg
@@ -142,18 +151,31 @@ export default function Footer() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-6">
             <p className="font-mono text-xs text-cyber-faint">
-              &copy; {new Date().getFullYear()} Kalebtec
+              &copy; {new Date().getFullYear()} {t('copyright')}
             </p>
-            <p className="font-mono text-xs text-cyber-faint">Rowin &amp; Mari Hernandez</p>
+            <p className="font-mono text-xs text-cyber-faint">{t('founders')}</p>
           </div>
-          {/* HUD-style markers (decorative) */}
-          <div className="flex items-center gap-4" aria-hidden="true">
-            <span className="font-mono text-[10px] text-cyber-faint uppercase tracking-wider">
-              SYS.VER 1.0
-            </span>
-            <span className="w-px h-3 bg-cyber-faint/20" />
-            <span className="font-mono text-[10px] text-cyber-faint uppercase tracking-wider">
-              LOCATION: REMOTE
+          <div className="flex items-center gap-4">
+            <Link
+              href="/privacy"
+              className="font-mono text-[10px] text-cyber-faint uppercase tracking-wider hover:text-cyber-heading transition-colors duration-300 py-2 px-1"
+            >
+              {t('privacyPolicy')}
+            </Link>
+            <span className="w-px h-3 bg-cyber-faint/20" aria-hidden="true" />
+            <Link
+              href="/terms"
+              className="font-mono text-[10px] text-cyber-faint uppercase tracking-wider hover:text-cyber-heading transition-colors duration-300 py-2 px-1"
+            >
+              {t('termsOfService')}
+            </Link>
+            <span className="w-px h-3 bg-cyber-faint/20" aria-hidden="true" />
+            {/* HUD-style markers (decorative) */}
+            <span
+              className="font-mono text-[10px] text-cyber-faint uppercase tracking-wider"
+              aria-hidden="true"
+            >
+              {t('sysVer')}
             </span>
           </div>
         </div>

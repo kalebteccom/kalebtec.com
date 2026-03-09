@@ -1,3 +1,4 @@
+import { setRequestLocale } from 'next-intl/server';
 import HeroSection from '@/components/hero/HeroSection';
 import AboutSection from '@/components/sections/AboutSection';
 import ServicesSection from '@/components/sections/ServicesSection';
@@ -8,7 +9,12 @@ import JsonLd from '@/components/seo/JsonLd';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kalebtec.com';
 
-export default function HomePage() {
+type Params = Promise<{ locale: string }>;
+
+export default async function HomePage({ params }: { params: Params }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <>
       <JsonLd
