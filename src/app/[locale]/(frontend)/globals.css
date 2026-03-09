@@ -1238,6 +1238,34 @@ select:focus-visible,
 }
 
 /* ==========================================================================
+   CARD BACK SHIMMER (trading card holographic border effect)
+   ========================================================================== */
+
+@keyframes card-back-shimmer {
+  0%,
+  100% {
+    border-color: rgba(128, 0, 255, 0.25);
+    box-shadow:
+      inset 0 0 30px rgba(128, 0, 255, 0.03),
+      0 0 8px rgba(128, 0, 255, 0.06);
+  }
+  50% {
+    border-color: rgba(0, 255, 255, 0.2);
+    box-shadow:
+      inset 0 0 30px rgba(0, 255, 255, 0.03),
+      0 0 8px rgba(0, 255, 255, 0.06);
+  }
+}
+
+.card-back-shimmer {
+  animation: card-back-shimmer 4s ease-in-out infinite;
+}
+
+[data-theme='light'] .card-back-shimmer {
+  animation: card-back-shimmer 4s ease-in-out infinite;
+}
+
+/* ==========================================================================
    CYBER DATA STREAM HOVER (vertical scrolling data — only on group hover)
    ========================================================================== */
 
