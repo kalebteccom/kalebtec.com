@@ -144,6 +144,30 @@ h4,
   line-height: 1.25;
 }
 
+/* Safe word-breaking for localized content — prevents overflow on long
+   translated strings (especially compound words in DE/FR/PT/CA/GL). */
+h1, h2, h3, h4, h5, h6, p, li, td, th, dd, dt, figcaption, blockquote {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+/* Utility class for targeted use on other elements */
+.break-good {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
 /* ==========================================================================
    ACCESSIBILITY -- FOCUS STYLES
    ========================================================================== */
