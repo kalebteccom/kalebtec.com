@@ -174,7 +174,7 @@ export default async function ProjectDetailPage({ params }: { params: Params }) 
         {project.content && (
           <RichText
             data={project.content as SerializedEditorState}
-            className="prose prose-invert max-w-none prose-headings:font-display prose-headings:tracking-wide prose-headings:text-cyber-heading prose-p:text-cyber-body prose-a:text-brand-light prose-a:no-underline hover:prose-a:underline prose-strong:text-cyber-heading prose-code:font-mono prose-code:text-cyber-cyan prose-li:text-cyber-body prose-ul:text-cyber-body prose-ol:text-cyber-body"
+            className="prose prose-invert max-w-none prose-headings:font-display prose-headings:tracking-wide prose-headings:text-cyber-heading prose-h2:mt-12 prose-h2:mb-4 prose-h3:mt-8 prose-h3:mb-3 prose-p:text-cyber-body prose-p:my-4 prose-a:text-brand-light prose-a:no-underline hover:prose-a:underline prose-strong:text-cyber-heading prose-code:font-mono prose-code:text-cyber-cyan prose-li:text-cyber-body prose-ul:text-cyber-body prose-ul:my-4 prose-ol:text-cyber-body prose-ol:my-4"
           />
         )}
       </div>
