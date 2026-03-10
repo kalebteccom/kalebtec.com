@@ -33,6 +33,33 @@ function getEdgesGeometry(type: string, baseGeometry: THREE.BufferGeometry): THR
   return edgeGeometryCache.get(type)!;
 }
 
+/** Clamp a world-space position to the camera's visible frustum (with margin). */
+function clampToBounds(
+  target: THREE.Vector3,
+  camera: THREE.Camera,
+  canvas: HTMLCanvasElement,
+) {
+  if (!('fov' in camera)) return;
+  const perspCam = camera as THREE.PerspectiveCamera;
+  const depth = perspCam.position.z - target.z;
+  if (depth <= 0) return;
+  const vFov = (perspCam.fov * Math.PI) / 180;
+  const halfH = Math.tan(vFov / 2) * depth;
+  const aspect = canvas.clientWidth / canvas.clientHeight || 1;
+  const halfW = halfH * aspect;
+  const margin = 0.85;
+  target.x = THREE.MathUtils.clamp(
+    target.x,
+    perspCam.position.x - halfW * margin,
+    perspCam.position.x + halfW * margin,
+  );
+  target.y = THREE.MathUtils.clamp(
+    target.y,
+    perspCam.position.y - halfH * margin,
+    perspCam.position.y + halfH * margin,
+  );
+}
+
 // Sub-component for single geometry with edge lines
 function GeometryWithEdges({
   geometryType,
@@ -216,6 +243,15 @@ export default function FloatingGeometry({
   // Glow intensity for drag feedback
   const glowIntensity = useRef(0);
 
+  // Touch drag tracking
+  const isTouchDrag = useRef(false);
+  const releaseHandlerRef = useRef<((e: PointerEvent) => void) | null>(null);
+
+  // Prevent scroll on canvas during touch drag (always prevents — only attached while dragging)
+  const preventTouchScroll = useCallback((e: TouchEvent) => {
+    e.preventDefault();
+  }, []);
+
   // --- Stable window handlers (zero dependencies, use only refs) ---
 
   const handleWindowPointerMove = useCallback((e: PointerEvent) => {
@@ -232,6 +268,7 @@ export default function FloatingGeometry({
     const intersection = new THREE.Vector3();
     if (raycaster.ray.intersectPlane(dragPlane.current, intersection)) {
       dragTarget.current.copy(intersection).add(dragOffset.current);
+      clampToBounds(dragTarget.current, cameraRef.current, canvas);
     }
   }, []); // empty deps — reads everything from refs
 
@@ -243,19 +280,20 @@ export default function FloatingGeometry({
     glRef.current.domElement.style.cursor = '';
 
     window.removeEventListener('pointermove', handleWindowPointerMove);
-    window.removeEventListener('pointerdown', handleWindowRelease);
-  }, [handleWindowPointerMove]); // handleWindowPointerMove is stable ([] deps)
 
-  // Second click/pointerdown anywhere → release
-  const handleWindowRelease = useCallback(
-    (e: PointerEvent) => {
-      // Ignore the initial pointerdown that started the drag — we skip that
-      // via the setTimeout in startDrag. Any subsequent pointerdown releases.
-      e.stopPropagation();
-      endDrag();
-    },
-    [endDrag],
-  );
+    // Remove release handler from both event types (one will be a no-op)
+    if (releaseHandlerRef.current) {
+      window.removeEventListener('pointerdown', releaseHandlerRef.current);
+      window.removeEventListener('pointerup', releaseHandlerRef.current);
+      releaseHandlerRef.current = null;
+    }
+
+    // Clean up touch scroll prevention
+    if (isTouchDrag.current) {
+      glRef.current.domElement.removeEventListener('touchmove', preventTouchScroll);
+      isTouchDrag.current = false;
+    }
+  }, [handleWindowPointerMove, preventTouchScroll]);
 
   // Start drag — triggered by pointerDown on the hit sphere
   const handlePointerDown = useCallback(
@@ -293,29 +331,47 @@ export default function FloatingGeometry({
         dragOffset.current.subVectors(groupRef.current.position, intersection);
       }
 
-      // Start tracking cursor globally
+      // Start tracking cursor/finger globally
       window.addEventListener('pointermove', handleWindowPointerMove);
 
-      // Delay registering the release handler so the current pointerdown
-      // event doesn't immediately trigger it
-      requestAnimationFrame(() => {
-        if (isDraggingRef.current) {
-          window.addEventListener('pointerdown', handleWindowRelease);
-        }
-      });
+      // Create a release handler for this drag session
+      const releaseHandler = (ev: PointerEvent) => {
+        ev.stopPropagation();
+        endDrag();
+      };
+      releaseHandlerRef.current = releaseHandler;
+
+      const isTouch = e.nativeEvent.pointerType === 'touch';
+      isTouchDrag.current = isTouch;
+
+      if (isTouch) {
+        // Touch: release when finger lifts + prevent page scroll
+        window.addEventListener('pointerup', releaseHandler);
+        canvas.addEventListener('touchmove', preventTouchScroll, { passive: false });
+      } else {
+        // Desktop: click anywhere to release (delayed to avoid self-trigger)
+        requestAnimationFrame(() => {
+          if (isDraggingRef.current) {
+            window.addEventListener('pointerdown', releaseHandler);
+          }
+        });
+      }
     },
-    [draggable, endDrag, handleWindowPointerMove, handleWindowRelease],
+    [draggable, endDrag, handleWindowPointerMove, preventTouchScroll],
   );
 
   // Clean up on unmount — stable references so this only runs on unmount
   useEffect(() => {
-    const moveFn = handleWindowPointerMove;
-    const releaseFn = handleWindowRelease;
+    const canvas = glRef.current.domElement;
     return () => {
-      window.removeEventListener('pointermove', moveFn);
-      window.removeEventListener('pointerdown', releaseFn);
+      window.removeEventListener('pointermove', handleWindowPointerMove);
+      if (releaseHandlerRef.current) {
+        window.removeEventListener('pointerdown', releaseHandlerRef.current);
+        window.removeEventListener('pointerup', releaseHandlerRef.current);
+      }
+      canvas.removeEventListener('touchmove', preventTouchScroll);
     };
-  }, [handleWindowPointerMove, handleWindowRelease]);
+  }, [handleWindowPointerMove, preventTouchScroll]);
 
   const handlePointerOver = useCallback(() => {
     if (draggable && !isDraggingRef.current) {
