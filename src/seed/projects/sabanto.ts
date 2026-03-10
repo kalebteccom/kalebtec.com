@@ -19,7 +19,7 @@ export const sabanto: ProjectSeedData = {
     'TailwindCSS',
     'Storybook',
   ],
-  status: 'published',
+  status: 'draft',
   publishedDate: '2023-02-01T00:00:00.000Z',
   order: 7,
   featuredImageUrl: null,
@@ -49,4 +49,26 @@ export const sabanto: ProjectSeedData = {
       'Enabled on-the-go mission management for farm operators',
     ]),
   ]),
+  translations: {
+    es: {
+      title: 'Sabanto Mission Control',
+      description:
+        'Tecnología de agricultura autónoma que permite a tractores y equipos operar sin conductor. Mission Control es la interfaz central para gestionar flotas de máquinas autónomas en campos agrícolas.',
+      content: buildRichText([
+        h2('Descripción General'),
+        p('Sabanto desarrolla tecnología de agricultura autónoma, permitiendo que tractores y equipos operen sin conductor. El sistema Mission Control es la interfaz central que los operadores utilizan para gestionar flotas de máquinas autónomas en vastos campos agrícolas.'),
+        h2('Contribuciones Clave'),
+        h3('Vistas de Misiones Basadas en Mapas'),
+        p('Investigación y desarrollo de componentes para mejorar la experiencia de usuario de vistas basadas en mapas usando React, GeoJSON, deck.gl, Mapbox, Turf.js, TailwindCSS y Storybook.'),
+        h3('Arquitectura de Capas de Mapa'),
+        p('Diseño e implementación de un sistema de capas de mapa para gestionar objetos y features del mapa como componentes individuales, habilitando comunicación entre capas usando el contexto de React, portales y buses de eventos.'),
+        h3('MVP Móvil'),
+        ul([
+          'Desarrollo del MVP móvil de Mission Control usando React Native, Mapbox y TypeScript',
+          'Capacidades de monitorización de campo y seguimiento de equipos en tiempo real',
+          'Gestión de misiones sobre la marcha para operadores agrícolas',
+        ]),
+      ]),
+    },
+  },
 };

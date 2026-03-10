@@ -1,18 +1,22 @@
 import { getPayload } from 'payload';
 import configPromise from '@payload-config';
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import SectionHeading from '@/components/ui/SectionHeading';
 import ProjectsSectionClient from './ProjectsSectionClient';
+import type { Locale } from '@/i18n/routing';
 import type { Project, Industry } from '@/payload-types';
 
 export default async function ProjectsSection() {
   let projects: Project[] = [];
   let totalProjects = 0;
   try {
+    const locale = await getLocale();
     const payload = await getPayload({ config: configPromise });
     const result = await payload.find({
       collection: 'projects',
+      locale: locale as Locale,
+      fallbackLocale: 'en',
       where: { status: { equals: 'published' } },
       sort: 'order',
       limit: 4,
@@ -69,9 +73,9 @@ export default async function ProjectsSection() {
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeading
-          title="OUR WORK"
-          sectionNumber="03"
-          subtitle="// Featured builds from our portfolio"
+          title={t('sectionTitle')}
+          sectionNumber={t('sectionNumber')}
+          subtitle={t('subtitle')}
         />
 
         {/* Stats bar */}
@@ -96,7 +100,7 @@ export default async function ProjectsSection() {
             <span className="text-cyber-faint group-hover:text-white/60 transition-colors" aria-hidden="true">
               [
             </span>
-            <span>VIEW ALL PROJECTS</span>
+            <span>{t('viewAll')}</span>
             <span
               className="inline-block transition-transform duration-300 group-hover:translate-x-1"
               aria-hidden="true"
@@ -110,7 +114,7 @@ export default async function ProjectsSection() {
 
           {/* Terminal-style hint below CTA */}
           <p className="mt-4 font-mono text-xs text-cyber-faint/50" aria-hidden="true">
-            &gt; {totalProjects} projects indexed // explore the full archive
+            &gt; {t('terminalHint', { count: totalProjects })}
           </p>
         </div>
       </div>

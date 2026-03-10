@@ -75,7 +75,14 @@
     "ariaLabel": "Nos Réalisations",
     "sectionTitle": "NOS RÉALISATIONS",
     "sectionNumber": "03",
+    "subtitle": "// Réalisations phares de notre portfolio",
     "viewAll": "Voir Tous les Projets",
+    "terminalHint": "{count} projets indexés // explorez l'archive complète",
+    "statusLive": "LIVE",
+    "viewProjectLink": "Voir le projet",
+    "statProjects": "Projets",
+    "statTechnologies": "Technologies",
+    "statIndustries": "Industries",
     "backToProjects": "RETOUR AUX PROJETS",
     "allLabel": "[TOUS]",
     "pageTitle": "NOS RÉALISATIONS",
@@ -124,7 +131,8 @@
     "submitting": "[TRANSMISSION...]",
     "successMessage": "> TRANSMISSION_TERMINÉE // Nous vous contacterons bientôt.",
     "errorMessage": "> TRANSMISSION_ÉCHOUÉE // Veuillez réessayer ou nous écrire directement.",
-    "formAriaLabel": "Formulaire de contact"
+    "formAriaLabel": "Formulaire de contact",
+    "accessDenied": "[ACCÈS_REFUSÉ]"
   },
   "footer": {
     "tagline": "Construire l'avenir, une solution à la fois",

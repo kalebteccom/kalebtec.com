@@ -9,7 +9,7 @@ export const tricampa: ProjectSeedData = {
     'Architected and developed a parking platform using Ruby on Rails and Vue.js with geolocation-based car finding and QR code ticketing, plus a companion Android app with BLE printing.',
   industries: ['Smart Cities & Mobility'],
   technologies: ['Ruby on Rails', 'Vue.js', 'Android', 'BLE', 'QR Codes'],
-  status: 'published',
+  status: 'draft',
   publishedDate: '2016-07-01T00:00:00.000Z',
   order: 13,
   featuredImageUrl: null,
@@ -35,4 +35,25 @@ export const tricampa: ProjectSeedData = {
       'Scanned QR codes for identification and ticketing purposes',
     ]),
   ]),
+  translations: {
+    es: {
+      title: 'Plataforma de Estacionamiento Inteligente Tricampa',
+      description:
+        'Solución de estacionamiento inteligente que usa geolocalización y códigos QR para ayudar a los conductores a encontrar sus coches en estacionamientos y gestionar el ticketing digitalmente.',
+      content: buildRichText([
+        h2('Descripción General'),
+        p('Tricampa es una solución de estacionamiento inteligente que usa geolocalización y códigos QR para ayudar a los conductores a encontrar sus coches en estacionamientos y gestionar el ticketing digitalmente.'),
+        h2('Contribuciones Clave'),
+        h3('Plataforma Web'),
+        p('Arquitectura y desarrollo de la plataforma de estacionamiento usando Ruby on Rails y Vue.js, aprovechando información de geolocalización para localizar coches en estacionamientos e implementando códigos QR para el sistema de ticketing.'),
+        h3('App Móvil Android'),
+        ul([
+          'Desarrollo de una aplicación nativa Android integrada con la plataforma',
+          'Compartición de datos de geolocalización para guardar ubicaciones de coches dentro de estructuras de estacionamiento',
+          'Impresión de códigos QR usando dispositivos BLE para ticketing sin contacto',
+          'Escaneo de códigos QR para identificación y propósitos de ticketing',
+        ]),
+      ]),
+    },
+  },
 };

@@ -75,7 +75,14 @@
     "ariaLabel": "El Nostre Treball",
     "sectionTitle": "EL NOSTRE TREBALL",
     "sectionNumber": "03",
+    "subtitle": "// Projectes destacats del nostre portafoli",
     "viewAll": "Veure Tots els Projectes",
+    "terminalHint": "{count} projectes indexats // explora l'arxiu complet",
+    "statusLive": "LIVE",
+    "viewProjectLink": "Veure projecte",
+    "statProjects": "Projectes",
+    "statTechnologies": "Tecnologies",
+    "statIndustries": "Indústries",
     "backToProjects": "TORNAR ALS PROJECTES",
     "allLabel": "[TOTS]",
     "pageTitle": "EL NOSTRE TREBALL",
@@ -124,7 +131,8 @@
     "submitting": "[TRANSMETENT...]",
     "successMessage": "> TRANSMISSIÓ_COMPLETA // Ens posarem en contacte aviat.",
     "errorMessage": "> TRANSMISSIÓ_FALLIDA // Torna-ho a provar o escriu-nos directament.",
-    "formAriaLabel": "Formulari de contacte"
+    "formAriaLabel": "Formulari de contacte",
+    "accessDenied": "[ACCÉS_DENEGAT]"
   },
   "footer": {
     "tagline": "Construint el futur, una solució a la vegada",

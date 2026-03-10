@@ -59,6 +59,7 @@ export const Projects: CollectionConfig = {
       name: 'title',
       type: 'text',
       required: true,
+      localized: true,
     },
     {
       name: 'slug',
@@ -75,10 +76,12 @@ export const Projects: CollectionConfig = {
     {
       name: 'description',
       type: 'textarea',
+      localized: true,
     },
     {
       name: 'content',
       type: 'richText',
+      localized: true,
     },
     {
       name: 'featuredImage',

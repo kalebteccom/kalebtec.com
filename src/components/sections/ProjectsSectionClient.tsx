@@ -130,7 +130,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 <span className="relative inline-flex h-2 w-2 bg-cyber-cyan" />
               </span>
               <span className="font-mono text-[10px] uppercase tracking-wider text-cyber-cyan/80 cyber-text-flicker-hover">
-                LIVE
+                {t('statusLive')}
               </span>
             </div>
           </div>
@@ -211,7 +211,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           {/* View project arrow indicator */}
           <div className="mt-5 flex items-center gap-2 font-mono text-xs text-cyber-faint group-hover:text-brand-light transition-colors duration-300">
             <span className="h-px flex-grow max-w-8 bg-cyber-border group-hover:bg-brand/40 transition-colors duration-300" />
-            <span className="uppercase tracking-wider">View project</span>
+            <span className="uppercase tracking-wider">{t('viewProjectLink')}</span>
             <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
               &rarr;
             </span>
@@ -223,6 +223,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 }
 
 export default function ProjectsSectionClient({ projects, stats }: ProjectsSectionClientProps) {
+  const t = useTranslations('projects');
   const statsRef = useRef<HTMLDivElement>(null);
   const statsInView = useInView(statsRef, { once: true, amount: 0.3 });
 
@@ -246,9 +247,9 @@ export default function ProjectsSectionClient({ projects, stats }: ProjectsSecti
         />
 
         <div className="relative grid grid-cols-3 divide-x divide-cyber-border">
-          <StatBlock label="Projects" value={stats.totalProjects} delay={0.1} />
-          <StatBlock label="Technologies" value={stats.technologiesUsed} delay={0.2} />
-          <StatBlock label="Industries" value={stats.industriesServed} delay={0.3} />
+          <StatBlock label={t('statProjects')} value={stats.totalProjects} delay={0.1} />
+          <StatBlock label={t('statTechnologies')} value={stats.technologiesUsed} delay={0.2} />
+          <StatBlock label={t('statIndustries')} value={stats.industriesServed} delay={0.3} />
         </div>
 
         {/* Bottom accent line */}

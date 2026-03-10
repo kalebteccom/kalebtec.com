@@ -1,5 +1,13 @@
 import type { SerializedEditorState } from 'lexical';
 
+export interface LocalizedFields {
+  title: string;
+  description: string;
+  content: SerializedEditorState;
+}
+
+export type TranslatableLocale = 'es' | 'fr' | 'ca' | 'gl' | 'pt';
+
 export interface ProjectSeedData {
   title: string;
   slug: string;
@@ -15,4 +23,6 @@ export interface ProjectSeedData {
   featuredImageAlt: string;
   /** Lexical rich text content */
   content: SerializedEditorState;
+  /** Translations keyed by locale */
+  translations?: Partial<Record<TranslatableLocale, LocalizedFields>>;
 }

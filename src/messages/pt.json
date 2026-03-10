@@ -75,7 +75,14 @@
     "ariaLabel": "O Nosso Trabalho",
     "sectionTitle": "O NOSSO TRABALHO",
     "sectionNumber": "03",
+    "subtitle": "// Projetos em destaque do nosso portfólio",
     "viewAll": "Ver Todos os Projetos",
+    "terminalHint": "{count} projetos indexados // explore o arquivo completo",
+    "statusLive": "LIVE",
+    "viewProjectLink": "Ver projeto",
+    "statProjects": "Projetos",
+    "statTechnologies": "Tecnologias",
+    "statIndustries": "Indústrias",
     "backToProjects": "VOLTAR AOS PROJETOS",
     "allLabel": "[TODOS]",
     "pageTitle": "O NOSSO TRABALHO",
@@ -124,7 +131,8 @@
     "submitting": "[A TRANSMITIR...]",
     "successMessage": "> TRANSMISSÃO_COMPLETA // Entraremos em contacto em breve.",
     "errorMessage": "> TRANSMISSÃO_FALHADA // Tente novamente ou envie-nos um e-mail diretamente.",
-    "formAriaLabel": "Formulário de contacto"
+    "formAriaLabel": "Formulário de contacto",
+    "accessDenied": "[ACESSO_NEGADO]"
   },
   "footer": {
     "tagline": "Construindo o futuro, uma solução de cada vez",

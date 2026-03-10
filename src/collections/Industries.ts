@@ -35,6 +35,7 @@ export const Industries: CollectionConfig = {
       type: 'text',
       required: true,
       unique: true,
+      localized: true,
     },
     {
       name: 'slug',

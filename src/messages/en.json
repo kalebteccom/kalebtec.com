@@ -75,7 +75,14 @@
     "ariaLabel": "Our Work",
     "sectionTitle": "OUR WORK",
     "sectionNumber": "03",
+    "subtitle": "// Featured builds from our portfolio",
     "viewAll": "View All Projects",
+    "terminalHint": "{count} projects indexed // explore the full archive",
+    "statusLive": "LIVE",
+    "viewProjectLink": "View project",
+    "statProjects": "Projects",
+    "statTechnologies": "Technologies",
+    "statIndustries": "Industries",
     "backToProjects": "BACK TO PROJECTS",
     "allLabel": "[ALL]",
     "pageTitle": "OUR WORK",
@@ -124,7 +131,8 @@
     "submitting": "[TRANSMITTING...]",
     "successMessage": "> TRANSMISSION_COMPLETE // We'll be in touch soon.",
     "errorMessage": "> TRANSMISSION_FAILED // Please try again or email us directly.",
-    "formAriaLabel": "Contact form"
+    "formAriaLabel": "Contact form",
+    "accessDenied": "[ACCESS_DENIED]"
   },
   "footer": {
     "tagline": "Building the future, one solution at a time",

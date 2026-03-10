@@ -114,7 +114,7 @@ export default function ProjectsFilter({
       )}
 
       {/* Results count */}
-      <p className="font-mono text-xs text-cyber-faint mb-6" aria-live="polite">
+      <p className="font-mono text-xs text-cyber-faint mb-6" role="status" aria-live="polite" aria-atomic="true">
         {t('projectsFound', { count: filtered.length })}
       </p>
 

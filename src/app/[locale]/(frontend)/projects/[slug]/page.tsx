@@ -7,6 +7,7 @@ import { Link } from '@/i18n/navigation';
 import { RichText } from '@payloadcms/richtext-lexical/react';
 import type { SerializedEditorState } from 'lexical';
 import type { Metadata } from 'next';
+import type { Locale } from '@/i18n/routing';
 import type { Media, Industry } from '@/payload-types';
 
 export const dynamic = 'force-dynamic';
@@ -19,6 +20,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const payload = await getPayload({ config: configPromise });
   const { docs } = await payload.find({
     collection: 'projects',
+    locale: locale as Locale,
+    fallbackLocale: 'en',
     where: { slug: { equals: slug }, status: { equals: 'published' } },
     limit: 1,
     depth: 1,
@@ -49,6 +52,8 @@ export default async function ProjectDetailPage({ params }: { params: Params }) 
 
   const { docs } = await payload.find({
     collection: 'projects',
+    locale: locale as Locale,
+    fallbackLocale: 'en',
     where: { slug: { equals: slug }, status: { equals: 'published' } },
     limit: 1,
     depth: 2,

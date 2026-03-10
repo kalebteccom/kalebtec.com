@@ -188,7 +188,7 @@ export default function ContactSection() {
                       aria-hidden="true"
                       className="access-denied-msg absolute right-3 top-1/2 -translate-y-1/2 font-mono text-xs text-cyber-cyan tracking-wider"
                     >
-                      [ACCESS_DENIED]
+                      {t('accessDenied')}
                     </span>
                   )}
                 </div>

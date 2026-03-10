@@ -8,7 +8,8 @@
  */
 import { getPayload } from 'payload';
 import config from '@payload-config';
-import type { ProjectSeedData } from './types';
+import type { ProjectSeedData, TranslatableLocale } from './types';
+import { industryTranslations } from './industry-translations';
 
 import {
   fanfestV3,
@@ -73,6 +74,21 @@ async function seed() {
 
   console.log('[seed] Starting...');
 
+  // --- 0. Purge existing data (localization schema changed) ---
+  console.log('[seed] Purging existing projects...');
+  const existingProjects = await payload.find({ collection: 'projects', limit: 100 });
+  for (const doc of existingProjects.docs) {
+    await payload.delete({ collection: 'projects', id: doc.id });
+  }
+  console.log(`  [purged] ${existingProjects.docs.length} projects`);
+
+  console.log('[seed] Purging existing industries...');
+  const existingIndustries = await payload.find({ collection: 'industries', limit: 100 });
+  for (const doc of existingIndustries.docs) {
+    await payload.delete({ collection: 'industries', id: doc.id });
+  }
+  console.log(`  [purged] ${existingIndustries.docs.length} industries`);
+
   // --- 1. Seed Industries ---
   console.log('[seed] Seeding industries...');
   const industryIdMap = new Map<string, string>();
@@ -100,6 +116,20 @@ async function seed() {
     });
     industryIdMap.set(industry.name, created.id);
     console.log(`  [created] Industry "${industry.name}"`);
+
+    // Add locale translations
+    const translations = industryTranslations[industry.name];
+    if (translations) {
+      for (const locale of Object.keys(translations) as TranslatableLocale[]) {
+        await payload.update({
+          collection: 'industries',
+          id: created.id,
+          locale,
+          data: { name: translations[locale] },
+        });
+      }
+      console.log(`  [i18n] Industry "${industry.name}" — ${Object.keys(translations).length} locales`);
+    }
   }
 
   // --- 2. Seed Projects ---
@@ -157,8 +187,8 @@ async function seed() {
       }
     }
 
-    // Create the project
-    await payload.create({
+    // Create the project (default locale = en)
+    const created = await payload.create({
       collection: 'projects',
       data: {
         title: project.title,
@@ -177,6 +207,27 @@ async function seed() {
     console.log(
       `  [created] Project "${project.title}" (${project.technologies.length} technologies, ${industryIds.length} industries)`,
     );
+
+    // Add locale translations
+    if (project.translations) {
+      for (const locale of Object.keys(project.translations) as TranslatableLocale[]) {
+        const t = project.translations[locale];
+        if (!t) continue;
+        await payload.update({
+          collection: 'projects',
+          id: created.id,
+          locale,
+          data: {
+            title: t.title,
+            description: t.description,
+            content: t.content as any,
+          },
+        });
+      }
+      console.log(
+        `  [i18n] Project "${project.title}" — ${Object.keys(project.translations).length} locales`,
+      );
+    }
   }
 
   console.log('[seed] Done!');

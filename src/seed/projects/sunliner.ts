@@ -9,7 +9,7 @@ export const sunliner: ProjectSeedData = {
     'Architected and led development of a Next.js front-end application with server-side rendering for a prominent Dutch tour operator, managing a team of four remote developers and collaborating with stakeholders to tailor the platform to the Netherlands market.',
   industries: ['Travel & Hospitality'],
   technologies: ['React.js', 'Next.js', 'PHP', 'Agile'],
-  status: 'published',
+  status: 'draft',
   publishedDate: '2021-06-01T00:00:00.000Z',
   order: 8,
   featuredImageUrl: null,
@@ -41,4 +41,28 @@ export const sunliner: ProjectSeedData = {
       'Ensured user flows and shopping experiences were tailored to the Netherlands market',
     ]),
   ]),
+  translations: {
+    es: {
+      title: 'Plataforma de Viajes Sunliner',
+      description:
+        'Operador turístico destacado en los Países Bajos que ofrece paquetes vacacionales y experiencias de viaje. La plataforma necesitaba una renovación completa del frontend.',
+      content: buildRichText([
+        h2('Descripción General'),
+        p('Sunliner es una empresa operadora turística destacada en los Países Bajos, que ofrece paquetes vacacionales y experiencias de viaje. La plataforma necesitaba una renovación completa del frontend para soportar su creciente base de usuarios y cumplir con las expectativas de rendimiento modernas.'),
+        h2('Contribuciones Clave'),
+        h3('Optimización de Rendimiento'),
+        p('Resolución de problemas de rendimiento en la aplicación PHP existente, mejorando la carga de imágenes y la velocidad general del sitio para una mejor experiencia de usuario.'),
+        h3('Arquitectura Frontend Moderna'),
+        p('Arquitectura, liderazgo y desarrollo de una aplicación front-end con React.js con renderizado del lado del servidor usando Next.js y técnicas modernas para soportar una gran base de usuarios de forma escalable y eficiente.'),
+        h3('Gestión de Equipo y Stakeholders'),
+        ul([
+          'Gestión de un equipo de cuatro desarrolladores web remotos',
+          'Utilización de metodologías Agile y herramientas Kanban incluyendo Slack, Trello, Infinity y Notion',
+          'Responsable de contratación y coordinación del equipo',
+          'Colaboración estrecha con stakeholders, el CEO y agentes de operaciones turísticas',
+          'Aseguramiento de que los flujos de usuario y experiencias de compra estuvieran adaptados al mercado de los Países Bajos',
+        ]),
+      ]),
+    },
+  },
 };

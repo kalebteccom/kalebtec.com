@@ -18,7 +18,7 @@ export const humantelligence: ProjectSeedData = {
     'MS CodePush',
     'Figma',
   ],
-  status: 'published',
+  status: 'draft',
   publishedDate: '2023-10-01T00:00:00.000Z',
   order: 5,
   featuredImageUrl: 'https://www.humantelligence.com/Outlook.png',
@@ -65,4 +65,33 @@ export const humantelligence: ProjectSeedData = {
       'Planned and led a long-term migration of a rich UI/UX Ruby on Rails front-end to React.js, enhancing performance and maintainability.',
     ),
   ]),
+  translations: {
+    es: {
+      title: 'Modernización de la Plataforma Humantelligence',
+      description:
+        'Herramientas de analítica de personas y colaboración de equipos utilizadas por empresas en todo el mundo, con dos compromisos separados a lo largo de cinco años.',
+      content: buildRichText([
+        h2('Descripción General'),
+        p('Humantelligence proporciona herramientas de analítica de personas y colaboración de equipos utilizadas por empresas en todo el mundo. Rowin trabajó con la empresa en dos compromisos separados a lo largo de cinco años.'),
+        h2('Arquitectura de la Plataforma (2023)'),
+        h3('Migración a Mono-Repo'),
+        p('Desarrollo de una arquitectura preparada para el futuro usando PNPM para configurar un mono-repo, segregando diferentes mini-apps del core de la plataforma con herramientas integradas de linting y formateo.'),
+        h3('Modernización del Sistema de Build'),
+        ul([
+          'Migración de Create React App (CRA) a Vite, manteniendo todas las capacidades incluyendo la subida automática de assets a S3',
+          'Actualización de React a las últimas versiones estables y habilitación del modo estricto',
+          'Mejora de la experiencia de desarrollo y el rendimiento de despliegue en 10x',
+        ]),
+        h3('Coaching del Equipo'),
+        p('Coaching del equipo en prácticas modernas de React, incluyendo caché con SWR y técnicas de profiling de rendimiento.'),
+        h2('Aplicaciones Móviles y Extensiones de Navegador (2018–2020)'),
+        h3('Aplicación Móvil Multiplataforma'),
+        p('Diseño y desarrollo de una aplicación móvil multiplataforma orientada al cliente usando React Native y MS CodePush para actualizaciones over-the-air.'),
+        h3('Extensiones de Navegador EQ-everywhere'),
+        p('Diseño y desarrollo de integraciones EQ-everywhere con buzones de correo en navegadores modernos para proporcionar consejos personalizados de comunicación y engagement, utilizando React.js, content scripts y una arquitectura basada en eventos.'),
+        h3('Migración de Rails a React'),
+        p('Planificación y liderazgo de una migración a largo plazo del front-end Ruby on Rails con UX rica hacia React.js, mejorando el rendimiento y la mantenibilidad.'),
+      ]),
+    },
+  },
 };

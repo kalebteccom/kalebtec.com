@@ -3,6 +3,7 @@ import configPromise from '@payload-config';
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import ProjectsFilter from '@/components/projects/ProjectsFilter';
+import type { Locale } from '@/i18n/routing';
 import type { Project, Industry, Media } from '@/payload-types';
 
 export const dynamic = 'force-dynamic';
@@ -27,6 +28,8 @@ export default async function ProjectsPage({ params }: { params: Params }) {
 
   const { docs: projects } = await payload.find({
     collection: 'projects',
+    locale: locale as Locale,
+    fallbackLocale: 'en',
     where: {
       status: { equals: 'published' },
     },

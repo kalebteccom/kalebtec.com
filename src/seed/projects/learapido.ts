@@ -18,7 +18,7 @@ export const learapido: ProjectSeedData = {
     'AWS S3',
     'Figma',
   ],
-  status: 'published',
+  status: 'draft',
   publishedDate: '2021-01-01T00:00:00.000Z',
   order: 9,
   featuredImageUrl: 'https://www.learapido.com/wp-content/uploads/2023/10/logo_horizontal_3.png',
@@ -48,4 +48,26 @@ export const learapido: ProjectSeedData = {
       'Employed Agile methodologies with daily stand-ups, planning sessions, and coaching',
     ]),
   ]),
+  translations: {
+    es: {
+      title: 'Plataforma de Lectura Rápida Lea Rapido',
+      description:
+        'Academia de lectura rápida con sede en Medellín, Colombia, que enseña a los estudiantes a leer 200 páginas en 60 minutos con comprensión total. Conversión del curso presencial a formato móvil.',
+      content: buildRichText([
+        h2('Descripción General'),
+        p('Lea Rapido es una academia de lectura rápida con sede en Medellín, Colombia, que enseña a los estudiantes a leer 200 páginas en 60 minutos con comprensión total. El proyecto convirtió su curso formal presencial en un formato móvil atractivo.'),
+        h2('Contribuciones Clave'),
+        h3('Experiencia de Aprendizaje Móvil'),
+        p('Investigación y desarrollo de una experiencia visual rica para mejorar las habilidades de lectura en una aplicación móvil multiplataforma usando Flutter, animaciones Flare (Rive), Figma y Sketch.'),
+        h3('Backend Escalable'),
+        p('Arquitectura de una solución de plataforma escalable para soportar miles de usuarios mensuales, utilizando Ruby on Rails, Redis, PostgreSQL, AWS EC2 y AWS S3.'),
+        h3('Liderazgo de Equipo'),
+        ul([
+          'Liderazgo de un equipo de proyecto de cinco desarrolladores móviles y redactores',
+          'Supervisión de contratación e incorporación',
+          'Empleo de metodologías Agile con stand-ups diarios, sesiones de planificación y coaching',
+        ]),
+      ]),
+    },
+  },
 };

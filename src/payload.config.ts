@@ -18,6 +18,18 @@ const serverURL = process.env.NEXT_PUBLIC_SITE_URL || '';
 
 export default buildConfig({
   serverURL,
+  localization: {
+    locales: [
+      { label: 'English', code: 'en' },
+      { label: 'Español', code: 'es' },
+      { label: 'Français', code: 'fr' },
+      { label: 'Català', code: 'ca' },
+      { label: 'Galego', code: 'gl' },
+      { label: 'Português', code: 'pt' },
+    ],
+    defaultLocale: 'en',
+    fallback: true,
+  },
   admin: {
     user: 'users',
     importMap: {
