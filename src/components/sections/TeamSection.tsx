@@ -71,6 +71,8 @@ function useCardTilt(maxTilt = 12) {
   const isAnimatingRef = useRef(false);
   const reducedMotionRef = useRef(false);
   const isTouchRef = useRef(false);
+  const lastMouseRef = useRef<{ x: number; y: number } | null>(null);
+  const isHoveredRef = useRef(false);
 
   useEffect(() => {
     reducedMotionRef.current = window.matchMedia(
@@ -85,15 +87,24 @@ function useCardTilt(maxTilt = 12) {
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
-      if (isTouchRef.current || isAnimatingRef.current || reducedMotionRef.current) return;
+      if (isTouchRef.current) return;
+      isHoveredRef.current = true;
+
+      // Always track position so tilt persists through flips
       const rect = e.currentTarget.getBoundingClientRect();
       const { clientX, clientY } = e;
+      const nx = (clientX - rect.left) / rect.width;
+      const ny = (clientY - rect.top) / rect.height;
+      lastMouseRef.current = { x: nx, y: ny };
+
+      if (isAnimatingRef.current || reducedMotionRef.current) return;
+
       cancelAnimationFrame(rafRef.current);
       rafRef.current = requestAnimationFrame(() => {
         const card = cardRef.current;
         if (!card) return;
-        const x = (clientX - rect.left) / rect.width;
-        const y = (clientY - rect.top) / rect.height;
+        const x = nx;
+        const y = ny;
         const tiltX = (0.5 - y) * maxTilt;
         const flip = flippedRef.current;
         const tiltY = (x - 0.5) * maxTilt * (flip ? -1 : 1);
@@ -119,6 +130,8 @@ function useCardTilt(maxTilt = 12) {
   );
 
   const handleMouseLeave = useCallback(() => {
+    isHoveredRef.current = false;
+    lastMouseRef.current = null;
     if (isAnimatingRef.current) return;
     cancelAnimationFrame(rafRef.current);
     const card = cardRef.current;
@@ -128,8 +141,7 @@ function useCardTilt(maxTilt = 12) {
       ? 'rotateX(0deg) rotateY(180deg)'
       : 'rotateX(0deg) rotateY(0deg)';
 
-    const shines = card.querySelectorAll<HTMLElement>('[data-shine]');
-    shines.forEach((s) => {
+    card.querySelectorAll<HTMLElement>('[data-shine]').forEach((s) => {
       s.style.opacity = '0';
     });
   }, []);
@@ -174,15 +186,31 @@ function useCardTilt(maxTilt = 12) {
       const ae = e as AnimationEvent;
       if (ae.animationName !== 'card-flip-to-back' && ae.animationName !== 'card-flip-to-front')
         return;
-      card.style.transform = next
-        ? 'rotateX(0deg) rotateY(180deg)'
-        : 'rotateX(0deg) rotateY(0deg)';
+
+      const baseY = next ? 180 : 0;
+
+      if (isHoveredRef.current && lastMouseRef.current) {
+        // Mouse still on card — snap to tilted position at stored cursor
+        const { x, y } = lastMouseRef.current;
+        const tiltX = (0.5 - y) * maxTilt;
+        const tiltY = (x - 0.5) * maxTilt * (next ? -1 : 1);
+        card.style.transition = 'none';
+        card.style.transform = `rotateX(${tiltX}deg) rotateY(${baseY + tiltY}deg)`;
+      } else {
+        // Mouse left during flip — spring to flat
+        card.style.transition = 'transform 0.4s ease-out';
+        card.style.transform = `rotateX(0deg) rotateY(${baseY}deg)`;
+        card.querySelectorAll<HTMLElement>('[data-shine]').forEach((s) => {
+          s.style.opacity = '0';
+        });
+      }
+
       card.classList.remove('card-flip-to-back', 'card-flip-to-front');
       isAnimatingRef.current = false;
       card.removeEventListener('animationend', cleanup);
     };
     card.addEventListener('animationend', cleanup);
-  }, []);
+  }, [maxTilt]);
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
@@ -467,7 +495,7 @@ function TeamMemberCard({
               }}
             >
               <span
-                className="font-display text-sm font-bold tracking-wider uppercase"
+                className="font-display text-xs sm:text-sm font-bold tracking-wider uppercase truncate"
                 style={{ color: '#2d1f10', textShadow: '0 1px 0 rgba(255,255,255,0.3)' }}
               >
                 {member.name}
@@ -482,7 +510,7 @@ function TeamMemberCard({
 
             {/* ── Photo frame ── */}
             <div
-              className="mx-3 sm:mx-4 mt-3 relative aspect-[5/3] overflow-hidden"
+              className="mx-3 sm:mx-4 mt-3 relative aspect-[2/1] sm:aspect-[5/3] overflow-hidden"
               style={{
                 border: '3px solid #b89840',
                 boxShadow: 'inset 0 2px 8px rgba(0,0,0,0.25), 0 1px 0 #d4c090',
@@ -535,7 +563,7 @@ function TeamMemberCard({
 
             {/* ── Flavor text ── */}
             <p
-              className="mx-3 sm:mx-4 mt-2.5 text-[11px] leading-relaxed italic"
+              className="mx-3 sm:mx-4 mt-2.5 text-[10px] sm:text-[11px] leading-relaxed italic line-clamp-3 sm:line-clamp-none"
               style={{ color: '#5a4a32' }}
             >
               {description}
