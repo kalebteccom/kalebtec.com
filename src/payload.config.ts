@@ -45,6 +45,12 @@ export default buildConfig({
   },
   db: mongooseAdapter({
     url: process.env.DATABASE_URI || 'mongodb://127.0.0.1/kalebtec',
+    connectOptions: {
+      maxPoolSize: 5,
+      minPoolSize: 1,
+      maxIdleTimeMS: 10_000,
+      serverSelectionTimeoutMS: 5_000,
+    },
   }),
   sharp,
   plugins: [
