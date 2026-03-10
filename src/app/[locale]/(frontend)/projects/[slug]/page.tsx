@@ -4,8 +4,10 @@ import configPromise from '@payload-config';
 import Image from 'next/image';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
+import { RichText } from '@payloadcms/richtext-lexical/react';
+import type { SerializedEditorState } from 'lexical';
 import type { Metadata } from 'next';
-import type { Project, Media, Industry } from '@/payload-types';
+import type { Media, Industry } from '@/payload-types';
 
 export const dynamic = 'force-dynamic';
 
@@ -170,43 +172,13 @@ export default async function ProjectDetailPage({ params }: { params: Params }) 
 
         {/* Rich text content */}
         {project.content && (
-          <div className="prose prose-invert max-w-none prose-headings:font-display prose-headings:tracking-wide prose-headings:text-cyber-heading prose-p:text-cyber-body prose-a:text-brand-light prose-a:no-underline hover:prose-a:underline prose-strong:text-cyber-heading prose-code:font-mono prose-code:text-cyber-cyan">
-            <ProjectContent content={project.content} />
-          </div>
+          <RichText
+            data={project.content as SerializedEditorState}
+            className="prose prose-invert max-w-none prose-headings:font-display prose-headings:tracking-wide prose-headings:text-cyber-heading prose-p:text-cyber-body prose-a:text-brand-light prose-a:no-underline hover:prose-a:underline prose-strong:text-cyber-heading prose-code:font-mono prose-code:text-cyber-cyan prose-li:text-cyber-body prose-ul:text-cyber-body prose-ol:text-cyber-body"
+          />
         )}
       </div>
     </section>
   );
 }
 
-function ProjectContent({ content }: { content: NonNullable<Project['content']> }) {
-  // Render Lexical rich text as simple HTML paragraphs
-  // For full Lexical rendering, use @payloadcms/richtext-lexical/react
-  const nodes = content.root?.children ?? [];
-
-  return (
-    <>
-      {nodes.map((node, i) => {
-        if (node.type === 'paragraph') {
-          const text = extractText(node);
-          if (!text) return null;
-          return <p key={i}>{text}</p>;
-        }
-        if (node.type === 'heading') {
-          const text = extractText(node);
-          const Tag = (node as any).tag ?? 'h2';
-          return <Tag key={i}>{text}</Tag>;
-        }
-        return null;
-      })}
-    </>
-  );
-}
-
-function extractText(node: any): string {
-  if (node.text) return node.text;
-  if (node.children) {
-    return node.children.map(extractText).join('');
-  }
-  return '';
-}
