@@ -30,14 +30,22 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const project = docs[0];
   if (!project) return { title: t('notFoundTitle') };
 
-  const image = project.featuredImage as Media | null;
+  const ogPath = `/${locale}/projects/${slug}/og`;
 
   return {
     title: `${project.title} | Kalebtec`,
     description: project.description ?? `${project.title} — a Kalebtec project.`,
-    openGraph: image?.url
-      ? { images: [{ url: image.url, alt: image.alt ?? project.title }] }
-      : undefined,
+    openGraph: {
+      title: project.title,
+      description: project.description ?? undefined,
+      images: [{ url: ogPath, width: 1200, height: 630, alt: project.title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: project.title,
+      description: project.description ?? undefined,
+      images: [ogPath],
+    },
   };
 }
 
