@@ -6,7 +6,7 @@ export const fanfestV3: ProjectSeedData = {
   slug: 'fanfest-v3-platform',
   client: 'FanFest',
   description:
-    'Planned and architected version 3.0 of the FanFest platform — a real-time fan engagement system serving partners like Paris Saint-Germain FC, Comcast, the Premier League, and Real Madrid.',
+    "Planned and architected version 3.0 of the FanFest platform as Lead Software Engineer — a real-time fan engagement system serving Paris Saint-Germain FC, Comcast, the Premier League, and Real Madrid. Led a team of six engineers and shipped AI moderation, Chiliz wallet gating, Low Latency HLS live streaming, and WebRTC live shows on AWS Chime Web SDK.",
   industries: ['Sports & Entertainment', 'Streaming & Media'],
   technologies: [
     'TypeScript',
@@ -22,8 +22,8 @@ export const fanfestV3: ProjectSeedData = {
   status: 'published',
   publishedDate: '2024-06-01T00:00:00.000Z',
   order: 1,
-  featuredImageUrl: null,
-  featuredImageAlt: 'FanFest 3.0 platform interface',
+  featuredImageUrl: 'fanfest-v3.svg',
+  featuredImageAlt: 'FanFest logo — real-time fan engagement platform',
   content: buildRichText([
     h2('Overview'),
     p(
@@ -71,10 +71,10 @@ export const fanfestV3: ProjectSeedData = {
     es: {
       title: 'Plataforma FanFest 3.0',
       description:
-        'Plataforma de participación de fans en tiempo real que conecta a los aficionados deportivos con eventos en directo, shows interactivos y contenido exclusivo de las mayores organizaciones deportivas del mundo.',
+        'Planificación y arquitectura de la versión 3.0 de la plataforma FanFest como Ingeniero de Software Principal — un sistema de engagement de fans en tiempo real para Paris Saint-Germain FC, Comcast, la Premier League y el Real Madrid. Liderazgo de un equipo de seis ingenieros y entrega de moderación con IA, gating con wallets de Chiliz, streaming en directo Low Latency HLS y shows con WebRTC sobre AWS Chime Web SDK.',
       content: buildRichText([
         h2('Descripción General'),
-        p('FanFest es una plataforma de participación de fans en tiempo real que conecta a los aficionados deportivos con eventos en directo, shows interactivos y contenido exclusivo de las mayores organizaciones deportivas del mundo.'),
+        p('FanFest es una plataforma de engagement de fans en tiempo real que conecta a los aficionados deportivos con eventos en directo, shows interactivos y contenido exclusivo de las mayores organizaciones deportivas del mundo.'),
         p('Como Ingeniero de Software Principal, Rowin planificó y diseñó la hoja de ruta para la versión 3.0, cumpliendo los requisitos técnicos de socios comerciales como Paris Saint-Germain FC, Comcast, la Premier League y el Real Madrid.'),
         h2('Contribuciones Clave'),
         h3('Moderación de Contenido con IA'),
@@ -98,7 +98,7 @@ export const fanfestV3: ProjectSeedData = {
     fr: {
       title: 'Plateforme FanFest 3.0',
       description:
-        "Plateforme d'engagement des fans en temps réel connectant les supporters sportifs aux événements en direct, aux shows interactifs et au contenu exclusif des plus grandes organisations sportives mondiales.",
+        "Planification et architecture de la version 3.0 de la plateforme FanFest en tant qu'Ingénieur Logiciel Principal — un système d'engagement des fans en temps réel pour le Paris Saint-Germain FC, Comcast, la Premier League et le Real Madrid. Direction d'une équipe de six ingénieurs et livraison de la modération par IA, du gating via wallets Chiliz, du streaming en direct Low Latency HLS et des shows WebRTC sur AWS Chime Web SDK.",
       content: buildRichText([
         h2('Vue d\'ensemble'),
         p("FanFest est une plateforme d'engagement des fans en temps réel qui connecte les supporters sportifs aux événements en direct, aux shows interactifs et au contenu exclusif des plus grandes organisations sportives mondiales."),
@@ -125,10 +125,10 @@ export const fanfestV3: ProjectSeedData = {
     ca: {
       title: 'Plataforma FanFest 3.0',
       description:
-        "Plataforma de participació de fans en temps real que connecta els aficionats esportius amb esdeveniments en directe, shows interactius i contingut exclusiu de les organitzacions esportives més grans del món.",
+        "Planificació i arquitectura de la versió 3.0 de la plataforma FanFest com a Enginyer de Software Principal — un sistema d'engagement de fans en temps real per al Paris Saint-Germain FC, Comcast, la Premier League i el Real Madrid. Lideratge d'un equip de sis enginyers i entrega de moderació amb IA, gating amb wallets de Chiliz, streaming en directe Low Latency HLS i shows amb WebRTC sobre AWS Chime Web SDK.",
       content: buildRichText([
         h2('Descripció General'),
-        p("FanFest és una plataforma de participació de fans en temps real que connecta els aficionats esportius amb esdeveniments en directe, shows interactius i contingut exclusiu de les organitzacions esportives més grans del món."),
+        p("FanFest és una plataforma d'engagement de fans en temps real que connecta els aficionats esportius amb esdeveniments en directe, shows interactius i contingut exclusiu de les organitzacions esportives més grans del món."),
         p("Com a Enginyer de Software Principal, Rowin va planificar i dissenyar el full de ruta per a la versió 3.0, complint els requisits tècnics de socis comercials com el Paris Saint-Germain FC, Comcast, la Premier League i el Real Madrid."),
         h2('Contribucions Clau'),
         h3('Moderació de Contingut amb IA'),
@@ -152,10 +152,10 @@ export const fanfestV3: ProjectSeedData = {
     gl: {
       title: 'Plataforma FanFest 3.0',
       description:
-        'Plataforma de participación de fans en tempo real que conecta os afeccionados deportivos con eventos en directo, shows interactivos e contido exclusivo das maiores organizacións deportivas do mundo.',
+        'Planificación e arquitectura da versión 3.0 da plataforma FanFest como Enxeñeiro de Software Principal — un sistema de engagement de fans en tempo real para o Paris Saint-Germain FC, Comcast, a Premier League e o Real Madrid. Liderado dun equipo de seis enxeñeiros e entrega de moderación con IA, gating con wallets de Chiliz, streaming en directo Low Latency HLS e shows con WebRTC sobre AWS Chime Web SDK.',
       content: buildRichText([
         h2('Descrición Xeral'),
-        p('FanFest é unha plataforma de participación de fans en tempo real que conecta os afeccionados deportivos con eventos en directo, shows interactivos e contido exclusivo das maiores organizacións deportivas do mundo.'),
+        p('FanFest é unha plataforma de engagement de fans en tempo real que conecta os afeccionados deportivos con eventos en directo, shows interactivos e contido exclusivo das maiores organizacións deportivas do mundo.'),
         p('Como Enxeñeiro de Software Principal, Rowin planificou e deseñou a folla de ruta para a versión 3.0, cumprindo os requisitos técnicos de socios comerciais como o Paris Saint-Germain FC, Comcast, a Premier League e o Real Madrid.'),
         h2('Contribucións Clave'),
         h3('Moderación de Contido con IA'),
@@ -179,10 +179,10 @@ export const fanfestV3: ProjectSeedData = {
     pt: {
       title: 'Plataforma FanFest 3.0',
       description:
-        'Plataforma de envolvimento de fãs em tempo real que conecta adeptos desportivos a eventos ao vivo, shows interativos e conteúdo exclusivo das maiores organizações desportivas do mundo.',
+        'Planeamento e arquitetura da versão 3.0 da plataforma FanFest como Engenheiro de Software Principal — um sistema de engagement de fãs em tempo real para o Paris Saint-Germain FC, Comcast, a Premier League e o Real Madrid. Liderança de uma equipa de seis engenheiros e entrega de moderação com IA, gating com wallets da Chiliz, streaming ao vivo Low Latency HLS e shows com WebRTC sobre AWS Chime Web SDK.',
       content: buildRichText([
         h2('Visão Geral'),
-        p('FanFest é uma plataforma de envolvimento de fãs em tempo real que conecta adeptos desportivos a eventos ao vivo, shows interativos e conteúdo exclusivo das maiores organizações desportivas do mundo.'),
+        p('FanFest é uma plataforma de engagement de fãs em tempo real que conecta adeptos desportivos a eventos ao vivo, shows interativos e conteúdo exclusivo das maiores organizações desportivas do mundo.'),
         p('Como Engenheiro de Software Principal, Rowin planeou e arquitetou o roadmap para a versão 3.0, cumprindo os requisitos técnicos de parceiros comerciais como o Paris Saint-Germain FC, Comcast, a Premier League e o Real Madrid.'),
         h2('Contribuições Chave'),
         h3('Moderação de Conteúdo com IA'),

@@ -6,7 +6,7 @@ export const fanfestV2: ProjectSeedData = {
   slug: 'fanfest-v2-platform',
   client: 'FanFest',
   description:
-    'Developed and deployed version 2.0 of the FanFest platform for real-time events across partners including PSG, Manchester City, and The 49ers. Architected crypto wallet integrations and screen-sharing capabilities for live shows.',
+    "Developed and deployed version 2.0 of the FanFest platform for real-time events across partners including PSG, Manchester City, and The 49ers — built with Vue.js, PhenixRTS, and Socket.IO. Architected crypto wallet integrations alongside the CEO, migrated the stack to Vue.js 3 + Vuetify 3 + TailwindCSS, and integrated AWS Chime SDK to cut latency on live shows.",
   industries: ['Sports & Entertainment', 'Streaming & Media'],
   technologies: [
     'Vue.js',
@@ -22,8 +22,8 @@ export const fanfestV2: ProjectSeedData = {
   status: 'published',
   publishedDate: '2022-12-01T00:00:00.000Z',
   order: 2,
-  featuredImageUrl: null,
-  featuredImageAlt: 'FanFest 2.0 real-time event platform',
+  featuredImageUrl: 'fanfest-v2.png',
+  featuredImageAlt: 'FanFest 2.0 platform — real-time fan events interface',
   content: buildRichText([
     h2('Overview'),
     p(
@@ -59,7 +59,7 @@ export const fanfestV2: ProjectSeedData = {
     es: {
       title: 'Plataforma FanFest 2.0',
       description:
-        'Plataforma de eventos en tiempo real que lleva experiencias interactivas de fans a organizaciones deportivas asociadas, desde grandes clubes de fútbol hasta franquicias de la NFL.',
+        'Desarrollo y despliegue de la versión 2.0 de la plataforma FanFest para eventos en tiempo real con socios como PSG, Manchester City y The 49ers — construida con Vue.js, PhenixRTS y Socket.IO. Arquitectura de integraciones con wallets crypto junto al CEO, migración del stack a Vue.js 3 + Vuetify 3 + TailwindCSS e integración de AWS Chime SDK para reducir la latencia en los shows en directo.',
       content: buildRichText([
         h2('Descripción General'),
         p('La versión 2.0 de la plataforma FanFest trajo capacidades de eventos en tiempo real a los fans de todas las organizaciones asociadas, desde grandes clubes de fútbol hasta franquicias de la NFL.'),
@@ -82,7 +82,7 @@ export const fanfestV2: ProjectSeedData = {
     fr: {
       title: 'Plateforme FanFest 2.0',
       description:
-        "Plateforme d'événements en temps réel apportant des expériences interactives aux fans à travers toutes les organisations sportives partenaires, des grands clubs de football aux franchises NFL.",
+        "Développement et déploiement de la version 2.0 de la plateforme FanFest pour des événements en temps réel avec des partenaires comme le PSG, Manchester City et The 49ers — construite avec Vue.js, PhenixRTS et Socket.IO. Architecture des intégrations de wallets crypto avec le CEO, migration du stack vers Vue.js 3 + Vuetify 3 + TailwindCSS et intégration d'AWS Chime SDK pour réduire la latence sur les shows en direct.",
       content: buildRichText([
         h2('Vue d\'ensemble'),
         p("La version 2.0 de la plateforme FanFest a apporté des capacités d'événements en temps réel aux fans de toutes les organisations partenaires, des grands clubs de football aux franchises NFL."),
@@ -105,7 +105,7 @@ export const fanfestV2: ProjectSeedData = {
     ca: {
       title: 'Plataforma FanFest 2.0',
       description:
-        "Plataforma d'esdeveniments en temps real que porta experiències interactives de fans a organitzacions esportives associades, des de grans clubs de futbol fins a franquícies de la NFL.",
+        "Desenvolupament i desplegament de la versió 2.0 de la plataforma FanFest per a esdeveniments en temps real amb socis com el PSG, Manchester City i The 49ers — construïda amb Vue.js, PhenixRTS i Socket.IO. Arquitectura d'integracions amb wallets crypto amb el CEO, migració del stack a Vue.js 3 + Vuetify 3 + TailwindCSS i integració d'AWS Chime SDK per reduir la latència en els shows en directe.",
       content: buildRichText([
         h2('Descripció General'),
         p("La versió 2.0 de la plataforma FanFest va portar capacitats d'esdeveniments en temps real als fans de totes les organitzacions associades, des de grans clubs de futbol fins a franquícies de la NFL."),
@@ -128,7 +128,7 @@ export const fanfestV2: ProjectSeedData = {
     gl: {
       title: 'Plataforma FanFest 2.0',
       description:
-        'Plataforma de eventos en tempo real que leva experiencias interactivas de fans a organizacións deportivas asociadas, desde grandes clubs de fútbol ata franquías da NFL.',
+        'Desenvolvemento e despregamento da versión 2.0 da plataforma FanFest para eventos en tempo real con socios como o PSG, Manchester City e The 49ers — construída con Vue.js, PhenixRTS e Socket.IO. Arquitectura de integracións con wallets crypto xunto co CEO, migración do stack a Vue.js 3 + Vuetify 3 + TailwindCSS e integración de AWS Chime SDK para reducir a latencia nos shows en directo.',
       content: buildRichText([
         h2('Descrición Xeral'),
         p('A versión 2.0 da plataforma FanFest trouxo capacidades de eventos en tempo real aos fans de todas as organizacións asociadas, desde grandes clubs de fútbol ata franquías da NFL.'),
@@ -151,7 +151,7 @@ export const fanfestV2: ProjectSeedData = {
     pt: {
       title: 'Plataforma FanFest 2.0',
       description:
-        'Plataforma de eventos em tempo real que traz experiências interativas de fãs a organizações desportivas parceiras, desde grandes clubes de futebol até franquias da NFL.',
+        'Desenvolvimento e deploy da versão 2.0 da plataforma FanFest para eventos em tempo real com parceiros como o PSG, Manchester City e os 49ers — construída com Vue.js, PhenixRTS e Socket.IO. Arquitetura de integrações com wallets crypto junto ao CEO, migração do stack para Vue.js 3 + Vuetify 3 + TailwindCSS e integração do AWS Chime SDK para reduzir a latência nos shows ao vivo.',
       content: buildRichText([
         h2('Visão Geral'),
         p('A versão 2.0 da plataforma FanFest trouxe capacidades de eventos em tempo real aos fãs de todas as organizações parceiras, desde grandes clubes de futebol até franquias da NFL.'),

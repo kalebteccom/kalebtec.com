@@ -10,7 +10,8 @@
     "lint": "next lint",
     "generate:types": "payload generate:types",
     "payload": "payload",
-    "seed": "NODE_OPTIONS='--no-warnings' tsx --env-file .env src/seed/index.ts"
+    "seed": "NODE_OPTIONS='--no-warnings' tsx --env-file .env src/seed/index.ts",
+    "create-admin": "NODE_OPTIONS='--no-warnings' tsx --env-file .env src/seed/create-admin.ts"
   },
   "dependencies": {
     "@payloadcms/db-mongodb": "3.79.0",

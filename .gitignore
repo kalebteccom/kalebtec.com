@@ -28,3 +28,8 @@ next-env.d.ts
 
 # Local Netlify folder
 .netlify
+
+# Claude
+.claude/settings.local.json
+.claude/*.lock
+.claude/context/*.pdf

@@ -2,6 +2,7 @@ export { fanfestV3 } from './fanfest-v3';
 export { fanfestV2 } from './fanfest-v2';
 export { limbicAi } from './limbic-ai';
 export { synphonyteDental } from './synphonyte-dental';
+export { messynger } from './messynger';
 export { humantelligence } from './humantelligence';
 export { graphaware } from './graphaware';
 export { sabanto } from './sabanto';

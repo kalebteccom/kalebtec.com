@@ -6,16 +6,57 @@
  *
  * Requires MongoDB to be running and PAYLOAD_SECRET / DATABASE_URI env vars set.
  */
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { getPayload } from 'payload';
 import config from '@payload-config';
 import type { ProjectSeedData, TranslatableLocale } from './types';
 import { industryTranslations } from './industry-translations';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const ASSETS_DIR = path.resolve(__dirname, 'assets');
+
+const MIME_BY_EXT: Record<string, string> = {
+  png: 'image/png',
+  jpg: 'image/jpeg',
+  jpeg: 'image/jpeg',
+  webp: 'image/webp',
+  svg: 'image/svg+xml',
+  gif: 'image/gif',
+};
+
+async function loadFeaturedImage(
+  ref: string,
+): Promise<{ buffer: Buffer; filename: string; mimetype: string }> {
+  if (ref.startsWith('http://') || ref.startsWith('https://')) {
+    const response = await fetch(ref);
+    if (!response.ok) throw new Error(`HTTP ${response.status} fetching ${ref}`);
+    const buffer = Buffer.from(await response.arrayBuffer());
+    const mimetype = response.headers.get('content-type') || 'image/png';
+    const ext = mimetype.includes('svg')
+      ? 'svg'
+      : mimetype.includes('webp')
+        ? 'webp'
+        : mimetype.includes('png')
+          ? 'png'
+          : 'jpg';
+    return { buffer, filename: path.basename(new URL(ref).pathname) || `image.${ext}`, mimetype };
+  }
+  // Local asset path, resolved relative to src/seed/assets
+  const absolutePath = path.resolve(ASSETS_DIR, ref);
+  const buffer = await readFile(absolutePath);
+  const ext = path.extname(absolutePath).slice(1).toLowerCase();
+  const mimetype = MIME_BY_EXT[ext] ?? 'application/octet-stream';
+  return { buffer, filename: path.basename(absolutePath), mimetype };
+}
 
 import {
   fanfestV3,
   fanfestV2,
   limbicAi,
   synphonyteDental,
+  messynger,
   humantelligence,
   graphaware,
   sabanto,
@@ -54,6 +95,7 @@ const ALL_PROJECTS: ProjectSeedData[] = [
   fanfestV2,
   limbicAi,
   synphonyteDental,
+  messynger,
   humantelligence,
   graphaware,
   sabanto,
@@ -153,37 +195,31 @@ async function seed() {
       .map((name) => industryIdMap.get(name))
       .filter((id): id is string => !!id);
 
-    // Download and upload featured image if URL is provided
+    // Load featured image from local assets or URL and upload to Payload
     let featuredImageId: string | undefined;
     if (project.featuredImageUrl) {
       try {
-        console.log(`  [image] Downloading ${project.featuredImageUrl}...`);
-        const response = await fetch(project.featuredImageUrl);
-        if (response.ok) {
-          const buffer = Buffer.from(await response.arrayBuffer());
-          const contentType = response.headers.get('content-type') || 'image/png';
-          const ext = contentType.includes('webp')
-            ? 'webp'
-            : contentType.includes('png')
-              ? 'png'
-              : 'jpg';
-          const filename = `${project.slug}.${ext}`;
+        console.log(`  [image] Loading ${project.featuredImageUrl}...`);
+        const { buffer, mimetype } = await loadFeaturedImage(project.featuredImageUrl);
+        const ext = (MIME_BY_EXT[path.extname(project.featuredImageUrl).slice(1).toLowerCase()]
+          ? path.extname(project.featuredImageUrl).slice(1).toLowerCase()
+          : mimetype.split('/')[1]) || 'png';
+        const uploadFilename = `${project.slug}.${ext}`;
 
-          const media = await payload.create({
-            collection: 'media',
-            data: { alt: project.featuredImageAlt },
-            file: {
-              data: buffer,
-              name: filename,
-              mimetype: contentType,
-              size: buffer.length,
-            },
-          });
-          featuredImageId = media.id;
-          console.log(`  [image] Uploaded as "${filename}"`);
-        }
+        const media = await payload.create({
+          collection: 'media',
+          data: { alt: project.featuredImageAlt },
+          file: {
+            data: buffer,
+            name: uploadFilename,
+            mimetype,
+            size: buffer.length,
+          },
+        });
+        featuredImageId = media.id;
+        console.log(`  [image] Uploaded as "${uploadFilename}" (${mimetype}, ${buffer.length} bytes)`);
       } catch (err) {
-        console.warn(`  [image] Failed to download image for ${project.title}:`, err);
+        console.warn(`  [image] Failed to load image for ${project.title}:`, err);
       }
     }
 
