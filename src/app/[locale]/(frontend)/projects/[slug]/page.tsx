@@ -36,9 +36,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     title: `${project.title} | Kalebtec`,
     description: project.description ?? `${project.title} — a Kalebtec project.`,
     openGraph: image?.url
-      ? {
-          images: [{ url: image.url, alt: image.alt ?? project.title }],
-        }
+      ? { images: [{ url: image.url, alt: image.alt ?? project.title }] }
       : undefined,
   };
 }
@@ -69,37 +67,59 @@ export default async function ProjectDetailPage({ params }: { params: Params }) 
   const technologies = project.technologies ?? [];
 
   return (
-    <section aria-label={project.title} className="min-h-screen pt-24 pb-32">
+    <article aria-label={project.title} className="min-h-screen pt-32 pb-32 bg-bg">
       <div className="mx-auto max-w-5xl px-6 lg:px-8">
-        {/* Back link */}
         <Link
           href="/projects"
-          className="inline-flex items-center gap-2 font-mono text-xs text-cyber-muted hover:text-brand-light transition-colors duration-300 mb-8 group"
+          className="inline-flex items-center gap-2 text-sm text-muted hover:text-heading transition-colors duration-200 mb-12"
         >
-          <span
-            className="transition-transform duration-300 group-hover:-translate-x-1"
-            aria-hidden="true"
-          >
-            &larr;
-          </span>
-          <span
-            className="text-cyber-faint group-hover:text-cyber-muted transition-colors"
-            aria-hidden="true"
-          >
-            [
-          </span>
-          {t('backToProjects')}
-          <span
-            className="text-cyber-faint group-hover:text-cyber-muted transition-colors"
-            aria-hidden="true"
-          >
-            ]
-          </span>
+          <span aria-hidden="true">←</span>
+          <span>{t('backToProjects')}</span>
         </Link>
 
-        {/* Hero image */}
+        <header className="mb-12 max-w-4xl">
+          {project.client && (
+            <p className="text-xs font-medium uppercase tracking-wider text-faint mb-4">
+              {project.client}
+            </p>
+          )}
+          <h1 className="text-display-xl text-heading">{project.title}</h1>
+
+          {project.publishedDate && (
+            <p className="text-sm text-muted mt-6">
+              {new Date(project.publishedDate).toLocaleDateString(locale, {
+                year: 'numeric',
+                month: 'long',
+              })}
+            </p>
+          )}
+
+          {(industries.length > 0 || technologies.length > 0) && (
+            <div className="flex flex-wrap gap-2 mt-6">
+              {industries.map((ind) => (
+                <span
+                  key={ind.id}
+                  className="text-xs font-medium uppercase tracking-wider px-3 py-1 rounded-full border border-border text-body"
+                >
+                  {ind.name}
+                </span>
+              ))}
+              {technologies.map((tech) =>
+                tech.technology ? (
+                  <span
+                    key={tech.id}
+                    className="text-xs font-mono uppercase tracking-wider px-3 py-1 rounded-full text-faint"
+                  >
+                    {tech.technology}
+                  </span>
+                ) : null,
+              )}
+            </div>
+          )}
+        </header>
+
         {image?.url && (
-          <div className="relative aspect-[16/9] overflow-hidden border border-cyber-border mb-10">
+          <div className="relative aspect-[16/9] overflow-hidden bg-surface mb-16">
             <Image
               src={image.url}
               alt={image.alt ?? project.title}
@@ -111,79 +131,22 @@ export default async function ProjectDetailPage({ params }: { params: Params }) 
                 ? { placeholder: 'blur' as const, blurDataURL: image.blurDataURL }
                 : {})}
             />
-            <div className="absolute inset-0 scanlines opacity-15" aria-hidden="true" />
           </div>
         )}
 
-        {/* Project header */}
-        <div className="mb-10">
-          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-wider uppercase text-cyber-heading neon-glow">
-            {project.title}
-          </h1>
-
-          <div className="flex flex-wrap items-center gap-4 mt-4">
-            {project.client && (
-              <span className="font-mono text-xs text-cyber-cyan tracking-wide">
-                [{project.client.toUpperCase()}]
-              </span>
-            )}
-            {project.publishedDate && (
-              <span className="font-mono text-xs text-cyber-faint tracking-wide">
-                {new Date(project.publishedDate).toLocaleDateString(locale, {
-                  year: 'numeric',
-                  month: 'long',
-                })}
-              </span>
-            )}
-          </div>
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2 mt-4">
-            {industries.map((ind) => (
-              <span
-                key={ind.id}
-                className="cyber-badge font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 border border-cyber-border text-cyber-muted"
-              >
-                {ind.name}
-              </span>
-            ))}
-            {technologies.map((tech) =>
-              tech.technology ? (
-                <span
-                  key={tech.id}
-                  className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 border border-brand/20 text-brand-light"
-                >
-                  {tech.technology}
-                </span>
-              ) : null,
-            )}
-          </div>
-
-          {/* Accent line */}
-          <div className="mt-6 flex items-center gap-0" aria-hidden="true">
-            <div className="w-2 h-2 bg-brand" />
-            <div className="h-px w-24 bg-gradient-to-r from-brand/40 to-transparent" />
-          </div>
-        </div>
-
-        {/* Description */}
         {project.description && (
-          <div className="mb-10">
-            <p className="text-base leading-relaxed text-cyber-body max-w-3xl">
-              {project.description}
-            </p>
+          <div className="mb-12 max-w-3xl">
+            <p className="editorial-lead text-heading">{project.description}</p>
           </div>
         )}
 
-        {/* Rich text content */}
         {project.content && (
           <RichText
             data={project.content as SerializedEditorState}
-            className="prose prose-invert max-w-none prose-headings:font-display prose-headings:tracking-wide prose-headings:text-cyber-heading prose-h2:mt-12 prose-h2:mb-4 prose-h3:mt-8 prose-h3:mb-3 prose-p:text-cyber-body prose-p:my-4 prose-a:text-brand-light prose-a:no-underline hover:prose-a:underline prose-strong:text-cyber-heading prose-code:font-mono prose-code:text-cyber-cyan prose-li:text-cyber-body prose-ul:text-cyber-body prose-ul:my-4 prose-ol:text-cyber-body prose-ol:my-4"
+            className="prose max-w-3xl prose-headings:font-display prose-headings:tracking-tight prose-headings:text-heading prose-h2:mt-12 prose-h2:mb-4 prose-h3:mt-8 prose-h3:mb-3 prose-p:text-body prose-p:leading-relaxed prose-p:my-5 prose-a:text-heading prose-a:underline prose-a:underline-offset-4 hover:prose-a:no-underline prose-strong:text-heading prose-code:font-mono prose-code:text-heading prose-li:text-body prose-ul:my-4 prose-ol:my-4 prose-blockquote:border-l-2 prose-blockquote:border-border-strong prose-blockquote:pl-6 prose-blockquote:text-muted prose-blockquote:italic"
           />
         )}
       </div>
-    </section>
+    </article>
   );
 }
-

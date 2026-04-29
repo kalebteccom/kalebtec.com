@@ -10,7 +10,7 @@ interface SectionHeadingProps {
   title: string;
   subtitle?: string;
   className?: string;
-  /** Section number displayed as [01], [02], etc. */
+  /** Section number displayed as 01, 02, etc. */
   sectionNumber?: string;
   /** Allow part of the title to be highlighted in brand color */
   highlightWord?: string;
@@ -27,9 +27,7 @@ export default function SectionHeading({
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   const renderTitle = () => {
-    if (!highlightWord) {
-      return title;
-    }
+    if (!highlightWord) return title;
     const parts = title.split(highlightWord);
     return (
       <>
@@ -43,38 +41,26 @@ export default function SectionHeading({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-      transition={{ duration: 0.7, ease: EASE }}
-      className={cn('mb-16', className)}
+      initial={{ opacity: 0, y: 16 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+      transition={{ duration: 0.6, ease: EASE }}
+      className={cn('mb-12 md:mb-16', className)}
     >
-      {/* Section number and label */}
       {sectionNumber && (
-        <div className="flex items-center gap-2 mb-4">
-          <span className="font-mono text-sm text-cyber-faint tracking-wider">
-            [{sectionNumber}]
-          </span>
-          <span className="font-mono text-sm text-cyber-faint/50">//</span>
-          <span className="font-mono text-sm text-cyber-muted tracking-wider uppercase">
-            {title}
-          </span>
-        </div>
+        <p className="font-mono text-xs uppercase tracking-widest mb-4 flex items-center gap-3">
+          <span className="text-brand font-semibold">{sectionNumber}</span>
+          <span className="h-px w-8 bg-border-strong" aria-hidden="true" />
+          <span className="text-muted">{title}</span>
+        </p>
       )}
 
-      {/* Heading */}
-      <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-wider uppercase text-cyber-heading neon-glow">
+      <h2 className="text-display-lg text-heading max-w-[18ch]">
         {renderTitle()}
       </h2>
 
-      {/* Sharp gradient accent line with glowing dot */}
-      <div className="mt-6 flex items-center gap-0" aria-hidden="true">
-        {/* Glowing dot */}
-        <div className="w-2 h-2 bg-brand" />
-        {/* Gradient line */}
-        <div className="h-px w-24 bg-gradient-to-r from-brand/40 to-transparent" />
-      </div>
-
-      {subtitle && <p className="mt-6 text-lg text-cyber-muted max-w-2xl font-mono">{subtitle}</p>}
+      {subtitle && (
+        <p className="mt-6 editorial-lead text-muted max-w-2xl">{subtitle}</p>
+      )}
     </motion.div>
   );
 }

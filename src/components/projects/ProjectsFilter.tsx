@@ -55,30 +55,32 @@ export default function ProjectsFilter({
 
   return (
     <>
-      {/* Filter bar */}
       {(industries.length > 0 || technologies.length > 0) && (
-        <div className="mb-10 space-y-4">
+        <div className="mb-12 space-y-6 pb-12 border-b border-border">
           {industries.length > 0 && (
             <div>
-              <span className="font-mono text-[10px] uppercase tracking-widest text-cyber-faint mb-2 block">
+              <span className="text-xs font-medium uppercase tracking-wider text-faint mb-3 block">
                 {t('industries')}
               </span>
               <div className="flex flex-wrap gap-2">
-                {industries.map((name) => (
-                  <button
-                    key={name}
-                    onClick={() => toggleIndustry(name)}
-                    aria-pressed={activeIndustries.has(name)}
-                    className={cn(
-                      'font-mono text-[11px] uppercase tracking-wider px-3 py-2.5 border transition-all duration-300',
-                      activeIndustries.has(name)
-                        ? 'border-brand text-brand-light bg-brand/10'
-                        : 'border-cyber-border text-cyber-muted hover:border-cyber-muted/50 hover:text-cyber-heading',
-                    )}
-                  >
-                    {name}
-                  </button>
-                ))}
+                {industries.map((name) => {
+                  const active = activeIndustries.has(name);
+                  return (
+                    <button
+                      key={name}
+                      onClick={() => toggleIndustry(name)}
+                      aria-pressed={active}
+                      className={cn(
+                        'text-sm font-medium px-4 py-2 rounded-full border transition-colors duration-200',
+                        active
+                          ? 'border-ink bg-ink text-paper'
+                          : 'border-border text-body hover:border-border-strong hover:text-heading',
+                      )}
+                    >
+                      {name}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           )}
@@ -92,10 +94,7 @@ export default function ProjectsFilter({
                 setSelectedTechnology(val === '__all__' ? '' : val)
               }
               placeholder={t('allTechnologies')}
-              options={technologies.map((name) => ({
-                value: name,
-                label: name,
-              }))}
+              options={technologies.map((name) => ({ value: name, label: name }))}
             />
           )}
 
@@ -105,7 +104,7 @@ export default function ProjectsFilter({
                 setActiveIndustries(new Set());
                 setSelectedTechnology('');
               }}
-              className="font-mono text-[11px] uppercase tracking-wider text-cyber-faint hover:text-cyber-heading transition-colors duration-300 px-3 py-2.5"
+              className="text-sm font-medium text-faint hover:text-heading transition-colors duration-200"
             >
               {t('clearFilters')}
             </button>
@@ -113,99 +112,72 @@ export default function ProjectsFilter({
         </div>
       )}
 
-      {/* Results count */}
-      <p className="font-mono text-xs text-cyber-faint mb-6" role="status" aria-live="polite" aria-atomic="true">
+      <p
+        className="text-sm text-muted mb-8"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      >
         {t('projectsFound', { count: filtered.length })}
       </p>
 
-      {/* Project grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         {filtered.map((project, index) => {
           const image = project.featuredImage as Media | null;
           const projectIndustries = (project.industries ?? []).filter(
             (ind): ind is Industry => typeof ind !== 'string',
           );
-          const techs = project.technologies ?? [];
 
           return (
-            <AnimatedReveal key={project.id} delay={0.05 * index}>
+            <AnimatedReveal key={project.id} delay={0.04 * index}>
               <Link
                 href={`/projects/${project.slug}`}
-                className={cn(
-                  'group relative block border border-cyber-border',
-                  'bg-cyber-surface',
-                  'cyber-corners cyber-border-glow',
-                  'transition-all duration-500 ease-out',
-                  'hover:border-cyber-muted/30',
-                  'h-full overflow-hidden',
-                )}
+                className="group block h-full"
               >
                 {image?.url && (
-                  <div className="relative aspect-[16/9] overflow-hidden cyber-glitch-image cyber-scan-hover">
-                    <div className="scan-line" aria-hidden="true" />
+                  <div className="relative aspect-[4/3] overflow-hidden bg-surface mb-5">
                     <Image
                       src={image.url}
                       alt={image.alt ?? project.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-[transform,filter] duration-500 group-hover:scale-105"
-                      style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                       {...(image.blurDataURL
                         ? { placeholder: 'blur' as const, blurDataURL: image.blurDataURL }
                         : {})}
                     />
-                    <div
-                      className="absolute inset-0 bg-gradient-to-t from-cyber-surface via-transparent to-transparent"
-                      aria-hidden="true"
-                    />
-                    <div className="absolute inset-0 scanlines opacity-20" aria-hidden="true" />
                   </div>
                 )}
 
-                <div className="p-6">
-                  <h2 className="font-display text-lg font-semibold tracking-wide text-cyber-heading mb-1">
+                <div className="space-y-2">
+                  <h2 className="font-display text-xl font-semibold tracking-tight text-heading">
                     {project.title}
                   </h2>
 
                   {project.client && (
-                    <p className="font-mono text-xs text-cyber-cyan tracking-wide mb-3">
-                      [{project.client.toUpperCase()}]
+                    <p className="text-xs font-medium uppercase tracking-wider text-faint">
+                      {project.client}
                     </p>
                   )}
 
                   {project.description && (
-                    <p className="text-sm leading-relaxed text-cyber-muted mb-4">
+                    <p className="text-sm text-muted leading-relaxed">
                       {project.description.length > 120
-                        ? project.description.slice(0, 120).trimEnd() + '...'
+                        ? project.description.slice(0, 120).trimEnd() + '…'
                         : project.description}
                     </p>
                   )}
 
                   {projectIndustries.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mb-3">
-                      {projectIndustries.map((ind) => (
+                    <div className="flex flex-wrap gap-2 pt-1">
+                      {projectIndustries.slice(0, 2).map((ind) => (
                         <span
                           key={ind.id}
-                          className="cyber-badge font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 border border-cyber-border text-cyber-muted"
+                          className="text-xs font-mono uppercase tracking-wider text-faint"
                         >
                           {ind.name}
                         </span>
                       ))}
-                    </div>
-                  )}
-
-                  {techs.length > 0 && (
-                    <div className="flex flex-wrap gap-2">
-                      {techs.map((tech) =>
-                        tech.technology ? (
-                          <span
-                            key={tech.id}
-                            className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 border border-brand/20 text-brand-light"
-                          >
-                            {tech.technology}
-                          </span>
-                        ) : null,
-                      )}
                     </div>
                   )}
                 </div>
@@ -217,9 +189,7 @@ export default function ProjectsFilter({
 
       {filtered.length === 0 && (
         <div className="text-center py-20">
-          <p className="font-mono text-sm text-cyber-faint">
-            {t('noResults')}
-          </p>
+          <p className="text-base text-muted">{t('noResults')}</p>
         </div>
       )}
     </>

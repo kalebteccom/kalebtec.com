@@ -9,29 +9,29 @@
     "notFoundTitle": "Projecte No Trobat | Kalebtec"
   },
   "nav": {
-    "about": "NOSALTRES",
-    "services": "SERVEIS",
-    "projects": "PROJECTES",
-    "team": "EQUIP",
-    "contact": "CONTACTE",
+    "about": "Nosaltres",
+    "services": "Serveis",
+    "projects": "Projectes",
+    "team": "Equip",
+    "contact": "Contacte",
     "openMenu": "Obrir menú de navegació",
     "closeMenu": "Tancar menú de navegació",
     "mobileNav": "Navegació mòbil",
     "mobileMenuDialog": "Menú de navegació",
     "mainNav": "Navegació principal",
-    "systemNav": "SYSTEM.NAV"
+    "systemNav": "Navegació"
   },
   "hero": {
     "ariaLabel": "Heroi",
-    "sysActive": "SYS.ACTIVE",
-    "tagline": "> CONSULTORIA_TECNOLÒGICA",
-    "valueProp": "// Dissenyem solucions digitals que transformen negocis",
-    "cta": "[INICIAR_CONTACTE]",
-    "scroll": "[SCROLL]"
+    "eyebrow": "Kalebtec — Consultoria tecnològica",
+    "headline": "Enginyeria amb propòsit.",
+    "subhead": "Arquitectura de programari, plataformes web i automatització amb IA, construïdes per un equip petit que entrega.",
+    "primaryCta": "Començar projecte",
+    "secondaryCta": "Veure el nostre treball"
   },
   "about": {
     "ariaLabel": "Sobre Kalebtec",
-    "sectionTitle": "QUI SOM",
+    "sectionTitle": "Qui som",
     "sectionNumber": "01",
     "originStory": "No vam fundar Kalebtec en una sala de reunions. Ho vam començar a una taula de cuina, ben entrada la nit, alimentats per mal cafè i una obsessió compartida per construir coses que realment funcionin.",
     "teamDescription": "<rowin>Rowin</rowin> escriu el codi. <mari>Mari</mari> dirigeix l'espectacle. Junts, agafem reptes tècnics complexos i desordenats i els convertim en sistemes nets i escalables en què les empreses poden confiar de veritat.",
@@ -44,7 +44,7 @@
   },
   "services": {
     "ariaLabel": "Els Nostres Serveis",
-    "sectionTitle": "EL QUE FEM",
+    "sectionTitle": "El que fem",
     "sectionNumber": "02",
     "softwareArchitecture": {
       "name": "Arquitectura de Software",
@@ -73,22 +73,22 @@
   },
   "projects": {
     "ariaLabel": "El Nostre Treball",
-    "sectionTitle": "EL NOSTRE TREBALL",
+    "sectionTitle": "El nostre treball",
     "sectionNumber": "03",
-    "subtitle": "// Projectes destacats del nostre portafoli",
+    "subtitle": "Projectes destacats del nostre portafoli",
     "viewAll": "Veure Tots els Projectes",
-    "terminalHint": "{count} projectes indexats // explora l'arxiu complet",
-    "statusLive": "LIVE",
+    "terminalHint": "{count} projectes indexats — explora l'arxiu complet",
+    "statusLive": "Live",
     "viewProjectLink": "Veure projecte",
     "statProjects": "Projectes",
     "statTechnologies": "Tecnologies",
     "statIndustries": "Indústries",
-    "backToProjects": "TORNAR ALS PROJECTES",
-    "allLabel": "[TOTS]",
-    "pageTitle": "EL NOSTRE TREBALL",
-    "industries": "// INDÚSTRIES",
-    "technologies": "// TECNOLOGIES",
-    "clearFilters": "[NETEJAR FILTRES]",
+    "backToProjects": "Tornar als projectes",
+    "allLabel": "Tots",
+    "pageTitle": "El nostre treball",
+    "industries": "Indústries",
+    "technologies": "Tecnologies",
+    "clearFilters": "Netejar filtres",
     "projectsFound": "{count} {count, plural, one {projecte} other {projectes}} trobats",
     "allTechnologies": "Totes les Tecnologies",
     "noResults": "Cap projecte coincideix amb els filtres seleccionats.",
@@ -96,9 +96,9 @@
   },
   "team": {
     "ariaLabel": "El Nostre Equip",
-    "sectionTitle": "L'EQUIP",
+    "sectionTitle": "L'equip",
     "sectionNumber": "04",
-    "statusOnline": "ONLINE",
+    "statusOnline": "Online",
     "rowin": {
       "role": "Cofundador i Enginyer Principal",
       "description": "El que parla amb les màquines. Rowin construeix sistemes full-stack des de zero -- bases de dades, APIs, interfícies, infraestructura. Si funciona amb codi, ell ja va per la meitat de l'arquitectura. Obsessionat amb abstraccions netes, desplegaments ràpids i fer que el complex sembli simple.",
@@ -117,28 +117,28 @@
   "contact": {
     "ariaLabel": "Contacta'ns",
     "sectionNumber": "05",
-    "sectionLabel": "CONTACTE",
-    "heading": "CONSTRUÏM",
-    "headingHighlight": "ALGUNA COSA",
-    "subtitle": "// Preparat per transformar la teva tecnologia? Parlem-ne.",
+    "sectionLabel": "Contacte",
+    "heading": "Construïm",
+    "headingHighlight": "Alguna cosa",
+    "subtitle": "Preparat per transformar la teva tecnologia? Parlem-ne.",
     "nameLabel": "Nom",
-    "namePlaceholder": "> el teu nom",
+    "namePlaceholder": "el teu nom",
     "emailLabel": "Correu electrònic",
-    "emailPlaceholder": "> tu@empresa.com",
+    "emailPlaceholder": "tu@empresa.com",
     "messageLabel": "Missatge",
-    "messagePlaceholder": "> descriu el teu projecte...",
-    "submit": "[TRANSMETRE]",
-    "submitting": "[TRANSMETENT...]",
-    "successMessage": "> TRANSMISSIÓ_COMPLETA // Ens posarem en contacte aviat.",
-    "errorMessage": "> TRANSMISSIÓ_FALLIDA // Torna-ho a provar o escriu-nos directament.",
+    "messagePlaceholder": "descriu el teu projecte...",
+    "submit": "Transmetre",
+    "submitting": "Transmetent...",
+    "successMessage": "TRANSMISSIÓ_COMPLETA — Ens posarem en contacte aviat.",
+    "errorMessage": "TRANSMISSIÓ_FALLIDA — Torna-ho a provar o escriu-nos directament.",
     "formAriaLabel": "Formulari de contacte",
-    "accessDenied": "[ACCÉS_DENEGAT]"
+    "accessDenied": "ACCÉS_DENEGAT"
   },
   "footer": {
     "tagline": "Construint el futur, una solució a la vegada",
     "techConsulting": "Consultoria Tecnològica",
-    "navigationLabel": "// NAVEGACIÓ",
-    "contactLabel": "// CONTACTE",
+    "navigationLabel": "Navegació",
+    "contactLabel": "Contacte",
     "footerNav": "Navegació del peu de pàgina",
     "copyright": "Kalebtec",
     "founders": "Rowin & Mari Hernandez",
@@ -152,30 +152,30 @@
   },
   "error": {
     "ariaLabel": "Error d'aplicació",
-    "label": "[FALLADA_DEL_SISTEMA]",
-    "sublabel": "EXCEPCIÓ_EN_EXECUCIÓ",
-    "heading": "ERROR",
-    "terminalMessage": "> FALLADA_INESPERADA_DEL_SISTEMA",
-    "description": "// Una excepció no controlada ha interromput les operacions normals",
+    "label": "Fallada del sistema",
+    "sublabel": "Excepció_en_execució",
+    "heading": "Error",
+    "terminalMessage": "Fallada inesperada del sistema",
+    "description": "Una excepció no controlada ha interromput les operacions normals",
     "diagProcess": "Execució del procés aturada",
     "diagRecovery": "Protocol de recuperació disponible",
     "diagAwaiting": "Esperant acció de l'operador",
-    "retry": "[REINTENTAR]",
-    "returnHome": "[TORNAR_A_L'INICI]"
+    "retry": "Reintentar",
+    "returnHome": "Tornar_a_l'inici"
   },
   "notFound": {
     "ariaLabel": "Pàgina no trobada",
-    "label": "[ERR]",
-    "sublabel": "PÀGINA_NO_TROBADA",
+    "label": "Err",
+    "sublabel": "Pàgina_no_trobada",
     "heading": "404",
-    "terminalMessage": "> RECURS_OBJECTIU: NO_TROBAT",
-    "description": "// El camí sol·licitat no existeix en aquest sistema",
+    "terminalMessage": "RECURS_OBJECTIU: NO_TROBAT",
+    "description": "El camí sol·licitat no existeix en aquest sistema",
     "trace1": "Cerca de ruta iniciada...",
     "trace2": "Escanejant rutes registrades...",
     "trace3": "No s'ha trobat cap ruta coincident",
     "trace4": "Connexió terminada — 404",
     "awaiting": "Esperant entrada de l'operador",
-    "returnHome": "[TORNAR_A_L'INICI]"
+    "returnHome": "Tornar_a_l'inici"
   },
   "common": {
     "loading": "Carregant...",
@@ -191,7 +191,7 @@
   },
   "cookie": {
     "ariaLabel": "Consentiment de cookies",
-    "sysLabel": "[SYS]",
+    "sysLabel": "Sys",
     "noticeLabel": "AVÍS_DE_COOKIES",
     "description": "Fem servir cookies per millorar la teva experiencia. En continuar visitant aquest lloc acceptes el nostre us de cookies. Llegeix la nostra",
     "privacyPolicy": "Politica de Privacitat",
@@ -208,14 +208,14 @@
     "metaTitle": "Termes del Servei | Kalebtec",
     "metaDescription": "Termes del Servei dels serveis de consultoria tecnològica de Kalebtec. Informa't sobre els nostres termes de servei, limitacions i responsabilitats de l'usuari.",
     "pageTitle": "Termes del Servei",
-    "effectiveDate": "Data d'efecte: 9 de març de 2026 \u2014 Última actualització: 9 de març de 2026",
+    "effectiveDate": "Data d'efecte: 9 de març de 2026 — Última actualització: 9 de març de 2026",
     "section1": {
-      "label": "ACORD",
+      "label": "Acord",
       "title": "Acceptació dels Termes",
       "content": "En accedir o utilitzar el lloc web de Kalebtec (kalebtec.com) i els nostres serveis de consultoria tecnològica, acceptes quedar vinculat per aquests Termes del Servei. Si no estàs d'acord amb aquests termes, si us plau no utilitzis el nostre lloc web ni els nostres serveis. Aquests termes constitueixen un acord legalment vinculant entre tu i Kalebtec, operat per Rowin Hernandez i Mari Hernandez."
     },
     "section2": {
-      "label": "SERVEIS",
+      "label": "Serveis",
       "title": "Descripció dels Serveis",
       "content": "Kalebtec ofereix serveis de consultoria tecnològica que inclouen, entre d'altres:",
       "item1": "Desenvolupament d'aplicacions web i mòbils",
@@ -227,7 +227,7 @@
       "contentAfter": "L'abast específic dels serveis per a cada projecte es definirà en una declaració de treball o acord de servei independent entre Kalebtec i el client."
     },
     "section3": {
-      "label": "OBLIGACIONS_USUARI",
+      "label": "Obligacions usuari",
       "title": "Responsabilitats de l'Usuari",
       "content": "En utilitzar el nostre lloc web i serveis, acceptes:",
       "item1": "Proporcionar informació precisa i completa en contactar-nos o contractar els nostres serveis",
@@ -237,23 +237,23 @@
       "item5": "Respectar els drets de propietat intel·lectual de Kalebtec i els seus clients"
     },
     "section4": {
-      "label": "PROPIETAT_INTEL·LECTUAL",
+      "label": "Propietat_intel·lectual",
       "title": "Propietat Intel·lectual",
       "content1": "Tot el contingut del lloc web de Kalebtec, incloent, entre d'altres, textos, gràfics, logotips, elements de disseny, elements visuals 3D, animacions, codi i programari, és propietat de Kalebtec i està protegit per les lleis de propietat intel·lectual aplicables.",
       "content2": "Els drets de propietat intel·lectual dels lliurables al client es regiran pels termes específics establerts en la declaració de treball o acord de servei de cada projecte. Llevat d'acord per escrit en contrari, Kalebtec es reserva el dret de mostrar els treballs completats al seu portafoli."
     },
     "section5": {
-      "label": "CONFIDENCIALITAT",
+      "label": "Confidencialitat",
       "title": "Confidencialitat",
       "content": "Kalebtec reconeix que durant la prestació de serveis de consultoria podem rebre informació confidencial dels clients. Ens comprometem a mantenir la confidencialitat d'aquesta informació i no la divulgarem a tercers sense el consentiment previ per escrit del client, excepte quan ho exigeixi la llei. Els termes de confidencialitat específics es podran establir en acords de servei individuals o acords de no divulgació."
     },
     "section6": {
-      "label": "PAGAMENT",
+      "label": "Pagament",
       "title": "Condicions de Pagament",
       "content": "Les condicions de pagament, tarifes i calendaris dels serveis de consultoria es detallaran en els acords de projecte o declaracions de treball individuals. Llevat que s'especifiqui el contrari, les factures s'han d'abonar en un termini de trenta (30) dies des de la seva emissió. Kalebtec es reserva el dret de suspendre els serveis en cas de pagaments endarrerits. Els pagaments tardans poden estar subjectes a càrrecs per interessos raonables segons s'especifiqui en l'acord de servei aplicable."
     },
     "section7": {
-      "label": "RESPONSABILITAT",
+      "label": "Responsabilitat",
       "title": "Limitació de Responsabilitat",
       "content": "En la màxima mesura permesa per la llei aplicable, Kalebtec no serà responsable de cap dany indirecte, incidental, especial, conseqüent o punitiu, incloent, entre d'altres, la pèrdua de beneficis, dades, ús o fons de comerç, que sorgeixi de o en relació amb:",
       "item1": "El teu ús o incapacitat per utilitzar el nostre lloc web o serveis",
@@ -263,27 +263,27 @@
       "contentAfter": "La nostra responsabilitat total per qualsevol reclamació derivada dels nostres serveis no excedirà el total d'honoraris pagats pel client pel projecte específic que va donar origen a la reclamació."
     },
     "section8": {
-      "label": "GARANTIES",
+      "label": "Garanties",
       "title": "Exclusió de Garanties",
       "content": "El nostre lloc web i el seu contingut es proporcionen \"tal com són\" i \"segons disponibilitat\", sense garanties de cap mena, ja siguin expresses o implícites. Kalebtec no garanteix que el lloc web funcionarà de manera ininterrompuda, sense errors ni lliure de virus o altres components nocius. Les garanties específiques per als serveis de consultoria es definiran en els acords de servei individuals."
     },
     "section9": {
-      "label": "TERMINACIÓ",
+      "label": "Terminació",
       "title": "Terminació",
       "content": "Ens reservem el dret de finalitzar o restringir el teu accés al nostre lloc web en qualsevol moment, sense previ avís, per conductes que considerem que violen aquests Termes del Servei o que siguin perjudicials per a altres usuaris, per a nosaltres o per a tercers. La terminació dels compromisos de serveis de consultoria es regirà pels termes establerts en els acords de servei individuals."
     },
     "section10": {
-      "label": "LLEI_APLICABLE",
+      "label": "Llei aplicable",
       "title": "Llei Aplicable",
       "content": "Aquests Termes del Servei es regiran i interpretaran de conformitat amb les lleis dels Estats Units, sense tenir en compte les disposicions sobre conflicte de lleis. Qualsevol disputa que sorgeixi en virtut d'aquests termes es resoldrà mitjançant negociació de bona fe i, si fos necessari, mitjançant arbitratge vinculant d'acord amb les normes aplicables."
     },
     "section11": {
-      "label": "MODIFICACIONS",
+      "label": "Modificacions",
       "title": "Canvis en els Termes",
       "content": "Kalebtec es reserva el dret de modificar aquests Termes del Servei en qualsevol moment. Els canvis entraran en vigor immediatament un cop publicats en aquesta pàgina. Actualitzarem la data d'\"Última actualització\" a la part superior d'aquesta pàgina quan es facin canvis. L'ús continuat del nostre lloc web o serveis després de la publicació dels canvis constitueix la teva acceptació dels termes modificats."
     },
     "contact": {
-      "label": "CONTACTE",
+      "label": "Contacte",
       "title": "Contacta'ns",
       "content": "Si tens alguna pregunta sobre aquests Termes del Servei, contacta'ns:"
     },
@@ -294,14 +294,14 @@
     "metaTitle": "Política de Privacitat | Kalebtec",
     "metaDescription": "Política de Privacitat de Kalebtec. Descobreix com recopilem, utilitzem i protegim les teves dades personals.",
     "pageTitle": "Política de Privacitat",
-    "effectiveDate": "Data d'efecte: 9 de març de 2026 \u2014 Última actualització: 9 de març de 2026",
+    "effectiveDate": "Data d'efecte: 9 de març de 2026 — Última actualització: 9 de març de 2026",
     "section1": {
-      "label": "DESCRIPCIÓ",
+      "label": "Descripció",
       "title": "Introducció",
       "content": "Kalebtec (\"nosaltres\", \"ens\" o \"nostre\"), operat per Rowin Hernandez i Mari Hernandez, es compromet a protegir la teva privacitat. Aquesta Política de Privacitat explica com recopilem, utilitzem, divulguem i protegim la teva informació quan visites el nostre lloc web (kalebtec.com) o utilitzes els nostres serveis de consultoria tecnològica. Si us plau, llegeix aquesta política detingudament. En usar el nostre lloc web o serveis, consents les pràctiques descrites en el present document."
     },
     "section2": {
-      "label": "RECOPILACIÓ_DADES",
+      "label": "Recopilació_dades",
       "title": "Informació que Recopilem",
       "content": "Podem recopilar informació sobre tu de diverses maneres:",
       "personalDataTitle": "Dades Personals",
@@ -319,7 +319,7 @@
       "autoItem5": "Lloc web o font de referència"
     },
     "section3": {
-      "label": "ÚS_DADES",
+      "label": "Ús_dades",
       "title": "Com Utilitzem la Teva Informació",
       "content": "Utilitzem la informació que recopilem per als següents fins:",
       "item1": "Per respondre a les teves consultes i proporcionar els serveis sol·licitats",
@@ -330,7 +330,7 @@
       "item6": "Per complir amb obligacions legals"
     },
     "section4": {
-      "label": "COOKIES",
+      "label": "Cookies",
       "title": "Cookies i Tecnologies de Seguiment",
       "content": "El nostre lloc web pot utilitzar cookies i tecnologies de seguiment similars per millorar la teva experiència de navegació. Les cookies són petits fitxers de dades emmagatzemats al teu dispositiu.",
       "typesTitle": "Tipus de Cookies que Utilitzem",
@@ -341,7 +341,7 @@
       "controlContent": "Pots controlar les cookies a través de la configuració del teu navegador. Desactivar les cookies pot afectar algunes funcionalitats del lloc web. També utilitzem localStorage per conservar la teva preferència de tema i la teva elecció de consentiment de cookies."
     },
     "section5": {
-      "label": "TERCERS",
+      "label": "Tercers",
       "title": "Serveis de Tercers",
       "content": "Podem utilitzar serveis de tercers que recopilen, monitoritzen i analitzen dades per millorar el nostre lloc web i serveis. Aquests tercers tenen les seves pròpies polítiques de privacitat que aborden com utilitzen aquesta informació. Els serveis de tercers que podem utilitzar inclouen:",
       "item1": "Proveïdors d'anàlisi web",
@@ -351,17 +351,17 @@
       "contentAfter": "No venem, intercanviem ni transferim de cap altra manera la teva informació personal a tercers amb finalitats de màrqueting."
     },
     "section6": {
-      "label": "SEGURETAT_DADES",
+      "label": "Seguretat dades",
       "title": "Seguretat de les Dades",
       "content": "Implementem mesures de seguretat tècniques i organitzatives adequades per protegir la teva informació personal contra accessos no autoritzats, alteració, divulgació o destrucció. Tanmateix, cap mètode de transmissió electrònica o emmagatzematge és 100% segur, i no podem garantir una seguretat absoluta. Utilitzem xifratge estàndard del sector (HTTPS/TLS) per a totes les dades transmeses entre el teu navegador i els nostres servidors."
     },
     "section7": {
-      "label": "RETENCIÓ_DADES",
+      "label": "Retenció_dades",
       "title": "Retenció de Dades",
       "content": "Conservem la teva informació personal únicament durant el temps necessari per complir els fins descrits en aquesta Política de Privacitat, llevat que la llei exigeixi o permeti un període de retenció més prolongat. La informació de contacte enviada a través del nostre lloc web es conserva durant la durada de la nostra relació comercial i durant un període raonable posterior per atendre qualsevol consulta de seguiment."
     },
     "section8": {
-      "label": "ELS_TEUS_DRETS",
+      "label": "Els teus drets",
       "title": "Els Teus Drets",
       "content": "Depenent de la teva ubicació, pots tenir certs drets respecte a les teves dades personals, incloent:",
       "item1": "El dret a accedir a les dades personals que tenim sobre tu",
@@ -374,18 +374,18 @@
       "contentAfterPost": ". Respondrem a la teva sol·licitud en un termini raonable."
     },
     "section9": {
-      "label": "MENORS",
+      "label": "Menors",
       "title": "Privacitat dels Menors",
       "contentPre": "El nostre lloc web i serveis no estan dirigits a persones menors de 13 anys. No recopilem deliberadament informació personal de menors. Si tenim coneixement que un menor de 13 anys ens ha proporcionat informació personal, prendrem mesures per eliminar aquesta informació de manera immediata. Si creus que hem recopilat inadvertidament informació d'un menor, contacta'ns a",
       "contentPost": "."
     },
     "section10": {
-      "label": "MODIFICACIONS",
+      "label": "Modificacions",
       "title": "Canvis en aquesta Política",
       "content": "Podem actualitzar aquesta Política de Privacitat periòdicament. Qualsevol canvi es publicarà en aquesta pàgina amb una data d'\"Última actualització\" actualitzada. Et recomanem que revisis aquesta política periòdicament. L'ús continuat del nostre lloc web o serveis després de qualsevol canvi constitueix l'acceptació de la política actualitzada."
     },
     "contact": {
-      "label": "CONTACTE",
+      "label": "Contacte",
       "title": "Contacta'ns",
       "content": "Si tens alguna pregunta o preocupació sobre aquesta Política de Privacitat, contacta'ns:"
     },

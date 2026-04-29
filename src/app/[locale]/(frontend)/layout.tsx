@@ -1,28 +1,24 @@
 import type { Metadata } from 'next';
-import { Exo_2, Orbitron, JetBrains_Mono } from 'next/font/google';
+import { Inter, Geist_Mono } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CookieBanner from '@/components/ui/CookieBanner';
-import CursorGlow from '@/components/ui/CursorGlow';
 import KonamiCode from '@/components/ui/KonamiCode';
 import ThemeProvider from '@/components/ui/ThemeProvider';
 import './globals.css';
 
-const exo2 = Exo_2({
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-exo2',
+  variable: '--font-inter',
+  display: 'swap',
 });
 
-const orbitron = Orbitron({
+const geistMono = Geist_Mono({
   subsets: ['latin'],
-  variable: '--font-orbitron',
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-jetbrains-mono',
+  variable: '--font-geist-mono',
+  display: 'swap',
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kalebtec.com';
@@ -76,12 +72,12 @@ export default async function RootLayout({
     <html
       lang={locale}
       suppressHydrationWarning
-      className={`${exo2.variable} ${orbitron.variable} ${jetbrainsMono.variable}`}
+      className={`${inter.variable} ${geistMono.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className="bg-cyber-bg text-cyber-body antialiased font-sans transition-colors duration-300">
+      <body className="bg-bg text-body antialiased font-sans transition-colors duration-300">
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
             <a href="#main-content" className="skip-to-content">
@@ -91,7 +87,6 @@ export default async function RootLayout({
             <main id="main-content">{children}</main>
             <Footer />
             <CookieBanner />
-            <CursorGlow />
             <KonamiCode />
           </ThemeProvider>
         </NextIntlClientProvider>

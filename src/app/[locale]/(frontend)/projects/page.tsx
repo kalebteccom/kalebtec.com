@@ -60,26 +60,13 @@ export default async function ProjectsPage({ params }: { params: Params }) {
   }
 
   return (
-    <section aria-label={t('pageTitle')} className="min-h-screen pt-24 pb-32">
+    <section aria-label={t('pageTitle')} className="min-h-screen pt-32 pb-32 bg-bg">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Page header */}
-        <div className="mb-16">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="font-mono text-sm text-cyber-faint tracking-wider">
-              {t('allLabel')}
-            </span>
-            <span className="font-mono text-sm text-cyber-faint/50">//</span>
-            <span className="font-mono text-sm text-cyber-muted tracking-wider uppercase">
-              {t.raw('sectionTitle')}
-            </span>
-          </div>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-wider uppercase text-cyber-heading neon-glow">
-            {t('pageTitle')}
-          </h1>
-          <div className="mt-6 flex items-center gap-0" aria-hidden="true">
-            <div className="w-2 h-2 bg-brand" />
-            <div className="h-px w-24 bg-gradient-to-r from-brand/40 to-transparent" />
-          </div>
+        <div className="mb-16 max-w-4xl">
+          <p className="font-mono text-xs uppercase tracking-widest text-faint mb-4">
+            {t('sectionNumber')} — {t.raw('sectionTitle')}
+          </p>
+          <h1 className="text-display-xl text-heading">{t('pageTitle')}</h1>
         </div>
 
         <ProjectsFilter

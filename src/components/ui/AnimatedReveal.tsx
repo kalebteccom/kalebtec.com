@@ -13,10 +13,10 @@ interface AnimatedRevealProps {
 }
 
 const directionOffset = {
-  up: { x: 0, y: 40 },
-  down: { x: 0, y: -40 },
-  left: { x: 40, y: 0 },
-  right: { x: -40, y: 0 },
+  up: { x: 0, y: 12 },
+  down: { x: 0, y: -12 },
+  left: { x: 12, y: 0 },
+  right: { x: -12, y: 0 },
 };
 
 export default function AnimatedReveal({
@@ -46,7 +46,7 @@ export default function AnimatedReveal({
       initial={{ opacity: 0, x: offset.x, y: offset.y }}
       animate={isInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: offset.x, y: offset.y }}
       transition={{
-        duration: 0.7,
+        duration: 0.5,
         delay,
         ease: EASE,
       }}

@@ -6,92 +6,68 @@ import * as THREE from 'three';
 import { useAtomValue } from 'jotai';
 import { resolvedThemeAtom } from '@/lib/theme';
 import MeshGradient from './MeshGradient';
-import GridFloor from './GridFloor';
 import FloatingGeometry from './FloatingGeometry';
 import ParticleField from './ParticleField';
 
-const DARK_BG = '#09090f';
-const LIGHT_BG = '#d8d9e4';
+const DARK_BG = '#080f11';
+const LIGHT_BG = '#e5e4d8';
 
-// Cyberpunk angular shape configurations
+// Monochrome ambient geometry — slow, matte, near-invisible.
+// Roles as quiet texture, not focal art.
 const SHAPES = [
   {
     position: [-3.0, 1.3, -2] as [number, number, number],
     geometryType: 'octahedron' as const,
     scale: 0.55,
-    rotationSpeed: [0.006, 0.008, 0.003] as [number, number, number],
-    bobSpeed: 0.8,
+    rotationSpeed: [0.0024, 0.0032, 0.0012] as [number, number, number],
+    bobSpeed: 0.4,
     bobAmount: 0.18,
-    opacity: 0.4,
-    emissiveIntensity: 0.6,
-    color: '#8000FF',
-    edgeColor: '#00ffff',
-    edgeOpacity: 0.4,
+    opacity: 0.18,
   },
   {
     position: [2.8, -0.6, -1.5] as [number, number, number],
     geometryType: 'box' as const,
     scale: 0.4,
-    rotationSpeed: [0.007, 0.004, 0.009] as [number, number, number],
-    bobSpeed: 1.2,
+    rotationSpeed: [0.0028, 0.0016, 0.0036] as [number, number, number],
+    bobSpeed: 0.5,
     bobAmount: 0.12,
-    opacity: 0.35,
-    emissiveIntensity: 0.5,
-    color: '#8000FF',
-    edgeColor: '#00ffff',
-    edgeOpacity: 0.45,
+    opacity: 0.16,
   },
   {
     position: [3.5, 1.8, -3.5] as [number, number, number],
     geometryType: 'tetrahedron' as const,
     scale: 0.6,
-    rotationSpeed: [0.005, 0.007, 0.006] as [number, number, number],
-    bobSpeed: 0.6,
+    rotationSpeed: [0.002, 0.0028, 0.0024] as [number, number, number],
+    bobSpeed: 0.3,
     bobAmount: 0.22,
-    opacity: 0.3,
-    emissiveIntensity: 0.5,
-    color: '#6600cc',
-    edgeColor: '#00ffff',
-    edgeOpacity: 0.35,
+    opacity: 0.14,
   },
   {
     position: [-3.2, -1.3, -2.5] as [number, number, number],
-    geometryType: 'cross' as const,
+    geometryType: 'octahedron' as const,
     scale: 0.35,
-    rotationSpeed: [0.008, 0.005, 0.004] as [number, number, number],
-    bobSpeed: 1.0,
+    rotationSpeed: [0.0032, 0.002, 0.0016] as [number, number, number],
+    bobSpeed: 0.4,
     bobAmount: 0.15,
-    opacity: 0.35,
-    emissiveIntensity: 0.4,
-    color: '#8000FF',
-    edgeColor: '#00ffff',
-    edgeOpacity: 0.5,
+    opacity: 0.16,
   },
   {
     position: [0.5, 2.0, -4] as [number, number, number],
     geometryType: 'octahedron' as const,
     scale: 0.45,
-    rotationSpeed: [0.004, 0.009, 0.003] as [number, number, number],
-    bobSpeed: 0.7,
+    rotationSpeed: [0.0016, 0.0036, 0.0012] as [number, number, number],
+    bobSpeed: 0.35,
     bobAmount: 0.2,
-    opacity: 0.25,
-    emissiveIntensity: 0.7,
-    color: '#5500aa',
-    edgeColor: '#00ffff',
-    edgeOpacity: 0.3,
+    opacity: 0.12,
   },
   {
     position: [1.5, 0.3, -2.8] as [number, number, number],
     geometryType: 'box' as const,
     scale: 0.25,
-    rotationSpeed: [0.006, 0.01, 0.007] as [number, number, number],
-    bobSpeed: 1.1,
+    rotationSpeed: [0.0024, 0.004, 0.0028] as [number, number, number],
+    bobSpeed: 0.45,
     bobAmount: 0.08,
-    opacity: 0.3,
-    emissiveIntensity: 0.6,
-    color: '#8000FF',
-    edgeColor: '#00ffff',
-    edgeOpacity: 0.5,
+    opacity: 0.16,
   },
 ];
 
@@ -111,44 +87,37 @@ function ThemeSync({ isDark }: { isDark: boolean }) {
 }
 
 function SceneContent({ isDark }: { isDark: boolean }) {
+  // Geometry tone: ink on light theme, paper on dark theme.
+  const surfaceColor = isDark ? '#f1f0e4' : '#080f11';
+  // Edges: brand purple — subtle but adds chromaticity
+  const edgeColor = '#8000FF';
+
   return (
     <>
       <ThemeSync isDark={isDark} />
 
-      {/* Layer 1: Mesh gradient background */}
+      {/* Layer 1: Mesh gradient background — cream/ink with soft brand-purple wash */}
       <MeshGradient isDark={isDark} />
 
-      {/* Layer 2: Perspective grid floor */}
-      <GridFloor isDark={isDark} />
-
-      {/* Lighting — adjusted per theme */}
-      <ambientLight intensity={isDark ? 0.12 : 0.35} color="#ffffff" />
-      <pointLight
-        position={[5, 5, 5]}
-        intensity={isDark ? 0.8 : 0.7}
-        color="#8000FF"
-        distance={20}
-        decay={2}
-      />
-      <pointLight
-        position={[-5, -3, 3]}
-        intensity={isDark ? 0.5 : 0.45}
-        color="#00ffff"
-        distance={15}
-        decay={2}
-      />
-      <pointLight
-        position={[0, 0, 5]}
-        intensity={isDark ? 0.15 : 0.25}
+      {/* Lighting — neutral ambient + soft brand-tinted accent for chromatic life */}
+      <ambientLight intensity={isDark ? 0.42 : 0.58} color="#ffffff" />
+      <directionalLight
+        position={[3, 4, 5]}
+        intensity={isDark ? 0.35 : 0.4}
         color="#ffffff"
-        distance={12}
+      />
+      <pointLight
+        position={[4, 2, 3]}
+        intensity={isDark ? 0.45 : 0.3}
+        color="#8000FF"
+        distance={14}
         decay={2}
       />
 
       {/* Fog for depth */}
       <fog attach="fog" args={[isDark ? DARK_BG : LIGHT_BG, isDark ? 5 : 6, isDark ? 14 : 16]} />
 
-      {/* Layer 3: Floating angular geometry with cyberpunk edge lines — draggable */}
+      {/* Floating geometry — matte with brand-purple edges */}
       {SHAPES.map((shape, index) => (
         <FloatingGeometry
           key={index}
@@ -158,19 +127,19 @@ function SceneContent({ isDark }: { isDark: boolean }) {
           rotationSpeed={[...shape.rotationSpeed]}
           bobSpeed={shape.bobSpeed}
           bobAmount={shape.bobAmount}
-          opacity={isDark ? shape.opacity : shape.opacity * 0.35}
-          emissiveIntensity={isDark ? shape.emissiveIntensity : shape.emissiveIntensity * 0.15}
-          color={isDark ? shape.color : '#b080ff'}
-          edgeColor={isDark ? shape.edgeColor : '#6b00d6'}
-          edgeOpacity={isDark ? shape.edgeOpacity : shape.edgeOpacity * 2.5}
-          metalness={isDark ? 0.8 : 0.1}
-          roughness={isDark ? 0.7 : 0.3}
+          opacity={shape.opacity}
+          emissiveIntensity={isDark ? 0.15 : 0}
+          color={surfaceColor}
+          edgeColor={edgeColor}
+          edgeOpacity={isDark ? 0.5 : 0.42}
+          metalness={0.05}
+          roughness={0.95}
           draggable
         />
       ))}
 
-      {/* Layer 4: Cyberpunk square particles */}
-      <ParticleField count={200} radius={7} size={0.025} isDark={isDark} />
+      {/* Particle field — monochrome, low opacity, normal blending */}
+      <ParticleField count={140} radius={7} size={0.018} isDark={isDark} />
     </>
   );
 }
@@ -182,8 +151,8 @@ export default function HeroScene() {
 
   useEffect(() => setMounted(true), []);
 
-  // Default to dark on SSR / before mount
-  const themeDark = mounted ? isDark : true;
+  // Default to light on SSR / before mount (matches NR's primary cream theme)
+  const themeDark = mounted ? isDark : false;
 
   return (
     <Canvas
@@ -191,7 +160,7 @@ export default function HeroScene() {
       gl={{
         antialias: true,
         toneMapping: THREE.ACESFilmicToneMapping,
-        toneMappingExposure: 1.2,
+        toneMappingExposure: 1.0,
         powerPreference: 'high-performance',
       }}
       dpr={[1, 1.5]}

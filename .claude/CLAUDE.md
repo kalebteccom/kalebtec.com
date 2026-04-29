@@ -12,7 +12,7 @@ This project has **three expert-level skills** that MUST be used when working wi
 
 | Skill | Trigger | Invoke with |
 |-------|---------|-------------|
-| **Tailwind CSS** | Styling, utility classes, responsive design, @theme config, cyberpunk design patterns, neon glow effects, GLSL shader integration | `/tailwindcss` |
+| **Tailwind CSS** | Styling, utility classes, responsive design, @theme config, editorial typography, pill CTAs, semantic tokens (paper/ink/heading/body/muted/faint), GLSL shader integration | `/tailwindcss` |
 | **Next.js** | Routing, data fetching, server/client components, caching, middleware, metadata, Three.js/R3F integration, Framer Motion animations | `/nextjs` |
 | **Payload CMS** | Collections, fields, hooks, access control, auth, admin panel, MongoDB, Local API, content modeling | `/payloadcms` |
 
@@ -48,69 +48,88 @@ This project has **three expert-level skills** that MUST be used when working wi
 | Drei | 10.7.7 | R3F helper components |
 | Framer Motion | 12.35.0 | Page animations and scroll-triggered reveals |
 | Jotai | 2.18.0 | Lightweight atomic state (theme toggle, UI state) |
-| Radix UI | latest | Accessible primitives: DropdownMenu, VisuallyHidden |
+| Radix UI | latest | Accessible primitives: DropdownMenu, Select, VisuallyHidden |
 | TypeScript | 5.9.3 | |
 | PostCSS | via @tailwindcss/postcss 4.2.1 | Config in postcss.config.mjs |
 
 ---
 
-## Design Direction: Cyberpunk / Square / HUD-Tech
+## Design Direction: Bold Editorial Minimalism (New Relic-inspired)
 
 ### Core Principles
-- **Zero rounded corners** -- everything sharp and square. Never use `rounded-*` classes.
-- **Dark background**: `#09090f` (cyber-bg), surface: `#0d0d15` (cyber-surface)
-- **Neon purple primary**: `#8000FF` (brand) with glow effects
-- **Cyan accent**: `#00ffff` (cyber-cyan) for secondary highlights
-- **Bracket decorations** for nav items and labels: `[ABOUT]`, `[01] // SECTION_NAME`
-- **Corner accent marks** on cards using the `cyber-corners` CSS class
-- **Scanline overlays** for retro-CRT feel
-- **Custom GLSL mesh gradient** shader background (MeshGradient component)
-- **Tron-style perspective grid floor** (GridFloor component)
+- **Cream paper + near-black ink** — strict 2-tone with brand purple as a *micro-accent only* (selection, easter eggs)
+- **Massive editorial headlines** — Inter at heavy weights (700–800), tight tracking (-0.04em on h1, -0.03em on h2)
+- **Pill CTAs** — `border-radius: 36px` on buttons. **Square corners on cards/inputs/everything else.**
+- **Generous whitespace** — `py-24 md:py-32` section padding, `max-w-7xl` containers
+- **Hard-edged section bands** — alternate `bg-bg` and `bg-surface` (or `.section-dark`) with no decorative dividers
+- **No glow, no scanlines, no glitches, no neon, no terminal symbols** — those are gone
+- **Subtle motion only** — Framer Motion fades, ~12px translate, ~0.5s duration, gentle easing
+- **Mono is for labels only** — not body copy. Use `font-mono` on small uppercase tracking-widest labels (`01 — About`)
 
 ### Fonts
 | CSS Variable | Font | Usage |
 |-------------|------|-------|
-| `font-display` | **Orbitron** | Bold cyberpunk headings |
+| `font-display` | **Inter** (heavy weights 700–800) | Headlines via weight + tight letter-spacing |
 | `font-sans` | **Inter** | Body text |
-| `font-mono` | **JetBrains Mono** | Terminal-style text, code, accents |
+| `font-mono` | **Geist Mono** | Small labels, code, tabular numbers |
 
-### Tailwind Theme Colors (defined via @theme in globals.css)
+### Tailwind Theme Tokens (defined via `@theme` in globals.css)
+
+**Surface & text (preferred — switch automatically with `[data-theme]`):**
+| Token | Light | Dark | Usage |
+|-------|-------|------|-------|
+| `bg` | `#e5e4d8` cream | `#080f11` ink | Page background |
+| `surface` | `#f1f0e4` | `#151b20` | Card / panel backgrounds |
+| `surface-bright` | `#fafaf5` | `#1a212a` | Hover surface |
+| `heading` | `#080f11` | `#f1f0e4` | Headings |
+| `body` | `#080f11` | `#f1f0e4` | Body copy |
+| `muted` | `rgba(8,15,17,0.6)` | `rgba(241,240,228,0.67)` | Secondary text |
+| `faint` | `rgba(8,15,17,0.4)` | `rgba(241,240,228,0.48)` | Tertiary / labels |
+| `border` | `rgba(8,15,17,0.08)` | `rgba(241,240,228,0.1)` | Default borders |
+| `border-strong` | `rgba(8,15,17,0.2)` | `rgba(241,240,228,0.22)` | Emphasis borders |
+
+**Raw palette (use only when you need to lock to a specific tone, e.g. inside `.section-dark`):**
+| Token | Value |
+|-------|-------|
+| `paper` | `#e5e4d8` |
+| `paper-soft` | `#f1f0e4` |
+| `paper-bright` | `#fafaf5` |
+| `ink` | `#080f11` |
+| `ink-soft` | `#151b20` |
+
+**Brand (micro-accent only):**
 | Token | Value | Usage |
 |-------|-------|-------|
-| `brand` | `#8000FF` | Primary purple |
-| `brand-light` | `#a64dff` | Lighter purple variant |
-| `brand-dark` | `#5c00b8` | Darker purple variant |
-| `brand-glow` | `rgba(128,0,255,0.4)` | Purple glow/shadow |
-| `cyber-cyan` | `#00ffff` | Cyan accent |
-| `cyber-cyan-glow` | `rgba(0,255,255,0.3)` | Cyan glow/shadow |
-| `cyber-magenta` | `#ff00ff` | Magenta accent |
-| `cyber-bg` | `#09090f` | Page background |
-| `cyber-surface` | `#0d0d15` | Card/panel backgrounds |
-| `cyber-border` | `rgba(128,0,255,0.2)` | Subtle border color |
+| `brand` | `#8000FF` | `::selection` color, Konami easter egg |
+| `brand-light` | `#a64dff` | Konami secondary |
 
-### CSS Utility Classes (defined in globals.css)
+### Editorial CSS utilities (defined in globals.css)
 | Class | Effect |
 |-------|--------|
-| `.scanlines` | CRT scanline overlay (requires `position: relative`) |
-| `.cyber-corners` | Corner accent marks on cards (top-left, bottom-right) |
-| `.neon-glow` | Purple text shadow glow |
-| `.neon-glow-cyan` | Cyan text shadow glow |
-| `.cyber-border-glow` | Animated purple box-shadow border, intensifies on hover |
-| `.glitch-hover` | Glitch shake animation on hover |
-| `.cyber-grid-bg` | 40px grid background pattern in subtle purple |
-| `.typing-cursor` | Blinking pipe cursor `|` appended via `::after` |
-| `.cyber-text-flicker` | Subtle text opacity flicker animation |
-| `.cyber-line-scan` | Horizontal scan line animation across elements |
-| `.cyber-clip` | Angled corner clip-path (top-right, bottom-left) |
-| `.neon-underline` | Glowing gradient underline from brand to cyan |
+| `.editorial-lead` | NR-style lead paragraph: ~24px / 1.25 / weight 600 / tight tracking |
+| `.btn-pill` | Base pill button: 36px radius, 16px×32px padding, weight 500, -0.5px tracking |
+| `.btn-primary` | Solid ink-on-cream (light) / cream-on-ink (dark) |
+| `.btn-secondary` | Transparent + 1px border |
+| `.btn-ghost` | Transparent, hover surface |
+| `.section-dark` | Inverts the section to ink bg + cream text — drops `--color-*` tokens locally |
+| `.text-display-xl` / `.text-display-lg` / `.text-display-md` / `.text-display-sm` | Responsive headline scale via `clamp()` |
+| `.team-photo` | Subtle saturate filter on team photos; intensifies on group hover |
+| `.skip-to-content` | Pill-shaped skip link for keyboard users |
+
+### Easter eggs (preserved with editorial vocabulary)
+| Trigger | Effect |
+|---------|--------|
+| Konami code (↑↑↓↓←→←→BA) | Brief soft fade overlay + `html.konami-active` shifts brand to cyan for ~4.5s |
+| Logo 5-click in 2s | `.logo-glitch-active` — soft opacity fade flash (no RGB hue-rotate) |
+| Type `hack` or `sudo` in contact name field | `.contact-hack-flash` — ink double-stroke pulse on the input |
 
 ### Theming System
-- **CSS variable-driven** — dark/light themes use `[data-theme="dark"]` / `[data-theme="light"]` on `<html>`
-- **Jotai atom** for theme state management (`src/lib/theme.ts`) — persists to localStorage
-- **No `next-themes`** — lean custom implementation using CSS custom properties
-- Light theme is "daytime cyberpunk" — bright surfaces with purple/cyan accents, NOT plain white
-- `globals.css` contains `[data-theme="light"]` overrides for all color variables
-- ThemeToggle uses **Radix DropdownMenu** for accessible dropdown with Light/Dark/System options
+- **CSS variable-driven** — `[data-theme="dark"]` / `[data-theme="light"]` on `<html>`
+- **Jotai atom** for theme state management (`src/lib/theme.ts`) — persists to `kalebtec-theme` localStorage
+- **No `next-themes`** — lean custom implementation
+- **Dual theme** — light = cream paper (default), dark = near-black ink. Both feel editorial, not dramatic.
+- Three.js scene is fully theme-aware — `HeroScene` passes `isDark` to `MeshGradient` shader, `ParticleField`, and `FloatingGeometry`. All monochrome (ink on light, paper on dark).
+- ThemeToggle uses **Radix DropdownMenu** with Light/Dark/System options
 
 ---
 
@@ -119,13 +138,22 @@ This project has **three expert-level skills** that MUST be used when working wi
 ```
 src/
   app/
-    (frontend)/           # Public-facing site
-      layout.tsx          # Root layout: fonts, Header, Footer
-      page.tsx            # Homepage (single-page with sections)
-      globals.css         # Tailwind @theme + cyberpunk CSS utilities
+    [locale]/
+      (frontend)/         # Public-facing site
+        layout.tsx        # Root layout: fonts (Inter, Geist Mono), Header, Footer
+        page.tsx          # Homepage
+        globals.css       # Tailwind @theme + editorial utilities + easter-egg keyframes
+        projects/
+          page.tsx
+          [slug]/page.tsx
+        privacy/page.tsx
+        terms/page.tsx
+        error.tsx
+        not-found.tsx
+      error.tsx
+      not-found.tsx
     (payload)/            # Payload CMS admin panel
       admin/[[...segments]]/page.tsx
-      layout.tsx
     global-error.tsx
   collections/            # Payload CMS collections
     Users.ts
@@ -133,34 +161,43 @@ src/
     Projects.ts
     Services.ts
     TeamMembers.ts
+    Industries.ts
   globals/                # Payload CMS globals
     SiteSettings.ts
   components/
     hero/
-      HeroSection.tsx     # Main hero with 3D scene
+      HeroSection.tsx     # Editorial hero: massive headline + pill CTAs over neutral 3D bg
     sections/
-      AboutSection.tsx
-      ServicesSection.tsx
-      TeamSection.tsx
-      ContactSection.tsx
-    three/                # React Three Fiber / WebGL
-      HeroScene.tsx       # R3F Canvas scene
-      MeshGradient.tsx    # Custom GLSL shader background
-      GridFloor.tsx       # Tron-style perspective grid
+      AboutSection.tsx    # Editorial lead + supporting body + stats grid
+      ServicesSection.tsx # Service cards with icons in `surface` band
+      ProjectsSection.tsx # Server component: featured projects + stats
+      ProjectsSectionClient.tsx
+      TeamSection.tsx     # Flip cards with editorial bio panel on back
+      ContactSection.tsx  # Editorial heading + form + pill submit
+    three/                # React Three Fiber / WebGL — neutralized monochrome ambient
+      HeroScene.tsx       # R3F Canvas — single warm-white light, no emissives
+      MeshGradient.tsx    # 2-stop monochrome GLSL shader (cream/ink)
+      ParticleField.tsx   # NormalBlending, low-opacity ink/cream particles
       FloatingGeometry.tsx
-      ParticleField.tsx
     layout/
-      Header.tsx
-      Footer.tsx
-      MobileMenu.tsx
+      Header.tsx          # Sentence-case nav, Inter wordmark, hover underline
+      Footer.tsx          # 3-column editorial layout, mono only on © line
+      MobileMenu.tsx      # Editorial dropdown, large headlines
+    projects/
+      ProjectsFilter.tsx  # Filter chips + project tile grid
     ui/
-      SectionHeading.tsx  # Numbered section headings [01] // TITLE
-      AnimatedReveal.tsx  # Framer Motion scroll reveal wrapper
-      ThemeProvider.tsx    # Jotai-based theme provider (CSS variable-driven)
-      ThemeToggle.tsx      # Radix DropdownMenu theme switcher
+      SectionHeading.tsx  # `01 — About` mono label + huge Inter heading
+      AnimatedReveal.tsx  # Framer Motion scroll reveal — gentle (12px / 0.5s)
+      ThemeProvider.tsx   # Jotai-based theme provider
+      ThemeToggle.tsx     # Radix DropdownMenu (Light/Dark/System)
+      LanguageSwitcher.tsx
+      CyberSelect.tsx     # Radix Select wrapper — pill trigger, square menu
+      KonamiCode.tsx      # Easter egg: Konami sequence
+      CookieBanner.tsx    # Editorial banner with pill Accept/Decline
   lib/
     utils.ts              # cn() helper (clsx + tailwind-merge)
     theme.ts              # Jotai theme atom + localStorage persistence
+  messages/               # next-intl JSON for 6 locales (en, es, ca, fr, gl, pt)
   payload.config.ts       # Payload CMS config (collections, globals, DB)
   payload-types.ts        # Auto-generated types (run: pnpm generate:types)
 ```
@@ -169,9 +206,9 @@ src/
 
 ## Key Architecture Decisions
 
-1. **Payload 3.79.0 requires Next.js >=15.4.11 <15.5.0** -- do NOT upgrade Next.js without checking Payload peer deps first. This is the most common source of build failures.
+1. **Payload 3.79.0 requires Next.js >=15.4.11 <15.5.0** -- do NOT upgrade Next.js without checking Payload peer deps first.
 
-2. **App Router only** -- no Pages Router. Server Components by default; use `'use client'` only when necessary (interactivity, hooks, browser APIs).
+2. **App Router only** -- no Pages Router. Server Components by default; use `'use client'` only when necessary.
 
 3. **Tailwind v4 uses `@theme` in CSS** -- theme tokens are defined in `globals.css`, not `tailwind.config.js`. PostCSS config is in `postcss.config.mjs` with `@tailwindcss/postcss`.
 
@@ -183,11 +220,11 @@ src/
 
 7. **R3F `bufferAttribute`** uses `args={[array, itemSize]}` pattern -- do not pass `array` and `itemSize` as separate props.
 
-8. **Next.js config wraps with `withPayload`** -- see `next.config.ts`. The Payload wrapper handles necessary webpack/turbopack configuration.
+8. **Next.js config wraps with `withPayload`** -- see `next.config.ts`.
 
-9. **Theme system is CSS variable-driven** -- uses `[data-theme]` attribute on `<html>`, managed by a Jotai atom. No `next-themes`. The `globals.css` file contains `[data-theme="light"]` overrides.
+9. **Theme system is CSS variable-driven** -- uses `[data-theme]` attribute on `<html>`, managed by a Jotai atom. No `next-themes`. `globals.css` contains `[data-theme="dark"]` overrides; light is the default `@theme` block.
 
-10. **Radix UI for accessible primitives** -- use `@radix-ui/react-*` for dropdowns, dialogs, and other interactive controls. Always style with zero border-radius.
+10. **Radix UI for accessible primitives** -- use `@radix-ui/react-*` for dropdowns, selects, etc.
 
 11. **Accessibility first** -- all sections have `aria-label`, decorative elements have `aria-hidden="true"`, keyboard navigation has visible `focus-visible` indicators, skip-to-content link in layout, `prefers-reduced-motion` respected.
 
@@ -195,16 +232,18 @@ src/
 
 ## Quick Reminders
 
-- **No rounded corners.** Use `rounded-none` if a library default adds rounding. The design is sharp/square everywhere.
+- **Border radius rule**: pills (36px) on CTAs only. Cards, inputs, panels, and dropdowns are square. Library defaults that add rounding should be overridden.
+- **No cyberpunk artifacts**: never reach for `scanlines`, `cyber-corners`, `neon-glow`, `glitch-hover`, `cyber-grid-bg`, terminal `>` `//` `[ ]` markers, etc. They were removed in the New Relic redesign.
+- **Mono is restrained**: only on small labels (`01 — Section`), legal lines, and tabular numbers. Body copy is `font-sans` (Inter).
 - **Prefer Server Components** for data fetching; reserve Client Components for interactivity and R3F.
 - **Use `getPayload()` + Local API** in Server Components to fetch content.
-- **Never construct Tailwind class names dynamically** with string interpolation (e.g., `` `text-${color}` `` will not work).
+- **Never construct Tailwind class names dynamically** with string interpolation (`` `text-${color}` `` won't work).
 - **Always define access control** on every Payload collection.
 - **Use `revalidateTag()` / `revalidatePath()`** in Payload hooks for cache invalidation.
-- **Font variables** (`--font-inter`, `--font-orbitron`, `--font-jetbrains-mono`) are set on `<html>` via `next/font/google`.
-- **Custom scrollbar** is already styled in globals.css (thin purple on dark track).
-- **`sharp`** is included as a dependency for Payload image processing.
+- **Font variables** (`--font-inter`, `--font-geist-mono`) are set on `<html>` via `next/font/google`.
+- **Custom scrollbar** is styled in globals.css (thin neutral on warm/cool track per theme).
+- **`sharp`** is included for Payload image processing.
 - **Always use `pnpm`** — never `npm` or `yarn`. Scripts: `pnpm dev`, `pnpm build`, `pnpm generate:types`, `pnpm payload`.
-- **Use Jotai for client-side state** — lightweight atoms, no boilerplate. Theme state lives in `src/lib/theme.ts`.
-- **Use Radix UI for interactive primitives** — dropdowns, dialogs, tooltips. Always override border-radius to 0.
+- **Use Jotai for client-side state** — theme state lives in `src/lib/theme.ts`.
+- **Use Radix UI for interactive primitives**.
 - **Accessibility**: every section needs `aria-label`, decorative SVGs need `aria-hidden="true"`, forms need `autocomplete` attributes.

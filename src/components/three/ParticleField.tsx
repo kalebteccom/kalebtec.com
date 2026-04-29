@@ -34,8 +34,8 @@ export default function ParticleField({
     const pha = new Float32Array(actualCount);
     const col = new Float32Array(actualCount * 3);
 
-    const purple = new THREE.Color('#8000FF');
-    const cyan = new THREE.Color('#00ffff');
+    // Monochrome particles — ink in light theme, paper in dark theme
+    const tone = new THREE.Color(isDark ? '#f1f0e4' : '#080f11');
 
     const gridSpacing = 1.5;
 
@@ -68,15 +68,14 @@ export default function ParticleField({
       // Random phase offset for pulse
       pha[i] = Math.random() * Math.PI * 2;
 
-      // Alternate between purple and cyan
-      const particleColor = Math.random() > 0.5 ? purple : cyan;
-      col[i * 3] = particleColor.r;
-      col[i * 3 + 1] = particleColor.g;
-      col[i * 3 + 2] = particleColor.b;
+      // Single monochrome tone for all particles
+      col[i * 3] = tone.r;
+      col[i * 3 + 1] = tone.g;
+      col[i * 3 + 2] = tone.b;
     }
 
     return { positions: pos, velocities: vel, phases: pha, colors: col };
-  }, [actualCount, radius]);
+  }, [actualCount, radius, isDark]);
 
   // Custom sizes for pulse effect
   const sizes = useMemo(() => {
@@ -113,11 +112,11 @@ export default function ParticleField({
     return texture;
   }, []);
 
-  // Update blending mode when theme changes
+  // Always use NormalBlending — additive would tint particles
   useEffect(() => {
     if (!pointsRef.current) return;
     const material = pointsRef.current.material as THREE.PointsMaterial;
-    material.blending = isDark ? THREE.AdditiveBlending : THREE.NormalBlending;
+    material.blending = THREE.NormalBlending;
     material.needsUpdate = true;
   }, [isDark]);
 
@@ -134,8 +133,8 @@ export default function ParticleField({
       entranceProgress.current = Math.min(1, entranceProgress.current + 0.008);
     }
     const material = pointsRef.current.material as THREE.PointsMaterial;
-    // Lower max opacity in light mode so particles are subtle, not blinding
-    const maxOpacity = isDark ? 0.7 : 0.45;
+    // Quiet ambient texture — particles barely register
+    const maxOpacity = isDark ? 0.18 : 0.22;
     material.opacity = entranceProgress.current * maxOpacity;
 
     // Animate positions and sizes

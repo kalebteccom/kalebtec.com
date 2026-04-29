@@ -1,27 +1,44 @@
 @import 'tailwindcss';
 @plugin "@tailwindcss/typography";
 
+/* ==========================================================================
+   THEME — New Relic Bold Minimalism
+   Cream paper + near-black ink. Strict 2-tone with brand purple as
+   micro-accent only (selection, easter eggs, dot indicators).
+   ========================================================================== */
+
 @theme {
+  /* New semantic tokens (preferred going forward) */
+  --color-paper: #e5e4d8;
+  --color-paper-soft: #f1f0e4;
+  --color-paper-bright: #fafaf5;
+  --color-ink: #080f11;
+  --color-ink-soft: #151b20;
+
+  /* Brand purple — micro-accent only */
   --color-brand: #8000ff;
   --color-brand-light: #a64dff;
   --color-brand-dark: #5c00b8;
   --color-brand-glow: rgba(128, 0, 255, 0.4);
-  --color-cyber-cyan: #00ffff;
-  --color-cyber-cyan-glow: rgba(0, 255, 255, 0.3);
-  --color-cyber-magenta: #ff00ff;
-  --color-cyber-bg: #09090f;
-  --color-cyber-surface: #0d0d15;
-  --color-cyber-border: rgba(255, 255, 255, 0.08);
 
-  /* Semantic text colors — switch with theme */
-  --color-cyber-heading: #ffffff;
-  --color-cyber-body: #d4d4d8;
-  --color-cyber-muted: #a1a1aa;
-  --color-cyber-faint: #8a8a93;
+  /* Semantic aliases — switch with [data-theme] */
+  --color-bg: #e5e4d8;
+  --color-surface: #f1f0e4;
+  --color-surface-bright: #fafaf5;
+  --color-heading: #080f11;
+  --color-body: #080f11;
+  --color-muted: rgba(8, 15, 17, 0.6);
+  --color-faint: rgba(8, 15, 17, 0.4);
+  --color-border: rgba(8, 15, 17, 0.08);
+  --color-border-strong: rgba(8, 15, 17, 0.2);
 
-  --font-sans: var(--font-exo2), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-orbitron), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+  /* Fonts — Inter does both body and display via weight + tracking.
+     Geist Mono replaces JetBrains Mono for small mono labels. */
+  --font-sans: var(--font-inter), -apple-system, system-ui, sans-serif;
+  --font-display: var(--font-inter), -apple-system, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --radius-pill: 36px;
 }
 
 /* ==========================================================================
@@ -30,155 +47,230 @@
 
 [data-theme='dark'] {
   color-scheme: dark;
-  font-weight: 450;
+
+  --color-bg: #080f11;
+  --color-surface: #151b20;
+  --color-surface-bright: #1a212a;
+  --color-heading: #f1f0e4;
+  --color-body: #f1f0e4;
+  --color-muted: rgba(241, 240, 228, 0.67);
+  --color-faint: rgba(241, 240, 228, 0.48);
+  --color-border: rgba(241, 240, 228, 0.1);
+  --color-border-strong: rgba(241, 240, 228, 0.22);
 }
 
 [data-theme='light'] {
   color-scheme: light;
-  font-weight: 400;
-  /* Harsh daylight cyberpunk — cool gray with neon burn-in */
-  --color-cyber-bg: #d8d9e4;
-  --color-cyber-surface: #e4e5ee;
-  --color-cyber-border: rgba(60, 30, 100, 0.12);
-  --color-brand-glow: rgba(128, 0, 255, 0.35);
-  --color-cyber-cyan: #006878;
-  --color-brand-light: #6b00d6;
-  --color-cyber-cyan-glow: rgba(0, 104, 120, 0.3);
-
-  /* Text colors for light mode — true black-ink with purple undertone */
-  --color-cyber-heading: #08051a;
-  --color-cyber-body: #1a1535;
-  --color-cyber-muted: #443e68;
-  --color-cyber-faint: #544d78;
-
-  color: var(--color-cyber-body);
 }
 
 /* ==========================================================================
    BASE STYLES
    ========================================================================== */
 
-/* Cyberpunk crosshair cursor — light cursor for dark theme */
 html {
-  cursor:
-    url('/cursor.svg') 16 16,
-    crosshair;
   scroll-behavior: smooth;
 }
 
-a,
-button,
-[role='button'],
-input,
-textarea,
-select,
-label,
-[tabindex] {
-  cursor:
-    url('/cursor.svg') 16 16,
-    crosshair;
-}
-
-a:hover,
-button:hover,
-[role='button']:hover {
-  cursor:
-    url('/cursor.svg') 16 16,
-    crosshair;
-}
-
-/* Dark cursor for light theme */
-[data-theme='light'],
-[data-theme='light'] a,
-[data-theme='light'] button,
-[data-theme='light'] [role='button'],
-[data-theme='light'] input,
-[data-theme='light'] textarea,
-[data-theme='light'] select,
-[data-theme='light'] label,
-[data-theme='light'] [tabindex],
-[data-theme='light'] a:hover,
-[data-theme='light'] button:hover,
-[data-theme='light'] [role='button']:hover {
-  cursor:
-    url('/cursor-dark.svg') 16 16,
-    crosshair;
-}
-
-/* Selection color */
 ::selection {
-  background-color: var(--color-brand);
-  color: white;
-}
-
-[data-theme='light'] ::selection {
   background-color: var(--color-brand);
   color: white;
 }
 
 /* ==========================================================================
    RESPONSIVE TYPOGRAPHY
+   Editorial scale — tight tracking, heavy weights for display.
    ========================================================================== */
 
 h1,
 .text-display-xl {
-  font-size: clamp(2rem, 5vw + 1rem, 4.5rem);
-  line-height: 1.1;
+  font-size: clamp(2.5rem, 6vw + 1rem, 9rem);
+  line-height: 0.95;
+  font-weight: 800;
+  letter-spacing: -0.04em;
 }
 
 h2,
 .text-display-lg {
-  font-size: clamp(1.5rem, 3vw + 0.75rem, 3rem);
-  line-height: 1.15;
+  font-size: clamp(2rem, 4vw + 0.75rem, 5rem);
+  line-height: 1.0;
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
 
 h3,
 .text-display-md {
-  font-size: clamp(1.25rem, 2vw + 0.5rem, 2rem);
-  line-height: 1.2;
+  font-size: clamp(1.5rem, 2.5vw + 0.5rem, 2.5rem);
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 h4,
 .text-display-sm {
-  font-size: clamp(1.1rem, 1.5vw + 0.4rem, 1.5rem);
-  line-height: 1.25;
+  font-size: clamp(1.25rem, 1.5vw + 0.4rem, 1.75rem);
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.015em;
 }
 
-/* Safe word-breaking for localized content — prevents overflow on long
-   translated strings (especially compound words in DE/FR/PT/CA/GL). */
+/* Editorial lead paragraph — NR's signature large intro copy */
+.editorial-lead {
+  font-size: clamp(1.25rem, 1.5vw + 0.5rem, 1.5rem);
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Safe word-breaking for localized content */
 h1, h2, h3, h4, h5, h6, p, li, td, th, dd, dt, figcaption, blockquote {
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-word;
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
   hyphens: auto;
 }
 
-/* Utility class for targeted use on other elements */
 .break-good {
   overflow-wrap: break-word;
   word-wrap: break-word;
-  -ms-word-break: break-all;
   word-break: break-word;
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
   hyphens: auto;
 }
 
 /* ==========================================================================
-   ACCESSIBILITY -- FOCUS STYLES
+   PILL CTA (the New Relic signature button)
    ========================================================================== */
 
-/* Focus-visible styles for keyboard navigation */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-pill);
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+  cursor: pointer;
+}
+
+.btn-pill:hover {
+  transform: translateY(-1px);
+}
+
+.btn-pill:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background-color: var(--color-brand);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-brand-dark);
+}
+
+.btn-ink {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+}
+
+[data-theme='dark'] .btn-ink {
+  background-color: var(--color-paper-soft);
+  color: var(--color-ink);
+}
+
+.btn-ink:hover {
+  background-color: var(--color-ink-soft);
+}
+
+[data-theme='dark'] .btn-ink:hover {
+  background-color: var(--color-paper);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-ink);
+  box-shadow: inset 0 0 0 1px var(--color-border-strong);
+}
+
+[data-theme='dark'] .btn-secondary {
+  color: var(--color-paper-soft);
+  box-shadow: inset 0 0 0 1px var(--color-border-strong);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(8, 15, 17, 0.05);
+}
+
+[data-theme='dark'] .btn-secondary:hover {
+  background-color: rgba(241, 240, 228, 0.05);
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--color-ink);
+}
+
+[data-theme='dark'] .btn-ghost {
+  color: var(--color-paper-soft);
+}
+
+.btn-ghost:hover {
+  background-color: rgba(8, 15, 17, 0.05);
+}
+
+[data-theme='dark'] .btn-ghost:hover {
+  background-color: rgba(241, 240, 228, 0.05);
+}
+
+/* ==========================================================================
+   SECTION BANDS
+   NR alternates cream and ink banded sections. Use .section-dark to
+   invert the palette for a section.
+   ========================================================================== */
+
+.section-dark {
+  background-color: var(--color-ink);
+  color: var(--color-paper-soft);
+  --color-bg: var(--color-ink);
+  --color-surface: var(--color-ink-soft);
+  --color-heading: var(--color-paper-soft);
+  --color-body: var(--color-paper-soft);
+  --color-muted: rgba(241, 240, 228, 0.67);
+  --color-faint: rgba(241, 240, 228, 0.48);
+  --color-border: rgba(241, 240, 228, 0.1);
+  --color-border-strong: rgba(241, 240, 228, 0.22);
+}
+
+/* Subtle warm tint band — like NR's accent-colored sections */
+.section-tint {
+  background-color: #ece5f5;
+}
+
+[data-theme='dark'] .section-tint {
+  background-color: #1d1525;
+}
+
+/* ==========================================================================
+   ACCESSIBILITY — FOCUS STYLES
+   ========================================================================== */
+
 *:focus-visible {
-  outline: 2px solid var(--color-brand);
+  outline: 2px solid var(--color-ink);
   outline-offset: 2px;
 }
 
-/* More prominent focus for interactive elements */
+[data-theme='dark'] *:focus-visible {
+  outline-color: var(--color-paper-soft);
+}
+
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -186,23 +278,18 @@ textarea:focus-visible,
 select:focus-visible,
 [role='button']:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid var(--color-brand);
+  outline: 2px solid var(--color-ink);
   outline-offset: 2px;
-  box-shadow:
-    0 0 0 4px var(--color-brand-glow),
-    0 0 20px var(--color-brand-glow);
 }
 
-[data-theme='light'] a:focus-visible,
-[data-theme='light'] button:focus-visible,
-[data-theme='light'] input:focus-visible,
-[data-theme='light'] textarea:focus-visible,
-[data-theme='light'] select:focus-visible,
-[data-theme='light'] [role='button']:focus-visible,
-[data-theme='light'] [tabindex]:focus-visible {
-  box-shadow:
-    0 0 0 4px var(--color-brand-glow),
-    0 0 12px var(--color-brand-glow);
+[data-theme='dark'] a:focus-visible,
+[data-theme='dark'] button:focus-visible,
+[data-theme='dark'] input:focus-visible,
+[data-theme='dark'] textarea:focus-visible,
+[data-theme='dark'] select:focus-visible,
+[data-theme='dark'] [role='button']:focus-visible,
+[data-theme='dark'] [tabindex]:focus-visible {
+  outline-color: var(--color-paper-soft);
 }
 
 /* Skip to content link */
@@ -211,20 +298,17 @@ select:focus-visible,
   left: -9999px;
   z-index: 999;
   padding: 1rem 1.5rem;
-  background: var(--color-brand);
-  color: white;
-  font-family: var(--font-mono);
+  background: var(--color-ink);
+  color: var(--color-paper);
   font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  border: none;
+  border-radius: var(--radius-pill);
   text-decoration: none;
 }
 
 .skip-to-content:focus {
   left: 50%;
   transform: translateX(-50%);
-  top: 0;
+  top: 1rem;
 }
 
 /* ==========================================================================
@@ -243,1408 +327,101 @@ select:focus-visible,
 }
 
 /* ==========================================================================
-   HERO SECTION — THEME-ADAPTIVE GRADIENTS
-   ========================================================================== */
-
-.hero-text-backdrop {
-  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(9, 9, 15, 0.55) 0%, transparent 70%);
-}
-
-[data-theme='light'] .hero-text-backdrop {
-  background: radial-gradient(
-    ellipse 60% 50% at 50% 50%,
-    rgba(216, 217, 228, 0.7) 0%,
-    transparent 70%
-  );
-}
-
-.hero-bottom-fade {
-  background: linear-gradient(to top, rgba(9, 9, 15, 1) 0%, transparent 100%);
-}
-
-[data-theme='light'] .hero-bottom-fade {
-  background: linear-gradient(to top, var(--color-cyber-bg) 0%, transparent 100%);
-}
-
-/* ==========================================================================
-   SCANLINE OVERLAY
-   ========================================================================== */
-
-/* Scanline overlay -- apply with class .scanlines (element must have position: relative) */
-.scanlines::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0, 0, 0, 0.04) 2px,
-    rgba(0, 0, 0, 0.04) 4px
-  );
-  pointer-events: none;
-  z-index: 1;
-}
-
-[data-theme='light'] .scanlines::after {
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(80, 0, 160, 0.025) 2px,
-    rgba(80, 0, 160, 0.025) 4px
-  );
-}
-
-/* ==========================================================================
-   CYBERPUNK CORNER ACCENTS (ENHANCED -- 16px, glow on hover)
-   ========================================================================== */
-
-.cyber-corners {
-  position: relative;
-}
-
-.cyber-corners::before,
-.cyber-corners::after {
-  content: '';
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  border-color: var(--color-cyber-muted);
-  opacity: 0.35;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.cyber-corners::before {
-  top: -1px;
-  left: -1px;
-  border-top: 2px solid;
-  border-left: 2px solid;
-}
-
-.cyber-corners::after {
-  bottom: -1px;
-  right: -1px;
-  border-bottom: 2px solid;
-  border-right: 2px solid;
-}
-
-.cyber-corners:hover::before,
-.cyber-corners:hover::after {
-  opacity: 0.7;
-  width: 20px;
-  height: 20px;
-  border-color: var(--color-brand);
-}
-
-[data-theme='light'] .cyber-corners::before,
-[data-theme='light'] .cyber-corners::after {
-  border-color: var(--color-cyber-faint);
-  opacity: 0.4;
-}
-
-[data-theme='light'] .cyber-corners:hover::before,
-[data-theme='light'] .cyber-corners:hover::after {
-  opacity: 0.7;
-  border-color: var(--color-brand);
-}
-
-/* ==========================================================================
-   NEON TEXT GLOW (ENHANCED -- triple-layer glow, more intense)
-   ========================================================================== */
-
-.neon-glow {
-  text-shadow:
-    0 0 7px var(--color-brand-glow),
-    0 0 20px var(--color-brand-glow),
-    0 0 40px rgba(128, 0, 255, 0.25),
-    0 0 80px rgba(128, 0, 255, 0.1);
-}
-
-.neon-glow-cyan {
-  text-shadow:
-    0 0 7px var(--color-cyber-cyan-glow),
-    0 0 20px var(--color-cyber-cyan-glow),
-    0 0 40px rgba(0, 255, 255, 0.2),
-    0 0 80px rgba(0, 255, 255, 0.08);
-}
-
-.neon-glow-magenta {
-  text-shadow:
-    0 0 7px rgba(255, 0, 255, 0.4),
-    0 0 20px rgba(255, 0, 255, 0.3),
-    0 0 40px rgba(255, 0, 255, 0.2),
-    0 0 80px rgba(255, 0, 255, 0.08);
-}
-
-[data-theme='light'] .neon-glow {
-  text-shadow: none;
-  color: var(--color-cyber-heading);
-}
-
-[data-theme='light'] .neon-glow-cyan {
-  text-shadow: none;
-  color: var(--color-cyber-cyan);
-}
-
-[data-theme='light'] .neon-glow-magenta {
-  text-shadow: none;
-  color: #8a008a;
-}
-
-/* ==========================================================================
-   NEON UNDERLINE (gradient brand-to-cyan with glow)
-   ========================================================================== */
-
-.neon-underline {
-  position: relative;
-  display: inline-block;
-}
-
-.neon-underline::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--color-brand), var(--color-cyber-cyan));
-  box-shadow:
-    0 0 5px var(--color-brand-glow),
-    0 0 15px var(--color-brand-glow),
-    0 0 5px var(--color-cyber-cyan-glow);
-  transition:
-    box-shadow 0.3s ease,
-    height 0.3s ease;
-}
-
-.neon-underline:hover::after {
-  height: 3px;
-  box-shadow:
-    0 0 8px var(--color-brand-glow),
-    0 0 20px var(--color-brand-glow),
-    0 0 8px var(--color-cyber-cyan-glow),
-    0 0 40px rgba(128, 0, 255, 0.15);
-}
-
-[data-theme='light'] .neon-underline::after {
-  box-shadow:
-    0 0 4px var(--color-brand-glow),
-    0 0 10px var(--color-brand-glow);
-}
-
-[data-theme='light'] .neon-underline:hover::after {
-  box-shadow:
-    0 0 6px var(--color-brand-glow),
-    0 0 14px var(--color-brand-glow);
-}
-
-/* ==========================================================================
-   ANIMATED GRADIENT BORDER (ENHANCED -- more dramatic hover)
-   ========================================================================== */
-
-.cyber-border-glow {
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
-  transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.cyber-border-glow:hover {
-  box-shadow:
-    0 0 0 1px rgba(128, 0, 255, 0.25),
-    0 0 20px rgba(128, 0, 255, 0.06);
-}
-
-[data-theme='light'] .cyber-border-glow {
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
-}
-
-[data-theme='light'] .cyber-border-glow:hover {
-  box-shadow:
-    0 0 0 1px rgba(128, 0, 255, 0.2),
-    0 0 15px rgba(128, 0, 255, 0.05);
-}
-
-/* ==========================================================================
-   CYBER CLIP (ANGLED CUT CORNERS -- top-right & bottom-left)
-   ========================================================================== */
-
-.cyber-clip {
-  clip-path: polygon(
-    0 0,
-    calc(100% - 20px) 0,
-    100% 20px,
-    100% 100%,
-    20px 100%,
-    0 calc(100% - 20px)
-  );
-}
-
-.cyber-clip-sm {
-  clip-path: polygon(
-    0 0,
-    calc(100% - 12px) 0,
-    100% 12px,
-    100% 100%,
-    12px 100%,
-    0 calc(100% - 12px)
-  );
-}
-
-.cyber-clip-lg {
-  clip-path: polygon(
-    0 0,
-    calc(100% - 32px) 0,
-    100% 32px,
-    100% 100%,
-    32px 100%,
-    0 calc(100% - 32px)
-  );
-}
-
-/* ==========================================================================
-   GLITCH TEXT EFFECT
-   ========================================================================== */
-
-@keyframes glitch {
-  0%,
-  100% {
-    transform: translate(0);
-  }
-  20% {
-    transform: translate(-2px, 2px);
-  }
-  40% {
-    transform: translate(-2px, -2px);
-  }
-  60% {
-    transform: translate(2px, 2px);
-  }
-  80% {
-    transform: translate(2px, -2px);
-  }
-}
-
-.glitch-hover:hover {
-  animation: glitch 0.3s ease;
-}
-
-/* ==========================================================================
-   CYBER TEXT FLICKER (subtle neon flicker)
-   ========================================================================== */
-
-@keyframes cyber-text-flicker {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  4% {
-    opacity: 0.9;
-  }
-  6% {
-    opacity: 1;
-  }
-  12% {
-    opacity: 0.85;
-  }
-  14% {
-    opacity: 1;
-  }
-  25% {
-    opacity: 1;
-  }
-  27% {
-    opacity: 0.94;
-  }
-  28% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 1;
-  }
-  52% {
-    opacity: 0.92;
-  }
-  54% {
-    opacity: 1;
-  }
-  67% {
-    opacity: 1;
-  }
-  69% {
-    opacity: 0.96;
-  }
-  70% {
-    opacity: 1;
-  }
-  78% {
-    opacity: 1;
-  }
-  80% {
-    opacity: 0.88;
-  }
-  82% {
-    opacity: 1;
-  }
-  91% {
-    opacity: 1;
-  }
-  93% {
-    opacity: 0.93;
-  }
-  95% {
-    opacity: 1;
-  }
-}
-
-.cyber-text-flicker {
-  animation: cyber-text-flicker 4s linear infinite;
-}
-
-/* ==========================================================================
-   CYBER LINE SCAN (horizontal light scan across element)
-   ========================================================================== */
-
-@keyframes cyber-line-scan {
-  0% {
-    top: -2px;
-    opacity: 0;
-  }
-  5% {
-    opacity: 1;
-  }
-  95% {
-    opacity: 1;
-  }
-  100% {
-    top: calc(100% + 2px);
-    opacity: 0;
-  }
-}
-
-.cyber-line-scan {
-  position: relative;
-  overflow: hidden;
-}
-
-.cyber-line-scan::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: -2px;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--color-cyber-cyan),
-    var(--color-brand-light),
-    var(--color-cyber-cyan),
-    transparent
-  );
-  box-shadow:
-    0 0 10px var(--color-cyber-cyan-glow),
-    0 0 20px var(--color-brand-glow),
-    0 0 40px rgba(0, 255, 255, 0.1);
-  animation: cyber-line-scan 3s ease-in-out infinite;
-  z-index: 2;
-  pointer-events: none;
-}
-
-[data-theme='light'] .cyber-line-scan::before {
-  box-shadow:
-    0 0 8px var(--color-cyber-cyan-glow),
-    0 0 14px var(--color-brand-glow);
-}
-
-/* ==========================================================================
-   CYBER PULSE (pulsing border/glow effect)
-   ========================================================================== */
-
-@keyframes cyber-pulse {
-  0%,
-  100% {
-    box-shadow:
-      0 0 0 1px rgba(128, 0, 255, 0.2),
-      0 0 15px rgba(128, 0, 255, 0.05);
-  }
-  50% {
-    box-shadow:
-      0 0 0 1px rgba(128, 0, 255, 0.5),
-      0 0 30px rgba(128, 0, 255, 0.15),
-      0 0 60px rgba(128, 0, 255, 0.05);
-  }
-}
-
-.cyber-pulse {
-  animation: cyber-pulse 2s ease-in-out infinite;
-}
-
-[data-theme='light'] .cyber-pulse {
-  animation: cyber-pulse-light 2s ease-in-out infinite;
-}
-
-@keyframes cyber-pulse-light {
-  0%,
-  100% {
-    box-shadow:
-      0 0 0 1px rgba(128, 0, 255, 0.12),
-      0 0 10px rgba(128, 0, 255, 0.03);
-  }
-  50% {
-    box-shadow:
-      0 0 0 1px rgba(128, 0, 255, 0.3),
-      0 0 20px rgba(128, 0, 255, 0.08);
-  }
-}
-
-/* ==========================================================================
-   CYBER DATA STREAM (vertical scrolling data effect)
-   ========================================================================== */
-
-@keyframes data-stream {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 0 -200px;
-  }
-}
-
-.cyber-data-stream {
-  position: relative;
-  overflow: hidden;
-}
-
-.cyber-data-stream::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: repeating-linear-gradient(
-    0deg,
-    transparent 0px,
-    transparent 18px,
-    rgba(128, 0, 255, 0.03) 18px,
-    rgba(128, 0, 255, 0.03) 20px
-  );
-  background-size: 100% 200px;
-  animation: data-stream 8s linear infinite;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* ==========================================================================
-   BLINKING CURSOR
-   ========================================================================== */
-
-@keyframes blink-cursor {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-
-.typing-cursor::after {
-  content: '|';
-  animation: blink-cursor 1s step-end infinite;
-  color: var(--color-cyber-muted);
-  margin-left: 2px;
-}
-
-/* ==========================================================================
    CUSTOM SCROLLBAR
    ========================================================================== */
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #09090f;
+  background: var(--color-paper);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(8, 15, 17, 0.2);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(8, 15, 17, 0.35);
 }
 
-[data-theme='light'] ::-webkit-scrollbar-track {
-  background: #d0d1dc;
+[data-theme='dark'] ::-webkit-scrollbar-track {
+  background: var(--color-ink);
 }
 
-[data-theme='light'] ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.15);
+[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: rgba(241, 240, 228, 0.2);
 }
 
-[data-theme='light'] ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.25);
+[data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(241, 240, 228, 0.35);
 }
 
-/* Firefox scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.15) #09090f;
+  scrollbar-color: rgba(8, 15, 17, 0.2) var(--color-paper);
 }
 
-[data-theme='light'] * {
-  scrollbar-color: rgba(0, 0, 0, 0.15) #d0d1dc;
-}
-
-/* ==========================================================================
-   GRID BACKGROUND PATTERN (ENHANCED -- more visible)
-   ========================================================================== */
-
-.cyber-grid-bg {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
-[data-theme='light'] .cyber-grid-bg {
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
-  background-size: 40px 40px;
+[data-theme='dark'] * {
+  scrollbar-color: rgba(241, 240, 228, 0.2) var(--color-ink);
 }
 
 /* ==========================================================================
-   CYBER HUD BADGE (bracket-style label)
-   ========================================================================== */
-
-.cyber-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.25rem 0.75rem;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--color-cyber-cyan);
-  border: 1px solid rgba(0, 255, 255, 0.2);
-  background: rgba(0, 255, 255, 0.05);
-  transition: all 0.3s ease;
-}
-
-.cyber-badge:hover {
-  border-color: rgba(0, 255, 255, 0.5);
-  background: rgba(0, 255, 255, 0.1);
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
-}
-
-[data-theme='light'] .cyber-badge {
-  color: #007a7a;
-  border-color: rgba(0, 150, 150, 0.25);
-  background: rgba(0, 200, 200, 0.06);
-}
-
-[data-theme='light'] .cyber-badge:hover {
-  border-color: rgba(0, 150, 150, 0.45);
-  background: rgba(0, 200, 200, 0.12);
-  box-shadow: 0 0 8px rgba(0, 200, 200, 0.08);
-}
-
-/* ==========================================================================
-   CYBER DIVIDER (glowing horizontal rule)
-   ========================================================================== */
-
-.cyber-divider {
-  height: 1px;
-  border: none;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--color-brand),
-    var(--color-cyber-cyan),
-    var(--color-brand),
-    transparent
-  );
-  box-shadow: 0 0 8px var(--color-brand-glow);
-}
-
-[data-theme='light'] .cyber-divider {
-  box-shadow: 0 0 4px var(--color-brand-glow);
-}
-
-/* ==========================================================================
-   RGB SPLIT / CHROMATIC ABERRATION ON HOVER
-   ========================================================================== */
-
-@keyframes rgb-split {
-  0% {
-    transform: translate(0);
-    opacity: 0;
-  }
-  20% {
-    opacity: 0.5;
-    transform: translate(4px, 0);
-  }
-  100% {
-    opacity: 0.5;
-    transform: translate(2px, 0);
-  }
-}
-
-@keyframes rgb-split-reverse {
-  0% {
-    transform: translate(0);
-    opacity: 0;
-  }
-  20% {
-    opacity: 0.5;
-    transform: translate(-4px, 0);
-  }
-  100% {
-    opacity: 0.5;
-    transform: translate(-2px, 0);
-  }
-}
-
-.cyber-glitch-image {
-  position: relative;
-  overflow: hidden;
-}
-
-.cyber-glitch-image::before,
-.cyber-glitch-image::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: inherit;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.cyber-glitch-image:hover::before,
-.group:hover .cyber-glitch-image::before {
-  opacity: 0.5;
-  mix-blend-mode: multiply;
-  background: rgba(255, 0, 0, 0.08);
-  transform: translate(2px, 0);
-  animation: rgb-split 0.4s ease-out;
-}
-
-.cyber-glitch-image:hover::after,
-.group:hover .cyber-glitch-image::after {
-  opacity: 0.5;
-  mix-blend-mode: multiply;
-  background: rgba(0, 255, 255, 0.08);
-  transform: translate(-2px, 0);
-  animation: rgb-split-reverse 0.4s ease-out;
-}
-
-[data-theme='light'] .cyber-glitch-image:hover::before,
-[data-theme='light'] .group:hover .cyber-glitch-image::before {
-  background: rgba(255, 0, 0, 0.05);
-}
-
-[data-theme='light'] .cyber-glitch-image:hover::after,
-[data-theme='light'] .group:hover .cyber-glitch-image::after {
-  background: rgba(0, 255, 255, 0.05);
-}
-
-/* ==========================================================================
-   SCAN LINE SWEEP ON HOVER
-   ========================================================================== */
-
-@keyframes scan-sweep {
-  0% {
-    top: -10px;
-    opacity: 1;
-    height: 2px;
-    filter: none;
-  }
-  15% {
-    height: 3px;
-    filter: brightness(1.5);
-  }
-  40% {
-    opacity: 1;
-    height: 2px;
-  }
-  /* Stutter / glitch pause in the middle */
-  48% {
-    opacity: 1;
-    filter: brightness(2);
-  }
-  50% {
-    opacity: 0;
-  }
-  52% {
-    opacity: 1;
-    filter: none;
-  }
-  100% {
-    top: calc(100% + 10px);
-    opacity: 1;
-    height: 2px;
-    filter: none;
-  }
-}
-
-@keyframes card-glitch {
-  0%,
-  100% {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0);
-    filter: none;
-  }
-  8% {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0);
-  }
-  10% {
-    clip-path: inset(40% 0 30% 0);
-    transform: translate(-2px, 0);
-    filter: hue-rotate(60deg) brightness(1.2);
-  }
-  12% {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0);
-    filter: none;
-  }
-  38% {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0);
-  }
-  40% {
-    clip-path: inset(70% 0 5% 0);
-    transform: translate(3px, 0);
-    filter: hue-rotate(-90deg);
-  }
-  42% {
-    clip-path: inset(10% 0 70% 0);
-    transform: translate(-1px, 0);
-    filter: hue-rotate(120deg);
-  }
-  44% {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0);
-    filter: none;
-  }
-  68% {
-    clip-path: inset(0 0 0 0);
-  }
-  70% {
-    clip-path: inset(25% 0 55% 0);
-    transform: translate(2px, 0);
-    filter: brightness(1.5);
-  }
-  72% {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0);
-    filter: none;
-  }
-}
-
-@keyframes card-glitch-exit {
-  0% {
-    clip-path: inset(0 0 0 0);
-    filter: none;
-    opacity: 1;
-  }
-  15% {
-    clip-path: inset(30% 0 50% 0);
-    filter: brightness(1.8) hue-rotate(90deg);
-    transform: translate(4px, 0);
-  }
-  20% {
-    clip-path: inset(0 0 0 0);
-    filter: none;
-    transform: translate(0);
-    opacity: 0.6;
-  }
-  35% {
-    opacity: 1;
-    clip-path: inset(60% 0 15% 0);
-    transform: translate(-3px, 0);
-    filter: hue-rotate(-60deg);
-  }
-  45% {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0);
-    filter: none;
-    opacity: 1;
-  }
-  100% {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0);
-    filter: none;
-    opacity: 1;
-  }
-}
-
-.cyber-scan-hover {
-  position: relative;
-  overflow: hidden;
-}
-
-/* Enter glitch — driven by data attribute from JS */
-.cyber-scan-hover[data-glitch='enter'] {
-  animation: card-glitch 1.4s ease-out forwards;
-}
-
-/* Exit glitch — quick signal cutout */
-.cyber-scan-hover[data-glitch='exit'] {
-  animation: card-glitch-exit 0.4s ease-out forwards;
-}
-
-/* Scan line uses a child .scan-line element to avoid ::after conflicts with cyber-corners */
-.cyber-scan-hover > .scan-line {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--color-cyber-cyan),
-    var(--color-brand-light),
-    transparent
-  );
-  box-shadow:
-    0 0 8px var(--color-cyber-cyan-glow),
-    0 0 20px var(--color-cyber-cyan-glow),
-    0 0 40px var(--color-brand-glow),
-    0 0 60px var(--color-brand-glow);
-  top: -10px;
-  opacity: 0;
-  transition: none;
-  pointer-events: none;
-  z-index: 5;
-}
-
-.group:hover .cyber-scan-hover > .scan-line {
-  opacity: 1;
-  animation: scan-sweep 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-[data-theme='light'] .cyber-scan-hover > .scan-line {
-  box-shadow:
-    0 0 6px var(--color-cyber-cyan-glow),
-    0 0 16px var(--color-brand-glow);
-}
-
-/* ==========================================================================
-   DATA CORRUPTION GLITCH EFFECT
-   ========================================================================== */
-
-@keyframes corrupt {
-  0% {
-    clip-path: inset(0);
-    filter: none;
-  }
-  10% {
-    clip-path: inset(20% 0 60% 0);
-    filter: hue-rotate(90deg) saturate(2);
-  }
-  15% {
-    clip-path: inset(0);
-    filter: none;
-  }
-  30% {
-    clip-path: inset(50% 0 20% 0);
-    filter: hue-rotate(-90deg);
-  }
-  35% {
-    clip-path: inset(0);
-    filter: none;
-  }
-  50% {
-    clip-path: inset(80% 0 5% 0);
-    filter: brightness(2);
-  }
-  55% {
-    clip-path: inset(0);
-    filter: none;
-  }
-  100% {
-    clip-path: inset(0);
-    filter: none;
-  }
-}
-
-.cyber-corrupt {
-  transition: filter 0.1s;
-}
-
-.cyber-corrupt:hover {
-  animation: corrupt 0.6s ease-out;
-}
-
-[data-theme='light'] .cyber-corrupt:hover {
-  animation: corrupt 0.6s ease-out;
-  /* Same animation but will use lighter filters from context */
-}
-
-/* ==========================================================================
-   HOVER SCALE WITH ELASTIC OVERSHOOT
-   ========================================================================== */
-
-.cyber-scale-hover {
-  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.cyber-scale-hover:hover {
-  transform: scale(1.03);
-}
-
-/* ==========================================================================
-   GLOW INTENSIFY ON HOVER
-   ========================================================================== */
-
-.cyber-glow-intensify {
-  box-shadow:
-    0 0 8px rgba(128, 0, 255, 0.1),
-    0 0 20px rgba(128, 0, 255, 0.05);
-  transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.cyber-glow-intensify:hover {
-  box-shadow:
-    0 0 12px rgba(128, 0, 255, 0.35),
-    0 0 30px rgba(128, 0, 255, 0.2),
-    0 0 60px rgba(128, 0, 255, 0.1),
-    0 0 10px rgba(0, 255, 255, 0.15),
-    0 0 40px rgba(0, 255, 255, 0.08);
-}
-
-[data-theme='light'] .cyber-glow-intensify {
-  box-shadow:
-    0 0 6px rgba(128, 0, 255, 0.06),
-    0 0 14px rgba(128, 0, 255, 0.03);
-}
-
-[data-theme='light'] .cyber-glow-intensify:hover {
-  box-shadow:
-    0 0 10px rgba(128, 0, 255, 0.2),
-    0 0 24px rgba(128, 0, 255, 0.1),
-    0 0 8px rgba(0, 104, 120, 0.1),
-    0 0 30px rgba(0, 104, 120, 0.05);
-}
-
-/* ==========================================================================
-   CYBER BRIGHTNESS PULSE (subtle brightness on group hover)
-   ========================================================================== */
-
-@keyframes brightness-pulse {
-  0%,
-  100% {
-    filter: brightness(1);
-  }
-  50% {
-    filter: brightness(1.04);
-  }
-}
-
-@keyframes brightness-pulse-light {
-  0%,
-  100% {
-    filter: brightness(1);
-  }
-  50% {
-    filter: brightness(1.02);
-  }
-}
-
-.group:hover .cyber-brightness-pulse {
-  animation: brightness-pulse 2s ease-in-out infinite;
-}
-
-[data-theme='light'] .group:hover .cyber-brightness-pulse {
-  animation: brightness-pulse-light 2s ease-in-out infinite;
-}
-
-/* ==========================================================================
-   CARD FLIP ANIMATIONS (3D flip with scale bump at midpoint)
-   ========================================================================== */
-
-@keyframes card-flip-to-back {
-  0% {
-    transform: rotateY(0deg) scale(1);
-  }
-  40% {
-    transform: rotateY(72deg) scale(1.05);
-  }
-  50% {
-    transform: rotateY(90deg) scale(1.08);
-  }
-  60% {
-    transform: rotateY(108deg) scale(1.05);
-  }
-  100% {
-    transform: rotateY(180deg) scale(1);
-  }
-}
-
-@keyframes card-flip-to-front {
-  0% {
-    transform: rotateY(180deg) scale(1);
-  }
-  40% {
-    transform: rotateY(108deg) scale(1.05);
-  }
-  50% {
-    transform: rotateY(90deg) scale(1.08);
-  }
-  60% {
-    transform: rotateY(72deg) scale(1.05);
-  }
-  100% {
-    transform: rotateY(0deg) scale(1);
-  }
-}
-
-.card-flip-to-back {
-  animation: card-flip-to-back 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.card-flip-to-front {
-  animation: card-flip-to-front 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes flip-flash {
-  0%,
-  30% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.7;
-  }
-  70%,
-  100% {
-    opacity: 0;
-  }
-}
-
-.flip-flash {
-  animation: flip-flash 0.7s ease-out forwards;
-}
-
-/* ==========================================================================
-   CYBER DATA STREAM HOVER (vertical scrolling data — only on group hover)
-   ========================================================================== */
-
-.cyber-data-stream-hover {
-  position: relative;
-  overflow: hidden;
-}
-
-.cyber-data-stream-hover::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: repeating-linear-gradient(
-    0deg,
-    transparent 0px,
-    transparent 18px,
-    rgba(128, 0, 255, 0.03) 18px,
-    rgba(128, 0, 255, 0.03) 20px
-  );
-  background-size: 100% 200px;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.group:hover .cyber-data-stream-hover::after {
-  opacity: 1;
-  animation: data-stream 8s linear infinite;
-}
-
-[data-theme='light'] .cyber-data-stream-hover::after {
-  background-image: repeating-linear-gradient(
-    0deg,
-    transparent 0px,
-    transparent 18px,
-    rgba(128, 0, 255, 0.02) 18px,
-    rgba(128, 0, 255, 0.02) 20px
-  );
-}
-
-/* ==========================================================================
-   STAGGERED CORNER BRACKETS (animate in with delay on group hover)
-   ========================================================================== */
-
-.cyber-bracket-stagger .cyber-bracket {
-  opacity: 0;
-  transition:
-    opacity 0.3s ease,
-    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  transform: scale(0.7);
-}
-
-.group:hover .cyber-bracket-stagger .cyber-bracket {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.group:hover .cyber-bracket-stagger .cyber-bracket-tl {
-  transition-delay: 0ms;
-}
-
-.group:hover .cyber-bracket-stagger .cyber-bracket-tr {
-  transition-delay: 60ms;
-}
-
-.group:hover .cyber-bracket-stagger .cyber-bracket-bl {
-  transition-delay: 120ms;
-}
-
-.group:hover .cyber-bracket-stagger .cyber-bracket-br {
-  transition-delay: 180ms;
-}
-
-/* ==========================================================================
-   GROUP-HOVER ICON GLITCH (data-corruption effect on hover)
-   ========================================================================== */
-
-@keyframes icon-glitch {
-  0% {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0);
-    filter: none;
-  }
-  10% {
-    clip-path: inset(20% 0 40% 0);
-    transform: translate(-3px, 0);
-    filter: hue-rotate(90deg);
-  }
-  15% {
-    clip-path: inset(60% 0 10% 0);
-    transform: translate(3px, 0);
-    filter: hue-rotate(-90deg);
-  }
-  20% {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0);
-    filter: none;
-    opacity: 0.8;
-  }
-  30% {
-    clip-path: inset(40% 0 20% 0);
-    transform: translate(2px, 0);
-    filter: hue-rotate(180deg);
-  }
-  35% {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0);
-    filter: none;
-  }
-  50% {
-    opacity: 0;
-  }
-  52% {
-    opacity: 1;
-  }
-  60% {
-    clip-path: inset(10% 0 60% 0);
-    transform: translate(-2px, 0);
-    filter: hue-rotate(90deg);
-  }
-  65% {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0);
-    filter: none;
-  }
-  100% {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0);
-    filter: none;
-  }
-}
-
-.group:hover .cyber-glitch-icon {
-  animation: icon-glitch 0.5s ease-out;
-}
-
-/* ==========================================================================
-   GROUP-HOVER TEXT FLICKER (only flickers when parent group is hovered)
-   ========================================================================== */
-
-.group:hover .cyber-text-flicker-hover {
-  animation: cyber-text-flicker 4s linear infinite;
-}
-
-/* ==========================================================================
-   TEAM PHOTO — THEME-ADAPTIVE FILTERS
+   TEAM PHOTO — softer monochrome treatment
    ========================================================================== */
 
 .team-photo {
-  filter: brightness(0.8) saturate(0.65) contrast(1.15);
-  transition: filter 0.7s ease;
+  filter: saturate(0.85) contrast(1.02);
+  transition: filter 0.5s ease;
 }
 
 .group:hover .team-photo {
-  filter: brightness(0.95) saturate(0.85) contrast(1.05);
+  filter: saturate(1) contrast(1);
 }
 
-[data-theme='light'] .team-photo {
-  filter: brightness(1) saturate(0.85) contrast(1.05);
+[data-theme='dark'] .team-photo {
+  filter: saturate(0.7) contrast(1.05) brightness(0.92);
 }
 
-[data-theme='light'] .group:hover .team-photo {
-  filter: brightness(1) saturate(1) contrast(1);
-}
-
-/* ==========================================================================
-   ACCESSIBILITY — PREFERS-CONTRAST
-   Strip decorative overlays and restore natural images for clarity.
-   ========================================================================== */
-
-@media (prefers-contrast: more) {
-  .team-photo {
-    filter: none !important;
-  }
-
-  .scanlines::after {
-    display: none !important;
-  }
-
-  .cyber-corners::before,
-  .cyber-corners::after {
-    border-width: 2px !important;
-  }
-
-  .cyber-border-glow {
-    border-width: 2px !important;
-    border-color: currentColor !important;
-    box-shadow: none !important;
-  }
-
-  .neon-glow,
-  .neon-glow-cyan,
-  .neon-glow-magenta {
-    text-shadow: none !important;
-  }
-
-  .cyber-glitch-image::before,
-  .cyber-glitch-image::after {
-    display: none !important;
-  }
-
-  .cyber-scan-hover > .scan-line {
-    display: none !important;
-  }
-
-  .cyber-corrupt:hover,
-  .cyber-scan-hover[data-glitch='enter'],
-  .cyber-scan-hover[data-glitch='exit'] {
-    animation: none !important;
-    clip-path: none !important;
-    filter: none !important;
-  }
-
-  .cyber-glow-intensify,
-  .cyber-glow-intensify:hover {
-    box-shadow: 0 0 0 2px currentColor !important;
-  }
-
-  .cyber-data-stream-hover::after {
-    display: none !important;
-  }
-
-  .cyber-brightness-pulse {
-    animation: none !important;
-  }
+[data-theme='dark'] .group:hover .team-photo {
+  filter: saturate(0.85) contrast(1) brightness(1);
 }
 
 /* ==========================================================================
-   ACCESSIBILITY — PREFERS-REDUCED-TRANSPARENCY
-   Remove semi-transparent overlays that reduce readability.
+   HERO READABILITY FADE — soft gradient behind the headline so it stays
+   crisp regardless of the colored mesh gradient behind.
    ========================================================================== */
 
-@media (prefers-reduced-transparency: reduce) {
-  .scanlines::after {
-    display: none !important;
-  }
+.hero-readability-fade {
+  background: radial-gradient(
+    ellipse 75% 55% at 28% 50%,
+    rgba(229, 228, 216, 0.55) 0%,
+    rgba(229, 228, 216, 0.15) 45%,
+    transparent 75%
+  );
+}
 
-  .team-photo-fade {
-    opacity: 0 !important;
-  }
+[data-theme='dark'] .hero-readability-fade {
+  background: radial-gradient(
+    ellipse 75% 55% at 28% 50%,
+    rgba(8, 15, 17, 0.55) 0%,
+    rgba(8, 15, 17, 0.15) 45%,
+    transparent 75%
+  );
 }
 
 /* ==========================================================================
-   ACCESSIBILITY — INVERTED-COLORS
-   Re-invert images/video so they display correctly when system inverts.
+   EASTER EGGS — restyled with editorial vocabulary
    ========================================================================== */
 
-@media (inverted-colors: inverted) {
-  img,
-  video {
-    filter: invert(100%) !important;
-  }
-}
-
-/* ==========================================================================
-   ACCESSIBILITY — FORCED-COLORS (Windows High Contrast)
-   Strip decorative effects that break in high-contrast mode.
-   ========================================================================== */
-
-@media (forced-colors: active) {
-  .scanlines::after,
-  .cyber-corners::before,
-  .cyber-corners::after,
-  .cyber-line-scan::before,
-  .cyber-data-stream::after,
-  .cyber-glitch-image::before,
-  .cyber-glitch-image::after,
-  .cyber-scan-hover > .scan-line {
-    display: none !important;
-  }
-
-  .cyber-border-glow {
-    border: 2px solid ButtonText !important;
-    box-shadow: none !important;
-  }
-
-  .cyber-glow-intensify {
-    box-shadow: none !important;
-    border: 2px solid ButtonText !important;
-  }
-
-  .neon-glow,
-  .neon-glow-cyan,
-  .neon-glow-magenta {
-    text-shadow: none !important;
-  }
-
-  .cyber-corrupt:hover,
-  .cyber-scan-hover[data-glitch='enter'],
-  .cyber-scan-hover[data-glitch='exit'] {
-    animation: none !important;
-    filter: none !important;
-    clip-path: none !important;
-  }
-
-  .cyber-data-stream-hover::after {
-    display: none !important;
-  }
-
-  .cyber-bracket-stagger .cyber-bracket {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
-
-/* ==========================================================================
-   KONAMI CODE EASTER EGG — CYAN OVERRIDE
-   ========================================================================== */
-
+/* Konami code: soft palette inversion that fades */
 @keyframes konami-flash {
   0% {
-    background: rgba(0, 255, 255, 0.15);
+    background: rgba(128, 0, 255, 0.06);
   }
   30% {
-    background: rgba(0, 255, 255, 0.08);
+    background: rgba(128, 0, 255, 0.03);
   }
   100% {
     background: transparent;
@@ -1654,15 +431,13 @@ select:focus-visible,
 @keyframes konami-text {
   0% {
     opacity: 0;
-    transform: scale(1.2);
-    filter: blur(8px);
+    transform: translateY(8px);
   }
-  30% {
+  20% {
     opacity: 1;
-    transform: scale(1);
-    filter: blur(0);
+    transform: translateY(0);
   }
-  70% {
+  80% {
     opacity: 1;
   }
   100% {
@@ -1670,97 +445,44 @@ select:focus-visible,
   }
 }
 
-/* When Konami code is active, override brand to cyan */
 html.konami-active {
   --color-brand: #00ffff;
-  --color-brand-light: #33ffff;
-  --color-brand-dark: #00cccc;
-  --color-brand-glow: rgba(0, 255, 255, 0.4);
+  --color-brand-light: #33dddd;
 }
 
-html.konami-active .neon-glow {
-  text-shadow:
-    0 0 7px rgba(0, 255, 255, 0.4),
-    0 0 20px rgba(0, 255, 255, 0.3),
-    0 0 40px rgba(0, 255, 255, 0.2),
-    0 0 80px rgba(0, 255, 255, 0.08);
-}
-
-/* ==========================================================================
-   LOGO GLITCH EASTER EGG
-   ========================================================================== */
-
-@keyframes logo-glitch-intense {
+/* Logo 5-click easter egg: soft fade flash, no RGB hue-rotate */
+@keyframes logo-soft-flash {
   0%,
   100% {
-    transform: translate(0);
-    filter: none;
-  }
-  10% {
-    transform: translate(-3px, 2px);
-    filter: hue-rotate(90deg);
-  }
-  20% {
-    transform: translate(3px, -2px);
-    filter: hue-rotate(-90deg) saturate(2);
-  }
-  30% {
-    transform: translate(-2px, -3px);
-    filter: hue-rotate(180deg);
-  }
-  40% {
-    transform: translate(2px, 3px);
-    filter: hue-rotate(-180deg) brightness(1.5);
+    opacity: 1;
   }
   50% {
-    transform: translate(-3px, -2px);
-    filter: hue-rotate(90deg) saturate(1.5);
-  }
-  60% {
-    transform: translate(3px, 2px);
-    filter: hue-rotate(-90deg);
-  }
-  70% {
-    transform: translate(-2px, 3px);
-    filter: hue-rotate(45deg);
-  }
-  80% {
-    transform: translate(2px, -3px);
-    filter: none;
-  }
-  90% {
-    transform: translate(-1px, 1px);
-    filter: hue-rotate(-45deg);
+    opacity: 0.35;
   }
 }
 
 .logo-glitch-active {
-  animation: logo-glitch-intense 0.5s ease-out !important;
+  animation: logo-soft-flash 0.5s ease !important;
 }
 
-@keyframes glitch-noise-flash {
-  0% {
-    opacity: 0.6;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-/* ==========================================================================
-   CONTACT FIELD EASTER EGG
-   ========================================================================== */
-
+/* Contact field hack/sudo trigger: ink double-stroke pulse */
 @keyframes contact-hack-flash {
   0% {
-    border-color: #00ffff;
-    box-shadow:
-      0 0 10px rgba(0, 255, 255, 0.4),
-      0 0 30px rgba(0, 255, 255, 0.2);
+    box-shadow: inset 0 0 0 2px var(--color-ink);
+    border-color: var(--color-ink);
   }
   100% {
-    border-color: rgba(138, 138, 147, 0.4);
-    box-shadow: none;
+    box-shadow: inset 0 0 0 0 transparent;
+    border-color: var(--color-border);
+  }
+}
+
+[data-theme='dark'] @keyframes contact-hack-flash {
+  0% {
+    box-shadow: inset 0 0 0 2px var(--color-paper-soft);
+  }
+  100% {
+    box-shadow: inset 0 0 0 0 transparent;
   }
 }
 
@@ -1785,42 +507,43 @@ html.konami-active .neon-glow {
 }
 
 /* ==========================================================================
-   PRINT STYLES
+   ACCESSIBILITY — PREFERS-CONTRAST
+   ========================================================================== */
+
+@media (prefers-contrast: more) {
+  .team-photo {
+    filter: none !important;
+  }
+
+  .btn-secondary {
+    box-shadow: inset 0 0 0 2px currentColor !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .team-photo-fade {
+    opacity: 0 !important;
+  }
+}
+
+@media (inverted-colors: inverted) {
+  img,
+  video {
+    filter: invert(100%) !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .btn-pill {
+    border: 2px solid ButtonText !important;
+  }
+}
+
+/* ==========================================================================
+   PRINT
    ========================================================================== */
 
 @media print {
-  .scanlines::after,
-  .cyber-line-scan::before,
-  .cyber-data-stream::after,
-  .cyber-data-stream-hover::after,
-  .cyber-corners::before,
-  .cyber-corners::after,
-  .cyber-glitch-image::before,
-  .cyber-glitch-image::after,
-  .cyber-scan-hover > .scan-line {
-    display: none !important;
-  }
-
-  .neon-glow,
-  .neon-glow-cyan,
-  .neon-glow-magenta {
-    text-shadow: none !important;
-  }
-
-  .cyber-border-glow {
-    box-shadow: 0 0 0 1px #ccc !important;
-  }
-
-  .cyber-glow-intensify {
-    box-shadow: none !important;
-  }
-
-  .cyber-corrupt:hover {
-    animation: none !important;
-    filter: none !important;
-    clip-path: none !important;
-  }
-
   body {
     background: white !important;
     color: black !important;

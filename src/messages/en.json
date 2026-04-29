@@ -9,29 +9,29 @@
     "notFoundTitle": "Project Not Found | Kalebtec"
   },
   "nav": {
-    "about": "ABOUT",
-    "services": "SERVICES",
-    "projects": "PROJECTS",
-    "team": "TEAM",
-    "contact": "CONTACT",
+    "about": "About",
+    "services": "Services",
+    "projects": "Projects",
+    "team": "Team",
+    "contact": "Contact",
     "openMenu": "Open navigation menu",
     "closeMenu": "Close navigation menu",
     "mobileNav": "Mobile navigation",
     "mobileMenuDialog": "Navigation menu",
     "mainNav": "Main navigation",
-    "systemNav": "SYSTEM.NAV"
+    "systemNav": "Navigation"
   },
   "hero": {
     "ariaLabel": "Hero",
-    "sysActive": "SYS.ACTIVE",
-    "tagline": "> TECHNOLOGY_CONSULTING",
-    "valueProp": "// We architect digital solutions that transform businesses",
-    "cta": "[INITIATE_CONTACT]",
-    "scroll": "[SCROLL]"
+    "eyebrow": "Kalebtec — Tech Consulting",
+    "headline": "Engineering with intent.",
+    "subhead": "Software architecture, web platforms, and AI automation, built by a small team that ships.",
+    "primaryCta": "Start a project",
+    "secondaryCta": "See our work"
   },
   "about": {
     "ariaLabel": "About Kalebtec",
-    "sectionTitle": "WHO WE ARE",
+    "sectionTitle": "Who we are",
     "sectionNumber": "01",
     "originStory": "We didn't start Kalebtec in a boardroom. We started it at a kitchen table, late at night, fueled by bad coffee and a shared obsession with building things that actually work.",
     "teamDescription": "<rowin>Rowin</rowin> writes the code. <mari>Mari</mari> runs the show. Together, we take messy, complex technical challenges and turn them into clean, scalable systems that businesses can actually rely on.",
@@ -44,7 +44,7 @@
   },
   "services": {
     "ariaLabel": "Our Services",
-    "sectionTitle": "WHAT WE DO",
+    "sectionTitle": "What we do",
     "sectionNumber": "02",
     "softwareArchitecture": {
       "name": "Software Architecture",
@@ -73,22 +73,22 @@
   },
   "projects": {
     "ariaLabel": "Our Work",
-    "sectionTitle": "OUR WORK",
+    "sectionTitle": "Our work",
     "sectionNumber": "03",
-    "subtitle": "// Featured builds from our portfolio",
+    "subtitle": "Featured builds from our portfolio",
     "viewAll": "View All Projects",
-    "terminalHint": "{count} projects indexed // explore the full archive",
-    "statusLive": "LIVE",
+    "terminalHint": "{count} projects indexed — explore the full archive",
+    "statusLive": "Live",
     "viewProjectLink": "View project",
     "statProjects": "Projects",
     "statTechnologies": "Technologies",
     "statIndustries": "Industries",
-    "backToProjects": "BACK TO PROJECTS",
-    "allLabel": "[ALL]",
-    "pageTitle": "OUR WORK",
-    "industries": "// INDUSTRIES",
-    "technologies": "// TECHNOLOGIES",
-    "clearFilters": "[CLEAR FILTERS]",
+    "backToProjects": "Back to projects",
+    "allLabel": "All",
+    "pageTitle": "Our work",
+    "industries": "Industries",
+    "technologies": "Technologies",
+    "clearFilters": "Clear filters",
     "projectsFound": "{count} {count, plural, one {project} other {projects}} found",
     "allTechnologies": "All Technologies",
     "noResults": "No projects match the selected filters.",
@@ -96,9 +96,9 @@
   },
   "team": {
     "ariaLabel": "Our Team",
-    "sectionTitle": "THE TEAM",
+    "sectionTitle": "The team",
     "sectionNumber": "04",
-    "statusOnline": "ONLINE",
+    "statusOnline": "Online",
     "rowin": {
       "role": "Co-Founder & Lead Engineer",
       "description": "The one who talks to machines. Rowin builds full-stack systems from the ground up -- databases, APIs, interfaces, infrastructure. If it runs on code, he's already halfway through the architecture. Obsessed with clean abstractions, fast deploys, and making complex things feel simple.",
@@ -117,28 +117,28 @@
   "contact": {
     "ariaLabel": "Contact Us",
     "sectionNumber": "05",
-    "sectionLabel": "CONTACT",
-    "heading": "LET'S BUILD",
-    "headingHighlight": "SOMETHING",
-    "subtitle": "// Ready to transform your technology? Let's talk.",
+    "sectionLabel": "Contact",
+    "heading": "Let's build",
+    "headingHighlight": "Something",
+    "subtitle": "Ready to transform your technology? Let's talk.",
     "nameLabel": "Name",
-    "namePlaceholder": "> your name",
+    "namePlaceholder": "your name",
     "emailLabel": "Email",
-    "emailPlaceholder": "> you@company.com",
+    "emailPlaceholder": "you@company.com",
     "messageLabel": "Message",
-    "messagePlaceholder": "> describe your project...",
-    "submit": "[TRANSMIT]",
-    "submitting": "[TRANSMITTING...]",
-    "successMessage": "> TRANSMISSION_COMPLETE // We'll be in touch soon.",
-    "errorMessage": "> TRANSMISSION_FAILED // Please try again or email us directly.",
+    "messagePlaceholder": "describe your project...",
+    "submit": "Transmit",
+    "submitting": "Transmitting...",
+    "successMessage": "TRANSMISSION_COMPLETE — We'll be in touch soon.",
+    "errorMessage": "TRANSMISSION_FAILED — Please try again or email us directly.",
     "formAriaLabel": "Contact form",
-    "accessDenied": "[ACCESS_DENIED]"
+    "accessDenied": "Access denied"
   },
   "footer": {
     "tagline": "Building the future, one solution at a time",
     "techConsulting": "Tech Consulting",
-    "navigationLabel": "// NAVIGATION",
-    "contactLabel": "// CONTACT",
+    "navigationLabel": "Navigation",
+    "contactLabel": "Contact",
     "footerNav": "Footer navigation",
     "copyright": "Kalebtec",
     "founders": "Rowin & Mari Hernandez",
@@ -152,30 +152,30 @@
   },
   "error": {
     "ariaLabel": "Application error",
-    "label": "[SYSTEM_FAULT]",
-    "sublabel": "RUNTIME_EXCEPTION",
-    "heading": "ERROR",
-    "terminalMessage": "> UNEXPECTED_SYSTEM_FAILURE",
-    "description": "// An unhandled exception has disrupted normal operations",
+    "label": "System fault",
+    "sublabel": "Runtime exception",
+    "heading": "Error",
+    "terminalMessage": "Unexpected system failure",
+    "description": "An unhandled exception has disrupted normal operations",
     "diagProcess": "Process execution halted",
     "diagRecovery": "Recovery protocol available",
     "diagAwaiting": "Awaiting operator action",
-    "retry": "[RETRY]",
-    "returnHome": "[RETURN_HOME]"
+    "retry": "Retry",
+    "returnHome": "Return home"
   },
   "notFound": {
     "ariaLabel": "Page not found",
-    "label": "[ERR]",
-    "sublabel": "PAGE_NOT_FOUND",
+    "label": "Err",
+    "sublabel": "Page not found",
     "heading": "404",
-    "terminalMessage": "> TARGET_RESOURCE: NOT_FOUND",
-    "description": "// The requested path does not exist in this system",
+    "terminalMessage": "TARGET_RESOURCE: NOT_FOUND",
+    "description": "The requested path does not exist in this system",
     "trace1": "Routing lookup initiated...",
     "trace2": "Scanning registered paths...",
     "trace3": "No matching route found",
     "trace4": "Connection terminated — 404",
     "awaiting": "Awaiting operator input",
-    "returnHome": "[RETURN_HOME]"
+    "returnHome": "Return home"
   },
   "common": {
     "loading": "Loading...",
@@ -191,8 +191,8 @@
   },
   "cookie": {
     "ariaLabel": "Cookie consent",
-    "sysLabel": "[SYS]",
-    "noticeLabel": "COOKIE_NOTICE",
+    "sysLabel": "Sys",
+    "noticeLabel": "Cookie notice",
     "description": "We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. Read our",
     "privacyPolicy": "Privacy Policy",
     "and": "and",
@@ -208,14 +208,14 @@
     "metaTitle": "Terms of Service | Kalebtec",
     "metaDescription": "Terms of Service for Kalebtec technology consulting services. Read about our service terms, limitations, and user responsibilities.",
     "pageTitle": "Terms of Service",
-    "effectiveDate": "Effective Date: March 9, 2026 \u2014 Last Updated: March 9, 2026",
+    "effectiveDate": "Effective Date: March 9, 2026 — Last Updated: March 9, 2026",
     "section1": {
-      "label": "AGREEMENT",
+      "label": "Agreement",
       "title": "Acceptance of Terms",
       "content": "By accessing or using the Kalebtec website (kalebtec.com) and our technology consulting services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our website or services. These terms constitute a legally binding agreement between you and Kalebtec, operated by Rowin Hernandez and Mari Hernandez."
     },
     "section2": {
-      "label": "SERVICES",
+      "label": "Services",
       "title": "Description of Services",
       "content": "Kalebtec provides technology consulting services including but not limited to:",
       "item1": "Web and mobile application development",
@@ -227,7 +227,7 @@
       "contentAfter": "The specific scope of services for each engagement will be defined in a separate statement of work or service agreement between Kalebtec and the client."
     },
     "section3": {
-      "label": "USER_OBLIGATIONS",
+      "label": "User obligations",
       "title": "User Responsibilities",
       "content": "When using our website and services, you agree to:",
       "item1": "Provide accurate and complete information when contacting us or engaging our services",
@@ -237,23 +237,23 @@
       "item5": "Respect the intellectual property rights of Kalebtec and its clients"
     },
     "section4": {
-      "label": "IP_RIGHTS",
+      "label": "Ip rights",
       "title": "Intellectual Property",
       "content1": "All content on the Kalebtec website, including but not limited to text, graphics, logos, design elements, 3D visuals, animations, code, and software, is the property of Kalebtec and is protected by applicable intellectual property laws.",
       "content2": "Intellectual property rights for client deliverables will be governed by the specific terms outlined in each project's statement of work or service agreement. Unless otherwise agreed in writing, Kalebtec retains the right to showcase completed work in its portfolio."
     },
     "section5": {
-      "label": "CONFIDENTIALITY",
+      "label": "Confidentiality",
       "title": "Confidentiality",
       "content": "Kalebtec acknowledges that in the course of providing consulting services, we may receive confidential information from clients. We commit to maintaining the confidentiality of such information and will not disclose it to third parties without the client's prior written consent, except as required by law. Specific confidentiality terms may be established in individual service agreements or non-disclosure agreements."
     },
     "section6": {
-      "label": "PAYMENT",
+      "label": "Payment",
       "title": "Payment Terms",
       "content": "Payment terms, rates, and schedules for consulting services will be outlined in individual project agreements or statements of work. Unless otherwise specified, invoices are due within thirty (30) days of issuance. Kalebtec reserves the right to suspend services for overdue payments. Late payments may be subject to reasonable interest charges as specified in the applicable service agreement."
     },
     "section7": {
-      "label": "LIABILITY",
+      "label": "Liability",
       "title": "Limitation of Liability",
       "content": "To the maximum extent permitted by applicable law, Kalebtec shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, use, or goodwill, arising out of or in connection with:",
       "item1": "Your use of or inability to use our website or services",
@@ -263,27 +263,27 @@
       "contentAfter": "Our total liability for any claims arising from our services shall not exceed the total fees paid by the client for the specific engagement giving rise to the claim."
     },
     "section8": {
-      "label": "WARRANTIES",
+      "label": "Warranties",
       "title": "Disclaimer of Warranties",
       "content": "Our website and its content are provided \"as is\" and \"as available\" without warranties of any kind, either express or implied. Kalebtec does not warrant that the website will be uninterrupted, error-free, or free of viruses or other harmful components. Specific warranties for consulting services will be defined in individual service agreements."
     },
     "section9": {
-      "label": "TERMINATION",
+      "label": "Termination",
       "title": "Termination",
       "content": "We reserve the right to terminate or restrict your access to our website at any time, without notice, for conduct that we believe violates these Terms of Service or is harmful to other users, us, or third parties. Termination of consulting service engagements will be governed by the terms outlined in individual service agreements."
     },
     "section10": {
-      "label": "GOVERNING_LAW",
+      "label": "Governing law",
       "title": "Governing Law",
       "content": "These Terms of Service shall be governed by and construed in accordance with the laws of the United States, without regard to conflict of law provisions. Any disputes arising under these terms shall be resolved through good-faith negotiation, and if necessary, binding arbitration in accordance with applicable rules."
     },
     "section11": {
-      "label": "MODIFICATIONS",
+      "label": "Modifications",
       "title": "Changes to Terms",
       "content": "Kalebtec reserves the right to modify these Terms of Service at any time. Changes will be effective immediately upon posting to this page. We will update the \"Last Updated\" date at the top of this page when changes are made. Your continued use of our website or services after changes are posted constitutes your acceptance of the modified terms."
     },
     "contact": {
-      "label": "CONTACT",
+      "label": "Contact",
       "title": "Contact Us",
       "content": "If you have any questions about these Terms of Service, please contact us:"
     },
@@ -294,14 +294,14 @@
     "metaTitle": "Privacy Policy | Kalebtec",
     "metaDescription": "Privacy Policy for Kalebtec. Learn about how we collect, use, and protect your personal data.",
     "pageTitle": "Privacy Policy",
-    "effectiveDate": "Effective Date: March 9, 2026 \u2014 Last Updated: March 9, 2026",
+    "effectiveDate": "Effective Date: March 9, 2026 — Last Updated: March 9, 2026",
     "section1": {
-      "label": "OVERVIEW",
+      "label": "Overview",
       "title": "Introduction",
       "content": "Kalebtec (\"we\", \"us\", or \"our\"), operated by Rowin Hernandez and Mari Hernandez, is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website (kalebtec.com) or use our technology consulting services. Please read this policy carefully. By using our website or services, you consent to the practices described herein."
     },
     "section2": {
-      "label": "DATA_COLLECTION",
+      "label": "Data collection",
       "title": "Information We Collect",
       "content": "We may collect information about you in several ways:",
       "personalDataTitle": "Personal Data",
@@ -319,7 +319,7 @@
       "autoItem5": "Referring website or source"
     },
     "section3": {
-      "label": "DATA_USAGE",
+      "label": "Data usage",
       "title": "How We Use Your Information",
       "content": "We use the information we collect for the following purposes:",
       "item1": "To respond to your inquiries and provide requested services",
@@ -330,7 +330,7 @@
       "item6": "To comply with legal obligations"
     },
     "section4": {
-      "label": "COOKIES",
+      "label": "Cookies",
       "title": "Cookies and Tracking Technologies",
       "content": "Our website may use cookies and similar tracking technologies to enhance your browsing experience. Cookies are small data files stored on your device.",
       "typesTitle": "Types of Cookies We Use",
@@ -341,7 +341,7 @@
       "controlContent": "You can control cookies through your browser settings. Disabling cookies may affect some website functionality. We also use localStorage to persist your theme preference and cookie consent choice."
     },
     "section5": {
-      "label": "THIRD_PARTIES",
+      "label": "Third parties",
       "title": "Third-Party Services",
       "content": "We may use third-party services that collect, monitor, and analyze data to improve our website and services. These third parties have their own privacy policies addressing how they use such information. Third-party services we may use include:",
       "item1": "Website analytics providers",
@@ -351,17 +351,17 @@
       "contentAfter": "We do not sell, trade, or otherwise transfer your personal information to outside parties for marketing purposes."
     },
     "section6": {
-      "label": "DATA_SECURITY",
+      "label": "Data security",
       "title": "Data Security",
       "content": "We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of electronic transmission or storage is 100% secure, and we cannot guarantee absolute security. We use industry-standard encryption (HTTPS/TLS) for all data transmitted between your browser and our servers."
     },
     "section7": {
-      "label": "DATA_RETENTION",
+      "label": "Data retention",
       "title": "Data Retention",
       "content": "We retain your personal information only for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law. Contact information submitted through our website is retained for the duration of our business relationship and for a reasonable period thereafter to address any follow-up inquiries."
     },
     "section8": {
-      "label": "YOUR_RIGHTS",
+      "label": "Your rights",
       "title": "Your Rights",
       "content": "Depending on your location, you may have certain rights regarding your personal data, including:",
       "item1": "The right to access the personal data we hold about you",
@@ -374,18 +374,18 @@
       "contentAfterPost": ". We will respond to your request within a reasonable timeframe."
     },
     "section9": {
-      "label": "CHILDREN",
+      "label": "Children",
       "title": "Children's Privacy",
       "contentPre": "Our website and services are not directed at individuals under the age of 13. We do not knowingly collect personal information from children. If we become aware that a child under 13 has provided us with personal information, we will take steps to delete such information promptly. If you believe we have inadvertently collected information from a child, please contact us at",
       "contentPost": "."
     },
     "section10": {
-      "label": "MODIFICATIONS",
+      "label": "Modifications",
       "title": "Changes to This Policy",
       "content": "We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated \"Last Updated\" date. We encourage you to review this policy periodically. Your continued use of our website or services after any changes constitutes acceptance of the updated policy."
     },
     "contact": {
-      "label": "CONTACT",
+      "label": "Contact",
       "title": "Contact Us",
       "content": "If you have any questions or concerns about this Privacy Policy, please contact us:"
     },

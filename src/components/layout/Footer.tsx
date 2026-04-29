@@ -17,22 +17,12 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-cyber-surface relative cyber-grid-bg">
-      {/* Top gradient border line (decorative) */}
-      <div
-        className="h-px w-full"
-        aria-hidden="true"
-        style={{
-          background: 'linear-gradient(90deg, transparent, #8000FF 30%, #00ffff 70%, transparent)',
-        }}
-      />
-
-      {/* Main footer content */}
+    <footer className="bg-bg border-t border-border">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
-          {/* Left column: Brand */}
+          {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2.5">
               <Image
                 src="/logo.svg"
                 alt="Kalebtec logo"
@@ -40,25 +30,19 @@ export default function Footer() {
                 height={28}
                 className="w-7 h-7"
               />
-              <span className="font-display text-sm uppercase tracking-widest text-cyber-heading">
-                KALEBTEC
+              <span className="font-display text-base font-semibold tracking-tight text-heading">
+                Kalebtec
               </span>
             </div>
-            <p className="text-sm text-cyber-muted leading-relaxed max-w-xs typing-cursor">
+            <p className="text-sm text-muted leading-relaxed max-w-xs">
               {t('tagline')}
             </p>
-            {/* Purple accent square (decorative) */}
-            <div className="flex items-center gap-2 pt-2" aria-hidden="true">
-              <span className="w-1.5 h-1.5 bg-brand" />
-              <span className="font-mono text-[10px] text-cyber-faint uppercase tracking-wider">
-                {t('techConsulting')}
-              </span>
-            </div>
+            <p className="text-sm text-faint">{t('techConsulting')}</p>
           </div>
 
-          {/* Middle column: Navigation */}
+          {/* Navigation */}
           <div>
-            <h3 className="font-mono text-xs uppercase tracking-widest text-cyber-faint mb-6">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-faint mb-5">
               {t('navigationLabel')}
             </h3>
             <nav className="flex flex-col gap-3" aria-label={t('footerNav')}>
@@ -66,7 +50,7 @@ export default function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="font-mono text-sm text-cyber-muted hover:text-cyber-heading transition-colors duration-300 w-fit"
+                  className="text-sm text-body hover:text-heading hover:underline underline-offset-4 transition-colors duration-200 w-fit"
                 >
                   {navT(link.labelKey)}
                 </Link>
@@ -74,32 +58,31 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Right column: Contact */}
+          {/* Contact + socials */}
           <div>
-            <h3 className="font-mono text-xs uppercase tracking-widest text-cyber-faint mb-6">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-faint mb-5">
               {t('contactLabel')}
             </h3>
             <div className="space-y-3">
               <a
                 href="mailto:hello@kalebtec.com"
-                className="font-mono text-sm text-cyber-muted hover:text-brand-light hover:neon-glow transition-all duration-300 block w-fit"
+                className="text-sm text-body hover:text-heading hover:underline underline-offset-4 transition-colors duration-200 block w-fit"
               >
                 hello@kalebtec.com
               </a>
             </div>
 
-            {/* Social links */}
-            <div className="flex gap-4 mt-6">
+            <div className="flex gap-2 mt-6">
               <a
                 href="https://linkedin.com/company/kalebtec"
                 target="_blank"
-                className="p-2 inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-cyber-faint hover:text-cyber-heading transition-colors duration-300"
+                className="p-2 inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-muted hover:text-heading transition-colors duration-200"
                 aria-label={t('linkedinAriaLabel')}
                 rel="noopener noreferrer"
               >
                 <svg
-                  width="18"
-                  height="18"
+                  width="20"
+                  height="20"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                   aria-hidden="true"
@@ -110,13 +93,13 @@ export default function Footer() {
               <a
                 href="https://x.com/kalebtec"
                 target="_blank"
-                className="p-2 inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-cyber-faint hover:text-cyber-heading transition-colors duration-300"
+                className="p-2 inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-muted hover:text-heading transition-colors duration-200"
                 aria-label={t('twitterAriaLabel')}
                 rel="noopener noreferrer"
               >
                 <svg
-                  width="18"
-                  height="18"
+                  width="20"
+                  height="20"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                   aria-hidden="true"
@@ -127,13 +110,13 @@ export default function Footer() {
               <a
                 href="https://github.com/kalebtec"
                 target="_blank"
-                className="p-2 inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-cyber-faint hover:text-cyber-heading transition-colors duration-300"
+                className="p-2 inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-muted hover:text-heading transition-colors duration-200"
                 aria-label={t('githubAriaLabel')}
                 rel="noopener noreferrer"
               >
                 <svg
-                  width="18"
-                  height="18"
+                  width="20"
+                  height="20"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                   aria-hidden="true"
@@ -146,37 +129,29 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="border-t border-cyber-border">
+      {/* Bottom legal bar */}
+      <div className="border-t border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-6">
-            <p className="font-mono text-xs text-cyber-faint">
-              &copy; {new Date().getFullYear()} {t('copyright')}
-            </p>
-            <p className="font-mono text-xs text-cyber-faint">{t('founders')}</p>
+          <div className="flex items-center gap-4 text-xs text-faint">
+            <span className="font-mono">
+              © {new Date().getFullYear()} {t('copyright')}
+            </span>
+            <span className="hidden sm:inline">·</span>
+            <span className="hidden sm:inline">{t('founders')}</span>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6 text-xs">
             <Link
               href="/privacy"
-              className="font-mono text-[10px] text-cyber-faint uppercase tracking-wider hover:text-cyber-heading transition-colors duration-300 py-2 px-1"
+              className="text-faint hover:text-heading transition-colors duration-200"
             >
               {t('privacyPolicy')}
             </Link>
-            <span className="w-px h-3 bg-cyber-faint/20" aria-hidden="true" />
             <Link
               href="/terms"
-              className="font-mono text-[10px] text-cyber-faint uppercase tracking-wider hover:text-cyber-heading transition-colors duration-300 py-2 px-1"
+              className="text-faint hover:text-heading transition-colors duration-200"
             >
               {t('termsOfService')}
             </Link>
-            <span className="w-px h-3 bg-cyber-faint/20" aria-hidden="true" />
-            {/* HUD-style markers (decorative) */}
-            <span
-              className="font-mono text-[10px] text-cyber-faint uppercase tracking-wider"
-              aria-hidden="true"
-            >
-              {t('sysVer')}
-            </span>
           </div>
         </div>
       </div>

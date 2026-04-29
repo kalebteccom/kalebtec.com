@@ -5,7 +5,7 @@ import { Link } from '@/i18n/navigation';
 import SectionHeading from '@/components/ui/SectionHeading';
 import ProjectsSectionClient from './ProjectsSectionClient';
 import type { Locale } from '@/i18n/routing';
-import type { Project, Industry } from '@/payload-types';
+import type { Project } from '@/payload-types';
 
 export default async function ProjectsSection() {
   let projects: Project[] = [];
@@ -25,7 +25,6 @@ export default async function ProjectsSection() {
     projects = result.docs;
     totalProjects = result.totalDocs;
   } catch {
-    // DB unreachable at build time — render nothing
     return null;
   }
 
@@ -33,7 +32,6 @@ export default async function ProjectsSection() {
 
   const t = await getTranslations('projects');
 
-  // Compute aggregate stats from the fetched projects
   const allTechnologies = new Set<string>();
   const allIndustries = new Set<string>();
   for (const project of projects) {
@@ -52,25 +50,11 @@ export default async function ProjectsSection() {
   };
 
   return (
-    <section id="projects" aria-label={t('ariaLabel')} className="relative py-32 overflow-hidden">
-      {/* Gradient top divider */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl px-6 lg:px-8"
-        aria-hidden="true"
-      >
-        <div className="h-px bg-gradient-to-r from-transparent via-brand to-cyber-cyan/50 to-transparent" />
-      </div>
-
-      {/* Subtle radial glow background */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        aria-hidden="true"
-        style={{
-          background:
-            'radial-gradient(ellipse 70% 50% at 50% 60%, rgba(128, 0, 255, 0.03) 0%, rgba(0, 255, 255, 0.02) 40%, transparent 70%)',
-        }}
-      />
-
+    <section
+      id="projects"
+      aria-label={t('ariaLabel')}
+      className="relative py-24 md:py-32 bg-bg"
+    >
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeading
           title={t('sectionTitle')}
@@ -78,44 +62,25 @@ export default async function ProjectsSection() {
           subtitle={t('subtitle')}
         />
 
-        {/* Stats bar */}
         <ProjectsSectionClient projects={projects} stats={stats} />
 
-        {/* Prominent CTA */}
-        <div className="mt-16 text-center">
-          <Link
-            href="/projects"
-            className="group relative inline-flex items-center gap-3 font-mono text-sm uppercase tracking-wider px-8 py-4 border border-brand bg-brand/10 text-cyber-heading hover:bg-brand hover:text-white hover:shadow-[0_0_40px_rgba(128,0,255,0.3)] focus:outline-none focus:ring-2 focus:ring-brand/50 focus:ring-offset-2 focus:ring-offset-cyber-bg transition-all duration-500 cyber-border-glow"
-          >
-            {/* Corner accents on the CTA button */}
-            <span
-              className="absolute top-0 left-0 w-3 h-3 border-t border-l border-cyber-cyan/50 group-hover:border-cyber-cyan transition-colors duration-300"
-              aria-hidden="true"
-            />
-            <span
-              className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-cyber-cyan/50 group-hover:border-cyber-cyan transition-colors duration-300"
-              aria-hidden="true"
-            />
-
-            <span className="text-cyber-faint group-hover:text-white/60 transition-colors" aria-hidden="true">
-              [
-            </span>
+        <div className="mt-16 flex justify-start">
+          <Link href="/projects" className="btn-pill btn-secondary">
             <span>{t('viewAll')}</span>
-            <span
-              className="inline-block transition-transform duration-300 group-hover:translate-x-1"
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
               aria-hidden="true"
+              className="transition-transform duration-200 group-hover:translate-x-0.5"
             >
-              &rarr;
-            </span>
-            <span className="text-cyber-faint group-hover:text-white/60 transition-colors" aria-hidden="true">
-              ]
-            </span>
+              <line x1="2" y1="8" x2="13" y2="8" />
+              <polyline points="9,4 13,8 9,12" fill="none" />
+            </svg>
           </Link>
-
-          {/* Terminal-style hint below CTA */}
-          <p className="mt-4 font-mono text-xs text-cyber-faint/50" aria-hidden="true">
-            &gt; {t('terminalHint', { count: totalProjects })}
-          </p>
         </div>
       </div>
     </section>

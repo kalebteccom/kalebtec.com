@@ -9,29 +9,29 @@
     "notFoundTitle": "Projet Non Trouvé | Kalebtec"
   },
   "nav": {
-    "about": "À PROPOS",
-    "services": "SERVICES",
-    "projects": "PROJETS",
-    "team": "ÉQUIPE",
-    "contact": "CONTACT",
+    "about": "À propos",
+    "services": "Services",
+    "projects": "Projets",
+    "team": "Équipe",
+    "contact": "Contact",
     "openMenu": "Ouvrir le menu de navigation",
     "closeMenu": "Fermer le menu de navigation",
     "mobileNav": "Navigation mobile",
     "mobileMenuDialog": "Menu de navigation",
     "mainNav": "Navigation principale",
-    "systemNav": "SYSTEM.NAV"
+    "systemNav": "Navigation"
   },
   "hero": {
     "ariaLabel": "Héros",
-    "sysActive": "SYS.ACTIVE",
-    "tagline": "> CONSEIL_TECHNOLOGIQUE",
-    "valueProp": "// Nous architecturons des solutions numériques qui transforment les entreprises",
-    "cta": "[INITIER_CONTACT]",
-    "scroll": "[SCROLL]"
+    "eyebrow": "Kalebtec — Conseil technologique",
+    "headline": "L'ingénierie avec intention.",
+    "subhead": "Architecture logicielle, plateformes web et automatisation par IA, conçues par une équipe restreinte qui livre.",
+    "primaryCta": "Démarrer un projet",
+    "secondaryCta": "Voir nos réalisations"
   },
   "about": {
     "ariaLabel": "À propos de Kalebtec",
-    "sectionTitle": "QUI SOMMES-NOUS",
+    "sectionTitle": "Qui sommes-nous",
     "sectionNumber": "01",
     "originStory": "Nous n'avons pas fondé Kalebtec dans une salle de réunion. Nous l'avons lancé autour d'une table de cuisine, tard le soir, alimentés par du mauvais café et une obsession partagée pour construire des choses qui marchent vraiment.",
     "teamDescription": "<rowin>Rowin</rowin> écrit le code. <mari>Mari</mari> orchestre le tout. Ensemble, nous prenons des défis techniques complexes et désordonnés et les transformons en systèmes propres et évolutifs sur lesquels les entreprises peuvent réellement compter.",
@@ -44,7 +44,7 @@
   },
   "services": {
     "ariaLabel": "Nos Services",
-    "sectionTitle": "CE QUE NOUS FAISONS",
+    "sectionTitle": "Ce que nous faisons",
     "sectionNumber": "02",
     "softwareArchitecture": {
       "name": "Architecture Logicielle",
@@ -73,22 +73,22 @@
   },
   "projects": {
     "ariaLabel": "Nos Réalisations",
-    "sectionTitle": "NOS RÉALISATIONS",
+    "sectionTitle": "Nos réalisations",
     "sectionNumber": "03",
-    "subtitle": "// Réalisations phares de notre portfolio",
+    "subtitle": "Réalisations phares de notre portfolio",
     "viewAll": "Voir Tous les Projets",
-    "terminalHint": "{count} projets indexés // explorez l'archive complète",
-    "statusLive": "LIVE",
+    "terminalHint": "{count} projets indexés — explorez l'archive complète",
+    "statusLive": "Live",
     "viewProjectLink": "Voir le projet",
     "statProjects": "Projets",
     "statTechnologies": "Technologies",
     "statIndustries": "Industries",
-    "backToProjects": "RETOUR AUX PROJETS",
-    "allLabel": "[TOUS]",
-    "pageTitle": "NOS RÉALISATIONS",
-    "industries": "// INDUSTRIES",
-    "technologies": "// TECHNOLOGIES",
-    "clearFilters": "[EFFACER FILTRES]",
+    "backToProjects": "Retour aux projets",
+    "allLabel": "Tous",
+    "pageTitle": "Nos réalisations",
+    "industries": "Industries",
+    "technologies": "Technologies",
+    "clearFilters": "Effacer filtres",
     "projectsFound": "{count} {count, plural, one {projet} other {projets}} trouvés",
     "allTechnologies": "Toutes les Technologies",
     "noResults": "Aucun projet ne correspond aux filtres sélectionnés.",
@@ -96,9 +96,9 @@
   },
   "team": {
     "ariaLabel": "Notre Équipe",
-    "sectionTitle": "L'ÉQUIPE",
+    "sectionTitle": "L'équipe",
     "sectionNumber": "04",
-    "statusOnline": "ONLINE",
+    "statusOnline": "Online",
     "rowin": {
       "role": "Cofondateur et Ingénieur Principal",
       "description": "Celui qui parle aux machines. Rowin construit des systèmes full-stack de A à Z -- bases de données, APIs, interfaces, infrastructure. Si ça tourne avec du code, il est déjà à mi-chemin de l'architecture. Obsédé par les abstractions propres, les déploiements rapides et rendre le complexe simple.",
@@ -117,28 +117,28 @@
   "contact": {
     "ariaLabel": "Contactez-nous",
     "sectionNumber": "05",
-    "sectionLabel": "CONTACT",
-    "heading": "CONSTRUISONS",
-    "headingHighlight": "QUELQUE CHOSE",
-    "subtitle": "// Prêt à transformer votre technologie ? Parlons-en.",
+    "sectionLabel": "Contact",
+    "heading": "Construisons",
+    "headingHighlight": "Quelque chose",
+    "subtitle": "Prêt à transformer votre technologie ? Parlons-en.",
     "nameLabel": "Nom",
-    "namePlaceholder": "> votre nom",
+    "namePlaceholder": "votre nom",
     "emailLabel": "E-mail",
-    "emailPlaceholder": "> vous@entreprise.com",
+    "emailPlaceholder": "vous@entreprise.com",
     "messageLabel": "Message",
-    "messagePlaceholder": "> décrivez votre projet...",
-    "submit": "[TRANSMETTRE]",
-    "submitting": "[TRANSMISSION...]",
-    "successMessage": "> TRANSMISSION_TERMINÉE // Nous vous contacterons bientôt.",
-    "errorMessage": "> TRANSMISSION_ÉCHOUÉE // Veuillez réessayer ou nous écrire directement.",
+    "messagePlaceholder": "décrivez votre projet...",
+    "submit": "Transmettre",
+    "submitting": "Transmission...",
+    "successMessage": "TRANSMISSION_TERMINÉE — Nous vous contacterons bientôt.",
+    "errorMessage": "TRANSMISSION_ÉCHOUÉE — Veuillez réessayer ou nous écrire directement.",
     "formAriaLabel": "Formulaire de contact",
-    "accessDenied": "[ACCÈS_REFUSÉ]"
+    "accessDenied": "ACCÈS_REFUSÉ"
   },
   "footer": {
     "tagline": "Construire l'avenir, une solution à la fois",
     "techConsulting": "Conseil en Technologie",
-    "navigationLabel": "// NAVIGATION",
-    "contactLabel": "// CONTACT",
+    "navigationLabel": "Navigation",
+    "contactLabel": "Contact",
     "footerNav": "Navigation du pied de page",
     "copyright": "Kalebtec",
     "founders": "Rowin & Mari Hernandez",
@@ -152,30 +152,30 @@
   },
   "error": {
     "ariaLabel": "Erreur d'application",
-    "label": "[DÉFAILLANCE_SYSTÈME]",
-    "sublabel": "EXCEPTION_EXÉCUTION",
-    "heading": "ERREUR",
-    "terminalMessage": "> DÉFAILLANCE_SYSTÈME_INATTENDUE",
-    "description": "// Une exception non gérée a perturbé les opérations normales",
+    "label": "Défaillance_système",
+    "sublabel": "Exception_exécution",
+    "heading": "Erreur",
+    "terminalMessage": "DÉFAILLANCE_SYSTÈME_INATTENDUE",
+    "description": "Une exception non gérée a perturbé les opérations normales",
     "diagProcess": "Exécution du processus interrompue",
     "diagRecovery": "Protocole de récupération disponible",
     "diagAwaiting": "En attente de l'action de l'opérateur",
-    "retry": "[RÉESSAYER]",
-    "returnHome": "[RETOUR_ACCUEIL]"
+    "retry": "Réessayer",
+    "returnHome": "Retour accueil"
   },
   "notFound": {
     "ariaLabel": "Page non trouvée",
-    "label": "[ERR]",
-    "sublabel": "PAGE_NON_TROUVÉE",
+    "label": "Err",
+    "sublabel": "Page_non_trouvée",
     "heading": "404",
-    "terminalMessage": "> RESSOURCE_CIBLE : NON_TROUVÉE",
-    "description": "// Le chemin demandé n'existe pas dans ce système",
+    "terminalMessage": "RESSOURCE_CIBLE : NON_TROUVÉE",
+    "description": "Le chemin demandé n'existe pas dans ce système",
     "trace1": "Recherche de route initiée...",
     "trace2": "Analyse des chemins enregistrés...",
     "trace3": "Aucune route correspondante trouvée",
     "trace4": "Connexion terminée — 404",
     "awaiting": "En attente de l'entrée de l'opérateur",
-    "returnHome": "[RETOUR_ACCUEIL]"
+    "returnHome": "Retour accueil"
   },
   "common": {
     "loading": "Chargement...",
@@ -191,8 +191,8 @@
   },
   "cookie": {
     "ariaLabel": "Consentement aux cookies",
-    "sysLabel": "[SYS]",
-    "noticeLabel": "AVIS_DE_COOKIES",
+    "sysLabel": "Sys",
+    "noticeLabel": "Avis de cookies",
     "description": "Nous utilisons des cookies pour ameliorer votre experience. En continuant a visiter ce site, vous acceptez notre utilisation des cookies. Consultez notre",
     "privacyPolicy": "Politique de Confidentialite",
     "and": "et",
@@ -208,14 +208,14 @@
     "metaTitle": "Conditions d'Utilisation | Kalebtec",
     "metaDescription": "Conditions d'Utilisation des services de conseil technologique de Kalebtec. Informez-vous sur nos conditions de service, limitations et responsabilités des utilisateurs.",
     "pageTitle": "Conditions d'Utilisation",
-    "effectiveDate": "Date d'effet : 9 mars 2026 \u2014 Dernière mise à jour : 9 mars 2026",
+    "effectiveDate": "Date d'effet : 9 mars 2026 — Dernière mise à jour : 9 mars 2026",
     "section1": {
-      "label": "ACCORD",
+      "label": "Accord",
       "title": "Acceptation des Conditions",
       "content": "En accédant ou en utilisant le site web de Kalebtec (kalebtec.com) et nos services de conseil technologique, vous acceptez d'être lié par ces Conditions d'Utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser notre site web ni nos services. Ces conditions constituent un accord juridiquement contraignant entre vous et Kalebtec, exploité par Rowin Hernandez et Mari Hernandez."
     },
     "section2": {
-      "label": "SERVICES",
+      "label": "Services",
       "title": "Description des Services",
       "content": "Kalebtec fournit des services de conseil technologique comprenant, sans s'y limiter :",
       "item1": "Développement d'applications web et mobiles",
@@ -227,7 +227,7 @@
       "contentAfter": "La portée spécifique des services pour chaque engagement sera définie dans un cahier des charges ou un contrat de service distinct entre Kalebtec et le client."
     },
     "section3": {
-      "label": "OBLIGATIONS_UTILISATEUR",
+      "label": "Obligations utilisateur",
       "title": "Responsabilités de l'Utilisateur",
       "content": "En utilisant notre site web et nos services, vous acceptez de :",
       "item1": "Fournir des informations exactes et complètes lorsque vous nous contactez ou faites appel à nos services",
@@ -237,23 +237,23 @@
       "item5": "Respecter les droits de propriété intellectuelle de Kalebtec et de ses clients"
     },
     "section4": {
-      "label": "PROPRIÉTÉ_INTELLECTUELLE",
+      "label": "Propriété_intellectuelle",
       "title": "Propriété Intellectuelle",
       "content1": "Tout le contenu du site web de Kalebtec, y compris, sans s'y limiter, les textes, graphiques, logos, éléments de design, visuels 3D, animations, code et logiciels, est la propriété de Kalebtec et est protégé par les lois applicables en matière de propriété intellectuelle.",
       "content2": "Les droits de propriété intellectuelle des livrables clients seront régis par les conditions spécifiques définies dans le cahier des charges ou le contrat de service de chaque projet. Sauf accord écrit contraire, Kalebtec se réserve le droit de présenter les travaux réalisés dans son portfolio."
     },
     "section5": {
-      "label": "CONFIDENTIALITÉ",
+      "label": "Confidentialité",
       "title": "Confidentialité",
       "content": "Kalebtec reconnaît que dans le cadre de la fourniture de services de conseil, nous pouvons recevoir des informations confidentielles de nos clients. Nous nous engageons à maintenir la confidentialité de ces informations et ne les divulguerons pas à des tiers sans le consentement écrit préalable du client, sauf si la loi l'exige. Des conditions de confidentialité spécifiques peuvent être établies dans des contrats de service individuels ou des accords de non-divulgation."
     },
     "section6": {
-      "label": "PAIEMENT",
+      "label": "Paiement",
       "title": "Conditions de Paiement",
       "content": "Les conditions de paiement, tarifs et calendriers des services de conseil seront détaillés dans les contrats de projet ou cahiers des charges individuels. Sauf indication contraire, les factures sont payables dans un délai de trente (30) jours à compter de leur émission. Kalebtec se réserve le droit de suspendre les services en cas de retard de paiement. Les paiements en retard peuvent être soumis à des intérêts de retard raisonnables tels que spécifiés dans le contrat de service applicable."
     },
     "section7": {
-      "label": "RESPONSABILITÉ",
+      "label": "Responsabilité",
       "title": "Limitation de Responsabilité",
       "content": "Dans toute la mesure permise par la loi applicable, Kalebtec ne pourra être tenu responsable de tout dommage indirect, accessoire, spécial, consécutif ou punitif, y compris, sans s'y limiter, la perte de bénéfices, de données, d'utilisation ou de clientèle, résultant de ou en rapport avec :",
       "item1": "Votre utilisation ou votre incapacité à utiliser notre site web ou nos services",
@@ -263,27 +263,27 @@
       "contentAfter": "Notre responsabilité totale pour toute réclamation découlant de nos services ne pourra excéder le montant total des honoraires payés par le client pour l'engagement spécifique ayant donné lieu à la réclamation."
     },
     "section8": {
-      "label": "GARANTIES",
+      "label": "Garanties",
       "title": "Exclusion de Garanties",
       "content": "Notre site web et son contenu sont fournis « en l'état » et « selon disponibilité », sans garantie d'aucune sorte, explicite ou implicite. Kalebtec ne garantit pas que le site web fonctionnera de manière ininterrompue, sans erreur, ni qu'il sera exempt de virus ou d'autres composants nuisibles. Les garanties spécifiques aux services de conseil seront définies dans les contrats de service individuels."
     },
     "section9": {
-      "label": "RÉSILIATION",
+      "label": "Résiliation",
       "title": "Résiliation",
       "content": "Nous nous réservons le droit de résilier ou de restreindre votre accès à notre site web à tout moment, sans préavis, pour tout comportement que nous estimons contraire à ces Conditions d'Utilisation ou préjudiciable aux autres utilisateurs, à nous-mêmes ou à des tiers. La résiliation des engagements de services de conseil sera régie par les conditions définies dans les contrats de service individuels."
     },
     "section10": {
-      "label": "LOI_APPLICABLE",
+      "label": "Loi applicable",
       "title": "Loi Applicable",
       "content": "Ces Conditions d'Utilisation seront régies et interprétées conformément aux lois des États-Unis, sans tenir compte des dispositions relatives aux conflits de lois. Tout litige découlant de ces conditions sera résolu par négociation de bonne foi et, si nécessaire, par arbitrage contraignant conformément aux règles applicables."
     },
     "section11": {
-      "label": "MODIFICATIONS",
+      "label": "Modifications",
       "title": "Modifications des Conditions",
       "content": "Kalebtec se réserve le droit de modifier ces Conditions d'Utilisation à tout moment. Les modifications prendront effet immédiatement dès leur publication sur cette page. Nous mettrons à jour la date de « Dernière mise à jour » en haut de cette page lorsque des modifications seront apportées. Votre utilisation continue de notre site web ou de nos services après la publication des modifications constitue votre acceptation des conditions modifiées."
     },
     "contact": {
-      "label": "CONTACT",
+      "label": "Contact",
       "title": "Contactez-nous",
       "content": "Si vous avez des questions concernant ces Conditions d'Utilisation, veuillez nous contacter :"
     },
@@ -294,14 +294,14 @@
     "metaTitle": "Politique de Confidentialité | Kalebtec",
     "metaDescription": "Politique de Confidentialité de Kalebtec. Découvrez comment nous collectons, utilisons et protégeons vos données personnelles.",
     "pageTitle": "Politique de Confidentialité",
-    "effectiveDate": "Date d'effet : 9 mars 2026 \u2014 Dernière mise à jour : 9 mars 2026",
+    "effectiveDate": "Date d'effet : 9 mars 2026 — Dernière mise à jour : 9 mars 2026",
     "section1": {
-      "label": "APERÇU",
+      "label": "Aperçu",
       "title": "Introduction",
       "content": "Kalebtec (« nous », « notre » ou « nos »), exploité par Rowin Hernandez et Mari Hernandez, s'engage à protéger votre vie privée. Cette Politique de Confidentialité explique comment nous collectons, utilisons, divulguons et protégeons vos informations lorsque vous visitez notre site web (kalebtec.com) ou utilisez nos services de conseil technologique. Veuillez lire attentivement cette politique. En utilisant notre site web ou nos services, vous consentez aux pratiques décrites dans le présent document."
     },
     "section2": {
-      "label": "COLLECTE_DONNÉES",
+      "label": "Collecte_données",
       "title": "Informations que Nous Collectons",
       "content": "Nous pouvons collecter des informations vous concernant de plusieurs manières :",
       "personalDataTitle": "Données Personnelles",
@@ -319,7 +319,7 @@
       "autoItem5": "Site web ou source de référence"
     },
     "section3": {
-      "label": "UTILISATION_DONNÉES",
+      "label": "Utilisation_données",
       "title": "Comment Nous Utilisons Vos Informations",
       "content": "Nous utilisons les informations collectées aux fins suivantes :",
       "item1": "Pour répondre à vos demandes et fournir les services demandés",
@@ -330,7 +330,7 @@
       "item6": "Pour nous conformer aux obligations légales"
     },
     "section4": {
-      "label": "COOKIES",
+      "label": "Cookies",
       "title": "Cookies et Technologies de Suivi",
       "content": "Notre site web peut utiliser des cookies et des technologies de suivi similaires pour améliorer votre expérience de navigation. Les cookies sont de petits fichiers de données stockés sur votre appareil.",
       "typesTitle": "Types de Cookies que Nous Utilisons",
@@ -341,7 +341,7 @@
       "controlContent": "Vous pouvez contrôler les cookies via les paramètres de votre navigateur. La désactivation des cookies peut affecter certaines fonctionnalités du site web. Nous utilisons également le localStorage pour conserver votre préférence de thème et votre choix de consentement aux cookies."
     },
     "section5": {
-      "label": "TIERS",
+      "label": "Tiers",
       "title": "Services Tiers",
       "content": "Nous pouvons utiliser des services tiers qui collectent, surveillent et analysent des données pour améliorer notre site web et nos services. Ces tiers disposent de leurs propres politiques de confidentialité décrivant comment ils utilisent ces informations. Les services tiers que nous pouvons utiliser comprennent :",
       "item1": "Fournisseurs d'analyses web",
@@ -351,17 +351,17 @@
       "contentAfter": "Nous ne vendons, n'échangeons ni ne transférons de quelque autre manière vos informations personnelles à des tiers à des fins de marketing."
     },
     "section6": {
-      "label": "SÉCURITÉ_DONNÉES",
+      "label": "Sécurité_données",
       "title": "Sécurité des Données",
       "content": "Nous mettons en œuvre des mesures de sécurité techniques et organisationnelles appropriées pour protéger vos informations personnelles contre tout accès non autorisé, toute modification, divulgation ou destruction. Cependant, aucune méthode de transmission électronique ou de stockage n'est sécurisée à 100 %, et nous ne pouvons garantir une sécurité absolue. Nous utilisons un chiffrement standard (HTTPS/TLS) pour toutes les données transmises entre votre navigateur et nos serveurs."
     },
     "section7": {
-      "label": "CONSERVATION_DONNÉES",
+      "label": "Conservation_données",
       "title": "Conservation des Données",
       "content": "Nous conservons vos informations personnelles uniquement le temps nécessaire pour remplir les objectifs décrits dans cette Politique de Confidentialité, sauf si une période de conservation plus longue est requise ou autorisée par la loi. Les coordonnées soumises via notre site web sont conservées pendant la durée de notre relation commerciale et pendant une période raisonnable par la suite pour répondre à toute demande de suivi."
     },
     "section8": {
-      "label": "VOS_DROITS",
+      "label": "Vos droits",
       "title": "Vos Droits",
       "content": "Selon votre localisation, vous pouvez disposer de certains droits concernant vos données personnelles, notamment :",
       "item1": "Le droit d'accéder aux données personnelles que nous détenons à votre sujet",
@@ -374,18 +374,18 @@
       "contentAfterPost": ". Nous répondrons à votre demande dans un délai raisonnable."
     },
     "section9": {
-      "label": "ENFANTS",
+      "label": "Enfants",
       "title": "Vie Privée des Enfants",
       "contentPre": "Notre site web et nos services ne sont pas destinés aux personnes de moins de 13 ans. Nous ne collectons pas sciemment d'informations personnelles auprès d'enfants. Si nous apprenons qu'un enfant de moins de 13 ans nous a fourni des informations personnelles, nous prendrons des mesures pour supprimer ces informations dans les meilleurs délais. Si vous pensez que nous avons collecté par inadvertance des informations auprès d'un enfant, veuillez nous contacter à",
       "contentPost": "."
     },
     "section10": {
-      "label": "MODIFICATIONS",
+      "label": "Modifications",
       "title": "Modifications de cette Politique",
       "content": "Nous pouvons mettre à jour cette Politique de Confidentialité de temps à autre. Toute modification sera publiée sur cette page avec une date de « Dernière mise à jour » actualisée. Nous vous encourageons à consulter régulièrement cette politique. Votre utilisation continue de notre site web ou de nos services après toute modification constitue l'acceptation de la politique mise à jour."
     },
     "contact": {
-      "label": "CONTACT",
+      "label": "Contact",
       "title": "Contactez-nous",
       "content": "Si vous avez des questions ou des préoccupations concernant cette Politique de Confidentialité, veuillez nous contacter :"
     },

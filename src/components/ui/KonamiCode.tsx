@@ -21,21 +21,18 @@ export default function KonamiCode() {
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>(null);
 
   const trigger = useCallback(() => {
-    // Respect reduced motion
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     setActivated(true);
 
-    // Add cyan override class to html
     if (!motionQuery.matches) {
       document.documentElement.classList.add('konami-active');
     }
 
-    // Remove after 5 seconds
     timeoutRef.current = setTimeout(() => {
       setActivated(false);
       document.documentElement.classList.remove('konami-active');
-    }, 5000);
+    }, 4500);
   }, []);
 
   useEffect(() => {
@@ -51,12 +48,10 @@ export default function KonamiCode() {
           trigger();
         }
       } else {
-        // Reset on wrong key, but check if this key starts the sequence
         indexRef.current = e.code === KONAMI_SEQUENCE[0] ? 1 : 0;
       }
     };
 
-    // Only add listener if motion is allowed or if we just show static overlay
     if (!motionQuery.matches) {
       window.addEventListener('keydown', handleKeyDown);
     }
@@ -78,28 +73,28 @@ export default function KonamiCode() {
         inset: 0,
         zIndex: 99999,
         display: 'flex',
-        alignItems: 'center',
+        alignItems: 'flex-end',
         justifyContent: 'center',
+        paddingBottom: '6rem',
         pointerEvents: 'none',
-        animation: 'konami-flash 0.8s ease-out forwards',
+        animation: 'konami-flash 0.6s ease-out forwards',
       }}
     >
       <div
         style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(1.5rem, 4vw, 3rem)',
+          fontFamily: 'var(--font-mono)',
+          fontSize: '0.8125rem',
+          letterSpacing: '0.18em',
           textTransform: 'uppercase',
-          letterSpacing: '0.2em',
-          color: '#00ffff',
-          textShadow:
-            '0 0 10px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 0.5), 0 0 60px rgba(0, 255, 255, 0.3)',
-          animation: 'konami-text 0.8s ease-out forwards',
+          color: 'var(--color-brand)',
+          padding: '0.75rem 1.5rem',
+          borderRadius: 'var(--radius-pill)',
+          background: 'var(--color-surface)',
+          border: '1px solid var(--color-border)',
+          animation: 'konami-text 1.6s ease-out forwards',
         }}
       >
-        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7em', opacity: 0.7 }}>
-          [SYS]
-        </span>{' '}
-        // ACCESS_GRANTED
+        Access granted
       </div>
     </div>
   );
