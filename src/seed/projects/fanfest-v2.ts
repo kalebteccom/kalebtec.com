@@ -6,7 +6,7 @@ export const fanfestV2: ProjectSeedData = {
   slug: 'fanfest-v2-platform',
   client: 'FanFest',
   description:
-    "Developed and deployed version 2.0 of the FanFest platform for real-time events across partners including PSG, Manchester City, and The 49ers — built with Vue.js, PhenixRTS, and Socket.IO. Architected crypto wallet integrations alongside the CEO, migrated the stack to Vue.js 3 + Vuetify 3 + TailwindCSS, and integrated AWS Chime SDK to cut latency on live shows.",
+    "FanFest 2.0 brought real-time events to fans of PSG, Manchester City, and the 49ers. We built and shipped the platform on Vue.js, PhenixRTS, and Socket.IO; architected crypto-wallet integrations with the CEO; migrated the stack to Vue.js 3 + Vuetify 3 + TailwindCSS; and integrated AWS Chime SDK to cut latency on live shows.",
   industries: ['Sports & Entertainment', 'Streaming & Media'],
   technologies: [
     'Vue.js',

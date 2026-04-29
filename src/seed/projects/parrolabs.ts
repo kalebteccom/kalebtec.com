@@ -6,7 +6,7 @@ export const parrolabs: ProjectSeedData = {
   slug: 'parrolabs-news-maps-platform',
   client: 'Parrolabs',
   description:
-    "Front End Engineer at Parrolabs, a software consultancy in Medellin, contributing to two distinct React.js client projects: improving an existing codebase for a prominent news company with a focus on image loading and SEO via server-side rendering, and further developing a map-intensive React.js application for boot camps in Medellin, Colombia.",
+    "Two React.js engagements delivered through Parrolabs, a software consultancy in Medellin. We optimized image loading and SEO via server-side rendering for a prominent news company, and developed a map-intensive React.js application for boot camps in Medellin, Colombia.",
   industries: ['Media & News', 'SaaS'],
   technologies: ['React.js', 'SSR', 'Mapbox'],
   status: 'published',
@@ -17,7 +17,7 @@ export const parrolabs: ProjectSeedData = {
   content: buildRichText([
     h2('Overview'),
     p(
-      'At Parrolabs, a software consultancy in Medellin, Rowin worked as Front End Engineer on two distinct client projects: a React.js news platform requiring performance and SEO optimization, and a map-intensive React.js application for boot camps in Medellin.',
+      'At Parrolabs, a software consultancy in Medellin, our team delivered two distinct front-end client engagements: a React.js news platform requiring performance and SEO optimization, and a map-intensive React.js application for boot camps in Medellin.',
     ),
 
     h2('News Platform'),
@@ -42,7 +42,7 @@ export const parrolabs: ProjectSeedData = {
       content: buildRichText([
         h2('Descripción General'),
         p(
-          'En Parrolabs, una consultora de software en Medellín, Rowin trabajó como Front End Engineer en dos proyectos distintos de clientes: una plataforma React.js de noticias que requería optimización de rendimiento y SEO, y una aplicación React.js intensiva en mapas para boot camps en Medellín.',
+          'En Parrolabs, una consultora de software en Medellín, Kalebtec trabajó como Front End Engineer en dos proyectos distintos de clientes: una plataforma React.js de noticias que requería optimización de rendimiento y SEO, y una aplicación React.js intensiva en mapas para boot camps en Medellín.',
         ),
         h2('Plataforma de Noticias'),
         h3('Rendimiento y SEO'),
@@ -63,7 +63,7 @@ export const parrolabs: ProjectSeedData = {
       content: buildRichText([
         h2("Vue d'ensemble"),
         p(
-          "Chez Parrolabs, cabinet de conseil en logiciel à Medellin, Rowin a travaillé comme Front End Engineer sur deux projets clients distincts : une plateforme React.js de presse nécessitant une optimisation de performance et de SEO, et une application React.js cartographique pour les boot camps de Medellin.",
+          "Chez Parrolabs, cabinet de conseil en logiciel à Medellin, Kalebtec a travaillé comme Front End Engineer sur deux projets clients distincts : une plateforme React.js de presse nécessitant une optimisation de performance et de SEO, et une application React.js cartographique pour les boot camps de Medellin.",
         ),
         h2('Plateforme de Presse'),
         h3('Performance et SEO'),
@@ -84,7 +84,7 @@ export const parrolabs: ProjectSeedData = {
       content: buildRichText([
         h2('Descripció General'),
         p(
-          "A Parrolabs, una consultora de software a Medellín, Rowin va treballar com a Front End Engineer en dos projectes diferents de clients: una plataforma React.js de notícies que requeria optimització de rendiment i SEO, i una aplicació React.js intensiva en mapes per a boot camps a Medellín.",
+          "A Parrolabs, una consultora de software a Medellín, Kalebtec va treballar com a Front End Engineer en dos projectes diferents de clients: una plataforma React.js de notícies que requeria optimització de rendiment i SEO, i una aplicació React.js intensiva en mapes per a boot camps a Medellín.",
         ),
         h2('Plataforma de Notícies'),
         h3('Rendiment i SEO'),
@@ -105,7 +105,7 @@ export const parrolabs: ProjectSeedData = {
       content: buildRichText([
         h2('Descrición Xeral'),
         p(
-          'En Parrolabs, unha consultora de software en Medellín, Rowin traballou como Front End Engineer en dous proxectos distintos de clientes: unha plataforma React.js de noticias que requiría optimización de rendemento e SEO, e unha aplicación React.js intensiva en mapas para boot camps en Medellín.',
+          'En Parrolabs, unha consultora de software en Medellín, Kalebtec traballou como Front End Engineer en dous proxectos distintos de clientes: unha plataforma React.js de noticias que requiría optimización de rendemento e SEO, e unha aplicación React.js intensiva en mapas para boot camps en Medellín.',
         ),
         h2('Plataforma de Noticias'),
         h3('Rendemento e SEO'),
@@ -126,7 +126,7 @@ export const parrolabs: ProjectSeedData = {
       content: buildRichText([
         h2('Visão Geral'),
         p(
-          'Na Parrolabs, uma consultora de software em Medellín, Rowin trabalhou como Front End Engineer em dois projetos distintos de clientes: uma plataforma React.js de notícias que exigia otimização de desempenho e SEO, e uma aplicação React.js intensiva em mapas para boot camps em Medellín.',
+          'Na Parrolabs, uma consultora de software em Medellín, Kalebtec trabalhou como Front End Engineer em dois projetos distintos de clientes: uma plataforma React.js de notícias que exigia otimização de desempenho e SEO, e uma aplicação React.js intensiva em mapas para boot camps em Medellín.',
         ),
         h2('Plataforma de Notícias'),
         h3('Desempenho e SEO'),

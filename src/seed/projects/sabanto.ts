@@ -6,7 +6,7 @@ export const sabanto: ProjectSeedData = {
   slug: 'sabanto-mission-control',
   client: 'Sabanto',
   description:
-    'Built Mission Control, the operator interface for Sabanto\'s autonomous farming equipment. Researched and developed map-based views using React, GeoJSON, deck.gl, Mapbox, Turf.js, TailwindCSS, and Storybook, designed a map layering system backed by React context, portals, and event buses, and delivered the Mission Control mobile MVP in React Native.',
+    'Mission Control is the operator interface for Sabanto\'s autonomous farming equipment. We built map-based views using React, GeoJSON, deck.gl, Mapbox, Turf.js, TailwindCSS, and Storybook; designed a map-layering system backed by React context, portals, and event buses; and delivered the Mission Control mobile MVP in React Native.',
   industries: ['AgTech & IoT'],
   technologies: [
     'React',
@@ -30,7 +30,7 @@ export const sabanto: ProjectSeedData = {
       'Sabanto builds autonomous farming technology, enabling tractors and equipment to operate without drivers. Mission Control is the central interface operators use to monitor and manage fleets of autonomous machines across vast agricultural fields.',
     ),
     p(
-      'As Mission Control Software Engineer, Rowin contributed to the web operator console and shipped the mobile MVP that took fleet visibility off the desktop and into the field.',
+      'As Mission Control Software Engineer, Kalebtec contributed to the web operator console and shipped the mobile MVP that took fleet visibility off the desktop and into the field.',
     ),
 
     h2('Key Contributions'),
@@ -66,7 +66,7 @@ export const sabanto: ProjectSeedData = {
           'Sabanto desarrolla tecnología de agricultura autónoma, permitiendo que tractores y equipos operen sin conductor. Mission Control es la interfaz central que los operadores utilizan para monitorizar y gestionar flotas de máquinas autónomas en extensos campos agrícolas.',
         ),
         p(
-          'Como Mission Control Software Engineer, Rowin contribuyó a la consola web del operador y entregó el MVP móvil que llevó la visibilidad de la flota fuera del escritorio y al terreno.',
+          'Como Mission Control Software Engineer, Kalebtec contribuyó a la consola web del operador y entregó el MVP móvil que llevó la visibilidad de la flota fuera del escritorio y al terreno.',
         ),
         h2('Contribuciones Clave'),
         h3('Vistas de Misiones Basadas en Mapas'),
@@ -98,7 +98,7 @@ export const sabanto: ProjectSeedData = {
           "Sabanto conçoit des technologies agricoles autonomes permettant aux tracteurs et aux équipements d'opérer sans conducteur. Mission Control est l'interface centrale par laquelle les opérateurs supervisent et gèrent des flottes de machines autonomes sur de vastes parcelles agricoles.",
         ),
         p(
-          "En tant que Mission Control Software Engineer, Rowin a contribué à la console web opérateur et livré le MVP mobile qui a sorti la visibilité de la flotte du bureau pour l'amener sur le terrain.",
+          "En tant que Mission Control Software Engineer, Kalebtec a contribué à la console web opérateur et livré le MVP mobile qui a sorti la visibilité de la flotte du bureau pour l'amener sur le terrain.",
         ),
         h2('Contributions Clés'),
         h3('Vues de Mission Cartographiques'),
@@ -130,7 +130,7 @@ export const sabanto: ProjectSeedData = {
           "Sabanto desenvolupa tecnologia d'agricultura autònoma, permetent que tractors i equips operin sense conductor. Mission Control és la interfície central que els operadors utilitzen per monitoritzar i gestionar flotes de màquines autònomes en extensos camps agrícoles.",
         ),
         p(
-          "Com a Mission Control Software Engineer, Rowin va contribuir a la consola web de l'operador i va lliurar el MVP mòbil que va portar la visibilitat de la flota fora de l'escriptori i al terreny.",
+          "Com a Mission Control Software Engineer, Kalebtec va contribuir a la consola web de l'operador i va lliurar el MVP mòbil que va portar la visibilitat de la flota fora de l'escriptori i al terreny.",
         ),
         h2('Contribucions Clau'),
         h3('Vistes de Missions Basades en Mapes'),
@@ -162,7 +162,7 @@ export const sabanto: ProjectSeedData = {
           'Sabanto desenvolve tecnoloxía de agricultura autónoma, permitindo que tractores e equipos operen sen condutor. Mission Control é a interface central que os operadores utilizan para monitorizar e xestionar frotas de máquinas autónomas en extensos campos agrícolas.',
         ),
         p(
-          'Como Mission Control Software Engineer, Rowin contribuíu á consola web do operador e entregou o MVP móbil que levou a visibilidade da frota fóra do escritorio e ao terreo.',
+          'Como Mission Control Software Engineer, Kalebtec contribuíu á consola web do operador e entregou o MVP móbil que levou a visibilidade da frota fóra do escritorio e ao terreo.',
         ),
         h2('Contribucións Clave'),
         h3('Vistas de Misións Baseadas en Mapas'),
@@ -194,7 +194,7 @@ export const sabanto: ProjectSeedData = {
           'A Sabanto desenvolve tecnologia de agricultura autónoma, permitindo que tratores e equipamentos operem sem condutor. O Mission Control é a interface central que os operadores utilizam para monitorizar e gerir frotas de máquinas autónomas em vastos campos agrícolas.',
         ),
         p(
-          'Enquanto Mission Control Software Engineer, Rowin contribuiu para a consola web do operador e entregou o MVP mobile que levou a visibilidade da frota para fora do desktop e para o terreno.',
+          'Enquanto Mission Control Software Engineer, Kalebtec contribuiu para a consola web do operador e entregou o MVP mobile que levou a visibilidade da frota para fora do desktop e para o terreno.',
         ),
         h2('Contribuições Chave'),
         h3('Vistas de Missões Baseadas em Mapas'),

@@ -6,7 +6,7 @@ export const tricampa: ProjectSeedData = {
   slug: 'tricampa-smart-parking',
   client: 'Tricampa',
   description:
-    'Architected and developed a smart parking platform using Ruby on Rails and Vue.js, leveraging geolocation to locate cars in parking lots and QR codes for the ticketing system. A companion Android native app shared geolocation data, printed QR codes via BLE, and scanned QR codes for ticketing.',
+    'A smart-parking platform that uses geolocation to help drivers find their cars and QR codes to digitize ticketing. We architected the Ruby on Rails + Vue.js stack and shipped a companion Android native app that streams geolocation, prints QR tickets via BLE, and scans QR codes at the gate.',
   industries: ['Smart Cities & Mobility'],
   technologies: ['Ruby on Rails', 'Vue.js', 'Android', 'BLE', 'QR'],
   status: 'draft',
@@ -17,7 +17,7 @@ export const tricampa: ProjectSeedData = {
   content: buildRichText([
     h2('Overview'),
     p(
-      'Tricampa is a smart parking solution that uses geolocation and QR codes to help drivers find their cars in parking lots and to manage ticketing digitally. As Software Engineer, Rowin architected and delivered both the web platform and a companion Android native app.',
+      'Tricampa is a smart parking solution that uses geolocation and QR codes to help drivers find their cars in parking lots and to manage ticketing digitally. Our team architected and delivered both the web platform and a companion Android native app.',
     ),
 
     h2('Key Contributions'),
@@ -45,7 +45,7 @@ export const tricampa: ProjectSeedData = {
       content: buildRichText([
         h2('Descripción General'),
         p(
-          'Tricampa es una solución de estacionamiento inteligente que usa geolocalización y códigos QR para ayudar a los conductores a encontrar sus coches en los estacionamientos y gestionar el ticketing de forma digital. Como Ingeniero de Software, Rowin diseñó la arquitectura y entregó tanto la plataforma web como una app Android nativa complementaria.',
+          'Tricampa es una solución de estacionamiento inteligente que usa geolocalización y códigos QR para ayudar a los conductores a encontrar sus coches en los estacionamientos y gestionar el ticketing de forma digital. Como equipo, diseñamos la arquitectura y entregó tanto la plataforma web como una app Android nativa complementaria.',
         ),
         h2('Contribuciones Clave'),
         h3('Plataforma Web'),
@@ -70,7 +70,7 @@ export const tricampa: ProjectSeedData = {
       content: buildRichText([
         h2("Vue d'ensemble"),
         p(
-          "Tricampa est une solution de stationnement intelligent qui utilise la géolocalisation et les QR codes pour aider les conducteurs à retrouver leur voiture dans les parkings et à gérer le ticketing de manière numérique. En tant qu'Ingénieur Logiciel, Rowin a conçu l'architecture et livré à la fois la plateforme web et une application Android native complémentaire.",
+          "Tricampa est une solution de stationnement intelligent qui utilise la géolocalisation et les QR codes pour aider les conducteurs à retrouver leur voiture dans les parkings et à gérer le ticketing de manière numérique. Notre équipe a conçu l'architecture et livré à la fois la plateforme web et une application Android native complémentaire.",
         ),
         h2('Contributions Clés'),
         h3('Plateforme Web'),
@@ -95,7 +95,7 @@ export const tricampa: ProjectSeedData = {
       content: buildRichText([
         h2('Descripció General'),
         p(
-          "Tricampa és una solució d'aparcament intel·ligent que fa servir la geolocalització i els codis QR per ajudar els conductors a trobar el seu cotxe als aparcaments i gestionar el ticketing de manera digital. Com a Enginyer de Software, Rowin va dissenyar l'arquitectura i va lliurar tant la plataforma web com una app Android nativa complementària.",
+          "Tricampa és una solució d'aparcament intel·ligent que fa servir la geolocalització i els codis QR per ajudar els conductors a trobar el seu cotxe als aparcaments i gestionar el ticketing de manera digital. Com a equip, vam dissenyar l'arquitectura i va lliurar tant la plataforma web com una app Android nativa complementària.",
         ),
         h2('Contribucions Clau'),
         h3('Plataforma Web'),
@@ -120,7 +120,7 @@ export const tricampa: ProjectSeedData = {
       content: buildRichText([
         h2('Descrición Xeral'),
         p(
-          'Tricampa é unha solución de aparcamento intelixente que usa xeolocalización e códigos QR para axudar aos condutores a atopar os seus coches nos aparcamentos e xestionar o ticketing de forma dixital. Como Enxeñeiro de Software, Rowin deseñou a arquitectura e entregou tanto a plataforma web como unha app Android nativa complementaria.',
+          'Tricampa é unha solución de aparcamento intelixente que usa xeolocalización e códigos QR para axudar aos condutores a atopar os seus coches nos aparcamentos e xestionar o ticketing de forma dixital. Como equipo, deseñamos a arquitectura e entregou tanto a plataforma web como unha app Android nativa complementaria.',
         ),
         h2('Contribucións Clave'),
         h3('Plataforma Web'),
@@ -145,7 +145,7 @@ export const tricampa: ProjectSeedData = {
       content: buildRichText([
         h2('Visão Geral'),
         p(
-          'Tricampa é uma solução de estacionamento inteligente que usa geolocalização e QR codes para ajudar os condutores a encontrar os seus carros nos parques e a gerir o ticketing de forma digital. Como Engenheiro de Software, Rowin desenhou a arquitetura e entregou tanto a plataforma web como uma app Android nativa complementar.',
+          'Tricampa é uma solução de estacionamento inteligente que usa geolocalização e QR codes para ajudar os condutores a encontrar os seus carros nos parques e a gerir o ticketing de forma digital. Como equipa, desenhou a arquitetura e entregou tanto a plataforma web como uma app Android nativa complementar.',
         ),
         h2('Contribuições Chave'),
         h3('Plataforma Web'),

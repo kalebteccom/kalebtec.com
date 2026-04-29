@@ -6,7 +6,7 @@ export const limbicAi: ProjectSeedData = {
   slug: 'limbic-ai-therapy-platform',
   client: 'Limbic AI',
   description:
-    "Contributed to Limbic Access — a clinically validated chatbot used across the UK's NHS to cut mental-health screening times. Designed Time-Traveling conversation features with side-effect rollbacks, a retrying queue for emergency-services notifications, and automated test coverage across hundreds of conversation branches.",
+    "Limbic Access is a clinically validated chatbot used across the UK's NHS to cut mental-health screening times. We designed Time-Traveling conversation features with side-effect rollbacks, built a retrying queue for emergency-services notifications, and shipped automated test coverage across hundreds of conversation branches.",
   industries: ['Healthcare & MedTech', 'AI & Machine Learning'],
   technologies: ['Node.js', 'React.js', 'TypeScript'],
   status: 'published',

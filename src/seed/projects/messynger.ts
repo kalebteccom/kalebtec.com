@@ -6,7 +6,7 @@ export const messynger: ProjectSeedData = {
   slug: 'messynger',
   client: 'Synphonyte',
   description:
-    'Led Messynger, a multi-channel social media aggregation platform that lets customer support teams reach users across WhatsApp, Messenger, Slack, and MS Teams from a single workspace. As Lead Software Engineer, Rowin managed a team of three remote, cross-functional developers and shipped integrations on a Kubernetes-based infrastructure backed by IBM Cloud, IBM Cloudant, and IBM Functions.',
+    'Messynger is a multi-channel platform that lets customer-support teams reach users across WhatsApp, Messenger, Slack, and MS Teams from a single workspace. We led the project end-to-end, managing a remote cross-functional team of three and shipping integrations on a Kubernetes-based stack powered by IBM Cloud, IBM Cloudant, and IBM Functions.',
   industries: ['SaaS'],
   technologies: [
     'Vue.js',
@@ -26,7 +26,7 @@ export const messynger: ProjectSeedData = {
   content: buildRichText([
     h2('Overview'),
     p(
-      "Messynger is a social media aggregation platform built at Synphonyte to help customer support teams reach users where they already are — WhatsApp, Messenger, Slack, and MS Teams — from a single workspace. As Lead Software Engineer, Rowin drove the project end-to-end, from integration work with each messaging platform to the Kubernetes infrastructure it runs on.",
+      "Messynger is a social media aggregation platform built at Synphonyte to help customer support teams reach users where they already are — WhatsApp, Messenger, Slack, and MS Teams — from a single workspace. Our team drove the project end-to-end, from integration work with each messaging platform to the Kubernetes infrastructure it runs on.",
     ),
 
     h2('Platform & Integrations'),
@@ -64,7 +64,7 @@ export const messynger: ProjectSeedData = {
         'Lideré Messynger, una plataforma de agregación de redes sociales multi-canal que permite a los equipos de soporte atender a los usuarios en WhatsApp, Messenger, Slack y MS Teams desde un único espacio de trabajo. Como Ingeniero de Software Principal, gestioné un equipo de tres desarrolladores remotos y multifuncionales y entregué las integraciones sobre una infraestructura basada en Kubernetes con IBM Cloud, IBM Cloudant e IBM Functions.',
       content: buildRichText([
         h2('Descripción General'),
-        p('Messynger es una plataforma de agregación de redes sociales construida en Synphonyte para ayudar a los equipos de soporte a atender a los usuarios donde ya están — WhatsApp, Messenger, Slack y MS Teams — desde un único espacio de trabajo. Como Ingeniero de Software Principal, Rowin llevó el proyecto de principio a fin, desde las integraciones con cada plataforma de mensajería hasta la infraestructura Kubernetes sobre la que se ejecuta.'),
+        p('Messynger es una plataforma de agregación de redes sociales construida en Synphonyte para ayudar a los equipos de soporte a atender a los usuarios donde ya están — WhatsApp, Messenger, Slack y MS Teams — desde un único espacio de trabajo. Como equipo, llevó el proyecto de principio a fin, desde las integraciones con cada plataforma de mensajería hasta la infraestructura Kubernetes sobre la que se ejecuta.'),
         h2('Plataforma e Integraciones'),
         h3('Mensajería Multi-Canal'),
         p('Desarrollo de integraciones con WhatsApp, Messenger, Slack y MS Teams para que los equipos de soporte unifiquen las conversaciones entre canales y mejoren el outreach a clientes sin cambiar de aplicación.'),
@@ -88,7 +88,7 @@ export const messynger: ProjectSeedData = {
         "J'ai dirigé Messynger, une plateforme d'agrégation de réseaux sociaux multi-canal qui permet aux équipes de support client de joindre les utilisateurs sur WhatsApp, Messenger, Slack et MS Teams depuis un espace de travail unique. En tant qu'Ingénieur Logiciel Principal, j'ai géré une équipe de trois développeurs distants et pluridisciplinaires et livré les intégrations sur une infrastructure basée sur Kubernetes avec IBM Cloud, IBM Cloudant et IBM Functions.",
       content: buildRichText([
         h2('Vue d\'ensemble'),
-        p("Messynger est une plateforme d'agrégation de réseaux sociaux construite chez Synphonyte pour aider les équipes de support à joindre les utilisateurs là où ils sont déjà — WhatsApp, Messenger, Slack et MS Teams — depuis un espace de travail unique. En tant qu'Ingénieur Logiciel Principal, Rowin a mené le projet de bout en bout, des intégrations avec chaque plateforme de messagerie jusqu'à l'infrastructure Kubernetes sur laquelle il tourne."),
+        p("Messynger est une plateforme d'agrégation de réseaux sociaux construite chez Synphonyte pour aider les équipes de support à joindre les utilisateurs là où ils sont déjà — WhatsApp, Messenger, Slack et MS Teams — depuis un espace de travail unique. Notre équipe a mené le projet de bout en bout, des intégrations avec chaque plateforme de messagerie jusqu'à l'infrastructure Kubernetes sur laquelle il tourne."),
         h2('Plateforme et Intégrations'),
         h3('Messagerie Multi-Canal'),
         p("Développement d'intégrations avec WhatsApp, Messenger, Slack et MS Teams pour permettre aux équipes de support d'unifier les conversations entre canaux et d'améliorer l'outreach client sans changer d'application."),
@@ -112,7 +112,7 @@ export const messynger: ProjectSeedData = {
         "Vaig liderar Messynger, una plataforma d'agregació de xarxes socials multi-canal que permet als equips de suport atendre els usuaris a WhatsApp, Messenger, Slack i MS Teams des d'un únic espai de treball. Com a Enginyer de Software Principal, vaig gestionar un equip de tres desenvolupadors remots i multifuncionals i vaig entregar les integracions sobre una infraestructura basada en Kubernetes amb IBM Cloud, IBM Cloudant i IBM Functions.",
       content: buildRichText([
         h2('Descripció General'),
-        p("Messynger és una plataforma d'agregació de xarxes socials construïda a Synphonyte per ajudar els equips de suport a atendre els usuaris on ja són — WhatsApp, Messenger, Slack i MS Teams — des d'un únic espai de treball. Com a Enginyer de Software Principal, Rowin va portar el projecte de principi a fi, des de les integracions amb cada plataforma de missatgeria fins a la infraestructura Kubernetes sobre la qual s'executa."),
+        p("Messynger és una plataforma d'agregació de xarxes socials construïda a Synphonyte per ajudar els equips de suport a atendre els usuaris on ja són — WhatsApp, Messenger, Slack i MS Teams — des d'un únic espai de treball. Com a equip, va portar el projecte de principi a fi, des de les integracions amb cada plataforma de missatgeria fins a la infraestructura Kubernetes sobre la qual s'executa."),
         h2('Plataforma i Integracions'),
         h3('Missatgeria Multi-Canal'),
         p("Desenvolupament d'integracions amb WhatsApp, Messenger, Slack i MS Teams perquè els equips de suport unifiquin les converses entre canals i millorin l'outreach a clients sense canviar d'aplicació."),
@@ -136,7 +136,7 @@ export const messynger: ProjectSeedData = {
         'Liderei Messynger, unha plataforma de agregación de redes sociais multi-canle que permite aos equipos de soporte atender os usuarios en WhatsApp, Messenger, Slack e MS Teams dende un único espazo de traballo. Como Enxeñeiro de Software Principal, xestionei un equipo de tres desenvolvedores remotos e multifuncionais e entreguei as integracións sobre unha infraestrutura baseada en Kubernetes con IBM Cloud, IBM Cloudant e IBM Functions.',
       content: buildRichText([
         h2('Descrición Xeral'),
-        p('Messynger é unha plataforma de agregación de redes sociais construída en Synphonyte para axudar aos equipos de soporte a atender os usuarios onde xa están — WhatsApp, Messenger, Slack e MS Teams — dende un único espazo de traballo. Como Enxeñeiro de Software Principal, Rowin levou o proxecto de principio a fin, dende as integracións con cada plataforma de mensaxería ata a infraestrutura Kubernetes sobre a que se executa.'),
+        p('Messynger é unha plataforma de agregación de redes sociais construída en Synphonyte para axudar aos equipos de soporte a atender os usuarios onde xa están — WhatsApp, Messenger, Slack e MS Teams — dende un único espazo de traballo. Como equipo, levou o proxecto de principio a fin, dende as integracións con cada plataforma de mensaxería ata a infraestrutura Kubernetes sobre a que se executa.'),
         h2('Plataforma e Integracións'),
         h3('Mensaxería Multi-Canle'),
         p('Desenvolvemento de integracións con WhatsApp, Messenger, Slack e MS Teams para que os equipos de soporte unifiquen as conversas entre canles e melloren o outreach a clientes sen cambiar de aplicación.'),
@@ -160,7 +160,7 @@ export const messynger: ProjectSeedData = {
         'Liderei o Messynger, uma plataforma de agregação de redes sociais multi-canal que permite às equipas de suporte atender os utilizadores em WhatsApp, Messenger, Slack e MS Teams a partir de um único espaço de trabalho. Como Engenheiro de Software Principal, geri uma equipa de três programadores remotos e multifuncionais e entreguei as integrações sobre uma infraestrutura baseada em Kubernetes com IBM Cloud, IBM Cloudant e IBM Functions.',
       content: buildRichText([
         h2('Visão Geral'),
-        p('O Messynger é uma plataforma de agregação de redes sociais construída na Synphonyte para ajudar as equipas de suporte a atender os utilizadores onde já estão — WhatsApp, Messenger, Slack e MS Teams — a partir de um único espaço de trabalho. Como Engenheiro de Software Principal, Rowin levou o projeto de ponta a ponta, desde as integrações com cada plataforma de mensagens até à infraestrutura Kubernetes em que corre.'),
+        p('O Messynger é uma plataforma de agregação de redes sociais construída na Synphonyte para ajudar as equipas de suporte a atender os utilizadores onde já estão — WhatsApp, Messenger, Slack e MS Teams — a partir de um único espaço de trabalho. Como equipa, levou o projeto de ponta a ponta, desde as integrações com cada plataforma de mensagens até à infraestrutura Kubernetes em que corre.'),
         h2('Plataforma e Integrações'),
         h3('Mensagens Multi-Canal'),
         p('Desenvolvimento de integrações com WhatsApp, Messenger, Slack e MS Teams para que as equipas de suporte unifiquem as conversas entre canais e melhorem o outreach a clientes sem mudar de aplicação.'),

@@ -6,7 +6,7 @@ export const sunliner: ProjectSeedData = {
   slug: 'sunliner-travel-platform',
   client: 'Sunliner',
   description:
-    'Senior Software Engineer for a prominent Dutch tour operator. Resolved performance issues in the legacy PHP application, then architected and led development of a React.js front-end with server-side rendering in Next.js. Managed a team of four remote developers using Agile and Kanban tooling (Slack, Trello, Infinity, Notion) while tailoring user flows and shopping experiences to the Netherlands market.',
+    'A modernization engagement with a prominent Dutch tour operator. We resolved performance issues in the legacy PHP application, then architected and led the new React.js front-end with server-side rendering in Next.js — managing a team of four remote developers and tailoring user flows and shopping experiences to the Netherlands market.',
   industries: ['Travel & Hospitality'],
   technologies: ['React.js', 'Next.js', 'PHP', 'Agile', 'Kanban'],
   status: 'draft',
@@ -20,7 +20,7 @@ export const sunliner: ProjectSeedData = {
       'Sunliner is a prominent tour operator in the Netherlands, offering vacation packages and travel experiences. The platform needed both immediate performance wins on its PHP legacy and a modern front-end architecture to support a growing user base and meet current performance expectations.',
     ),
     p(
-      'As Senior Software Engineer, Rowin led the technical work across both tracks — first stabilizing the existing site, then architecting and shipping the new React.js + Next.js front-end with server-side rendering.',
+      'Our team led the technical work across both tracks — first stabilizing the existing site, then architecting and shipping the new React.js + Next.js front-end with server-side rendering.',
     ),
 
     h2('Key Contributions'),
@@ -58,7 +58,7 @@ export const sunliner: ProjectSeedData = {
           'Sunliner es un destacado tour operator en los Países Bajos, con paquetes vacacionales y experiencias de viaje. La plataforma necesitaba tanto mejoras inmediatas de rendimiento en su base PHP legacy como una arquitectura front-end moderna que soportara una base de usuarios en crecimiento y cumpliera con las expectativas actuales de performance.',
         ),
         p(
-          'Como Senior Software Engineer, Rowin lideró el trabajo técnico en ambos frentes: primero estabilizando el sitio existente y después diseñando y entregando el nuevo front-end en React.js + Next.js con server-side rendering.',
+          'Como Senior Software Engineer, Kalebtec lideró el trabajo técnico en ambos frentes: primero estabilizando el sitio existente y después diseñando y entregando el nuevo front-end en React.js + Next.js con server-side rendering.',
         ),
         h2('Contribuciones Clave'),
         h3('Optimización de Rendimiento sobre el Legacy PHP'),
@@ -92,7 +92,7 @@ export const sunliner: ProjectSeedData = {
           "Sunliner est un tour operator de premier plan aux Pays-Bas, proposant des forfaits vacances et des expériences de voyage. La plateforme avait besoin à la fois de gains de performance immédiats sur son legacy PHP et d'une architecture front-end moderne pour supporter une base d'utilisateurs en croissance et répondre aux exigences actuelles de performance.",
         ),
         p(
-          "En tant qu'Ingénieur Logiciel Senior, Rowin a piloté le travail technique sur les deux fronts : d'abord en stabilisant le site existant, puis en architecturant et livrant le nouveau front-end React.js + Next.js avec server-side rendering.",
+          "Notre équipe a piloté le travail technique sur les deux fronts : d'abord en stabilisant le site existant, puis en architecturant et livrant le nouveau front-end React.js + Next.js avec server-side rendering.",
         ),
         h2('Contributions Clés'),
         h3('Optimisation de la Performance du Legacy PHP'),
@@ -126,7 +126,7 @@ export const sunliner: ProjectSeedData = {
           "Sunliner és un destacat tour operator als Països Baixos, amb paquets vacacionals i experiències de viatge. La plataforma necessitava tant millores immediates de rendiment sobre la seva base PHP legacy com una arquitectura front-end moderna que suportés una base d'usuaris en creixement i complís amb les expectatives actuals de performance.",
         ),
         p(
-          "Com a Enginyer de Software Senior, Rowin va liderar el treball tècnic en tots dos fronts: primer estabilitzant el lloc existent i després dissenyant i lliurant el nou front-end en React.js + Next.js amb server-side rendering.",
+          "Com a equip, vam liderar el treball tècnic en tots dos fronts: primer estabilitzant el lloc existent i després dissenyant i lliurant el nou front-end en React.js + Next.js amb server-side rendering.",
         ),
         h2('Contribucions Clau'),
         h3('Optimització de Rendiment sobre el Legacy PHP'),
@@ -160,7 +160,7 @@ export const sunliner: ProjectSeedData = {
           'Sunliner é un destacado tour operator nos Países Baixos, con paquetes vacacionais e experiencias de viaxe. A plataforma precisaba tanto melloras inmediatas de rendemento sobre a súa base PHP legacy como unha arquitectura front-end moderna que soportase unha base de usuarios en crecemento e cumprise coas expectativas actuais de performance.',
         ),
         p(
-          'Como Enxeñeiro de Software Senior, Rowin liderou o traballo técnico nos dous frontes: primeiro estabilizando o sitio existente e despois deseñando e entregando o novo front-end en React.js + Next.js con server-side rendering.',
+          'Como equipo, lideramos o traballo técnico nos dous frontes: primeiro estabilizando o sitio existente e despois deseñando e entregando o novo front-end en React.js + Next.js con server-side rendering.',
         ),
         h2('Contribucións Clave'),
         h3('Optimización de Rendemento sobre o Legacy PHP'),
@@ -194,7 +194,7 @@ export const sunliner: ProjectSeedData = {
           'A Sunliner é um destacado tour operator nos Países Baixos, com pacotes de férias e experiências de viagem. A plataforma precisava tanto de ganhos imediatos de desempenho sobre a sua base PHP legacy como de uma arquitetura front-end moderna para suportar uma base de utilizadores em crescimento e cumprir com as expectativas atuais de performance.',
         ),
         p(
-          'Enquanto Engenheiro de Software Senior, Rowin liderou o trabalho técnico em ambas as frentes: primeiro estabilizando o site existente e depois arquitetando e entregando o novo front-end em React.js + Next.js com server-side rendering.',
+          'Enquanto Engenheiro de Software Senior, Kalebtec liderou o trabalho técnico em ambas as frentes: primeiro estabilizando o site existente e depois arquitetando e entregando o novo front-end em React.js + Next.js com server-side rendering.',
         ),
         h2('Contribuições Chave'),
         h3('Otimização de Desempenho sobre o Legacy PHP'),

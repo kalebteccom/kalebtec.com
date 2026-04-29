@@ -6,7 +6,7 @@ export const learapido: ProjectSeedData = {
   slug: 'lea-rapido-speed-reading-platform',
   client: 'Lea Rapido',
   description:
-    'Tech Lead on the Lea Rapido project — a speed-reading academy in Medellin converting its formal in-person course into a cross-platform mobile format with Flutter, Flare (Rive), Figma, and Sketch. Managed a team of five mobile developers and copywriters under Agile, and architected a scalable Ruby on Rails + Redis + PostgreSQL backend on AWS EC2/S3 supporting thousands of monthly users.',
+    'Helping Lea Rapido — a Medellin-based speed-reading academy — take its in-person course cross-platform with Flutter, Flare (Rive), Figma, and Sketch. We led a team of five mobile developers and copywriters under Agile, and architected a Ruby on Rails + Redis + PostgreSQL backend on AWS EC2/S3 that supports thousands of monthly users.',
   industries: ['EdTech'],
   technologies: [
     'Flutter',
@@ -30,7 +30,7 @@ export const learapido: ProjectSeedData = {
       'Lea Rapido is a speed-reading academy based in Medellin, Colombia, that teaches students to read 200 pages in 60 minutes with full comprehension. The project converted their formal in-person course into an engaging cross-platform mobile format — and the infrastructure to support it at scale.',
     ),
     p(
-      'As Tech Lead and Developer, Rowin led both the mobile product and the backend platform, and drove the team that shipped them.',
+      'Our team led both the mobile product and the backend platform, and drove the team that shipped them.',
     ),
 
     h2('Key Contributions'),
@@ -67,7 +67,7 @@ export const learapido: ProjectSeedData = {
           'Lea Rapido es una academia de lectura rápida con sede en Medellín, Colombia, que enseña a los estudiantes a leer 200 páginas en 60 minutos con comprensión total. El proyecto convirtió su curso formal presencial en un formato móvil multiplataforma atractivo — junto con la infraestructura para soportarlo a escala.',
         ),
         p(
-          'Como Tech Lead y desarrollador, Rowin lideró tanto el producto móvil como la plataforma backend, e impulsó el equipo que los entregó.',
+          'Como equipo, lideramos tanto el producto móvil como la plataforma backend, e impulsó el equipo que los entregó.',
         ),
         h2('Contribuciones Clave'),
         h3('Experiencia de Aprendizaje Móvil'),
@@ -100,7 +100,7 @@ export const learapido: ProjectSeedData = {
           "Lea Rapido est une académie de lecture rapide basée à Medellin, en Colombie, qui apprend à ses étudiants à lire 200 pages en 60 minutes avec une compréhension complète. Le projet a porté leur cours formel présentiel sur un format mobile cross-platform immersif — ainsi que l'infrastructure nécessaire pour le soutenir à grande échelle.",
         ),
         p(
-          "En tant que Tech Lead et développeur, Rowin a piloté à la fois le produit mobile et la plateforme backend, et a mené l'équipe qui les a livrés.",
+          "Notre équipe a piloté à la fois le produit mobile et la plateforme backend, et a mené l'équipe qui les a livrés.",
         ),
         h2('Contributions Clés'),
         h3("Expérience d'Apprentissage Mobile"),
@@ -133,7 +133,7 @@ export const learapido: ProjectSeedData = {
           "Lea Rapido és una acadèmia de lectura ràpida amb seu a Medellín, Colòmbia, que ensenya els seus alumnes a llegir 200 pàgines en 60 minuts amb comprensió total. El projecte va convertir el seu curs formal presencial en un format mòbil multiplataforma atractiu — juntament amb la infraestructura per sostenir-lo a escala.",
         ),
         p(
-          "Com a Tech Lead i desenvolupador, Rowin va liderar tant el producte mòbil com la plataforma backend, i va impulsar l'equip que els va lliurar.",
+          "Com a equip, vam liderar tant el producte mòbil com la plataforma backend, i va impulsar l'equip que els va lliurar.",
         ),
         h2('Contribucions Clau'),
         h3("Experiència d'Aprenentatge Mòbil"),
@@ -166,7 +166,7 @@ export const learapido: ProjectSeedData = {
           'Lea Rapido é unha academia de lectura rápida con sede en Medellín, Colombia, que ensina aos estudantes a ler 200 páxinas en 60 minutos con comprensión total. O proxecto converteu o seu curso formal presencial nun formato móbil multiplataforma atractivo — xunto coa infraestrutura para soportalo a escala.',
         ),
         p(
-          'Como Tech Lead e desenvolvedor, Rowin liderou tanto o produto móbil como a plataforma backend, e impulsou o equipo que os entregou.',
+          'Como equipo, lideramos tanto o produto móbil como a plataforma backend, e impulsou o equipo que os entregou.',
         ),
         h2('Contribucións Clave'),
         h3('Experiencia de Aprendizaxe Móbil'),
@@ -199,7 +199,7 @@ export const learapido: ProjectSeedData = {
           'A Lea Rapido é uma academia de leitura rápida sediada em Medellín, Colômbia, que ensina os seus alunos a ler 200 páginas em 60 minutos com compreensão total. O projeto passou o seu curso formal presencial para um formato mobile cross-platform apelativo — juntamente com a infraestrutura para o sustentar à escala.',
         ),
         p(
-          'Enquanto Tech Lead e programador, Rowin liderou tanto o produto mobile como a plataforma backend, e impulsionou a equipa que os entregou.',
+          'Enquanto Tech Lead e programador, Kalebtec liderou tanto o produto mobile como a plataforma backend, e impulsionou a equipa que os entregou.',
         ),
         h2('Contribuições Chave'),
         h3('Experiência de Aprendizagem Mobile'),

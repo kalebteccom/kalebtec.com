@@ -6,7 +6,7 @@ export const yourkar: ProjectSeedData = {
   slug: 'yourkar-car-rental-platform',
   client: 'Yourkar',
   description:
-    'Architected and developed a rent-a-car broker platform for the Canary Islands, combining a Vue.js web application with real-time WebSockets for contract, booking, and fleet management. A companion Android native app extended the platform into rental branches, enabling document printing through BLE devices.',
+    'A rent-a-car broker platform for the Canary Islands. We architected and shipped a Vue.js web application with real-time WebSockets for contract, booking, and fleet management — plus a companion Android native app that extends the platform into rental branches with BLE document printing.',
   industries: ['Automotive & Fleet', 'SaaS'],
   technologies: ['Vue.js', 'WebSockets', 'Android', 'BLE'],
   status: 'draft',
@@ -17,7 +17,7 @@ export const yourkar: ProjectSeedData = {
   content: buildRichText([
     h2('Overview'),
     p(
-      'Yourkar is a rent-a-car broker operating in the Canary Islands. As Software Engineer, Rowin architected, led, and delivered both the web platform and a companion Android native app to streamline fleet operations, contracts, and bookings across partner rental companies.',
+      'Yourkar is a rent-a-car broker operating in the Canary Islands. Our team architected, led, and delivered both the web platform and a companion Android native app to streamline fleet operations, contracts, and bookings across partner rental companies.',
     ),
 
     h2('Key Contributions'),
@@ -45,7 +45,7 @@ export const yourkar: ProjectSeedData = {
       content: buildRichText([
         h2('Descripción General'),
         p(
-          'Yourkar es un rent-a-car broker que opera en las Islas Canarias. Como Ingeniero de Software, Rowin lideró la arquitectura y el desarrollo tanto de la plataforma web como de una app Android nativa complementaria, para optimizar las operaciones de flota, los contratos y las reservas entre las empresas de alquiler asociadas.',
+          'Yourkar es un rent-a-car broker que opera en las Islas Canarias. Como equipo, lideramos la arquitectura y el desarrollo tanto de la plataforma web como de una app Android nativa complementaria, para optimizar las operaciones de flota, los contratos y las reservas entre las empresas de alquiler asociadas.',
         ),
         h2('Contribuciones Clave'),
         h3('Plataforma Web'),
@@ -70,7 +70,7 @@ export const yourkar: ProjectSeedData = {
       content: buildRichText([
         h2("Vue d'ensemble"),
         p(
-          "Yourkar est un rent-a-car broker opérant dans les îles Canaries. En tant qu'Ingénieur Logiciel, Rowin a conçu, dirigé et livré à la fois la plateforme web et une application Android native complémentaire afin de rationaliser les opérations de flotte, les contrats et les réservations entre les sociétés de location partenaires.",
+          "Yourkar est un rent-a-car broker opérant dans les îles Canaries. Notre équipe a conçu, dirigé et livré à la fois la plateforme web et une application Android native complémentaire afin de rationaliser les opérations de flotte, les contrats et les réservations entre les sociétés de location partenaires.",
         ),
         h2('Contributions Clés'),
         h3('Plateforme Web'),
@@ -95,7 +95,7 @@ export const yourkar: ProjectSeedData = {
       content: buildRichText([
         h2('Descripció General'),
         p(
-          'Yourkar és un rent-a-car broker que opera a les Illes Canàries. Com a Enginyer de Software, Rowin va liderar l\'arquitectura i el desenvolupament tant de la plataforma web com d\'una app Android nativa complementària, per optimitzar les operacions de flota, els contractes i les reserves entre les empreses de lloguer associades.',
+          'Yourkar és un rent-a-car broker que opera a les Illes Canàries. Com a equip, vam liderar l\'arquitectura i el desenvolupament tant de la plataforma web com d\'una app Android nativa complementària, per optimitzar les operacions de flota, els contractes i les reserves entre les empreses de lloguer associades.',
         ),
         h2('Contribucions Clau'),
         h3('Plataforma Web'),
@@ -120,7 +120,7 @@ export const yourkar: ProjectSeedData = {
       content: buildRichText([
         h2('Descrición Xeral'),
         p(
-          'Yourkar é un rent-a-car broker que opera nas Illas Canarias. Como Enxeñeiro de Software, Rowin liderou a arquitectura e o desenvolvemento tanto da plataforma web como dunha app Android nativa complementaria, para optimizar as operacións de frota, os contratos e as reservas entre as empresas de aluguer asociadas.',
+          'Yourkar é un rent-a-car broker que opera nas Illas Canarias. Como equipo, lideramos a arquitectura e o desenvolvemento tanto da plataforma web como dunha app Android nativa complementaria, para optimizar as operacións de frota, os contratos e as reservas entre as empresas de aluguer asociadas.',
         ),
         h2('Contribucións Clave'),
         h3('Plataforma Web'),
@@ -145,7 +145,7 @@ export const yourkar: ProjectSeedData = {
       content: buildRichText([
         h2('Visão Geral'),
         p(
-          'Yourkar é um rent-a-car broker que opera nas Ilhas Canárias. Como Engenheiro de Software, Rowin liderou a arquitetura e o desenvolvimento tanto da plataforma web como de uma app Android nativa complementar, para otimizar as operações de frota, os contratos e as reservas entre as empresas de aluguer parceiras.',
+          'Yourkar é um rent-a-car broker que opera nas Ilhas Canárias. Como equipa, liderámos a arquitetura e o desenvolvimento tanto da plataforma web como de uma app Android nativa complementar, para otimizar as operações de frota, os contratos e as reservas entre as empresas de aluguer parceiras.',
         ),
         h2('Contribuições Chave'),
         h3('Plataforma Web'),

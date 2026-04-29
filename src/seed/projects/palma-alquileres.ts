@@ -6,7 +6,7 @@ export const palmaAlquileres: ProjectSeedData = {
   slug: 'palma-alquileres-real-estate',
   client: 'Palma Alquileres',
   description:
-    'Architected and developed a high-performance real estate platform using Ruby on Rails and PostgreSQL, with Redis for persistence and caching. A sales-focused, client-facing website integrated with the Ruby on Rails API to drive conversions and optimize property listings.',
+    'A high-performance real estate platform for one of Colombia\'s leading agencies. We architected the Ruby on Rails + PostgreSQL backend with Redis caching and built a sales-focused, client-facing website tuned to maximize property-listing conversion.',
   industries: ['Real Estate'],
   technologies: ['Ruby on Rails', 'PostgreSQL', 'Redis'],
   status: 'draft',
@@ -17,7 +17,7 @@ export const palmaAlquileres: ProjectSeedData = {
   content: buildRichText([
     h2('Overview'),
     p(
-      'Palma Alquileres is a real estate company in Colombia. As Web Engineer, Rowin built a performant property listing and sales platform from the ground up, optimizing both the backend for data access patterns and the client-facing website for sales conversion.',
+      'Palma Alquileres is a real estate company in Colombia. Our team built a performant property listing and sales platform from the ground up, optimizing both the backend for data access patterns and the client-facing website for sales conversion.',
     ),
 
     h2('Key Contributions'),
@@ -40,7 +40,7 @@ export const palmaAlquileres: ProjectSeedData = {
       content: buildRichText([
         h2('Descripción General'),
         p(
-          'Palma Alquileres es una empresa inmobiliaria en Colombia. Como Ingeniero Web, Rowin construyó desde cero una plataforma de listado y venta de propiedades de alto rendimiento, optimizando tanto el backend para los patrones de acceso a datos como el sitio orientado al cliente para la conversión de ventas.',
+          'Palma Alquileres es una empresa inmobiliaria en Colombia. Como equipo, construimos desde cero una plataforma de listado y venta de propiedades de alto rendimiento, optimizando tanto el backend para los patrones de acceso a datos como el sitio orientado al cliente para la conversión de ventas.',
         ),
         h2('Contribuciones Clave'),
         h3('Arquitectura Backend'),
@@ -60,7 +60,7 @@ export const palmaAlquileres: ProjectSeedData = {
       content: buildRichText([
         h2("Vue d'ensemble"),
         p(
-          "Palma Alquileres est une société immobilière en Colombie. En tant qu'Ingénieur Web, Rowin a construit de zéro une plateforme d'annonces et de vente de biens haute performance, optimisant à la fois le backend pour les schémas d'accès aux données et le site client pour la conversion commerciale.",
+          "Palma Alquileres est une société immobilière en Colombie. Notre équipe a construit de zéro une plateforme d'annonces et de vente de biens haute performance, optimisant à la fois le backend pour les schémas d'accès aux données et le site client pour la conversion commerciale.",
         ),
         h2('Contributions Clés'),
         h3('Architecture Backend'),
@@ -80,7 +80,7 @@ export const palmaAlquileres: ProjectSeedData = {
       content: buildRichText([
         h2('Descripció General'),
         p(
-          "Palma Alquileres és una empresa immobiliària a Colòmbia. Com a Enginyer Web, Rowin va construir des de zero una plataforma de llistat i venda de propietats d'alt rendiment, optimitzant tant el backend per als patrons d'accés a dades com el lloc orientat al client per a la conversió de vendes.",
+          "Palma Alquileres és una empresa immobiliària a Colòmbia. Com a equip, vam construir des de zero una plataforma de llistat i venda de propietats d'alt rendiment, optimitzant tant el backend per als patrons d'accés a dades com el lloc orientat al client per a la conversió de vendes.",
         ),
         h2('Contribucions Clau'),
         h3('Arquitectura Backend'),
@@ -100,7 +100,7 @@ export const palmaAlquileres: ProjectSeedData = {
       content: buildRichText([
         h2('Descrición Xeral'),
         p(
-          'Palma Alquileres é unha empresa inmobiliaria en Colombia. Como Enxeñeiro Web, Rowin construíu dende cero unha plataforma de listado e venda de propiedades de alto rendemento, optimizando tanto o backend para os patróns de acceso a datos como o sitio orientado ao cliente para a conversión de vendas.',
+          'Palma Alquileres é unha empresa inmobiliaria en Colombia. Como equipo, construímos dende cero unha plataforma de listado e venda de propiedades de alto rendemento, optimizando tanto o backend para os patróns de acceso a datos como o sitio orientado ao cliente para a conversión de vendas.',
         ),
         h2('Contribucións Clave'),
         h3('Arquitectura Backend'),
@@ -120,7 +120,7 @@ export const palmaAlquileres: ProjectSeedData = {
       content: buildRichText([
         h2('Visão Geral'),
         p(
-          'Palma Alquileres é uma empresa imobiliária na Colômbia. Como Engenheiro Web, Rowin construiu de raiz uma plataforma de listagem e venda de imóveis de alto desempenho, otimizando tanto o backend para os padrões de acesso a dados como o site orientado ao cliente para a conversão de vendas.',
+          'Palma Alquileres é uma empresa imobiliária na Colômbia. Como equipa, construímos de raiz uma plataforma de listagem e venda de imóveis de alto desempenho, otimizando tanto o backend para os padrões de acesso a dados como o site orientado ao cliente para a conversão de vendas.',
         ),
         h2('Contribuições Chave'),
         h3('Arquitetura Backend'),

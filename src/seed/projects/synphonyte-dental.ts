@@ -6,7 +6,7 @@ export const synphonyteDental: ProjectSeedData = {
   slug: '3d-dental-imaging-software',
   client: 'Synphonyte',
   description:
-    'Led engineering across three parallel tracks at Synphonyte over nearly four years: 3D dental imaging with custom nerve-canal geometry in Vue.js and THREE.js, the Soku mobile puzzle game, and internal tooling. Shipped a visual regression testing pipeline on Puppeteer, AVA.js, AWS CodeBuild and GitLab CI for automated QA.',
+    'A four-year partnership with Synphonyte across three parallel tracks: a 3D dental imaging suite with custom nerve-canal geometry in Vue.js and THREE.js, the Soku mobile puzzle game, and internal tooling. We led the engineering and shipped a visual-regression testing pipeline on Puppeteer, AVA.js, AWS CodeBuild, and GitLab CI for automated QA.',
   industries: ['Healthcare & MedTech'],
   technologies: [
     'Vue.js',
@@ -25,7 +25,7 @@ export const synphonyteDental: ProjectSeedData = {
   content: buildRichText([
     h2('Overview'),
     p(
-      'Synphonyte develops dental technology software and related products. As Lead Software Engineer over nearly four years, Rowin led engineering across three parallel tracks: 3D dental imaging, the Soku mobile puzzle game, and internal tooling.',
+      'Synphonyte develops dental technology software and related products. Over nearly four years, we led engineering across three parallel tracks: 3D dental imaging, the Soku mobile puzzle game, and internal tooling.',
     ),
 
     h2('3D Dental Imaging'),
@@ -61,7 +61,7 @@ export const synphonyteDental: ProjectSeedData = {
         'Lideré la ingeniería en tres líneas paralelas en Synphonyte durante casi cuatro años: imagen dental 3D con geometría personalizada de canal nervioso en Vue.js y THREE.js, el juego móvil de puzzle Soku y herramientas internas. Implementé un pipeline de visual regression testing con Puppeteer, AVA.js, AWS CodeBuild y GitLab CI para QA automatizado.',
       content: buildRichText([
         h2('Descripción General'),
-        p('Synphonyte desarrolla software de tecnología dental y productos relacionados. Como Ingeniero de Software Principal durante casi cuatro años, Rowin lideró la ingeniería en tres líneas paralelas: imagen dental 3D, el juego móvil de puzzle Soku y herramientas internas.'),
+        p('Synphonyte desarrolla software de tecnología dental y productos relacionados. Durante casi cuatro años, lideramos la ingeniería en tres líneas paralelas: imagen dental 3D, el juego móvil de puzzle Soku y herramientas internas.'),
         h2('Imagen Dental 3D'),
         h3('Visual Regression Testing'),
         p('Desarrollo de tests de visual regression para software complejo de imagen dental 3D con Puppeteer y AVA.js, integrados con AWS CodeBuild, Lambda Functions y GitLab CI para detectar regresiones de renderizado automáticamente en cada commit.'),
@@ -81,7 +81,7 @@ export const synphonyteDental: ProjectSeedData = {
         "J'ai dirigé l'ingénierie sur trois axes parallèles chez Synphonyte pendant près de quatre ans : imagerie dentaire 3D avec géométrie personnalisée des canaux nerveux en Vue.js et THREE.js, jeu mobile de puzzle Soku et outils internes. J'ai mis en place un pipeline de visual regression testing avec Puppeteer, AVA.js, AWS CodeBuild et GitLab CI pour une QA automatisée.",
       content: buildRichText([
         h2('Vue d\'ensemble'),
-        p("Synphonyte développe des logiciels de technologie dentaire et des produits associés. En tant qu'Ingénieur Logiciel Principal pendant près de quatre ans, Rowin a dirigé l'ingénierie sur trois axes parallèles : imagerie dentaire 3D, jeu mobile de puzzle Soku et outils internes."),
+        p("Synphonyte développe des logiciels de technologie dentaire et des produits associés. Pendant près de quatre ans, a dirigé l'ingénierie sur trois axes parallèles : imagerie dentaire 3D, jeu mobile de puzzle Soku et outils internes."),
         h2('Imagerie Dentaire 3D'),
         h3('Visual Regression Testing'),
         p("Développement de tests de visual regression pour un logiciel complexe d'imagerie dentaire 3D avec Puppeteer et AVA.js, intégrés à AWS CodeBuild, Lambda Functions et GitLab CI — détection automatique des régressions de rendu à chaque commit."),
@@ -101,7 +101,7 @@ export const synphonyteDental: ProjectSeedData = {
         "Vaig liderar l'enginyeria en tres línies paral·leles a Synphonyte durant gairebé quatre anys: imatge dental 3D amb geometria personalitzada del canal nerviós en Vue.js i THREE.js, el joc mòbil de puzzle Soku i eines internes. Vaig implementar un pipeline de visual regression testing amb Puppeteer, AVA.js, AWS CodeBuild i GitLab CI per a QA automatitzat.",
       content: buildRichText([
         h2('Descripció General'),
-        p("Synphonyte desenvolupa software de tecnologia dental i productes relacionats. Com a Enginyer de Software Principal durant gairebé quatre anys, Rowin va liderar l'enginyeria en tres línies paral·leles: imatge dental 3D, el joc mòbil de puzzle Soku i eines internes."),
+        p("Synphonyte desenvolupa software de tecnologia dental i productes relacionats. Durant gairebé quatre anys, vam liderar l'enginyeria en tres línies paral·leles: imatge dental 3D, el joc mòbil de puzzle Soku i eines internes."),
         h2('Imatge Dental 3D'),
         h3('Visual Regression Testing'),
         p("Desenvolupament de tests de visual regression per a software complex d'imatge dental 3D amb Puppeteer i AVA.js, integrats amb AWS CodeBuild, Lambda Functions i GitLab CI per detectar regressions de renderitzat automàticament a cada commit."),
@@ -121,7 +121,7 @@ export const synphonyteDental: ProjectSeedData = {
         'Liderei a enxeñaría en tres liñas paralelas en Synphonyte durante case catro anos: imaxe dental 3D con xeometría personalizada do canal nervioso en Vue.js e THREE.js, o xogo móbil de puzzle Soku e ferramentas internas. Implementei un pipeline de visual regression testing con Puppeteer, AVA.js, AWS CodeBuild e GitLab CI para QA automatizado.',
       content: buildRichText([
         h2('Descrición Xeral'),
-        p('Synphonyte desenvolve software de tecnoloxía dental e produtos relacionados. Como Enxeñeiro de Software Principal durante case catro anos, Rowin liderou a enxeñaría en tres liñas paralelas: imaxe dental 3D, o xogo móbil de puzzle Soku e ferramentas internas.'),
+        p('Synphonyte desenvolve software de tecnoloxía dental e produtos relacionados. Durante case catro anos, lideramos a enxeñaría en tres liñas paralelas: imaxe dental 3D, o xogo móbil de puzzle Soku e ferramentas internas.'),
         h2('Imaxe Dental 3D'),
         h3('Visual Regression Testing'),
         p('Desenvolvemento de tests de visual regression para software complexo de imaxe dental 3D con Puppeteer e AVA.js, integrados con AWS CodeBuild, Lambda Functions e GitLab CI para detectar regresións de renderizado automaticamente en cada commit.'),
@@ -141,7 +141,7 @@ export const synphonyteDental: ProjectSeedData = {
         'Liderei a engenharia em três frentes paralelas na Synphonyte durante quase quatro anos: imagem dentária 3D com geometria personalizada do canal nervoso em Vue.js e THREE.js, o jogo móvel de puzzle Soku e ferramentas internas. Implementei um pipeline de visual regression testing com Puppeteer, AVA.js, AWS CodeBuild e GitLab CI para QA automatizada.',
       content: buildRichText([
         h2('Visão Geral'),
-        p('A Synphonyte desenvolve software de tecnologia dentária e produtos relacionados. Como Engenheiro de Software Principal durante quase quatro anos, Rowin liderou a engenharia em três frentes paralelas: imagem dentária 3D, o jogo móvel de puzzle Soku e ferramentas internas.'),
+        p('A Synphonyte desenvolve software de tecnologia dentária e produtos relacionados. Durante quase quatro anos, liderámos a engenharia em três frentes paralelas: imagem dentária 3D, o jogo móvel de puzzle Soku e ferramentas internas.'),
         h2('Imagem Dentária 3D'),
         h3('Visual Regression Testing'),
         p('Desenvolvimento de testes de visual regression para software complexo de imagem dentária 3D com Puppeteer e AVA.js, integrados com AWS CodeBuild, Lambda Functions e GitLab CI para detetar regressões de renderização automaticamente em cada commit.'),

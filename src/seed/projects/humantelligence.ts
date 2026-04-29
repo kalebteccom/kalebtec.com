@@ -6,7 +6,7 @@ export const humantelligence: ProjectSeedData = {
   slug: 'humantelligence-platform-modernization',
   client: 'Humantelligence',
   description:
-    'Worked with Humantelligence across two engagements spanning five years. As Mobile Engineer (2018–2020) I shipped the cross-platform React Native app with MS CodePush OTA updates, the EQ-everywhere mailbox browser extensions, and led a long-term Ruby on Rails to React.js migration. As Front-end Engineer (2023) I set up a PNPM mono-repo, migrated Create React App to Vite, and drove a 10x improvement in developer experience and deployment performance.',
+    'A five-year partnership with Humantelligence across two engagements. From 2018–2020 we shipped the cross-platform React Native app with MS CodePush OTA updates, the EQ-everywhere mailbox browser extensions, and led a long-term Ruby on Rails to React.js migration. Returning in 2023 we set up a PNPM monorepo, migrated Create React App to Vite, and drove a 10x improvement in developer experience and deployment performance.',
   industries: ['HR & People Analytics', 'SaaS'],
   technologies: [
     'React.js',
@@ -26,7 +26,7 @@ export const humantelligence: ProjectSeedData = {
   content: buildRichText([
     h2('Overview'),
     p(
-      'Humantelligence provides people analytics and team collaboration tools used by enterprises worldwide. Rowin worked with the company across two separate engagements spanning five years — first as Mobile Engineer in Medellín (2018–2020), then returning as a Front-end Engineer in 2023.',
+      'Humantelligence provides people analytics and team collaboration tools used by enterprises worldwide. We partnered with the company across two separate engagements spanning five years — first as Mobile Engineer in Medellín (2018–2020), then returning as a Front-end Engineer in 2023.',
     ),
 
     h2('Platform Architecture (2023)'),
@@ -77,7 +77,7 @@ export const humantelligence: ProjectSeedData = {
         'Trabajé con Humantelligence en dos compromisos separados a lo largo de cinco años. Como Mobile Engineer (2018–2020) entregué la app multiplataforma en React Native con actualizaciones over-the-air vía MS CodePush, las extensiones de navegador EQ-everywhere para buzones de correo y lideré una migración a largo plazo de Ruby on Rails a React.js. Como Front-end Engineer (2023) configuré un mono-repo con PNPM, migré Create React App a Vite y conseguí una mejora de 10x en DX y rendimiento de deployment.',
       content: buildRichText([
         h2('Descripción General'),
-        p('Humantelligence proporciona herramientas de analítica de personas y colaboración de equipos utilizadas por empresas en todo el mundo. Rowin trabajó con la empresa en dos compromisos separados a lo largo de cinco años — primero como Mobile Engineer en Medellín (2018–2020) y regresando como Front-end Engineer en 2023.'),
+        p('Humantelligence proporciona herramientas de analítica de personas y colaboración de equipos utilizadas por empresas en todo el mundo. Colaboramos con la empresa en dos compromisos separados a lo largo de cinco años — primero como Mobile Engineer en Medellín (2018–2020) y regresando como Front-end Engineer en 2023.'),
         h2('Arquitectura de la Plataforma (2023)'),
         h3('Migración a Mono-Repo'),
         p('Desarrollo de una arquitectura preparada para el futuro usando PNPM para configurar un mono-repo, segregando diferentes mini-apps del core de la plataforma con herramientas integradas de linting y formatting.'),
@@ -106,7 +106,7 @@ export const humantelligence: ProjectSeedData = {
         "J'ai travaillé avec Humantelligence sur deux missions séparées étalées sur cinq ans. En tant que Mobile Engineer (2018–2020) j'ai livré l'application multiplateforme en React Native avec mises à jour over-the-air via MS CodePush, les extensions de navigateur EQ-everywhere pour les boîtes mail et mené une migration à long terme de Ruby on Rails vers React.js. En tant que Front-end Engineer (2023) j'ai mis en place un mono-repo avec PNPM, migré Create React App vers Vite et obtenu une amélioration de 10x de la DX et des performances de deployment.",
       content: buildRichText([
         h2('Vue d\'ensemble'),
-        p("Humantelligence fournit des outils d'analytique des personnes et de collaboration d'équipe utilisés par des entreprises dans le monde entier. Rowin a travaillé avec l'entreprise sur deux missions distinctes étalées sur cinq ans — d'abord en tant que Mobile Engineer à Medellín (2018–2020), puis en revenant comme Front-end Engineer en 2023."),
+        p("Humantelligence fournit des outils d'analytique des personnes et de collaboration d'équipe utilisés par des entreprises dans le monde entier. Nous avons collaboré avec l'entreprise sur deux missions distinctes étalées sur cinq ans — d'abord en tant que Mobile Engineer à Medellín (2018–2020), puis en revenant comme Front-end Engineer en 2023."),
         h2('Architecture de la Plateforme (2023)'),
         h3('Migration vers Mono-Repo'),
         p("Développement d'une architecture pérenne avec PNPM pour configurer un mono-repo, séparant les différents mini-apps du core de la plateforme avec des outils intégrés de linting et formatting."),
@@ -135,7 +135,7 @@ export const humantelligence: ProjectSeedData = {
         "Vaig treballar amb Humantelligence en dos encàrrecs separats al llarg de cinc anys. Com a Mobile Engineer (2018–2020) vaig lliurar l'app multiplataforma en React Native amb actualitzacions over-the-air via MS CodePush, les extensions de navegador EQ-everywhere per a bústies de correu i vaig liderar una migració a llarg termini de Ruby on Rails a React.js. Com a Front-end Engineer (2023) vaig configurar un mono-repo amb PNPM, vaig migrar Create React App a Vite i vaig aconseguir una millora de 10x en DX i rendiment de deployment.",
       content: buildRichText([
         h2('Descripció General'),
-        p("Humantelligence ofereix eines d'analítica de persones i col·laboració d'equips utilitzades per empreses arreu del món. Rowin va treballar amb l'empresa en dos encàrrecs separats al llarg de cinc anys — primer com a Mobile Engineer a Medellín (2018–2020) i tornant com a Front-end Engineer el 2023."),
+        p("Humantelligence ofereix eines d'analítica de persones i col·laboració d'equips utilitzades per empreses arreu del món. Vam col·laborar amb l'empresa en dos encàrrecs separats al llarg de cinc anys — primer com a Mobile Engineer a Medellín (2018–2020) i tornant com a Front-end Engineer el 2023."),
         h2('Arquitectura de la Plataforma (2023)'),
         h3('Migració a Mono-Repo'),
         p("Desenvolupament d'una arquitectura preparada per al futur usant PNPM per configurar un mono-repo, segregant diferents mini-apps del core de la plataforma amb eines integrades de linting i formatting."),
@@ -164,7 +164,7 @@ export const humantelligence: ProjectSeedData = {
         'Traballei con Humantelligence en dous compromisos separados ao longo de cinco anos. Como Mobile Engineer (2018–2020) entreguei a app multiplataforma en React Native con actualizacións over-the-air vía MS CodePush, as extensións de navegador EQ-everywhere para caixas de correo e liderei unha migración a longo prazo de Ruby on Rails a React.js. Como Front-end Engineer (2023) configurei un mono-repo con PNPM, migrei Create React App a Vite e conseguín unha mellora de 10x en DX e rendemento de deployment.',
       content: buildRichText([
         h2('Descrición Xeral'),
-        p('Humantelligence ofrece ferramentas de analítica de persoas e colaboración de equipos utilizadas por empresas en todo o mundo. Rowin traballou coa empresa en dous compromisos separados ao longo de cinco anos — primeiro como Mobile Engineer en Medellín (2018–2020) e regresando como Front-end Engineer en 2023.'),
+        p('Humantelligence ofrece ferramentas de analítica de persoas e colaboración de equipos utilizadas por empresas en todo o mundo. Colaboramos coa empresa en dous compromisos separados ao longo de cinco anos — primeiro como Mobile Engineer en Medellín (2018–2020) e regresando como Front-end Engineer en 2023.'),
         h2('Arquitectura da Plataforma (2023)'),
         h3('Migración a Mono-Repo'),
         p('Desenvolvemento dunha arquitectura preparada para o futuro usando PNPM para configurar un mono-repo, segregando diferentes mini-apps do core da plataforma con ferramentas integradas de linting e formatting.'),
@@ -193,7 +193,7 @@ export const humantelligence: ProjectSeedData = {
         'Trabalhei com a Humantelligence em dois compromissos separados ao longo de cinco anos. Como Mobile Engineer (2018–2020) entreguei a app multiplataforma em React Native com atualizações over-the-air via MS CodePush, as extensões de navegador EQ-everywhere para caixas de correio e liderei uma migração a longo prazo de Ruby on Rails para React.js. Como Front-end Engineer (2023) configurei um mono-repo com PNPM, migrei Create React App para Vite e obtive uma melhoria de 10x em DX e performance de deployment.',
       content: buildRichText([
         h2('Visão Geral'),
-        p('A Humantelligence oferece ferramentas de analytics de pessoas e colaboração de equipas utilizadas por empresas em todo o mundo. Rowin trabalhou com a empresa em dois compromissos separados ao longo de cinco anos — primeiro como Mobile Engineer em Medellín (2018–2020) e regressando como Front-end Engineer em 2023.'),
+        p('A Humantelligence oferece ferramentas de analytics de pessoas e colaboração de equipas utilizadas por empresas em todo o mundo. Colaborámos com a empresa em dois compromissos separados ao longo de cinco anos — primeiro como Mobile Engineer em Medellín (2018–2020) e regressando como Front-end Engineer em 2023.'),
         h2('Arquitetura da Plataforma (2023)'),
         h3('Migração para Mono-Repo'),
         p('Desenvolvimento de uma arquitetura preparada para o futuro usando PNPM para configurar um mono-repo, segregando diferentes mini-apps do core da plataforma com ferramentas integradas de linting e formatting.'),
