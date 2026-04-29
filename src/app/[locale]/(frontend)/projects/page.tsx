@@ -10,9 +10,9 @@ import {
   TWITTER_HANDLE,
   buildAlternates,
   absoluteUrl,
+  siteOGImage,
 } from '@/lib/metadata';
 import type { Locale } from '@/i18n/routing';
-import type { Industry } from '@/payload-types';
 
 export const dynamic = 'force-dynamic';
 
@@ -34,6 +34,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       siteName: 'Kalebtec',
       locale: ogLocale,
       type: 'website',
+      images: [
+        {
+          url: siteOGImage(locale as Locale),
+          width: 1200,
+          height: 630,
+          alt: t('projectsTitle'),
+          type: 'image/png',
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
@@ -41,6 +50,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       description: t('projectsDescription'),
       site: TWITTER_HANDLE,
       creator: TWITTER_HANDLE,
+      images: [siteOGImage(locale as Locale)],
     },
   };
 }
@@ -130,10 +140,7 @@ export default async function ProjectsPage({ params }: { params: Params }) {
     <>
       <JsonLd data={collectionLd} />
       <JsonLd data={breadcrumbLd} />
-      <section
-        aria-labelledby="projects-page-heading"
-        className="min-h-screen pt-32 pb-32 bg-bg"
-      >
+      <section aria-labelledby="projects-page-heading" className="min-h-screen pt-32 pb-32 bg-bg">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mb-16 max-w-4xl">
             <p className="font-mono text-xs uppercase tracking-widest text-faint mb-4">

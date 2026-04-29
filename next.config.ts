@@ -22,6 +22,9 @@ if (siteUrl) {
 }
 
 const nextConfig: NextConfig = {
+  // Drop the `X-Powered-By: Next.js` response header — the SEO audit
+  // flagged it and it leaks server tech with no benefit.
+  poweredByHeader: false,
   htmlLimitedBots: new RegExp('.*'),
   images: {
     remotePatterns: [

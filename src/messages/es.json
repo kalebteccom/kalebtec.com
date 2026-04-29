@@ -101,7 +101,7 @@
     "statusOnline": "Online",
     "rowin": {
       "role": "Cofundador e Ingeniero Principal",
-      "description": "El que habla con las máquinas. Rowin construye sistemas full-stack desde cero -- bases de datos, APIs, interfaces, infraestructura. Si funciona con código, él ya va por la mitad de la arquitectura. Obsesionado con abstracciones limpias, despliegues rápidos y hacer que lo complejo parezca simple.",
+      "description": "El que habla con las máquinas. Rowin construye sistemas full-stack desde cero — bases de datos, APIs, interfaces de usuario, infraestructura. Si funciona con código, él ya va por la mitad de la arquitectura. Obsesionado con abstracciones limpias, despliegues rápidos y hacer que lo complejo parezca simple.",
       "specSpecialty": "Sistemas Full-Stack",
       "specFocus": "Arquitectura y DX",
       "specMode": "Construir y Desplegar"

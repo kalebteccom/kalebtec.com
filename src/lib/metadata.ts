@@ -54,3 +54,15 @@ export function buildAlternates(
  * trivial to update in one place.
  */
 export const TWITTER_HANDLE = '@kalebtec';
+
+/**
+ * Build the absolute OG image URL for a given locale, pointing at the
+ * site-wide opengraph-image route. We pass it explicitly to the metadata
+ * `openGraph.images` because Next.js's auto-discovered OG file gets
+ * shadowed once a route emits its own `openGraph` block.
+ */
+export function siteOGImage(locale: Locale): string {
+  // localePath('en', '/') returns '' (root, no prefix). For other locales it
+  // returns '/<locale>'. Either way, appending '/opengraph-image' is correct.
+  return `${SITE_URL}${localePath(locale, '/')}/opengraph-image`;
+}

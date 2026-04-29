@@ -12,6 +12,7 @@ import {
   OG_LOCALE_BY_LOCALE,
   TWITTER_HANDLE,
   buildAlternates,
+  siteOGImage,
 } from '@/lib/metadata';
 import type { Locale } from '@/i18n/routing';
 import './globals.css';
@@ -60,6 +61,15 @@ export async function generateMetadata({
       locale: ogLocale,
       type: 'website',
       url: SITE_URL,
+      images: [
+        {
+          url: siteOGImage(locale as Locale),
+          width: 1200,
+          height: 630,
+          alt: t('ogTitle'),
+          type: 'image/png',
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
@@ -67,6 +77,7 @@ export async function generateMetadata({
       description: t('ogDescription'),
       site: TWITTER_HANDLE,
       creator: TWITTER_HANDLE,
+      images: [siteOGImage(locale as Locale)],
     },
   };
 }

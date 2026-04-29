@@ -188,14 +188,16 @@ function TeamMemberCard({
             transform: 'rotateY(180deg)',
           }}
         >
-          <div className="h-full flex flex-col p-8 sm:p-10">
+          <div className="h-full flex flex-col p-8 sm:p-10" aria-hidden="true">
             <div className="mb-6">
               <p className="text-xs font-medium uppercase tracking-wider text-faint mb-3">
                 {role}
               </p>
-              <h3 className="font-display text-2xl font-semibold tracking-tight text-heading">
+              {/* Back-face name uses <p>, not <h3>, so the same heading isn't
+                  emitted twice in the DOM (front already exposes it). */}
+              <p className="font-display text-2xl font-semibold tracking-tight text-heading">
                 {member.name}
-              </h3>
+              </p>
             </div>
 
             <p className="text-sm leading-relaxed text-body mb-8 flex-1">

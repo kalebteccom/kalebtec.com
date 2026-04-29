@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import AnimatedReveal from '@/components/ui/AnimatedReveal';
-import { buildAlternates, OG_LOCALE_BY_LOCALE, absoluteUrl } from '@/lib/metadata';
+import { buildAlternates, OG_LOCALE_BY_LOCALE, absoluteUrl, siteOGImage } from '@/lib/metadata';
 import type { Locale } from '@/i18n/routing';
 
 type Params = Promise<{ locale: string }>;
@@ -22,6 +22,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       siteName: 'Kalebtec',
       locale: ogLocale,
       type: 'website',
+      images: [
+        {
+          url: siteOGImage(locale as Locale),
+          width: 1200,
+          height: 630,
+          alt: t('metaTitle'),
+          type: 'image/png',
+        },
+      ],
     },
   };
 }
