@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "title": "Kalebtec | Tech Consulting",
-    "description": "Expert technology consulting by Rowin and Mari Hernandez. We build digital solutions that matter.",
-    "ogTitle": "Kalebtec | Tech Consulting",
-    "ogDescription": "Expert technology consulting by Rowin and Mari Hernandez.",
-    "projectsTitle": "Projects | Kalebtec",
-    "projectsDescription": "Explore our portfolio of technology consulting projects spanning web development, AI, cloud infrastructure, and more.",
+    "title": "Kalebtec | Software architecture, web & AI consulting",
+    "description": "Software architecture, web platforms, and AI automation by a small team led by Rowin and Mari Hernandez. We build software that lasts.",
+    "ogTitle": "Kalebtec | Software architecture, web & AI consulting",
+    "ogDescription": "Software architecture, web platforms, and AI automation by a small team led by Rowin and Mari Hernandez. We build software that lasts.",
+    "projectsTitle": "Our work — Kalebtec software & engineering projects",
+    "projectsDescription": "Selected web platforms, AI automation, and software architecture engagements delivered by Kalebtec for clients across sports, health, and retail.",
     "notFoundTitle": "Project Not Found | Kalebtec"
   },
   "nav": {
