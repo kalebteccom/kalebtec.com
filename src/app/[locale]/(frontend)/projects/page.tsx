@@ -3,8 +3,16 @@ import configPromise from '@payload-config';
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import ProjectsFilter from '@/components/projects/ProjectsFilter';
+import JsonLd from '@/components/seo/JsonLd';
+import {
+  SITE_URL,
+  OG_LOCALE_BY_LOCALE,
+  TWITTER_HANDLE,
+  buildAlternates,
+  absoluteUrl,
+} from '@/lib/metadata';
 import type { Locale } from '@/i18n/routing';
-import type { Project, Industry, Media } from '@/payload-types';
+import type { Industry } from '@/payload-types';
 
 export const dynamic = 'force-dynamic';
 
@@ -13,9 +21,27 @@ type Params = Promise<{ locale: string }>;
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'metadata' });
+  const ogLocale = OG_LOCALE_BY_LOCALE[locale as Locale] ?? 'en_US';
+
   return {
     title: t('projectsTitle'),
     description: t('projectsDescription'),
+    alternates: buildAlternates(locale as Locale, '/projects'),
+    openGraph: {
+      title: t('projectsTitle'),
+      description: t('projectsDescription'),
+      url: absoluteUrl(locale as Locale, '/projects'),
+      siteName: 'Kalebtec',
+      locale: ogLocale,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('projectsTitle'),
+      description: t('projectsDescription'),
+      site: TWITTER_HANDLE,
+      creator: TWITTER_HANDLE,
+    },
   };
 }
 
@@ -24,6 +50,7 @@ export default async function ProjectsPage({ params }: { params: Params }) {
   setRequestLocale(locale);
 
   const t = await getTranslations('projects');
+  const tMeta = await getTranslations({ locale, namespace: 'metadata' });
   const payload = await getPayload({ config: configPromise });
 
   const { docs: projects } = await payload.find({
@@ -59,22 +86,71 @@ export default async function ProjectsPage({ params }: { params: Params }) {
     }
   }
 
-  return (
-    <section aria-label={t('pageTitle')} className="min-h-screen pt-32 pb-32 bg-bg">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mb-16 max-w-4xl">
-          <p className="font-mono text-xs uppercase tracking-widest text-faint mb-4">
-            {t('sectionNumber')} — {t.raw('sectionTitle')}
-          </p>
-          <h1 className="text-display-xl text-heading">{t('pageTitle')}</h1>
-        </div>
+  // CollectionPage + ItemList for the project archive
+  const collectionLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': `${absoluteUrl(locale as Locale, '/projects')}#collection`,
+    name: tMeta('projectsTitle'),
+    description: tMeta('projectsDescription'),
+    url: absoluteUrl(locale as Locale, '/projects'),
+    inLanguage: locale,
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: projects.map((project, idx) => ({
+        '@type': 'ListItem',
+        position: idx + 1,
+        url: absoluteUrl(locale as Locale, `/projects/${project.slug}`),
+        name: project.title,
+      })),
+    },
+  };
 
-        <ProjectsFilter
-          projects={projects}
-          industries={Array.from(industrySet).sort()}
-          technologies={Array.from(technologySet).sort()}
-        />
-      </div>
-    </section>
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Kalebtec',
+        item: absoluteUrl(locale as Locale, '/'),
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: tMeta('projectsTitle'),
+        item: absoluteUrl(locale as Locale, '/projects'),
+      },
+    ],
+  };
+
+  return (
+    <>
+      <JsonLd data={collectionLd} />
+      <JsonLd data={breadcrumbLd} />
+      <section
+        aria-labelledby="projects-page-heading"
+        className="min-h-screen pt-32 pb-32 bg-bg"
+      >
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mb-16 max-w-4xl">
+            <p className="font-mono text-xs uppercase tracking-widest text-faint mb-4">
+              {t('sectionNumber')} — {t.raw('sectionTitle')}
+            </p>
+            <h1 id="projects-page-heading" className="text-display-xl text-heading">
+              {t('pageTitle')}
+            </h1>
+          </div>
+
+          <ProjectsFilter
+            projects={projects}
+            industries={Array.from(industrySet).sort()}
+            technologies={Array.from(technologySet).sort()}
+          />
+        </div>
+      </section>
+    </>
   );
 }

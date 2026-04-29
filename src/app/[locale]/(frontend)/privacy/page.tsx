@@ -2,13 +2,28 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import AnimatedReveal from '@/components/ui/AnimatedReveal';
+import { buildAlternates, OG_LOCALE_BY_LOCALE, absoluteUrl } from '@/lib/metadata';
+import type { Locale } from '@/i18n/routing';
 
 type Params = Promise<{ locale: string }>;
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'privacy' });
-  return { title: t('metaTitle'), description: t('metaDescription') };
+  const ogLocale = OG_LOCALE_BY_LOCALE[locale as Locale] ?? 'en_US';
+  return {
+    title: t('metaTitle'),
+    description: t('metaDescription'),
+    alternates: buildAlternates(locale as Locale, '/privacy'),
+    openGraph: {
+      title: t('metaTitle'),
+      description: t('metaDescription'),
+      url: absoluteUrl(locale as Locale, '/privacy'),
+      siteName: 'Kalebtec',
+      locale: ogLocale,
+      type: 'website',
+    },
+  };
 }
 
 interface SectionProps {

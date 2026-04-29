@@ -7,6 +7,14 @@ import { Link } from '@/i18n/navigation';
 import { RichText } from '@payloadcms/richtext-lexical/react';
 import type { SerializedEditorState } from 'lexical';
 import type { Metadata } from 'next';
+import JsonLd from '@/components/seo/JsonLd';
+import {
+  SITE_URL,
+  OG_LOCALE_BY_LOCALE,
+  TWITTER_HANDLE,
+  buildAlternates,
+  absoluteUrl,
+} from '@/lib/metadata';
 import type { Locale } from '@/i18n/routing';
 import type { Media, Industry } from '@/payload-types';
 
@@ -28,22 +36,37 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   });
 
   const project = docs[0];
-  if (!project) return { title: t('notFoundTitle') };
+  if (!project) {
+    return {
+      title: t('notFoundTitle'),
+      robots: { index: false, follow: true },
+    };
+  }
 
-  const ogPath = `/${locale}/projects/${slug}/og`;
+  const ogPath = `/${locale === 'en' ? '' : `${locale}/`}projects/${slug}/og`;
+  const ogLocale = OG_LOCALE_BY_LOCALE[locale as Locale] ?? 'en_US';
+  const description = project.description ?? `${project.title} — a Kalebtec project.`;
 
   return {
     title: `${project.title} | Kalebtec`,
-    description: project.description ?? `${project.title} — a Kalebtec project.`,
+    description,
+    alternates: buildAlternates(locale as Locale, `/projects/${slug}`),
     openGraph: {
       title: project.title,
-      description: project.description ?? undefined,
+      description,
+      url: absoluteUrl(locale as Locale, `/projects/${slug}`),
+      siteName: 'Kalebtec',
+      locale: ogLocale,
+      type: 'article',
+      ...(project.publishedDate ? { publishedTime: project.publishedDate } : {}),
       images: [{ url: ogPath, width: 1200, height: 630, alt: project.title }],
     },
     twitter: {
       card: 'summary_large_image',
       title: project.title,
-      description: project.description ?? undefined,
+      description,
+      site: TWITTER_HANDLE,
+      creator: TWITTER_HANDLE,
       images: [ogPath],
     },
   };
@@ -74,8 +97,57 @@ export default async function ProjectDetailPage({ params }: { params: Params }) 
   );
   const technologies = project.technologies ?? [];
 
+  // BreadcrumbList helps Google show breadcrumb links in search results
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Kalebtec',
+        item: absoluteUrl(locale as Locale, '/'),
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: t('pageTitle'),
+        item: absoluteUrl(locale as Locale, '/projects'),
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: project.title,
+        item: absoluteUrl(locale as Locale, `/projects/${slug}`),
+      },
+    ],
+  };
+
+  // CreativeWork describes the project itself for richer search appearance
+  const creativeWorkLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    '@id': `${absoluteUrl(locale as Locale, `/projects/${slug}`)}#project`,
+    name: project.title,
+    description: project.description ?? undefined,
+    url: absoluteUrl(locale as Locale, `/projects/${slug}`),
+    inLanguage: locale,
+    ...(project.publishedDate ? { datePublished: project.publishedDate } : {}),
+    ...(image?.url ? { image: image.url.startsWith('http') ? image.url : `${SITE_URL}${image.url}` } : {}),
+    author: { '@id': `${SITE_URL}/#organization` },
+    creator: { '@id': `${SITE_URL}/#organization` },
+    publisher: { '@id': `${SITE_URL}/#organization` },
+    ...(project.client ? { sponsor: project.client, about: project.client } : {}),
+    keywords: [
+      ...industries.map((ind) => ind.name),
+      ...technologies.map((t) => t.technology).filter(Boolean),
+    ].join(', '),
+  };
+
   return (
     <article aria-label={project.title} className="min-h-screen pt-32 pb-32 bg-bg">
+      <JsonLd data={breadcrumbLd} />
+      <JsonLd data={creativeWorkLd} />
       <div className="mx-auto max-w-5xl px-6 lg:px-8">
         <Link
           href="/projects"

@@ -64,7 +64,7 @@ export default function Error({
         </div>
 
         <div className="flex flex-wrap items-center gap-4">
-          <button onClick={reset} className="btn-pill btn-primary">
+          <button type="button" onClick={reset} className="btn-pill btn-primary">
             {t('retry')}
           </button>
           <Link href="/" className="btn-pill btn-secondary">

@@ -21,16 +21,18 @@
   --color-brand-dark: #5c00b8;
   --color-brand-glow: rgba(128, 0, 255, 0.4);
 
-  /* Semantic aliases — switch with [data-theme] */
+  /* Semantic aliases — switch with [data-theme].
+     Opacities tuned for WCAG AA contrast on the cream/ink palettes:
+       muted ≥ 7:1 (AAA), faint ≥ 4.5:1 (AA Normal). */
   --color-bg: #e5e4d8;
   --color-surface: #f1f0e4;
   --color-surface-bright: #fafaf5;
   --color-heading: #080f11;
   --color-body: #080f11;
-  --color-muted: rgba(8, 15, 17, 0.6);
-  --color-faint: rgba(8, 15, 17, 0.4);
-  --color-border: rgba(8, 15, 17, 0.08);
-  --color-border-strong: rgba(8, 15, 17, 0.2);
+  --color-muted: rgba(8, 15, 17, 0.72);
+  --color-faint: rgba(8, 15, 17, 0.62);
+  --color-border: rgba(8, 15, 17, 0.1);
+  --color-border-strong: rgba(8, 15, 17, 0.22);
 
   /* Fonts — Inter does both body and display via weight + tracking.
      Geist Mono replaces JetBrains Mono for small mono labels. */
@@ -85,10 +87,10 @@
   --color-surface-bright: #1a212a;
   --color-heading: #f1f0e4;
   --color-body: #f1f0e4;
-  --color-muted: rgba(241, 240, 228, 0.67);
-  --color-faint: rgba(241, 240, 228, 0.48);
-  --color-border: rgba(241, 240, 228, 0.1);
-  --color-border-strong: rgba(241, 240, 228, 0.22);
+  --color-muted: rgba(241, 240, 228, 0.78);
+  --color-faint: rgba(241, 240, 228, 0.62);
+  --color-border: rgba(241, 240, 228, 0.12);
+  --color-border-strong: rgba(241, 240, 228, 0.26);
 }
 
 [data-theme='light'] {

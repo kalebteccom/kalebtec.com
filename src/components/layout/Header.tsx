@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import MobileMenu from './MobileMenu';
 import ThemeToggle from '@/components/ui/ThemeToggle';
@@ -12,6 +12,7 @@ import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 
 export default function Header() {
   const t = useTranslations('nav');
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [logoFlash, setLogoFlash] = useState(false);
@@ -105,19 +106,30 @@ export default function Header() {
               className="hidden md:flex items-center gap-8"
               aria-label={t('mainNav')}
             >
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="relative text-sm font-medium text-muted hover:text-heading transition-colors duration-200"
-                >
-                  <span>{link.label}</span>
-                  <span
-                    aria-hidden="true"
-                    className="absolute left-0 right-0 -bottom-1 h-px bg-current opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                  />
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isActive =
+                  link.href === '/projects' && pathname.startsWith('/projects');
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    aria-current={isActive ? 'page' : undefined}
+                    className={cn(
+                      'relative text-sm font-medium transition-colors duration-200',
+                      isActive ? 'text-heading' : 'text-muted hover:text-heading',
+                    )}
+                  >
+                    <span>{link.label}</span>
+                    <span
+                      aria-hidden="true"
+                      className={cn(
+                        'absolute left-0 right-0 -bottom-1 h-px bg-current transition-opacity duration-200',
+                        isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100',
+                      )}
+                    />
+                  </Link>
+                );
+              })}
             </nav>
 
             {/* Right side: language + theme + mobile hamburger */}

@@ -72,12 +72,14 @@ export default function CookieBanner() {
 
                 <div className="flex items-center gap-3 shrink-0">
                   <button
+                    type="button"
                     onClick={handleDecline}
                     className="btn-pill btn-ghost text-sm px-5 py-2.5"
                   >
                     {t('decline')}
                   </button>
                   <button
+                    type="button"
                     onClick={handleAccept}
                     className="btn-pill btn-primary text-sm px-5 py-2.5"
                   >

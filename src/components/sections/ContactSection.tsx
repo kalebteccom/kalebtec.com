@@ -89,6 +89,7 @@ export default function ContactSection() {
             onSubmit={handleSubmit}
             className="space-y-6 mt-8"
             aria-label={t('formAriaLabel')}
+            aria-busy={formStatus === 'submitting'}
           >
             <div>
               <label

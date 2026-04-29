@@ -1,5 +1,10 @@
+import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
+
+export const metadata: Metadata = {
+  robots: { index: false, follow: true },
+};
 
 export default function NotFound() {
   const t = useTranslations('notFound');
