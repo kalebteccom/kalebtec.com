@@ -26,7 +26,7 @@ function Section({ num, label, title, children, delay = 0.1 }: SectionProps) {
         <p className="font-mono text-xs uppercase tracking-widest text-faint mb-3">
           {num} — {label}
         </p>
-        <h2 className="font-display text-2xl md:text-3xl font-semibold tracking-tight text-heading mb-5">
+        <h2 className="font-display text-2xl font-semibold tracking-tight text-heading mb-5">
           {title}
         </h2>
         <div className="text-base text-body leading-relaxed space-y-4 max-w-2xl">{children}</div>

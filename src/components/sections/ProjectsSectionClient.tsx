@@ -60,17 +60,17 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         )}
 
         <div className="pt-5">
-          <div className="flex items-baseline justify-between mb-2">
+          <div className="flex items-baseline justify-between mb-2 gap-4">
             <h3
               className={cn(
                 'font-display font-semibold tracking-tight text-heading',
-                isFeatured ? 'text-3xl md:text-4xl' : 'text-xl md:text-2xl',
+                isFeatured ? 'text-2xl' : 'text-lg',
               )}
             >
               {project.title}
             </h3>
             {project.client && (
-              <span className="font-mono text-xs uppercase tracking-wider text-faint shrink-0 ml-4">
+              <span className="font-mono text-xs uppercase tracking-wider text-faint shrink-0">
                 {project.client}
               </span>
             )}
@@ -79,7 +79,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           {project.description && (
             <p
               className={cn(
-                'text-base text-muted leading-relaxed',
+                'text-sm text-muted leading-relaxed',
                 isFeatured ? 'max-w-2xl' : 'max-w-md',
               )}
             >
@@ -119,7 +119,7 @@ export default function ProjectsSectionClient({
       <AnimatedReveal>
         <div className="grid grid-cols-3 gap-8 mb-16 pb-12 border-b border-border">
           <div>
-            <div className="font-display text-4xl md:text-5xl font-bold tracking-tight text-heading mb-1 tabular-nums">
+            <div className="font-display text-3xl md:text-4xl font-bold tracking-tight text-heading mb-1 tabular-nums">
               {stats.totalProjects}
             </div>
             <div className="text-xs font-medium uppercase tracking-wider text-faint">
@@ -127,7 +127,7 @@ export default function ProjectsSectionClient({
             </div>
           </div>
           <div>
-            <div className="font-display text-4xl md:text-5xl font-bold tracking-tight text-heading mb-1 tabular-nums">
+            <div className="font-display text-3xl md:text-4xl font-bold tracking-tight text-heading mb-1 tabular-nums">
               {stats.technologiesUsed}
             </div>
             <div className="text-xs font-medium uppercase tracking-wider text-faint">
@@ -135,7 +135,7 @@ export default function ProjectsSectionClient({
             </div>
           </div>
           <div>
-            <div className="font-display text-4xl md:text-5xl font-bold tracking-tight text-heading mb-1 tabular-nums">
+            <div className="font-display text-3xl md:text-4xl font-bold tracking-tight text-heading mb-1 tabular-nums">
               {stats.industriesServed}
             </div>
             <div className="text-xs font-medium uppercase tracking-wider text-faint">

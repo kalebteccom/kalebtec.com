@@ -143,7 +143,7 @@ export default async function ProjectDetailPage({ params }: { params: Params }) 
         {project.content && (
           <RichText
             data={project.content as SerializedEditorState}
-            className="prose max-w-3xl prose-headings:font-display prose-headings:tracking-tight prose-headings:text-heading prose-h2:mt-12 prose-h2:mb-4 prose-h3:mt-8 prose-h3:mb-3 prose-p:text-body prose-p:leading-relaxed prose-p:my-5 prose-a:text-heading prose-a:underline prose-a:underline-offset-4 hover:prose-a:no-underline prose-strong:text-heading prose-code:font-mono prose-code:text-heading prose-li:text-body prose-ul:my-4 prose-ol:my-4 prose-blockquote:border-l-2 prose-blockquote:border-border-strong prose-blockquote:pl-6 prose-blockquote:text-muted prose-blockquote:italic"
+            className="prose prose-sm sm:prose-base max-w-3xl prose-headings:font-display prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-heading prose-h2:text-xl sm:prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-3 prose-h3:text-lg sm:prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-2 prose-p:text-body prose-p:leading-relaxed prose-p:my-4 prose-a:text-heading prose-a:underline prose-a:underline-offset-4 hover:prose-a:no-underline prose-strong:text-heading prose-code:font-mono prose-code:text-heading prose-li:text-body prose-ul:my-3 prose-ol:my-3 prose-blockquote:border-l-2 prose-blockquote:border-border-strong prose-blockquote:pl-6 prose-blockquote:text-muted prose-blockquote:italic"
           />
         )}
       </div>

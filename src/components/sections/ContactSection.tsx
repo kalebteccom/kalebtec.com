@@ -78,7 +78,7 @@ export default function ContactSection() {
         <AnimatedReveal delay={0.15}>
           <a
             href="mailto:hello@kalebtec.com"
-            className="inline-block text-2xl md:text-3xl font-display font-semibold tracking-tight text-heading mb-12 underline underline-offset-4 hover:no-underline transition-all duration-200"
+            className="inline-block text-2xl font-display font-semibold tracking-tight text-heading mb-12 underline underline-offset-4 hover:no-underline transition-all duration-200"
           >
             hello@kalebtec.com
           </a>

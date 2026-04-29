@@ -165,7 +165,7 @@ export default function MobileMenu({ isOpen, onClose, triggerRef }: MobileMenuPr
                 <Link
                   href={link.href}
                   onClick={onClose}
-                  className="block text-3xl sm:text-4xl font-semibold tracking-tight text-heading hover:text-muted transition-colors duration-200 py-2"
+                  className="block text-3xl font-semibold tracking-tight text-heading hover:text-muted transition-colors duration-200 py-2"
                 >
                   {link.label}
                 </Link>
