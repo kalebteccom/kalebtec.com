@@ -113,9 +113,12 @@ export default function Header() {
               </StackedPill>
             </div>
 
-            {/* RIGHT — utility pill. On lg+: lang + theme. Below lg: the
-                Start a project CTA + hamburger get stacked here so the
-                whole right edge reads as one pill. */}
+            {/* RIGHT — utility pill.
+                - lg+: language + theme switchers as a stacked pill.
+                - <lg: a single labeled "Menu" pill that opens the
+                  mobile drawer. We deliberately do NOT duplicate the
+                  hero's primary CTA here; one above-the-fold call to
+                  action is enough. */}
             <div className="flex items-center shrink-0">
               {/* lg+ utility pill — lang + theme */}
               <StackedPill className="hidden lg:inline-flex">
@@ -123,35 +126,31 @@ export default function Header() {
                 <ThemeToggle />
               </StackedPill>
 
-              {/* md and below — Start a project + hamburger as one pill */}
-              <StackedPill className="lg:hidden">
-                <ButtonLink href="/#contact" variant="primary" size="md" bullet>
-                  <span className="hidden sm:inline">{tHero('primaryCta')}</span>
-                  <span className="sm:hidden">{tHero('primaryCtaShort')}</span>
-                </ButtonLink>
-                <button
-                  ref={hamburgerRef}
-                  type="button"
-                  onClick={() => setMobileMenuOpen(true)}
-                  className="nav-pill-link inline-flex items-center justify-center h-9 w-9 rounded-full transition-colors"
-                  aria-label={t('openMenu')}
-                  aria-expanded={mobileMenuOpen}
-                  aria-controls="mobile-nav-menu"
+              {/* <lg — labeled menu trigger as a single pill */}
+              <button
+                ref={hamburgerRef}
+                type="button"
+                onClick={() => setMobileMenuOpen(true)}
+                className="nav-pill lg:hidden inline-flex items-center gap-2.5 rounded-full px-5 py-2.5 text-base font-medium text-paper-soft transition-colors hover:brightness-110"
+                aria-label={t('openMenu')}
+                aria-expanded={mobileMenuOpen}
+                aria-controls="mobile-nav-menu"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  aria-hidden="true"
+                  className="shrink-0"
                 >
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    aria-hidden="true"
-                  >
-                    <line x1="3" y1="6" x2="17" y2="6" />
-                    <line x1="3" y1="14" x2="17" y2="14" />
-                  </svg>
-                </button>
-              </StackedPill>
+                  <line x1="3" y1="7" x2="17" y2="7" />
+                  <line x1="3" y1="13" x2="17" y2="13" />
+                </svg>
+                <span>{t('menu')}</span>
+              </button>
             </div>
           </div>
         </div>

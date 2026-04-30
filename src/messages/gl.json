@@ -19,7 +19,8 @@
     "mobileNav": "Navegación móbil",
     "mobileMenuDialog": "Menú de navegación",
     "mainNav": "Navegación principal",
-    "systemNav": "Navegación"
+    "systemNav": "Navegación",
+    "menu": "Menú"
   },
   "hero": {
     "ariaLabel": "Heroe",
@@ -29,7 +30,7 @@
     "primaryCta": "Comezar proxecto",
     "secondaryCta": "Ver o noso traballo",
     "primaryCtaShort": "Comezar",
-    "secondaryCtaShort": "Traballo"
+    "secondaryCtaShort": "Proxectos"
   },
   "about": {
     "ariaLabel": "Sobre Kalebtec",
