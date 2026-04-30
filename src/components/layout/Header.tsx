@@ -12,6 +12,7 @@ import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 
 export default function Header() {
   const t = useTranslations('nav');
+  const tHero = useTranslations('hero');
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -101,9 +102,9 @@ export default function Header() {
               </span>
             </Link>
 
-            {/* Desktop navigation — sentence case, no brackets */}
+            {/* Desktop navigation — plain text links (NR-style) */}
             <nav
-              className="hidden md:flex items-center gap-8"
+              className="hidden md:flex items-center gap-7"
               aria-label={t('mainNav')}
             >
               {navLinks.map((link) => {
@@ -115,7 +116,7 @@ export default function Header() {
                     href={link.href}
                     aria-current={isActive ? 'page' : undefined}
                     className={cn(
-                      'relative text-sm font-medium transition-colors duration-200',
+                      'group relative text-sm font-medium transition-colors duration-200',
                       isActive ? 'text-heading' : 'text-muted hover:text-heading',
                     )}
                   >
@@ -123,8 +124,10 @@ export default function Header() {
                     <span
                       aria-hidden="true"
                       className={cn(
-                        'absolute left-0 right-0 -bottom-1 h-px bg-current transition-opacity duration-200',
-                        isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100',
+                        'absolute -bottom-1.5 left-0 right-0 h-px bg-current transition-opacity duration-200',
+                        isActive
+                          ? 'opacity-100'
+                          : 'opacity-0 group-hover:opacity-60',
                       )}
                     />
                   </Link>
@@ -132,8 +135,20 @@ export default function Header() {
               })}
             </nav>
 
-            {/* Right side: language + theme + mobile hamburger */}
+            {/* Right side: CTA pill + language + theme + mobile hamburger */}
             <div className="flex items-center gap-2">
+              {/* Bullet-style primary CTA — pill, brand purple, small */}
+              <Link
+                href="/#contact"
+                className="hidden md:inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-brand-dark"
+              >
+                <span
+                  aria-hidden="true"
+                  className="h-1.5 w-1.5 rounded-full bg-white"
+                />
+                <span>{tHero('primaryCta')}</span>
+              </Link>
+
               <LanguageSwitcher />
               <ThemeToggle />
 
