@@ -40,7 +40,7 @@ function pickBulletColor(
 }
 
 const baseClasses =
-  'inline-flex items-center justify-center rounded-full font-medium transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed';
+  'inline-flex items-center justify-center rounded-full font-medium whitespace-nowrap transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed';
 
 export function buttonClassName(
   variant: ButtonVariant = 'primary',

@@ -94,12 +94,13 @@ export default function HeroSection() {
 
             {/* CTA pair — both nested inside one StackedPill so they
                 read as a single editorial control cluster against the
-                cream/ink page background. */}
+                cream/ink page background. Stacks vertically below the
+                sm breakpoint so the labels never wrap mid-word. */}
             <motion.div
               variants={fadeUpVariants}
               className="pointer-events-auto"
             >
-              <StackedPill padding="md">
+              <StackedPill padding="md" stackBelow="sm">
                 <ButtonLink href="/#contact" variant="primary" size="md" bullet>
                   {t('primaryCta')}
                 </ButtonLink>
