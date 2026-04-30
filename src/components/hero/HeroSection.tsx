@@ -92,15 +92,30 @@ export default function HeroSection() {
               {t('subhead')}
             </motion.p>
 
-            {/* CTA pair — both nested inside one StackedPill so they
-                read as a single editorial control cluster against the
-                cream/ink page background. Stacks vertically below the
-                sm breakpoint so the labels never wrap mid-word. */}
+            {/* CTA pair. Two presentations:
+                - Mobile (<sm): two standalone full-width pill buttons
+                  stacked vertically. Each button carries its own chrome
+                  (primary fill / secondary outline) so it reads
+                  unambiguously as a button.
+                - sm+: clustered inside a StackedPill so they read as
+                  one editorial control against the page background;
+                  ghost variant works there because the dark capsule
+                  IS the surrounding chrome. */}
             <motion.div
               variants={fadeUpVariants}
               className="pointer-events-auto"
             >
-              <StackedPill padding="md" stackBelow="sm">
+              {/* Mobile presentation */}
+              <div className="flex flex-col items-stretch gap-3 sm:hidden">
+                <ButtonLink href="/#contact" variant="primary" size="lg" bullet>
+                  {t('primaryCta')}
+                </ButtonLink>
+                <ButtonLink href="/#projects" variant="secondary" size="lg">
+                  {t('secondaryCta')}
+                </ButtonLink>
+              </div>
+              {/* Tablet+ presentation */}
+              <StackedPill padding="md" className="hidden sm:inline-flex">
                 <ButtonLink href="/#contact" variant="primary" size="md" bullet>
                   {t('primaryCta')}
                 </ButtonLink>
