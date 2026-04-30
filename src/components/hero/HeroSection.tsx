@@ -92,35 +92,23 @@ export default function HeroSection() {
               {t('subhead')}
             </motion.p>
 
-            {/* CTA pair. Two presentations:
-                - Mobile (<sm): two standalone full-width pill buttons
-                  stacked vertically. Each button carries its own chrome
-                  (primary fill / secondary outline) so it reads
-                  unambiguously as a button.
-                - sm+: clustered inside a StackedPill so they read as
-                  one editorial control against the page background;
-                  ghost variant works there because the dark capsule
-                  IS the surrounding chrome. */}
+            {/* CTA pair — clustered inside a single horizontal StackedPill
+                at every viewport. On mobile we swap to the localized short
+                labels (see hero.primaryCtaShort / hero.secondaryCtaShort)
+                so both fit on one line without wrapping. The capsule
+                pattern is preserved end-to-end. */}
             <motion.div
               variants={fadeUpVariants}
               className="pointer-events-auto"
             >
-              {/* Mobile presentation */}
-              <div className="flex flex-col items-stretch gap-3 sm:hidden">
-                <ButtonLink href="/#contact" variant="primary" size="lg" bullet>
-                  {t('primaryCta')}
-                </ButtonLink>
-                <ButtonLink href="/#projects" variant="secondary" size="lg">
-                  {t('secondaryCta')}
-                </ButtonLink>
-              </div>
-              {/* Tablet+ presentation */}
-              <StackedPill padding="md" className="hidden sm:inline-flex">
+              <StackedPill padding="md">
                 <ButtonLink href="/#contact" variant="primary" size="md" bullet>
-                  {t('primaryCta')}
+                  <span className="hidden sm:inline">{t('primaryCta')}</span>
+                  <span className="sm:hidden">{t('primaryCtaShort')}</span>
                 </ButtonLink>
                 <ButtonLink href="/#projects" variant="ghost" size="md">
-                  {t('secondaryCta')}
+                  <span className="hidden sm:inline">{t('secondaryCta')}</span>
+                  <span className="sm:hidden">{t('secondaryCtaShort')}</span>
                 </ButtonLink>
               </StackedPill>
             </motion.div>

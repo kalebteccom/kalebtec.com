@@ -28,7 +28,8 @@
     "subhead": "Software architecture, web platforms, and AI automation, built by a small team that ships.",
     "primaryCta": "Start a project",
     "secondaryCta": "See our work",
-    "primaryCtaShort": "Start"
+    "primaryCtaShort": "Start",
+    "secondaryCtaShort": "Work"
   },
   "about": {
     "ariaLabel": "About Kalebtec",

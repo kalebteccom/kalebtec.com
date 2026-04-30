@@ -28,7 +28,8 @@
     "subhead": "Arquitetura de software, plataformas web e automação com IA, construídas por uma equipe pequena que entrega.",
     "primaryCta": "Iniciar projeto",
     "secondaryCta": "Ver nosso trabalho",
-    "primaryCtaShort": "Iniciar"
+    "primaryCtaShort": "Iniciar",
+    "secondaryCtaShort": "Trabalho"
   },
   "about": {
     "ariaLabel": "Sobre a Kalebtec",
