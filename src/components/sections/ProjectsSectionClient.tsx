@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import AnimatedReveal from '@/components/ui/AnimatedReveal';
+import { Stat, StatGrid } from '@/components/ui/Stat';
 import { cn } from '@/lib/utils';
 import type { Project, Media, Industry } from '@/payload-types';
 
@@ -115,34 +116,12 @@ export default function ProjectsSectionClient({
 
   return (
     <>
-      {/* Stats — clean number row */}
       <AnimatedReveal>
-        <div className="grid grid-cols-3 gap-8 mb-16 pb-12 border-b border-border">
-          <div>
-            <div className="font-display text-3xl md:text-4xl font-bold tracking-tight text-heading mb-1 tabular-nums">
-              {stats.totalProjects}
-            </div>
-            <div className="text-xs font-medium uppercase tracking-wider text-faint">
-              {t('statProjects')}
-            </div>
-          </div>
-          <div>
-            <div className="font-display text-3xl md:text-4xl font-bold tracking-tight text-heading mb-1 tabular-nums">
-              {stats.technologiesUsed}
-            </div>
-            <div className="text-xs font-medium uppercase tracking-wider text-faint">
-              {t('statTechnologies')}
-            </div>
-          </div>
-          <div>
-            <div className="font-display text-3xl md:text-4xl font-bold tracking-tight text-heading mb-1 tabular-nums">
-              {stats.industriesServed}
-            </div>
-            <div className="text-xs font-medium uppercase tracking-wider text-faint">
-              {t('statIndustries')}
-            </div>
-          </div>
-        </div>
+        <StatGrid columns={3} divided>
+          <Stat value={stats.totalProjects} label={t('statProjects')} />
+          <Stat value={stats.technologiesUsed} label={t('statTechnologies')} />
+          <Stat value={stats.industriesServed} label={t('statIndustries')} />
+        </StatGrid>
       </AnimatedReveal>
 
       {/* Project grid */}

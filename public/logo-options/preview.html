@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Logo concepts — Kalebtec</title>
+  <style>
+    :root {
+      --paper: #e5e4d8;
+      --paper-soft: #f1f0e4;
+      --ink: #080f11;
+      --ink-soft: #151b20;
+      --muted: rgba(8, 15, 17, 0.72);
+      --faint: rgba(8, 15, 17, 0.62);
+      --brand: #8000ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 60px 32px 120px;
+      background: var(--paper);
+      color: var(--ink);
+      font: 400 16px/1.5 -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+    }
+    h1 {
+      font-size: clamp(2.5rem, 6vw + 1rem, 4.5rem);
+      letter-spacing: -0.04em;
+      font-weight: 800;
+      margin: 0 0 12px;
+      max-width: 14ch;
+    }
+    .lead { color: var(--muted); max-width: 60ch; margin: 0 0 56px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 24px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .card {
+      background: var(--paper-soft);
+      border: 1px solid rgba(8,15,17,0.1);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .stage {
+      display: flex; align-items: center; justify-content: center;
+      aspect-ratio: 1.4 / 1;
+      border-radius: 12px;
+      background: var(--paper);
+    }
+    .stage img { width: 64%; height: 64%; }
+    .stage--dark { background: var(--ink); }
+    .row { display: flex; align-items: center; gap: 12px; }
+    .meta { display: flex; align-items: baseline; justify-content: space-between; }
+    .meta h2 {
+      margin: 0; font-size: 1.25rem; letter-spacing: -0.02em; font-weight: 600;
+    }
+    .meta .num {
+      font-family: ui-monospace, "Geist Mono", monospace;
+      font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--brand); font-weight: 600;
+    }
+    .scales { display: flex; align-items: center; gap: 18px; padding-top: 8px; border-top: 1px solid rgba(8,15,17,0.1); }
+    .scales img { display: block; }
+    .scale-tile {
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      font-family: ui-monospace, monospace; font-size: 10px; color: var(--faint);
+    }
+    p.notes { color: var(--muted); font-size: 14px; margin: 0; }
+    .footer {
+      max-width: 1280px; margin: 80px auto 0;
+      padding-top: 32px; border-top: 1px solid rgba(8,15,17,0.1);
+      color: var(--faint); font-family: ui-monospace, monospace; font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header style="max-width:1280px; margin: 0 auto 64px;">
+    <p style="font-family:ui-monospace,monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin:0 0 16px; display:flex; align-items:center; gap:10px;">
+      <span style="display:inline-block; width:6px; height:6px; border-radius:999px; background:var(--brand);"></span>
+      Brand exploration — logo concepts
+    </p>
+    <h1>Six directions for the Kalebtec mark.</h1>
+    <p class="lead">
+      Each is a single SVG that scales cleanly to favicon size. Compare on
+      cream and ink backgrounds, at three sizes (16 px favicon / 28 px nav /
+      96 px hero). Pick a winner and we copy it over <code>/logo.svg</code>.
+    </p>
+  </header>
+
+  <section class="grid">
+    <article class="card">
+      <div class="meta"><h2>Mono bracket</h2><span class="num">01</span></div>
+      <div class="stage"><img src="01-mono-bracket.svg" alt=""></div>
+      <p class="notes">Editorial, geometric. Ink square with a cream K. The default safe choice.</p>
+      <div class="scales">
+        <div class="scale-tile"><img src="01-mono-bracket.svg" width="16" height="16">16</div>
+        <div class="scale-tile"><img src="01-mono-bracket.svg" width="28" height="28">28</div>
+        <div class="scale-tile"><img src="01-mono-bracket.svg" width="64" height="64">64</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="meta"><h2>Aperture K</h2><span class="num">02</span></div>
+      <div class="stage"><img src="02-aperture-k.svg" alt=""></div>
+      <p class="notes">K cut as negative space from a brand-purple square. Strong app-icon silhouette.</p>
+      <div class="scales">
+        <div class="scale-tile"><img src="02-aperture-k.svg" width="16" height="16">16</div>
+        <div class="scale-tile"><img src="02-aperture-k.svg" width="28" height="28">28</div>
+        <div class="scale-tile"><img src="02-aperture-k.svg" width="64" height="64">64</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="meta"><h2>Pill monogram</h2><span class="num">03</span></div>
+      <div class="stage"><img src="03-pill-monogram.svg" alt=""></div>
+      <p class="notes">Pill that mirrors the StackedPill UI vocabulary. Logo and product feel like one system.</p>
+      <div class="scales">
+        <div class="scale-tile"><img src="03-pill-monogram.svg" width="16" height="16">16</div>
+        <div class="scale-tile"><img src="03-pill-monogram.svg" width="28" height="28">28</div>
+        <div class="scale-tile"><img src="03-pill-monogram.svg" width="64" height="64">64</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="meta"><h2>Bracket only</h2><span class="num">04</span></div>
+      <div class="stage"><img src="04-bracket-only.svg" alt=""></div>
+      <p class="notes">Just the angle bracket, ink, no frame. Code-evocative; pairs with editorial type as a glyph.</p>
+      <div class="scales">
+        <div class="scale-tile"><img src="04-bracket-only.svg" width="16" height="16">16</div>
+        <div class="scale-tile"><img src="04-bracket-only.svg" width="28" height="28">28</div>
+        <div class="scale-tile"><img src="04-bracket-only.svg" width="64" height="64">64</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="meta"><h2>Stack mark</h2><span class="num">05</span></div>
+      <div class="stage"><img src="05-stack-mark.svg" alt=""></div>
+      <p class="notes">Three stacked bars; the third is brand purple. Most abstract — reads as motion / layered systems.</p>
+      <div class="scales">
+        <div class="scale-tile"><img src="05-stack-mark.svg" width="16" height="16">16</div>
+        <div class="scale-tile"><img src="05-stack-mark.svg" width="28" height="28">28</div>
+        <div class="scale-tile"><img src="05-stack-mark.svg" width="64" height="64">64</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="meta"><h2>Grid K</h2><span class="num">06</span></div>
+      <div class="stage"><img src="06-grid-k.svg" alt=""></div>
+      <p class="notes">K formed by dots in a 5×5 constellation. Data / systems-thinking angle.</p>
+      <div class="scales">
+        <div class="scale-tile"><img src="06-grid-k.svg" width="16" height="16">16</div>
+        <div class="scale-tile"><img src="06-grid-k.svg" width="28" height="28">28</div>
+        <div class="scale-tile"><img src="06-grid-k.svg" width="64" height="64">64</div>
+      </div>
+    </article>
+  </section>
+
+  <section style="max-width:1280px; margin: 64px auto 0;">
+    <h2 style="font-size:1.5rem; letter-spacing:-0.02em; margin:0 0 16px;">On dark</h2>
+    <div class="grid">
+      <article class="card"><div class="stage stage--dark"><img src="01-mono-bracket.svg" alt=""></div></article>
+      <article class="card"><div class="stage stage--dark"><img src="02-aperture-k.svg" alt=""></div></article>
+      <article class="card"><div class="stage stage--dark"><img src="03-pill-monogram.svg" alt=""></div></article>
+      <article class="card"><div class="stage stage--dark"><img src="04-bracket-only.svg" alt=""></div></article>
+      <article class="card"><div class="stage stage--dark"><img src="05-stack-mark.svg" alt=""></div></article>
+      <article class="card"><div class="stage stage--dark"><img src="06-grid-k.svg" alt=""></div></article>
+    </div>
+  </section>
+
+  <footer class="footer">
+    Pick a winner and we copy it over <code>/public/logo.svg</code>. Every consumer (Logo component, OG images, favicons) picks it up automatically.
+  </footer>
+</body>
+</html>

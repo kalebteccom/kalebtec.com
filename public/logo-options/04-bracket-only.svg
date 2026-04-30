@@ -1,0 +1,13 @@
+<!--
+  Option 4 — Bracket only
+  Just the angle bracket "K" — minimal, code-evocative, geometric. No
+  surrounding shape. Works as a glyph next to the wordmark. The 90° bend
+  is the brand mark — the entire identity is "engineering with intent"
+  drawn as a single elbow.
+-->
+<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M150 100 L150 400" stroke="#080F11" stroke-width="44" stroke-linecap="round"/>
+  <path d="M150 250 L350 100" stroke="#080F11" stroke-width="44" stroke-linecap="round"/>
+  <path d="M150 250 L350 400" stroke="#080F11" stroke-width="44" stroke-linecap="round"/>
+  <circle cx="380" cy="120" r="20" fill="#8000FF"/>
+</svg>

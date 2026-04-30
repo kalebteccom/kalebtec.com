@@ -1,0 +1,12 @@
+<!--
+  Option 1 — Mono bracket K
+  A single weight, ink-only K formed by two strokes meeting at a tight angle,
+  framed loosely by a square hint. Editorial, geometric, scales down to 16px
+  cleanly because it's just three line segments.
+-->
+<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="20" y="20" width="460" height="460" rx="80" fill="#080F11"/>
+  <path d="M170 130 L170 370" stroke="#F1F0E4" stroke-width="36" stroke-linecap="round"/>
+  <path d="M170 250 L320 130" stroke="#F1F0E4" stroke-width="36" stroke-linecap="round"/>
+  <path d="M170 250 L320 370" stroke="#F1F0E4" stroke-width="36" stroke-linecap="round"/>
+</svg>

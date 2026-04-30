@@ -9,13 +9,17 @@ import TeamSection from '@/components/sections/TeamSection';
 import ContactSection from '@/components/sections/ContactSection';
 import JsonLd from '@/components/seo/JsonLd';
 import {
-  SITE_URL,
   OG_LOCALE_BY_LOCALE,
   TWITTER_HANDLE,
   buildAlternates,
   absoluteUrl,
   siteOGImage,
 } from '@/lib/metadata';
+import {
+  buildOrganizationLD,
+  buildWebSiteLD,
+  buildServiceListLD,
+} from '@/lib/seo/jsonld';
 import type { Locale } from '@/i18n/routing';
 
 type Params = Promise<{ locale: string }>;
@@ -73,72 +77,19 @@ export default async function HomePage({ params }: { params: Params }) {
     'teamAugmentation',
   ] as const;
 
-  // Organization — single source of truth on the homepage
-  const organizationLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    '@id': `${SITE_URL}/#organization`,
-    name: 'Kalebtec',
-    url: SITE_URL,
-    logo: `${SITE_URL}/logo.svg`,
-    image: `${SITE_URL}${absoluteUrl(locale as Locale, '/').replace(SITE_URL, '')}/opengraph-image`,
-    description: tMeta('description'),
-    founders: [
-      {
-        '@type': 'Person',
-        '@id': `${SITE_URL}/#rowin`,
-        name: 'Rowin Hernandez',
-        jobTitle: 'Co-Founder & Lead Engineer',
-      },
-      {
-        '@type': 'Person',
-        '@id': `${SITE_URL}/#mari`,
-        name: 'Mari Hernandez',
-        jobTitle: 'Co-Founder & Operations Lead',
-      },
-    ],
-    contactPoint: {
-      '@type': 'ContactPoint',
-      email: 'hello@kalebtec.com',
-      contactType: 'customer service',
-      availableLanguage: ['en', 'es', 'ca', 'fr', 'gl', 'pt'],
-    },
-    sameAs: [
-      'https://www.linkedin.com/company/kalebtec',
-      'https://x.com/kalebtec_com',
-      'https://github.com/kalebteccom',
-    ],
-  };
+  const lang = locale as Locale;
+  const description = tMeta('description');
 
-  // WebSite — site-level entity with search action placeholder
-  const websiteLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    '@id': `${SITE_URL}/#website`,
-    name: 'Kalebtec',
-    url: SITE_URL,
-    description: tMeta('description'),
-    publisher: { '@id': `${SITE_URL}/#organization` },
-    inLanguage: locale,
-  };
-
-  // Services — explicit ItemList so search engines can pick up the offering
-  const servicesLd = {
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    '@id': `${SITE_URL}/#services`,
-    name: tServices('sectionTitle'),
-    itemListElement: serviceKeys.map((key, idx) => ({
-      '@type': 'ListItem',
-      position: idx + 1,
-      item: {
-        '@type': 'Service',
-        name: tServices(`${key}.name`),
-        description: tServices(`${key}.description`),
-        provider: { '@id': `${SITE_URL}/#organization` },
-      },
+  const organizationLd = buildOrganizationLD(lang, { description });
+  const websiteLd = buildWebSiteLD(lang, { description });
+  const servicesLd = buildServiceListLD(
+    lang,
+    serviceKeys.map((key) => ({
+      name: tServices(`${key}.name`),
+      description: tServices(`${key}.description`),
     })),
-  };
+    tServices('sectionTitle'),
+  );
 
   return (
     <>

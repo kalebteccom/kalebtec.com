@@ -5,6 +5,8 @@ import { motion, useInView } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import AnimatedReveal from '@/components/ui/AnimatedReveal';
 import { Button } from '@/components/ui/Button';
+import { Section, SectionContainer } from '@/components/ui/Section';
+import { EyebrowLabel } from '@/components/ui/EyebrowLabel';
 import { cn } from '@/lib/utils';
 
 const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94];
@@ -53,22 +55,17 @@ export default function ContactSection() {
   };
 
   return (
-    <section
-      id="contact"
-      aria-label={t('ariaLabel')}
-      ref={sectionRef}
-      className="relative py-24 md:py-32 bg-surface"
-    >
-      <div className="relative mx-auto max-w-3xl px-6 lg:px-8">
+    <Section id="contact" tone="surface" aria-label={t('ariaLabel')} ref={sectionRef}>
+      <SectionContainer width="reading">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
           transition={{ duration: 0.6, ease: EASE }}
           className="mb-12"
         >
-          <p className="font-mono text-xs uppercase tracking-widest text-faint mb-4">
-            {t('sectionNumber')} — {t('sectionLabel')}
-          </p>
+          <EyebrowLabel number={t('sectionNumber')} accent="rule" className="mb-4">
+            {t('sectionLabel')}
+          </EyebrowLabel>
           <h2 className="text-display-lg text-heading mb-6 max-w-[16ch]">
             {t('heading')}{' '}
             <span className="text-muted">{t('headingHighlight')}</span>
@@ -199,7 +196,7 @@ export default function ContactSection() {
             </div>
           </form>
         </AnimatedReveal>
-      </div>
-    </section>
+      </SectionContainer>
+    </Section>
   );
 }

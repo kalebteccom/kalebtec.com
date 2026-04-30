@@ -5,13 +5,13 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import ProjectsFilter from '@/components/projects/ProjectsFilter';
 import JsonLd from '@/components/seo/JsonLd';
 import {
-  SITE_URL,
   OG_LOCALE_BY_LOCALE,
   TWITTER_HANDLE,
   buildAlternates,
   absoluteUrl,
   siteOGImage,
 } from '@/lib/metadata';
+import { buildBreadcrumbLD, buildCollectionPageLD } from '@/lib/seo/jsonld';
 import type { Locale } from '@/i18n/routing';
 
 export const dynamic = 'force-dynamic';
@@ -96,45 +96,22 @@ export default async function ProjectsPage({ params }: { params: Params }) {
     }
   }
 
-  // CollectionPage + ItemList for the project archive
-  const collectionLd = {
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    '@id': `${absoluteUrl(locale as Locale, '/projects')}#collection`,
+  const lang = locale as Locale;
+
+  const collectionLd = buildCollectionPageLD(lang, {
+    path: '/projects',
     name: tMeta('projectsTitle'),
     description: tMeta('projectsDescription'),
-    url: absoluteUrl(locale as Locale, '/projects'),
-    inLanguage: locale,
-    isPartOf: { '@id': `${SITE_URL}/#website` },
-    mainEntity: {
-      '@type': 'ItemList',
-      itemListElement: projects.map((project, idx) => ({
-        '@type': 'ListItem',
-        position: idx + 1,
-        url: absoluteUrl(locale as Locale, `/projects/${project.slug}`),
-        name: project.title,
-      })),
-    },
-  };
+    items: projects.map((project) => ({
+      name: project.title,
+      path: `/projects/${project.slug}`,
+    })),
+  });
 
-  const breadcrumbLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Kalebtec',
-        item: absoluteUrl(locale as Locale, '/'),
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: tMeta('projectsTitle'),
-        item: absoluteUrl(locale as Locale, '/projects'),
-      },
-    ],
-  };
+  const breadcrumbLd = buildBreadcrumbLD(lang, [
+    { name: 'Kalebtec', path: '/' },
+    { name: tMeta('projectsTitle'), path: '/projects' },
+  ]);
 
   return (
     <>

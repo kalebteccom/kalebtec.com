@@ -1,0 +1,21 @@
+<!--
+  Option 6 — Grid K
+  K formed by 5 dots arranged in a 5x5 grid pattern — the spine on the
+  left, the arms angling up-right and down-right. Each dot is brand
+  purple. Reads as a constellation / data-points motif (consulting +
+  systems thinking). Very small footprint.
+-->
+<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="20" y="20" width="460" height="460" rx="80" fill="#F1F0E4"/>
+  <!-- Spine -->
+  <circle cx="160" cy="140" r="22" fill="#080F11"/>
+  <circle cx="160" cy="220" r="22" fill="#080F11"/>
+  <circle cx="160" cy="300" r="22" fill="#080F11"/>
+  <circle cx="160" cy="380" r="22" fill="#080F11"/>
+  <!-- Top arm -->
+  <circle cx="240" cy="220" r="22" fill="#080F11"/>
+  <circle cx="320" cy="160" r="22" fill="#080F11"/>
+  <!-- Bottom arm -->
+  <circle cx="240" cy="300" r="22" fill="#080F11"/>
+  <circle cx="320" cy="380" r="22" fill="#8000FF"/>
+</svg>

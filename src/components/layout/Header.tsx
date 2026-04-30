@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
@@ -11,6 +10,8 @@ import ThemeToggle from '@/components/ui/ThemeToggle';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 import { ButtonLink } from '@/components/ui/Button';
 import { StackedPill } from '@/components/ui/StackedPill';
+import { Logo } from '@/components/ui/Logo';
+import { useMultiClickTrigger } from '@/hooks/useMultiClickTrigger';
 
 export default function Header() {
   const t = useTranslations('nav');
@@ -18,28 +19,17 @@ export default function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [logoFlash, setLogoFlash] = useState(false);
   const { scrollY } = useScroll();
   const hamburgerRef = useRef<HTMLButtonElement>(null);
-  const logoClicksRef = useRef<number[]>([]);
-  const logoRef = useRef<HTMLAnchorElement>(null);
 
-  const handleLogoClick = (e: React.MouseEvent) => {
-    const now = Date.now();
-    logoClicksRef.current.push(now);
-    logoClicksRef.current = logoClicksRef.current.filter((t) => now - t < 2000);
-
-    if (logoClicksRef.current.length >= 5) {
-      logoClicksRef.current = [];
-
-      const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-      if (motionQuery.matches) return;
-
-      e.preventDefault();
-      setLogoFlash(true);
-      setTimeout(() => setLogoFlash(false), 500);
-    }
-  };
+  // 5-click logo easter egg — flips a class for ~500ms to play the
+  // soft fade-flash keyframe defined in globals.css.
+  const { onClick: handleLogoClick, triggered: logoFlash } = useMultiClickTrigger({
+    count: 5,
+    window: 2000,
+    cooldown: 500,
+    preventDefaultOnTrigger: true,
+  });
 
   const navLinks = [
     { href: '/#about', label: t('about') },
@@ -85,23 +75,11 @@ export default function Header() {
             {/* LEFT — Logo (alone) */}
             <Link
               href="/"
-              ref={logoRef}
               onClick={handleLogoClick}
-              className={cn(
-                'flex items-center gap-2.5 group shrink-0',
-                logoFlash && 'logo-glitch-active',
-              )}
+              className={cn('shrink-0', logoFlash && 'logo-glitch-active')}
+              aria-label="Kalebtec — Home"
             >
-              <Image
-                src="/logo.svg"
-                alt="Kalebtec logo"
-                width={28}
-                height={28}
-                className="w-7 h-7"
-              />
-              <span className="hidden sm:inline font-display text-lg font-semibold tracking-tight text-heading">
-                Kalebtec
-              </span>
+              <Logo size="md" />
             </Link>
 
             {/* CENTER — full stacked nav pill (lg+ only). Below lg the

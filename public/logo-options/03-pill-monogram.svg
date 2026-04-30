@@ -1,0 +1,13 @@
+<!--
+  Option 3 — Pill monogram (the most "us")
+  A pill that echoes our entire UI vocabulary (StackedPill, ButtonLink) with
+  a clean K letterform inside. Brand purple pill, paper-cream K. The
+  silhouette IS the brand — pill + K = Kalebtec.
+-->
+<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="50" y="125" width="400" height="250" rx="125" fill="#8000FF"/>
+  <path d="M180 180 L180 320" stroke="#F1F0E4" stroke-width="32" stroke-linecap="round"/>
+  <path d="M180 250 L300 180" stroke="#F1F0E4" stroke-width="32" stroke-linecap="round"/>
+  <path d="M180 250 L300 320" stroke="#F1F0E4" stroke-width="32" stroke-linecap="round"/>
+  <circle cx="370" cy="250" r="14" fill="#F1F0E4"/>
+</svg>

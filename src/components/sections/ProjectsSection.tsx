@@ -3,6 +3,7 @@ import configPromise from '@payload-config';
 import { getLocale, getTranslations } from 'next-intl/server';
 import SectionHeading from '@/components/ui/SectionHeading';
 import { ButtonLink } from '@/components/ui/Button';
+import { Section, SectionContainer } from '@/components/ui/Section';
 import ProjectsSectionClient from './ProjectsSectionClient';
 import type { Locale } from '@/i18n/routing';
 import type { Project } from '@/payload-types';
@@ -50,12 +51,8 @@ export default async function ProjectsSection() {
   };
 
   return (
-    <section
-      id="projects"
-      aria-label={t('ariaLabel')}
-      className="relative py-24 md:py-32 bg-bg"
-    >
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+    <Section id="projects" tone="bg" aria-label={t('ariaLabel')}>
+      <SectionContainer>
         <SectionHeading
           title={t('sectionTitle')}
           sectionNumber={t('sectionNumber')}
@@ -82,7 +79,7 @@ export default async function ProjectsSection() {
             </svg>
           </ButtonLink>
         </div>
-      </div>
-    </section>
+      </SectionContainer>
+    </Section>
   );
 }

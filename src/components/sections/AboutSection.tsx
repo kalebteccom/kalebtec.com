@@ -3,6 +3,8 @@
 import { useTranslations } from 'next-intl';
 import SectionHeading from '@/components/ui/SectionHeading';
 import AnimatedReveal from '@/components/ui/AnimatedReveal';
+import { Section, SectionContainer } from '@/components/ui/Section';
+import { Stat, StatGrid } from '@/components/ui/Stat';
 
 const stats = [
   { value: '99.9%', label: 'Uptime', ariaKey: 'statUptime' as const },
@@ -15,12 +17,8 @@ export default function AboutSection() {
   const t = useTranslations('about');
 
   return (
-    <section
-      id="about"
-      aria-label={t('ariaLabel')}
-      className="relative py-24 md:py-32 bg-bg"
-    >
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <Section id="about" tone="bg" aria-label={t('ariaLabel')}>
+      <SectionContainer>
         <SectionHeading title={t('sectionTitle')} sectionNumber={t('sectionNumber')} />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
@@ -66,31 +64,21 @@ export default function AboutSection() {
             </AnimatedReveal>
 
             <AnimatedReveal delay={0.4}>
-              <div className="grid grid-cols-2 gap-x-8 gap-y-8 pt-8 border-t border-border">
+              <StatGrid columns={2} bordered>
                 {stats.map((stat, i) => (
-                  <div key={stat.label} aria-label={t(stat.ariaKey)}>
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <span
-                        className="w-1.5 h-1.5 rounded-full bg-brand"
-                        aria-hidden="true"
-                      />
-                      <span className="font-mono text-[10px] uppercase tracking-widest text-brand font-semibold">
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
-                    </div>
-                    <div className="font-display text-3xl font-bold tracking-tight text-heading mb-1">
-                      {stat.value}
-                    </div>
-                    <div className="text-xs font-medium uppercase tracking-wider text-faint">
-                      {stat.label}
-                    </div>
-                  </div>
+                  <Stat
+                    key={stat.label}
+                    value={stat.value}
+                    label={stat.label}
+                    index={String(i + 1).padStart(2, '0')}
+                    aria-label={t(stat.ariaKey)}
+                  />
                 ))}
-              </div>
+              </StatGrid>
             </AnimatedReveal>
           </div>
         </div>
-      </div>
-    </section>
+      </SectionContainer>
+    </Section>
   );
 }

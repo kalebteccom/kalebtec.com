@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import SectionHeading from '@/components/ui/SectionHeading';
 import AnimatedReveal from '@/components/ui/AnimatedReveal';
+import { Section, SectionContainer } from '@/components/ui/Section';
 
 const serviceKeys = [
   'softwareArchitecture',
@@ -96,12 +97,8 @@ export default function ServicesSection() {
   const t = useTranslations('services');
 
   return (
-    <section
-      id="services"
-      aria-label={t('ariaLabel')}
-      className="relative py-24 md:py-32 section-tint"
-    >
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <Section id="services" tone="tint" aria-label={t('ariaLabel')}>
+      <SectionContainer>
         <SectionHeading title={t('sectionTitle')} sectionNumber={t('sectionNumber')} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
@@ -111,7 +108,7 @@ export default function ServicesSection() {
             </AnimatedReveal>
           ))}
         </div>
-      </div>
-    </section>
+      </SectionContainer>
+    </Section>
   );
 }

@@ -1,8 +1,8 @@
 'use client';
 
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
+import { Logo } from '@/components/ui/Logo';
 
 export default function Footer() {
   const t = useTranslations('footer');
@@ -22,18 +22,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
           {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2.5">
-              <Image
-                src="/logo.svg"
-                alt="Kalebtec logo"
-                width={28}
-                height={28}
-                className="w-7 h-7"
-              />
-              <span className="font-display text-base font-semibold tracking-tight text-heading">
-                Kalebtec
-              </span>
-            </div>
+            <Logo size="md" />
             <p className="text-sm text-muted leading-relaxed max-w-xs">
               {t('tagline')}
             </p>

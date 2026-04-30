@@ -1,10 +1,11 @@
 'use client';
 
 import Image, { type StaticImageData } from 'next/image';
-import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import SectionHeading from '@/components/ui/SectionHeading';
 import AnimatedReveal from '@/components/ui/AnimatedReveal';
+import { Section, SectionContainer } from '@/components/ui/Section';
+import { useCardFlip } from '@/hooks/useCardFlip';
 import rowinPhoto from '../../../public/team/rowin.jpg';
 import mariPhoto from '../../../public/team/mari.jpeg';
 
@@ -20,94 +21,6 @@ const teamStatic: TeamMemberStatic[] = [
   { name: 'Rowin Hernandez', initials: 'RH', photo: rowinPhoto, tKey: 'rowin' },
   { name: 'Mari Hernandez', initials: 'MH', photo: mariPhoto, tKey: 'mari' },
 ];
-
-/* ───────────────────────────────────────────────────────────
-   useCardFlip — gentle 3° tilt + click/keyboard flip
-   Refs avoid re-renders on mousemove
-   ─────────────────────────────────────────────────────────── */
-
-function useCardFlip(maxTilt = 3) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const flippedRef = useRef(false);
-  const [isFlipped, setIsFlipped] = useState(false);
-  const rafRef = useRef(0);
-  const reducedMotionRef = useRef(false);
-  const isTouchRef = useRef(false);
-
-  useEffect(() => {
-    reducedMotionRef.current = window.matchMedia(
-      '(prefers-reduced-motion: reduce)',
-    ).matches;
-    return () => cancelAnimationFrame(rafRef.current);
-  }, []);
-
-  const handleTouchStart = useCallback(() => {
-    isTouchRef.current = true;
-  }, []);
-
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      if (isTouchRef.current || reducedMotionRef.current) return;
-
-      const rect = e.currentTarget.getBoundingClientRect();
-      const nx = (e.clientX - rect.left) / rect.width;
-      const ny = (e.clientY - rect.top) / rect.height;
-
-      cancelAnimationFrame(rafRef.current);
-      rafRef.current = requestAnimationFrame(() => {
-        const card = cardRef.current;
-        if (!card) return;
-        const tiltX = (0.5 - ny) * maxTilt;
-        const flip = flippedRef.current;
-        const tiltY = (nx - 0.5) * maxTilt * (flip ? -1 : 1);
-        const baseY = flip ? 180 : 0;
-        card.style.transition = 'transform 0.2s ease-out';
-        card.style.transform = `rotateX(${tiltX}deg) rotateY(${baseY + tiltY}deg)`;
-      });
-    },
-    [maxTilt],
-  );
-
-  const handleMouseLeave = useCallback(() => {
-    cancelAnimationFrame(rafRef.current);
-    const card = cardRef.current;
-    if (!card) return;
-    card.style.transition = 'transform 0.5s ease-out';
-    card.style.transform = flippedRef.current
-      ? 'rotateX(0deg) rotateY(180deg)'
-      : 'rotateX(0deg) rotateY(0deg)';
-  }, []);
-
-  const handleClick = useCallback(() => {
-    const next = !flippedRef.current;
-    flippedRef.current = next;
-    setIsFlipped(next);
-    const card = cardRef.current;
-    if (!card) return;
-    card.style.transition = 'transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)';
-    card.style.transform = `rotateX(0deg) rotateY(${next ? 180 : 0}deg)`;
-  }, []);
-
-  const handleKeyDown = useCallback(
-    (e: React.KeyboardEvent) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        handleClick();
-      }
-    },
-    [handleClick],
-  );
-
-  return {
-    cardRef,
-    isFlipped,
-    handleMouseMove,
-    handleMouseLeave,
-    handleTouchStart,
-    handleClick,
-    handleKeyDown,
-  };
-}
 
 function TeamMemberCard({
   member,
@@ -234,12 +147,8 @@ function TeamMemberCard({
 export default function TeamSection() {
   const t = useTranslations('team');
   return (
-    <section
-      id="team"
-      aria-label={t('ariaLabel')}
-      className="relative py-24 md:py-32 section-dark"
-    >
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <Section id="team" tone="dark" aria-label={t('ariaLabel')}>
+      <SectionContainer>
         <SectionHeading title={t('sectionTitle')} sectionNumber={t('sectionNumber')} />
 
         <div className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
@@ -249,7 +158,7 @@ export default function TeamSection() {
             </AnimatedReveal>
           ))}
         </div>
-      </div>
-    </section>
+      </SectionContainer>
+    </Section>
   );
 }

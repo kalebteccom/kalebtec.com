@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { EyebrowLabel } from './EyebrowLabel';
 
 const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94];
 
@@ -16,6 +17,13 @@ interface SectionHeadingProps {
   highlightWord?: string;
 }
 
+/**
+ * SectionHeading — composes EyebrowLabel + a giant <h2> + an optional
+ * editorial-lead subtitle. Use this for the top of every page section.
+ *
+ * Example:
+ *   <SectionHeading title={t('sectionTitle')} sectionNumber="01" />
+ */
 export default function SectionHeading({
   title,
   subtitle,
@@ -47,11 +55,9 @@ export default function SectionHeading({
       className={cn('mb-12 md:mb-16', className)}
     >
       {sectionNumber && (
-        <p className="font-mono text-xs uppercase tracking-widest mb-4 flex items-center gap-3">
-          <span className="text-brand font-semibold">{sectionNumber}</span>
-          <span className="h-px w-8 bg-border-strong" aria-hidden="true" />
-          <span className="text-muted">{title}</span>
-        </p>
+        <EyebrowLabel number={sectionNumber} accent="rule" className="mb-4">
+          {title}
+        </EyebrowLabel>
       )}
 
       <h2 className="text-display-lg text-heading max-w-[18ch]">

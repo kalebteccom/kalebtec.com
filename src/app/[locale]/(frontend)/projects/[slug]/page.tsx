@@ -9,12 +9,12 @@ import type { SerializedEditorState } from 'lexical';
 import type { Metadata } from 'next';
 import JsonLd from '@/components/seo/JsonLd';
 import {
-  SITE_URL,
   OG_LOCALE_BY_LOCALE,
   TWITTER_HANDLE,
   buildAlternates,
   absoluteUrl,
 } from '@/lib/metadata';
+import { buildBreadcrumbLD, buildCreativeWorkLD } from '@/lib/seo/jsonld';
 import type { Locale } from '@/i18n/routing';
 import type { Media, Industry } from '@/payload-types';
 
@@ -97,52 +97,26 @@ export default async function ProjectDetailPage({ params }: { params: Params }) 
   );
   const technologies = project.technologies ?? [];
 
-  // BreadcrumbList helps Google show breadcrumb links in search results
-  const breadcrumbLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Kalebtec',
-        item: absoluteUrl(locale as Locale, '/'),
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: t('pageTitle'),
-        item: absoluteUrl(locale as Locale, '/projects'),
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: project.title,
-        item: absoluteUrl(locale as Locale, `/projects/${slug}`),
-      },
-    ],
-  };
+  const lang = locale as Locale;
 
-  // CreativeWork describes the project itself for richer search appearance
-  const creativeWorkLd = {
-    '@context': 'https://schema.org',
-    '@type': 'CreativeWork',
-    '@id': `${absoluteUrl(locale as Locale, `/projects/${slug}`)}#project`,
+  const breadcrumbLd = buildBreadcrumbLD(lang, [
+    { name: 'Kalebtec', path: '/' },
+    { name: t('pageTitle'), path: '/projects' },
+    { name: project.title, path: `/projects/${slug}` },
+  ]);
+
+  const creativeWorkLd = buildCreativeWorkLD(lang, {
+    slug,
     name: project.title,
-    description: project.description ?? undefined,
-    url: absoluteUrl(locale as Locale, `/projects/${slug}`),
-    inLanguage: locale,
-    ...(project.publishedDate ? { datePublished: project.publishedDate } : {}),
-    ...(image?.url ? { image: image.url.startsWith('http') ? image.url : `${SITE_URL}${image.url}` } : {}),
-    author: { '@id': `${SITE_URL}/#organization` },
-    creator: { '@id': `${SITE_URL}/#organization` },
-    publisher: { '@id': `${SITE_URL}/#organization` },
-    ...(project.client ? { sponsor: project.client, about: project.client } : {}),
+    description: project.description,
+    publishedDate: project.publishedDate,
+    imageUrl: image?.url,
+    client: project.client,
     keywords: [
       ...industries.map((ind) => ind.name),
-      ...technologies.map((t) => t.technology).filter(Boolean),
-    ].join(', '),
-  };
+      ...technologies.map((t) => t.technology).filter(Boolean) as string[],
+    ],
+  });
 
   return (
     <article aria-label={project.title} className="min-h-screen pt-32 pb-32 bg-bg">

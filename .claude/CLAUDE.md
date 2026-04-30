@@ -6,6 +6,25 @@
 
 ---
 
+## 📚 Project documentation — read before working
+
+Three living docs at the project root capture our principles in depth. Read the relevant one(s) before starting non-trivial work.
+
+| Doc | Read when… |
+|---|---|
+| **[`docs/engineering.md`](../docs/engineering.md)** | Adding/refactoring components, hooks, state. Captures Kent C. Dodds' methodology — **AHA programming**, composition over configuration, state colocation, deriving over syncing, custom hooks, "use the platform". |
+| **[`docs/design.md`](../docs/design.md)** | Touching visuals, motion, color, typography, spacing. Distills **Apple Human Interface Guidelines** + our editorial brand layer. |
+| **[`docs/component-library.md`](../docs/component-library.md)** | Adding a new UI pattern. Catalogs every primitive in `src/components/ui/` and `src/hooks/`. **Extend before extracting; extract on the third real usage.** |
+
+> **Hard rule**: any UI pattern that appears in 2+ places lives as a reusable component in `src/components/ui/`, **not as inlined Tailwind class strings**. See `docs/engineering.md` (AHA section) and `docs/component-library.md` for what already exists.
+
+External methodology references:
+
+- Kent C. Dodds blog: <https://kentcdodds.com/blog>
+- Apple Human Interface Guidelines: <https://developer.apple.com/design/human-interface-guidelines>
+
+---
+
 ## IMPORTANT: Use Skills for This Project's Technologies
 
 This project has **three expert-level skills** that MUST be used when working with the core technologies. Always invoke the relevant skill before making changes.
