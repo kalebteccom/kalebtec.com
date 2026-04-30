@@ -34,52 +34,67 @@
   },
   "about": {
     "ariaLabel": "About Kalebtec",
-    "sectionTitle": "Who we are",
+    "sectionTitle": "How we work",
     "sectionNumber": "01",
-    "originStory": "We didn't start Kalebtec in a boardroom. We started it at a kitchen table, late at night, fueled by bad coffee and a shared obsession with building things that actually work.",
-    "teamDescription": "<rowin>Rowin</rowin> writes the code. <mari>Mari</mari> runs the show. Together, we take messy, complex technical challenges and turn them into clean, scalable systems that businesses can actually rely on.",
-    "directAttention": "We're not a faceless agency. Every project gets our direct attention -- hands on keyboards, eyes on screens, zero layers of middle management between us and your product. When you work with Kalebtec, you work with <em>us</em>.",
-    "philosophy": "We believe great technology should feel invisible -- fast, reliable, and so well-built that people forget it's even there. No bloated frameworks for the sake of trends. No overengineered solutions to simple problems. Just sharp, purposeful engineering that gets the job done.",
-    "statUptime": "System reliability: 99.9%",
-    "statStackDepth": "Stack depth: Full end-to-end",
-    "statResponseTime": "Response time: Less than 24 hours",
-    "statClearance": "Security clearance: Maximum"
+    "originStory": "Two engineers, one studio. We started Kalebtec to ship the software our clients actually need — without slide decks, without account managers, without the agency overhead.",
+    "teamDescription": "<rowin>Rowin</rowin> writes the code. <mari>Mari</mari> runs the engagement. You talk to both of us, every week, on Slack and on the call — no handoffs, no surprises.",
+    "directAttention": "Senior engineers from day one. Decisions get made fast because there are no layers between you and the people doing the work. When you hire Kalebtec, you hire <em>us</em>.",
+    "philosophy": "We build software that grows with your product. The first launch is the start of the work, not the end. Pragmatic decisions, proactive communication, engineering that compounds — that's what makes a partnership worth keeping.",
+    "philosophyLabel": "Operating philosophy",
+    "stats": {
+      "process": {
+        "value": "End-to-end",
+        "label": "Process"
+      },
+      "response": {
+        "value": "< 24h",
+        "label": "Response"
+      },
+      "team": {
+        "value": "Senior",
+        "label": "Engineers"
+      },
+      "partnership": {
+        "value": "Long-term",
+        "label": "Partnership"
+      }
+    }
   },
   "services": {
     "ariaLabel": "Our Services",
-    "sectionTitle": "What we do",
+    "sectionTitle": "What we ship",
     "sectionNumber": "02",
     "softwareArchitecture": {
-      "name": "Software Architecture",
-      "description": "We design scalable, maintainable systems built for growth. From microservices to monoliths, we choose the right architecture for your needs."
+      "name": "Software architecture",
+      "description": "Systems sized for where you are now and where you're heading. Pragmatic, observable, easy to evolve — no over-engineering for problems you don't have yet."
     },
     "webDevelopment": {
-      "name": "Web Development",
-      "description": "Modern web applications built with cutting-edge technology. Fast, accessible, and beautiful by default."
+      "name": "Web platforms",
+      "description": "From marketing sites to data-heavy SaaS. We design and ship web platforms that scale with your traffic, your team, and your roadmap."
     },
     "aiAutomation": {
-      "name": "AI & Automation",
-      "description": "Leverage artificial intelligence and automation to streamline operations and unlock new possibilities."
+      "name": "AI & automation",
+      "description": "Practical LLM and automation pipelines wired into the workflows you actually run. Less hype, more shipping."
     },
     "cloudInfrastructure": {
-      "name": "Cloud Infrastructure",
-      "description": "Cloud-native solutions on AWS, GCP, and Azure. We optimize for performance, security, and cost."
+      "name": "Cloud infrastructure",
+      "description": "AWS, GCP, and Azure setups that scale when you scale and stay cheap when you don't. Observable, reliable, no surprises."
     },
     "technicalStrategy": {
-      "name": "Technical Strategy",
-      "description": "Align your technology decisions with business goals. We provide roadmaps that drive real results."
+      "name": "Technical strategy",
+      "description": "Pragmatic roadmaps grounded in your business, not in industry hype. Decisions you can defend a year later."
     },
     "teamAugmentation": {
-      "name": "Team Augmentation",
-      "description": "Embed senior engineers directly into your team. We scale with you when you need it most."
+      "name": "Embedded engineering",
+      "description": "Senior engineers embedded with your team. We design, build, and grow alongside your roadmap — long-term, accountable, no handoffs."
     }
   },
   "projects": {
     "ariaLabel": "Our Work",
-    "sectionTitle": "Our work",
+    "sectionTitle": "Recent work",
     "sectionNumber": "03",
-    "subtitle": "Featured builds from our portfolio",
-    "viewAll": "View All Projects",
+    "subtitle": "Products and platforms we've designed, built, and grown alongside our clients.",
+    "viewAll": "See all projects",
     "terminalHint": "{count} projects indexed — explore the full archive",
     "statusLive": "Live",
     "viewProjectLink": "View project",
@@ -88,7 +103,7 @@
     "statIndustries": "Industries",
     "backToProjects": "Back to projects",
     "allLabel": "All",
-    "pageTitle": "Our work",
+    "pageTitle": "Recent work",
     "industries": "Industries",
     "technologies": "Technologies",
     "clearFilters": "Clear filters",
@@ -121,9 +136,9 @@
     "ariaLabel": "Contact Us",
     "sectionNumber": "05",
     "sectionLabel": "Contact",
-    "heading": "Let's build",
-    "headingHighlight": "Something",
-    "subtitle": "Ready to transform your technology? Let's talk.",
+    "heading": "Let's grow",
+    "headingHighlight": "your product.",
+    "subtitle": "Tell us where you are, where you want to go, and how fast you need to get there. We'll be back within 24 hours.",
     "nameLabel": "Name",
     "namePlaceholder": "your name",
     "emailLabel": "Email",

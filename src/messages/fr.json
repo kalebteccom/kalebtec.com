@@ -34,52 +34,67 @@
   },
   "about": {
     "ariaLabel": "À propos de Kalebtec",
-    "sectionTitle": "Qui sommes-nous",
+    "sectionTitle": "Comment nous travaillons",
     "sectionNumber": "01",
-    "originStory": "Nous n'avons pas fondé Kalebtec dans une salle de réunion. Nous l'avons lancé autour d'une table de cuisine, tard le soir, alimentés par du mauvais café et une obsession partagée pour construire des choses qui marchent vraiment.",
-    "teamDescription": "<rowin>Rowin</rowin> écrit le code. <mari>Mari</mari> orchestre le tout. Ensemble, nous prenons des défis techniques complexes et désordonnés et les transformons en systèmes propres et évolutifs sur lesquels les entreprises peuvent réellement compter.",
-    "directAttention": "Nous ne sommes pas une agence anonyme. Chaque projet reçoit notre attention directe -- mains sur les claviers, yeux sur les écrans, zéro couche de management intermédiaire entre nous et votre produit. Quand vous travaillez avec Kalebtec, vous travaillez avec <em>nous</em>.",
-    "philosophy": "Nous croyons que la grande technologie doit être invisible -- rapide, fiable et si bien construite que les gens oublient qu'elle est là. Pas de frameworks gonflés pour suivre les tendances. Pas de solutions suringéniées pour des problèmes simples. Juste de l'ingénierie précise et ciblée qui fait le travail.",
-    "statUptime": "Fiabilité du système : 99,9 %",
-    "statStackDepth": "Profondeur du stack : Full end-to-end",
-    "statResponseTime": "Temps de réponse : Moins de 24 heures",
-    "statClearance": "Niveau de sécurité : Maximum"
+    "originStory": "Deux ingénieurs, un studio. Nous avons lancé Kalebtec pour livrer les logiciels dont nos clients ont vraiment besoin — sans présentations, sans account managers, sans la surcharge d'une agence.",
+    "teamDescription": "<rowin>Rowin</rowin> écrit le code. <mari>Mari</mari> pilote la relation. Vous parlez à nous deux, chaque semaine, sur Slack et en appel — pas de handoffs, pas de surprises.",
+    "directAttention": "Ingénieurs seniors dès le premier jour. Les décisions sont prises rapidement parce qu'il n'y a aucune couche entre vous et ceux qui font le travail. Quand vous embauchez Kalebtec, vous nous embauchez <em>nous</em>.",
+    "philosophy": "Nous construisons des logiciels qui grandissent avec votre produit. Le premier lancement est le début du travail, pas la fin. Décisions pragmatiques, communication proactive, ingénierie qui se compose — c'est ce qui rend une relation digne d'être maintenue.",
+    "philosophyLabel": "Philosophie de travail",
+    "stats": {
+      "process": {
+        "value": "End-to-end",
+        "label": "Processus"
+      },
+      "response": {
+        "value": "< 24h",
+        "label": "Réponse"
+      },
+      "team": {
+        "value": "Seniors",
+        "label": "Ingénieurs"
+      },
+      "partnership": {
+        "value": "Long terme",
+        "label": "Relations"
+      }
+    }
   },
   "services": {
     "ariaLabel": "Nos Services",
-    "sectionTitle": "Ce que nous faisons",
+    "sectionTitle": "Ce que nous livrons",
     "sectionNumber": "02",
     "softwareArchitecture": {
-      "name": "Architecture Logicielle",
-      "description": "Nous concevons des systèmes évolutifs et maintenables, prêts pour la croissance. Des microservices aux monolithes, nous choisissons l'architecture adaptée à vos besoins."
+      "name": "Architecture logicielle",
+      "description": "Systèmes dimensionnés pour où vous êtes maintenant et où vous allez. Pragmatiques, observables, faciles à faire évoluer — sans sur-ingénierie pour des problèmes que vous n'avez pas encore."
     },
     "webDevelopment": {
-      "name": "Développement Web",
-      "description": "Applications web modernes construites avec une technologie de pointe. Rapides, accessibles et élégantes par défaut."
+      "name": "Plateformes web",
+      "description": "Des sites marketing aux SaaS chargés en données. Nous concevons et livrons des plateformes web qui évoluent avec votre trafic, votre équipe et votre feuille de route."
     },
     "aiAutomation": {
-      "name": "IA et Automatisation",
-      "description": "Exploitez l'intelligence artificielle et l'automatisation pour optimiser les opérations et ouvrir de nouvelles possibilités."
+      "name": "IA et automatisation",
+      "description": "Pipelines pratiques de LLM et d'automatisation intégrés aux workflows que vous utilisez vraiment. Moins de hype, plus de livraisons."
     },
     "cloudInfrastructure": {
-      "name": "Infrastructure Cloud",
-      "description": "Solutions cloud-natives sur AWS, GCP et Azure. Nous optimisons performances, sécurité et coûts."
+      "name": "Infrastructure cloud",
+      "description": "Configurations AWS, GCP et Azure qui évoluent quand vous évoluez et restent abordables quand vous ne le faites pas. Observables, fiables, sans surprises."
     },
     "technicalStrategy": {
-      "name": "Stratégie Technique",
-      "description": "Alignez vos décisions technologiques avec vos objectifs commerciaux. Nous fournissons des feuilles de route qui produisent de vrais résultats."
+      "name": "Stratégie technique",
+      "description": "Feuilles de route pragmatiques ancrées dans votre activité, pas dans le hype de l'industrie. Décisions que vous pourrez défendre un an plus tard."
     },
     "teamAugmentation": {
-      "name": "Renforcement d'Équipe",
-      "description": "Intégrez des ingénieurs seniors directement dans votre équipe. Nous évoluons avec vous quand vous en avez le plus besoin."
+      "name": "Ingénierie intégrée",
+      "description": "Ingénieurs seniors intégrés à votre équipe. Nous concevons, construisons et grandissons aux côtés de votre feuille de route — long terme, responsables, sans handoffs."
     }
   },
   "projects": {
     "ariaLabel": "Nos Réalisations",
-    "sectionTitle": "Nos réalisations",
+    "sectionTitle": "Réalisations récentes",
     "sectionNumber": "03",
-    "subtitle": "Réalisations phares de notre portfolio",
-    "viewAll": "Voir Tous les Projets",
+    "subtitle": "Des produits et plateformes que nous avons conçus, construits et fait grandir aux côtés de nos clients.",
+    "viewAll": "Voir tous les projets",
     "terminalHint": "{count} projets indexés — explorez l'archive complète",
     "statusLive": "Live",
     "viewProjectLink": "Voir le projet",
@@ -88,7 +103,7 @@
     "statIndustries": "Industries",
     "backToProjects": "Retour aux projets",
     "allLabel": "Tous",
-    "pageTitle": "Nos réalisations",
+    "pageTitle": "Réalisations récentes",
     "industries": "Industries",
     "technologies": "Technologies",
     "clearFilters": "Effacer filtres",
@@ -121,9 +136,9 @@
     "ariaLabel": "Contactez-nous",
     "sectionNumber": "05",
     "sectionLabel": "Contact",
-    "heading": "Construisons",
-    "headingHighlight": "Quelque chose",
-    "subtitle": "Prêt à transformer votre technologie ? Parlons-en.",
+    "heading": "Faisons grandir",
+    "headingHighlight": "votre produit.",
+    "subtitle": "Dites-nous où vous êtes, où vous voulez aller et à quelle vitesse vous devez y arriver. Nous reviendrons vers vous en moins de 24 heures.",
     "nameLabel": "Nom",
     "namePlaceholder": "votre nom",
     "emailLabel": "E-mail",

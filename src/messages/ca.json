@@ -34,52 +34,67 @@
   },
   "about": {
     "ariaLabel": "Sobre Kalebtec",
-    "sectionTitle": "Qui som",
+    "sectionTitle": "Com treballem",
     "sectionNumber": "01",
-    "originStory": "No vam fundar Kalebtec en una sala de reunions. Ho vam començar a una taula de cuina, ben entrada la nit, alimentats per mal cafè i una obsessió compartida per construir coses que realment funcionin.",
-    "teamDescription": "<rowin>Rowin</rowin> escriu el codi. <mari>Mari</mari> dirigeix l'espectacle. Junts, agafem reptes tècnics complexos i desordenats i els convertim en sistemes nets i escalables en què les empreses poden confiar de veritat.",
-    "directAttention": "No som una agència sense rostre. Cada projecte rep la nostra atenció directa -- mans als teclats, ulls a les pantalles, zero capes de comandaments intermedis entre nosaltres i el teu producte. Quan treballes amb Kalebtec, treballes amb <em>nosaltres</em>.",
-    "philosophy": "Creiem que la gran tecnologia ha de ser invisible -- ràpida, fiable i tan ben construïda que la gent oblida que hi és. Res de frameworks inflats per seguir tendències. Res de solucions sobreenginyades per a problemes simples. Només enginyeria precisa i amb propòsit que fa la feina.",
-    "statUptime": "Fiabilitat del sistema: 99,9%",
-    "statStackDepth": "Profunditat del stack: Full end-to-end",
-    "statResponseTime": "Temps de resposta: Menys de 24 hores",
-    "statClearance": "Nivell de seguretat: Màxim"
+    "originStory": "Dos enginyers, un estudi. Vam començar Kalebtec per entregar el programari que els nostres clients realment necessiten — sense presentacions, sense account managers, sense la sobrecàrrega d'una agència.",
+    "teamDescription": "<rowin>Rowin</rowin> escriu el codi. <mari>Mari</mari> condueix la relació. Parles amb tots dos, cada setmana, al Slack i a les trucades — sense handoffs, sense sorpreses.",
+    "directAttention": "Enginyers sènior des del primer dia. Les decisions es prenen ràpid perquè no hi ha capes entre tu i qui fa la feina. Quan contractes Kalebtec, ens contractes a <em>nosaltres</em>.",
+    "philosophy": "Construïm programari que creix amb el teu producte. El primer llançament és l'inici del treball, no el final. Decisions pragmàtiques, comunicació proactiva, enginyeria que es compon — això és el que fa que valgui la pena mantenir una relació.",
+    "philosophyLabel": "Filosofia de treball",
+    "stats": {
+      "process": {
+        "value": "End-to-end",
+        "label": "Procés"
+      },
+      "response": {
+        "value": "< 24h",
+        "label": "Resposta"
+      },
+      "team": {
+        "value": "Sènior",
+        "label": "Enginyers"
+      },
+      "partnership": {
+        "value": "Llarg termini",
+        "label": "Relació"
+      }
+    }
   },
   "services": {
     "ariaLabel": "Els Nostres Serveis",
-    "sectionTitle": "El que fem",
+    "sectionTitle": "El que entreguem",
     "sectionNumber": "02",
     "softwareArchitecture": {
-      "name": "Arquitectura de Software",
-      "description": "Dissenyem sistemes escalables i mantenibles construïts per créixer. Des de microserveis fins a monolits, triem l'arquitectura adequada per a les teves necessitats."
+      "name": "Arquitectura de programari",
+      "description": "Sistemes dimensionats per on ets ara i cap on vas. Pragmàtics, observables, fàcils d'evolucionar — sense sobreenginyeria per a problemes que encara no tens."
     },
     "webDevelopment": {
-      "name": "Desenvolupament Web",
-      "description": "Aplicacions web modernes construïdes amb tecnologia d'avantguarda. Ràpides, accessibles i elegants per defecte."
+      "name": "Plataformes web",
+      "description": "Des de llocs de màrqueting fins a SaaS amb dades pesades. Dissenyem i entreguem plataformes web que escalen amb el teu trànsit, el teu equip i el teu full de ruta."
     },
     "aiAutomation": {
-      "name": "IA i Automatització",
-      "description": "Aprofita la intel·ligència artificial i l'automatització per optimitzar operacions i desbloquejar noves possibilitats."
+      "name": "IA i automatització",
+      "description": "Pipelines pràctics de LLM i automatització integrats als fluxos que realment uses. Menys hype, més entrega."
     },
     "cloudInfrastructure": {
-      "name": "Infraestructura Cloud",
-      "description": "Solucions natives al núvol a AWS, GCP i Azure. Optimitzem rendiment, seguretat i costos."
+      "name": "Infraestructura cloud",
+      "description": "Configuracions d'AWS, GCP i Azure que escalen quan tu escales i es mantenen barates quan no. Observables, fiables, sense sorpreses."
     },
     "technicalStrategy": {
-      "name": "Estratègia Tècnica",
-      "description": "Alinea les teves decisions tecnològiques amb els objectius del negoci. Proporcionem fulls de ruta que generen resultats reals."
+      "name": "Estratègia tècnica",
+      "description": "Fulls de ruta pragmàtics ancorats en el teu negoci, no en el hype de la indústria. Decisions que podràs defensar un any després."
     },
     "teamAugmentation": {
-      "name": "Ampliació d'Equip",
-      "description": "Integrem enginyers sènior directament al teu equip. Escalem amb tu quan més ho necessites."
+      "name": "Enginyeria integrada",
+      "description": "Enginyers sènior integrats al teu equip. Dissenyem, construïm i creixem al costat del teu full de ruta — a llarg termini, responsables, sense handoffs."
     }
   },
   "projects": {
     "ariaLabel": "El Nostre Treball",
-    "sectionTitle": "El nostre treball",
+    "sectionTitle": "Treballs recents",
     "sectionNumber": "03",
-    "subtitle": "Projectes destacats del nostre portafoli",
-    "viewAll": "Veure Tots els Projectes",
+    "subtitle": "Productes i plataformes que hem dissenyat, construït i fet créixer al costat dels nostres clients.",
+    "viewAll": "Veure tots els projectes",
     "terminalHint": "{count} projectes indexats — explora l'arxiu complet",
     "statusLive": "Live",
     "viewProjectLink": "Veure projecte",
@@ -88,7 +103,7 @@
     "statIndustries": "Indústries",
     "backToProjects": "Tornar als projectes",
     "allLabel": "Tots",
-    "pageTitle": "El nostre treball",
+    "pageTitle": "Treballs recents",
     "industries": "Indústries",
     "technologies": "Tecnologies",
     "clearFilters": "Netejar filtres",
@@ -121,9 +136,9 @@
     "ariaLabel": "Contacta'ns",
     "sectionNumber": "05",
     "sectionLabel": "Contacte",
-    "heading": "Construïm",
-    "headingHighlight": "Alguna cosa",
-    "subtitle": "Preparat per transformar la teva tecnologia? Parlem-ne.",
+    "heading": "Fem créixer",
+    "headingHighlight": "el teu producte.",
+    "subtitle": "Explica'ns on ets, on vols anar i amb quina rapidesa necessites arribar. Et responem en menys de 24 hores.",
     "nameLabel": "Nom",
     "namePlaceholder": "el teu nom",
     "emailLabel": "Correu electrònic",

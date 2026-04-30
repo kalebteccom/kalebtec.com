@@ -6,12 +6,11 @@ import AnimatedReveal from '@/components/ui/AnimatedReveal';
 import { Section, SectionContainer } from '@/components/ui/Section';
 import { Stat, StatGrid } from '@/components/ui/Stat';
 
-const stats = [
-  { value: '99.9%', label: 'Uptime', ariaKey: 'statUptime' as const },
-  { value: 'End-to-end', label: 'Stack depth', ariaKey: 'statStackDepth' as const },
-  { value: '< 24h', label: 'Response time', ariaKey: 'statResponseTime' as const },
-  { value: 'Direct', label: 'Communication', ariaKey: 'statClearance' as const },
-];
+// Order is intentional — these are the four signals we want a visitor to
+// take away from the section: how we work, how fast we reply, who shows
+// up, and how long we stay. The keys map to about.stats.{key}.{value,label}
+// in each locale.
+const STAT_KEYS = ['process', 'response', 'team', 'partnership'] as const;
 
 export default function AboutSection() {
   const t = useTranslations('about');
@@ -55,7 +54,7 @@ export default function AboutSection() {
             <AnimatedReveal delay={0.25}>
               <div className="border-l-2 border-border-strong pl-6">
                 <p className="text-xs font-medium uppercase tracking-wider text-faint mb-3">
-                  Operating philosophy
+                  {t('philosophyLabel')}
                 </p>
                 <p className="text-base text-body leading-relaxed">
                   {t('philosophy')}
@@ -65,13 +64,12 @@ export default function AboutSection() {
 
             <AnimatedReveal delay={0.4}>
               <StatGrid columns={2} bordered>
-                {stats.map((stat, i) => (
+                {STAT_KEYS.map((key, i) => (
                   <Stat
-                    key={stat.label}
-                    value={stat.value}
-                    label={stat.label}
+                    key={key}
+                    value={t(`stats.${key}.value`)}
+                    label={t(`stats.${key}.label`)}
                     index={String(i + 1).padStart(2, '0')}
-                    aria-label={t(stat.ariaKey)}
                   />
                 ))}
               </StatGrid>

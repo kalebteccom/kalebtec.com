@@ -34,52 +34,67 @@
   },
   "about": {
     "ariaLabel": "Sobre Kalebtec",
-    "sectionTitle": "Quen somos",
+    "sectionTitle": "Como traballamos",
     "sectionNumber": "01",
-    "originStory": "Non fundamos Kalebtec nunha sala de xuntas. Comezámolo nunha mesa de cociña, ben entrada a noite, alimentados por mal café e unha obsesión compartida por construír cousas que realmente funcionen.",
-    "teamDescription": "<rowin>Rowin</rowin> escribe o código. <mari>Mari</mari> dirixe o espectáculo. Xuntos, collemos retos técnicos complexos e desordenados e convertímolos en sistemas limpos e escalables nos que as empresas poden confiar de verdade.",
-    "directAttention": "Non somos unha axencia sen rostro. Cada proxecto recibe a nosa atención directa -- mans nos teclados, ollos nas pantallas, cero capas de mandos intermedios entre nós e o teu produto. Cando traballas con Kalebtec, traballas con <em>nós</em>.",
-    "philosophy": "Cremos que a gran tecnoloxía debe sentirse invisible -- rápida, fiable e tan ben construída que a xente esquece que está aí. Nada de frameworks inflados por seguir tendencias. Nada de solucións sobreenxeñadas para problemas simples. Só enxeñaría precisa e con propósito que fai o traballo.",
-    "statUptime": "Fiabilidade do sistema: 99,9%",
-    "statStackDepth": "Profundidade do stack: Full end-to-end",
-    "statResponseTime": "Tempo de resposta: Menos de 24 horas",
-    "statClearance": "Nivel de seguridade: Máximo"
+    "originStory": "Dous enxeñeiros, un estudio. Comezamos Kalebtec para entregar o software que os nosos clientes realmente necesitan — sen presentacións, sen account managers, sen a sobrecarga dunha axencia.",
+    "teamDescription": "<rowin>Rowin</rowin> escribe o código. <mari>Mari</mari> dirixe a relación. Falas cos dous, cada semana, en Slack e nas chamadas — sen handoffs, sen sorpresas.",
+    "directAttention": "Enxeñeiros sénior desde o primeiro día. As decisións tómanse rápido porque non hai capas entre ti e quen fai o traballo. Cando contratas a Kalebtec, contrátasnos a <em>nós</em>.",
+    "philosophy": "Construímos software que crece co teu produto. O primeiro lanzamento é o inicio do traballo, non o final. Decisións pragmáticas, comunicación proactiva, enxeñería que se compón — iso é o que fai que valga a pena manter unha relación.",
+    "philosophyLabel": "Filosofía de traballo",
+    "stats": {
+      "process": {
+        "value": "End-to-end",
+        "label": "Proceso"
+      },
+      "response": {
+        "value": "< 24h",
+        "label": "Resposta"
+      },
+      "team": {
+        "value": "Sénior",
+        "label": "Enxeñeiros"
+      },
+      "partnership": {
+        "value": "Longo prazo",
+        "label": "Relación"
+      }
+    }
   },
   "services": {
     "ariaLabel": "Os Nosos Servizos",
-    "sectionTitle": "O que facemos",
+    "sectionTitle": "O que entregamos",
     "sectionNumber": "02",
     "softwareArchitecture": {
-      "name": "Arquitectura de Software",
-      "description": "Deseñamos sistemas escalables e mantibles construídos para crecer. Desde microservizos ata monolitos, escollemos a arquitectura adecuada para as túas necesidades."
+      "name": "Arquitectura de software",
+      "description": "Sistemas dimensionados para onde estás agora e cara onde vas. Pragmáticos, observables, fáciles de evolucionar — sen sobreenxeñería para problemas que aínda non tes."
     },
     "webDevelopment": {
-      "name": "Desenvolvemento Web",
-      "description": "Aplicacións web modernas construídas con tecnoloxía de vangarda. Rápidas, accesibles e elegantes por defecto."
+      "name": "Plataformas web",
+      "description": "Desde sitios de marketing ata SaaS con datos pesados. Deseñamos e entregamos plataformas web que escalan co teu tráfico, o teu equipo e a túa folla de ruta."
     },
     "aiAutomation": {
-      "name": "IA e Automatización",
-      "description": "Aproveita a intelixencia artificial e a automatización para optimizar operacións e desbloquear novas posibilidades."
+      "name": "IA e automatización",
+      "description": "Pipelines prácticos de LLM e automatización integrados nos fluxos que realmente usas. Menos hype, máis entrega."
     },
     "cloudInfrastructure": {
-      "name": "Infraestrutura Cloud",
-      "description": "Solucións nativas na nube en AWS, GCP e Azure. Optimizamos rendemento, seguridade e custos."
+      "name": "Infraestrutura cloud",
+      "description": "Configuracións de AWS, GCP e Azure que escalan cando ti escalas e mantéñense baratas cando non. Observables, fiables, sen sorpresas."
     },
     "technicalStrategy": {
-      "name": "Estratexia Técnica",
-      "description": "Aliña as túas decisións tecnolóxicas cos obxectivos do negocio. Proporcionamos follas de ruta que xeran resultados reais."
+      "name": "Estratexia técnica",
+      "description": "Follas de ruta pragmáticas ancoradas no teu negocio, non no hype da industria. Decisións que poderás defender un ano despois."
     },
     "teamAugmentation": {
-      "name": "Ampliación de Equipo",
-      "description": "Integramos enxeñeiros sénior directamente no teu equipo. Escalamos contigo cando máis o necesitas."
+      "name": "Enxeñería integrada",
+      "description": "Enxeñeiros sénior integrados co teu equipo. Deseñamos, construímos e crecemos xunto á túa folla de ruta — a longo prazo, responsables, sen handoffs."
     }
   },
   "projects": {
     "ariaLabel": "O Noso Traballo",
-    "sectionTitle": "O noso traballo",
+    "sectionTitle": "Traballos recentes",
     "sectionNumber": "03",
-    "subtitle": "Proxectos destacados do noso portafolio",
-    "viewAll": "Ver Todos os Proxectos",
+    "subtitle": "Produtos e plataformas que deseñamos, construímos e fixemos crecer xunto aos nosos clientes.",
+    "viewAll": "Ver todos os proxectos",
     "terminalHint": "{count} proxectos indexados — explora o arquivo completo",
     "statusLive": "Live",
     "viewProjectLink": "Ver proxecto",
@@ -88,7 +103,7 @@
     "statIndustries": "Industrias",
     "backToProjects": "Volver aos proxectos",
     "allLabel": "Todos",
-    "pageTitle": "O noso traballo",
+    "pageTitle": "Traballos recentes",
     "industries": "Industrias",
     "technologies": "Tecnoloxías",
     "clearFilters": "Limpar filtros",
@@ -121,9 +136,9 @@
     "ariaLabel": "Contacta connosco",
     "sectionNumber": "05",
     "sectionLabel": "Contacto",
-    "heading": "Construamos",
-    "headingHighlight": "Algo",
-    "subtitle": "Listo para transformar a túa tecnoloxía? Falemos.",
+    "heading": "Fagamos crecer",
+    "headingHighlight": "o teu produto.",
+    "subtitle": "Cóntanos onde estás, cara onde queres ir e con que rapidez necesitas chegar. Respondémosche en menos de 24 horas.",
     "nameLabel": "Nome",
     "namePlaceholder": "o teu nome",
     "emailLabel": "Correo electrónico",
