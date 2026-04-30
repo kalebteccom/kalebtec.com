@@ -107,14 +107,37 @@ This project has **three expert-level skills** that MUST be used when working wi
 | Class | Effect |
 |-------|--------|
 | `.editorial-lead` | NR-style lead paragraph: ~24px / 1.25 / weight 600 / tight tracking |
-| `.btn-pill` | Base pill button: 36px radius, 16px×32px padding, weight 500, -0.5px tracking |
-| `.btn-primary` | Solid ink-on-cream (light) / cream-on-ink (dark) |
-| `.btn-secondary` | Transparent + 1px border |
-| `.btn-ghost` | Transparent, hover surface |
 | `.section-dark` | Inverts the section to ink bg + cream text — drops `--color-*` tokens locally |
+| `.nav-pill` | The dark capsule used by `<StackedPill>`; locally inverts semantic tokens so nested children pick up light-on-dark colors automatically |
+| `.nav-pill-link` | Per-item link styling inside a `.nav-pill` — text-muted default, hover bg-surface, active state underline |
 | `.text-display-xl` / `.text-display-lg` / `.text-display-md` / `.text-display-sm` | Responsive headline scale via `clamp()` |
 | `.team-photo` | Subtle saturate filter on team photos; intensifies on group hover |
 | `.skip-to-content` | Pill-shaped skip link for keyboard users |
+
+> **Note**: the legacy `.btn-pill`, `.btn-primary`, `.btn-secondary`, `.btn-ghost` global classes have been replaced by the React `<Button>` / `<ButtonLink>` primitives — see "Design system" below.
+
+### Design system — components live in `src/components/ui/`
+
+**🔒 Hard rule**: any UI pattern that appears in 2+ places lives as a reusable component in `src/components/ui/`, **not as inlined Tailwind class strings**. When you find yourself copying a `className=` string (button shape, pill backdrop, accent dot, eyebrow label, …) for the same visual pattern more than once, stop and extract a component. Inline composition is for one-off layout glue, not for design primitives.
+
+Why: shared className blobs go stale, drift across files, and prevent us from evolving our visual identity in one place. Components give us:
+- a single source of truth per pattern
+- typed variants and sizes (no class typos)
+- easier theme/a11y refactors (touch one file)
+- a real design system that compounds as we ship
+
+**Current primitives** (extend, don't duplicate):
+
+| Component | Where | Use for |
+|---|---|---|
+| `<Button>` / `<ButtonLink>` | `src/components/ui/Button.tsx` | All pill buttons. Variants: `primary` (brand purple), `ink` (solid black/white), `secondary` (outlined), `ghost`. Sizes: `sm` `md` `lg`. Optional `bullet` prop renders a leading `<BulletDot>`. `<ButtonLink>` auto-routes through next-intl `<Link>` for internal paths and falls back to plain `<a>` for hash anchors, mailto:, http(s). |
+| `<StackedPill>` | `src/components/ui/StackedPill.tsx` | The NR-style dark capsule that wraps a row of related controls (nav links, icon buttons, CTA combos). Uses `.nav-pill` under the hood, which locally inverts semantic tokens so any nested UI gets the light-on-dark scheme automatically. `as`: `'div' \| 'nav' \| 'aside' \| 'header'`. `padding`: `sm` `md` `lg`. |
+| `<BulletDot>` | `src/components/ui/BulletDot.tsx` | Small accent dot used in eyebrow labels, section numbers, button bullets, stat indicators. Colors: `brand` `white` `current` `muted` `faint` `heading`. Sizes: `xs` `sm` `md`. |
+| `<SectionHeading>` | `src/components/ui/SectionHeading.tsx` | The `01 — About` mono eyebrow + huge editorial heading combo for section tops. |
+| `<AnimatedReveal>` | `src/components/ui/AnimatedReveal.tsx` | Framer Motion scroll-reveal wrapper — gentle 12px translate, 0.5s, gentle easing. Respects `prefers-reduced-motion`. |
+| `<JsonLd>` | `src/components/seo/JsonLd.tsx` | Renders `application/ld+json` script for structured data. |
+
+When adding a new pattern: **add the component first, then use it**. If a primitive needs a new variant or size, extend the primitive — don't write a one-off className for the new case.
 
 ### Easter eggs (preserved with editorial vocabulary)
 | Trigger | Effect |

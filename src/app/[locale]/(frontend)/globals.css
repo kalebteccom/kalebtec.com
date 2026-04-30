@@ -168,98 +168,11 @@ h1, h2, h3, h4, h5, h6, p, li, td, th, dd, dt, figcaption, blockquote {
 }
 
 /* ==========================================================================
-   PILL CTA (the New Relic signature button)
+   PILL BUTTONS — moved to React primitives at src/components/ui/Button.tsx.
+   Use <Button> / <ButtonLink> with the variant + size + bullet props.
+   The legacy .btn-pill / .btn-primary / .btn-secondary / .btn-ghost / .btn-ink
+   utility classes have been removed; do not reintroduce them.
    ========================================================================== */
-
-.btn-pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  border-radius: var(--radius-pill);
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  line-height: 1;
-  transition:
-    background-color 0.25s ease,
-    color 0.25s ease,
-    border-color 0.25s ease,
-    transform 0.25s ease;
-  cursor: pointer;
-}
-
-.btn-pill:hover {
-  transform: translateY(-1px);
-}
-
-.btn-pill:active {
-  transform: translateY(0);
-}
-
-.btn-primary {
-  background-color: var(--color-brand);
-  color: #ffffff;
-}
-
-.btn-primary:hover {
-  background-color: var(--color-brand-dark);
-}
-
-.btn-ink {
-  background-color: var(--color-ink);
-  color: var(--color-paper);
-}
-
-[data-theme='dark'] .btn-ink {
-  background-color: var(--color-paper-soft);
-  color: var(--color-ink);
-}
-
-.btn-ink:hover {
-  background-color: var(--color-ink-soft);
-}
-
-[data-theme='dark'] .btn-ink:hover {
-  background-color: var(--color-paper);
-}
-
-.btn-secondary {
-  background-color: transparent;
-  color: var(--color-ink);
-  box-shadow: inset 0 0 0 1px var(--color-border-strong);
-}
-
-[data-theme='dark'] .btn-secondary {
-  color: var(--color-paper-soft);
-  box-shadow: inset 0 0 0 1px var(--color-border-strong);
-}
-
-.btn-secondary:hover {
-  background-color: rgba(8, 15, 17, 0.05);
-}
-
-[data-theme='dark'] .btn-secondary:hover {
-  background-color: rgba(241, 240, 228, 0.05);
-}
-
-.btn-ghost {
-  background-color: transparent;
-  color: var(--color-ink);
-}
-
-[data-theme='dark'] .btn-ghost {
-  color: var(--color-paper-soft);
-}
-
-.btn-ghost:hover {
-  background-color: rgba(8, 15, 17, 0.05);
-}
-
-[data-theme='dark'] .btn-ghost:hover {
-  background-color: rgba(241, 240, 228, 0.05);
-}
 
 /* ==========================================================================
    SECTION BANDS
@@ -417,6 +330,48 @@ select:focus-visible,
 
 [data-theme='dark'] .group:hover .team-photo {
   filter: saturate(0.85) contrast(1) brightness(1);
+}
+
+/* ==========================================================================
+   NAV PILL — NR-inspired stacked button pill. Locally inverts semantic
+   tokens so any nested UI (nav links, icon buttons, dropdowns) that
+   already references text-muted / hover:bg-surface / etc. picks up the
+   light-on-dark scheme automatically — the same pattern as .section-dark.
+   ========================================================================== */
+
+.nav-pill {
+  background-color: var(--color-ink);
+  /* Locally swap semantic tokens to a light-on-dark variant so any nested
+     UI that uses text-muted / hover:bg-surface / etc. picks up the right
+     colors automatically. We avoid shadowing --color-surface-bright
+     because the dark-theme rule below references it for the pill bg. */
+  --color-bg: var(--color-ink);
+  --color-surface: rgba(241, 240, 228, 0.08);
+  --color-heading: var(--color-paper-soft);
+  --color-body: var(--color-paper-soft);
+  --color-muted: rgba(241, 240, 228, 0.78);
+  --color-faint: rgba(241, 240, 228, 0.55);
+  --color-border: rgba(241, 240, 228, 0.12);
+  --color-border-strong: rgba(241, 240, 228, 0.24);
+}
+
+[data-theme='dark'] .nav-pill {
+  background-color: var(--color-surface-bright);
+  --color-bg: var(--color-surface-bright);
+}
+
+.nav-pill-link {
+  color: var(--color-muted);
+}
+
+.nav-pill-link:hover {
+  color: var(--color-heading);
+  background-color: var(--color-surface);
+}
+
+.nav-pill-link[aria-current='page'] {
+  color: var(--color-heading);
+  background-color: rgba(241, 240, 228, 0.14);
 }
 
 /* ==========================================================================

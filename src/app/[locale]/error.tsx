@@ -1,7 +1,8 @@
 'use client';
 
-import Link from 'next/link';
 import { useEffect } from 'react';
+import { Button, ButtonLink } from '@/components/ui/Button';
+import { StackedPill } from '@/components/ui/StackedPill';
 
 export default function Error({
   error,
@@ -52,14 +53,14 @@ export default function Error({
           </dl>
         </div>
 
-        <div className="flex flex-wrap items-center gap-4">
-          <button type="button" onClick={reset} className="btn-pill btn-primary">
+        <StackedPill>
+          <Button variant="primary" size="md" bullet onClick={reset}>
             Retry
-          </button>
-          <Link href="/" className="btn-pill btn-secondary">
+          </Button>
+          <ButtonLink href="/" variant="ghost" size="md">
             Return home
-          </Link>
-        </div>
+          </ButtonLink>
+        </StackedPill>
       </div>
     </section>
   );

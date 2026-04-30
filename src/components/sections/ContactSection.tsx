@@ -4,6 +4,7 @@ import { useRef, useState, useCallback } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import AnimatedReveal from '@/components/ui/AnimatedReveal';
+import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 
 const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94];
@@ -179,16 +180,14 @@ export default function ContactSection() {
               />
             </div>
 
-            <button
+            <Button
               type="submit"
+              variant="primary"
+              size="lg"
               disabled={formStatus === 'submitting'}
-              className={cn(
-                'btn-pill btn-primary',
-                'disabled:opacity-50 disabled:cursor-not-allowed',
-              )}
             >
               {formStatus === 'submitting' ? t('submitting') : t('submit')}
-            </button>
+            </Button>
 
             <div aria-live="polite" aria-atomic="true" className="min-h-[2rem]">
               {formStatus === 'success' && (

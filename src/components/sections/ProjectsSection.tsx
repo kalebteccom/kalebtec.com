@@ -1,8 +1,8 @@
 import { getPayload } from 'payload';
 import configPromise from '@payload-config';
 import { getLocale, getTranslations } from 'next-intl/server';
-import { Link } from '@/i18n/navigation';
 import SectionHeading from '@/components/ui/SectionHeading';
+import { ButtonLink } from '@/components/ui/Button';
 import ProjectsSectionClient from './ProjectsSectionClient';
 import type { Locale } from '@/i18n/routing';
 import type { Project } from '@/payload-types';
@@ -65,8 +65,8 @@ export default async function ProjectsSection() {
         <ProjectsSectionClient projects={projects} stats={stats} />
 
         <div className="mt-16 flex justify-start">
-          <Link href="/projects" className="btn-pill btn-secondary">
-            <span>{t('viewAll')}</span>
+          <ButtonLink href="/projects" variant="secondary" size="md">
+            {t('viewAll')}
             <svg
               width="16"
               height="16"
@@ -75,12 +75,12 @@ export default async function ProjectsSection() {
               stroke="currentColor"
               strokeWidth="1.5"
               aria-hidden="true"
-              className="transition-transform duration-200 group-hover:translate-x-0.5"
+              className="ml-1"
             >
               <line x1="2" y1="8" x2="13" y2="8" />
               <polyline points="9,4 13,8 9,12" fill="none" />
             </svg>
-          </Link>
+          </ButtonLink>
         </div>
       </div>
     </section>

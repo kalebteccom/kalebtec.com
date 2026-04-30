@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/navigation';
+import { ButtonLink } from '@/components/ui/Button';
 
 export const metadata: Metadata = {
   robots: { index: false, follow: true },
@@ -26,9 +26,9 @@ export default function NotFound() {
         <p className="editorial-lead text-body mb-4">{t('terminalMessage')}</p>
         <p className="text-base text-muted mb-10">{t('description')}</p>
 
-        <Link href="/" className="btn-pill btn-primary">
+        <ButtonLink href="/" variant="primary" size="md">
           {t('returnHome')}
-        </Link>
+        </ButtonLink>
       </div>
     </section>
   );

@@ -27,7 +27,8 @@
     "headline": "Engenharia com propósito.",
     "subhead": "Arquitetura de software, plataformas web e automação com IA, construídas por uma equipe pequena que entrega.",
     "primaryCta": "Iniciar projeto",
-    "secondaryCta": "Ver nosso trabalho"
+    "secondaryCta": "Ver nosso trabalho",
+    "primaryCtaShort": "Iniciar"
   },
   "about": {
     "ariaLabel": "Sobre a Kalebtec",

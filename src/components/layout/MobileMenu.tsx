@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
+import ThemeToggle from '@/components/ui/ThemeToggle';
 
 const overlayVariants = {
   hidden: { opacity: 0 },
@@ -178,9 +179,10 @@ export default function MobileMenu({ isOpen, onClose, triggerRef }: MobileMenuPr
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="mt-8"
+              className="mt-8 flex items-center gap-2"
             >
               <LanguageSwitcher />
+              <ThemeToggle />
             </motion.div>
           </nav>
         </motion.div>

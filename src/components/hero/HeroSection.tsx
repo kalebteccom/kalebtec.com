@@ -3,6 +3,9 @@
 import dynamic from 'next/dynamic';
 import { motion, type Variants } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import { ButtonLink } from '@/components/ui/Button';
+import { BulletDot } from '@/components/ui/BulletDot';
+import { StackedPill } from '@/components/ui/StackedPill';
 
 const HeroScene = dynamic(() => import('@/components/three/HeroScene'), {
   ssr: false,
@@ -69,10 +72,7 @@ export default function HeroSection() {
               variants={fadeUpVariants}
               className="font-mono text-xs tracking-[0.18em] uppercase mb-6 flex items-center gap-2.5"
             >
-              <span
-                className="w-1.5 h-1.5 rounded-full bg-brand"
-                aria-hidden="true"
-              />
+              <BulletDot color="brand" />
               <span className="text-muted">{t('eyebrow')}</span>
             </motion.p>
 
@@ -92,17 +92,21 @@ export default function HeroSection() {
               {t('subhead')}
             </motion.p>
 
-            {/* CTA pair */}
+            {/* CTA pair — both nested inside one StackedPill so they
+                read as a single editorial control cluster against the
+                cream/ink page background. */}
             <motion.div
               variants={fadeUpVariants}
-              className="flex flex-wrap items-center gap-4 pointer-events-auto"
+              className="pointer-events-auto"
             >
-              <a href="#contact" className="btn-pill btn-primary">
-                {t('primaryCta')}
-              </a>
-              <a href="#projects" className="btn-pill btn-secondary">
-                {t('secondaryCta')}
-              </a>
+              <StackedPill padding="md">
+                <ButtonLink href="/#contact" variant="primary" size="md" bullet>
+                  {t('primaryCta')}
+                </ButtonLink>
+                <ButtonLink href="/#projects" variant="ghost" size="md">
+                  {t('secondaryCta')}
+                </ButtonLink>
+              </StackedPill>
             </motion.div>
           </motion.div>
         </div>

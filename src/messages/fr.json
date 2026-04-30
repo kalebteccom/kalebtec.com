@@ -27,7 +27,8 @@
     "headline": "L'ingénierie avec intention.",
     "subhead": "Architecture logicielle, plateformes web et automatisation par IA, conçues par une équipe restreinte qui livre.",
     "primaryCta": "Démarrer un projet",
-    "secondaryCta": "Voir nos réalisations"
+    "secondaryCta": "Voir nos réalisations",
+    "primaryCtaShort": "Démarrer"
   },
   "about": {
     "ariaLabel": "À propos de Kalebtec",

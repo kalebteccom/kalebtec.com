@@ -104,9 +104,9 @@ export default async function HomePage({ params }: { params: Params }) {
       availableLanguage: ['en', 'es', 'ca', 'fr', 'gl', 'pt'],
     },
     sameAs: [
-      'https://linkedin.com/company/kalebtec',
-      'https://x.com/kalebtec',
-      'https://github.com/kalebtec',
+      'https://www.linkedin.com/company/kalebtec',
+      'https://x.com/kalebtec_com',
+      'https://github.com/kalebteccom',
     ],
   };
 

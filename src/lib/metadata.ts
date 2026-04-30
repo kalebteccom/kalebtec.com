@@ -53,7 +53,7 @@ export function buildAlternates(
  * Twitter handle used across Twitter card metadata. Kept here so it's
  * trivial to update in one place.
  */
-export const TWITTER_HANDLE = '@kalebtec';
+export const TWITTER_HANDLE = '@kalebtec_com';
 
 /**
  * Build the absolute OG image URL for a given locale, pointing at the

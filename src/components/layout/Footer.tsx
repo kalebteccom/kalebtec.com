@@ -74,7 +74,7 @@ export default function Footer() {
 
             <div className="flex gap-2 mt-6">
               <a
-                href="https://linkedin.com/company/kalebtec"
+                href="https://www.linkedin.com/company/kalebtec"
                 target="_blank"
                 className="p-2 inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-muted hover:text-heading transition-colors duration-200"
                 aria-label={t('linkedinAriaLabel')}
@@ -91,7 +91,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://x.com/kalebtec"
+                href="https://x.com/kalebtec_com"
                 target="_blank"
                 className="p-2 inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-muted hover:text-heading transition-colors duration-200"
                 aria-label={t('twitterAriaLabel')}
@@ -108,7 +108,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://github.com/kalebtec"
+                href="https://github.com/kalebteccom"
                 target="_blank"
                 className="p-2 inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-muted hover:text-heading transition-colors duration-200"
                 aria-label={t('githubAriaLabel')}

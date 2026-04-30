@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Button } from '@/components/ui/Button';
 
 const COOKIE_CONSENT_KEY = 'kalebtec-cookie-consent';
 
@@ -71,20 +72,12 @@ export default function CookieBanner() {
                 </div>
 
                 <div className="flex items-center gap-3 shrink-0">
-                  <button
-                    type="button"
-                    onClick={handleDecline}
-                    className="btn-pill btn-ghost text-sm px-5 py-2.5"
-                  >
+                  <Button variant="ghost" size="sm" onClick={handleDecline}>
                     {t('decline')}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={handleAccept}
-                    className="btn-pill btn-primary text-sm px-5 py-2.5"
-                  >
+                  </Button>
+                  <Button variant="primary" size="sm" onClick={handleAccept}>
                     {t('accept')}
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>

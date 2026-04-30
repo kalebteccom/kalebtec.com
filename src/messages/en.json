@@ -27,7 +27,8 @@
     "headline": "Engineering with intent.",
     "subhead": "Software architecture, web platforms, and AI automation, built by a small team that ships.",
     "primaryCta": "Start a project",
-    "secondaryCta": "See our work"
+    "secondaryCta": "See our work",
+    "primaryCtaShort": "Start"
   },
   "about": {
     "ariaLabel": "About Kalebtec",

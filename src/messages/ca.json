@@ -27,7 +27,8 @@
     "headline": "Enginyeria amb propòsit.",
     "subhead": "Arquitectura de programari, plataformes web i automatització amb IA, construïdes per un equip petit que entrega.",
     "primaryCta": "Començar projecte",
-    "secondaryCta": "Veure el nostre treball"
+    "secondaryCta": "Veure el nostre treball",
+    "primaryCtaShort": "Començar"
   },
   "about": {
     "ariaLabel": "Sobre Kalebtec",
