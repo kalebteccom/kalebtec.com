@@ -116,6 +116,61 @@ html {
    they remain readable inside .prose richtext content.
    ========================================================================== */
 
+/*
+ * Display headlines.
+ *
+ * Goals:
+ *   - Never auto-hyphenate common words mid-flow (e.g. "producción",
+ *     "automatització") because greedy hyphenation breaks editorial rhythm.
+ *   - But always degrade safely if a word IS truly too long to fit
+ *     (German compounds, very narrow viewports, dynamic content).
+ *
+ * Strategy:
+ *   - `hyphens: manual`        — no automatic hyphenation; only break at
+ *     `&shy;` (soft hyphen) markers if the editor places them.
+ *   - `overflow-wrap: anywhere` — last-resort safety: if a single word
+ *     genuinely cannot fit, break at a character boundary (without a
+ *     hyphen mark) instead of overflowing the container.
+ *   - `text-wrap: balance`     — modern browsers distribute words evenly
+ *     across lines instead of greedy fill, producing cleaner ragged-right
+ *     editorial wraps.
+ *
+ * Editorial escape hatch:
+ *   For words that you want broken at a specific point in a specific
+ *   locale, insert `&shy;` (soft hyphen, U+00AD) into the translation
+ *   string. The browser will only break at that mark when the word
+ *   doesn't fit on the line, and will render a hyphen at the break.
+ *   Example (DE-style compound): `Donau&shy;dampf&shy;schiff&shy;fahrt`.
+ *
+ * Per-language opt-in:
+ *   For languages with well-supported hyphenation dictionaries (German,
+ *   Dutch, Russian, …) we enable auto-hyphenation as a safety net so
+ *   long compounds break with a real hyphen instead of an awkward
+ *   character cut. Add new languages to the selector list below as we
+ *   support them.
+ */
+.text-display-xl,
+.text-display-lg,
+.text-display-md,
+.text-display-sm {
+  hyphens: manual;
+  -webkit-hyphens: manual;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+[lang|='de'] .text-display-xl,
+[lang|='de'] .text-display-lg,
+[lang|='de'] .text-display-md,
+[lang|='de'] .text-display-sm,
+[lang|='nl'] .text-display-xl,
+[lang|='nl'] .text-display-lg,
+[lang|='nl'] .text-display-md,
+[lang|='nl'] .text-display-sm {
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
 .text-display-xl {
   font-size: clamp(2.5rem, 6vw + 1rem, 9rem);
   line-height: 0.95;
@@ -152,18 +207,47 @@ html {
   letter-spacing: -0.01em;
 }
 
-/* Safe word-breaking for localized content */
-h1, h2, h3, h4, h5, h6, p, li, td, th, dd, dt, figcaption, blockquote {
+/*
+ * Safe word-breaking for localized content. Split into two rules:
+ *
+ *  1. Headings — overflow-wrap only, NO hyphenation. Display
+ *     headlines should never mid-word break; they look bad and the
+ *     editorial type loses rhythm. The .text-display-* utilities
+ *     above make this explicit via `hyphens: manual`.
+ *
+ *  2. Body text — overflow-wrap + hyphens: auto. Long localized
+ *     words (DE / FR compound nouns, Spanish "automatización", PT
+ *     "responsabilidade") often need to break inside narrow columns
+ *     to stay readable.
+ */
+h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-word;
+}
+
+p, li, td, th, dd, dt, figcaption, blockquote {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -webkit-hyphens: auto;
   hyphens: auto;
 }
 
+/*
+ * .break-good — opt-in utility for prose/body fragments that need
+ * the same hyphenation behaviour as our default body text. Mirrors
+ * the StackOverflow reference (https://stackoverflow.com/a/48830291)
+ * with vendor prefixes for older engines.
+ */
 .break-good {
   overflow-wrap: break-word;
   word-wrap: break-word;
+  -ms-word-break: break-all;
   word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
   hyphens: auto;
 }
 
