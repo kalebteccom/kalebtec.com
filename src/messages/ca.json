@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "title": "Kalebtec | Estudi de programari — web, IA, producte",
-    "description": "Dissenyem i construïm plataformes web, automatització amb IA i enginyeria de producte. Pragmàtics, ràpids, sense la sobrecàrrega d'una agència.",
-    "ogTitle": "Kalebtec | Estudi de programari — web, IA, producte",
-    "ogDescription": "Dissenyem i construïm plataformes web, automatització amb IA i enginyeria de producte. Pragmàtics, ràpids, sense la sobrecàrrega d'una agència.",
+    "title": "Kalebtec | El teu equip de programari — web, IA, producte",
+    "description": "Dissenyem, construïm i entreguem programari — i creixem amb el teu producte. Pragmàtics, proactius, sense la sobrecàrrega d'una agència.",
+    "ogTitle": "Kalebtec | El teu equip de programari — web, IA, producte",
+    "ogDescription": "Dissenyem, construïm i entreguem programari — i creixem amb el teu producte. Pragmàtics, proactius, sense la sobrecàrrega d'una agència.",
     "projectsTitle": "El nostre treball — projectes de programari Kalebtec",
     "projectsDescription": "Plataformes web, automatització amb IA i arquitectura de programari lliurades per Kalebtec a clients d'esport, salut i retail.",
     "notFoundTitle": "Projecte No Trobat | Kalebtec"
@@ -24,9 +24,9 @@
   },
   "hero": {
     "ariaLabel": "Heroi",
-    "eyebrow": "Kalebtec — Estudi de programari",
-    "headline": "Programari, llest quan ho estiguis.",
-    "subhead": "Dissenyem i entreguem plataformes web, automatització amb IA i enginyeria de producte. Pragmàtics, ràpids, sense la sobrecàrrega d'una agència — un estudi petit que entrega.",
+    "eyebrow": "Kalebtec — El teu equip de programari",
+    "headline": "De la idea a la producció.",
+    "subhead": "Dissenyem, construïm i entreguem — i creixem amb el teu producte. Comunicació proactiva, responsabilitat real, sense la sobrecàrrega d'una agència.",
     "primaryCta": "Contactar",
     "secondaryCta": "Veure el nostre treball",
     "primaryCtaShort": "Contactar",

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
@@ -24,19 +24,43 @@ export default function Header() {
 
   // 5-click logo easter egg — flips a class for ~500ms to play the
   // soft fade-flash keyframe defined in globals.css.
-  const { onClick: handleLogoClick, triggered: logoFlash } = useMultiClickTrigger({
+  const { onClick: handleLogoMultiClick, triggered: logoFlash } = useMultiClickTrigger({
     count: 5,
     window: 2000,
     cooldown: 500,
     preventDefaultOnTrigger: true,
   });
 
+  // When the user clicks the logo from the homepage, treat it as a
+  // "back to top" action: scroll to the hero smoothly and strip any
+  // hash / query string from the URL so the address bar stays clean.
+  // Off-homepage, fall through to next-intl's normal Link navigation.
+  const handleLogoClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      handleLogoMultiClick(e);
+      if (e.defaultPrevented) return; // 5-click easter egg fired
+
+      const isHome = pathname === '/' || pathname === '';
+      if (!isHome) return;
+
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (window.location.hash || window.location.search) {
+        window.history.replaceState(null, '', window.location.pathname);
+      }
+    },
+    [handleLogoMultiClick, pathname],
+  );
+
+  // Desktop nav: Contactar lives on the right side as the primary CTA,
+  // so we deliberately drop /#contact from the link list to avoid the
+  // duplicate. The mobile drawer (MobileMenu) keeps the full list since
+  // the CTA isn't visible there at the same time.
   const navLinks = [
     { href: '/#about', label: t('about') },
     { href: '/#services', label: t('services') },
     { href: '/projects', label: t('projects') },
     { href: '/#team', label: t('team') },
-    { href: '/#contact', label: t('contact') },
   ];
 
   useMotionValueEvent(scrollY, 'change', (latest) => {

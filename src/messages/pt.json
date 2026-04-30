@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "title": "Kalebtec | Estúdio de software — web, IA, produto",
-    "description": "Desenhamos e construímos plataformas web, automação com IA e engenharia de produto. Pragmáticos, rápidos, sem a sobrecarga de uma agência.",
-    "ogTitle": "Kalebtec | Estúdio de software — web, IA, produto",
-    "ogDescription": "Desenhamos e construímos plataformas web, automação com IA e engenharia de produto. Pragmáticos, rápidos, sem a sobrecarga de uma agência.",
+    "title": "Kalebtec | A tua equipa de software — web, IA, produto",
+    "description": "Desenhamos, construímos e entregamos software — e crescemos com o teu produto. Pragmáticos, proativos, sem a sobrecarga de uma agência.",
+    "ogTitle": "Kalebtec | A tua equipa de software — web, IA, produto",
+    "ogDescription": "Desenhamos, construímos e entregamos software — e crescemos com o teu produto. Pragmáticos, proativos, sem a sobrecarga de uma agência.",
     "projectsTitle": "O nosso trabalho — projetos de software da Kalebtec",
     "projectsDescription": "Plataformas web, automação com IA e arquitetura de software entregues pela Kalebtec a clientes em desporto, saúde e retail.",
     "notFoundTitle": "Projeto Não Encontrado | Kalebtec"
@@ -24,9 +24,9 @@
   },
   "hero": {
     "ariaLabel": "Herói",
-    "eyebrow": "Kalebtec — Estúdio de software",
-    "headline": "Software, pronto quando estiveres.",
-    "subhead": "Desenhamos e entregamos plataformas web, automação com IA e engenharia de produto. Pragmáticos, rápidos, sem a sobrecarga de uma agência — um estúdio pequeno que entrega.",
+    "eyebrow": "Kalebtec — A tua equipa de software",
+    "headline": "Da ideia à produção.",
+    "subhead": "Desenhamos, construímos e entregamos — e crescemos com o teu produto. Comunicação proativa, responsabilidade real, sem a sobrecarga de uma agência.",
     "primaryCta": "Contactar",
     "secondaryCta": "Ver nosso trabalho",
     "primaryCtaShort": "Contactar",

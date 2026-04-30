@@ -1,9 +1,9 @@
 {
   "metadata": {
     "title": "Kalebtec | Software studio — web, AI, product engineering",
-    "description": "We design and build web platforms, AI automation, and product engineering. Pragmatic, fast, no agency overhead — a small studio that ships.",
+    "description": "We design, build, and ship software — and grow with your product. Pragmatic, proactive, accountable, no agency overhead.",
     "ogTitle": "Kalebtec | Software studio — web, AI, product engineering",
-    "ogDescription": "We design and build web platforms, AI automation, and product engineering. Pragmatic, fast, no agency overhead — a small studio that ships.",
+    "ogDescription": "We design, build, and ship software — and grow with your product. Pragmatic, proactive, accountable, no agency overhead.",
     "projectsTitle": "Our work — Kalebtec software & engineering projects",
     "projectsDescription": "Selected web platforms, AI automation, and software architecture engagements delivered by Kalebtec for clients across sports, health, and retail.",
     "notFoundTitle": "Project Not Found | Kalebtec"
@@ -25,8 +25,8 @@
   "hero": {
     "ariaLabel": "Hero",
     "eyebrow": "Kalebtec — Software studio",
-    "headline": "Software, ready when you are.",
-    "subhead": "We design and ship web platforms, AI automation, and product engineering. Pragmatic, fast, no agency overhead — a small studio that ships.",
+    "headline": "From idea to production.",
+    "subhead": "We design, build, and ship — and we grow with your product. Proactive comms, real accountability, no agency overhead.",
     "primaryCta": "Contact us",
     "secondaryCta": "See our work",
     "primaryCtaShort": "Contact",

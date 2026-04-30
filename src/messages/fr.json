@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "title": "Kalebtec | Studio logiciel — web, IA, ingénierie produit",
-    "description": "Nous concevons et construisons des plateformes web, l'automatisation par IA et l'ingénierie produit. Pragmatiques, rapides, sans la surcharge d'une agence.",
-    "ogTitle": "Kalebtec | Studio logiciel — web, IA, ingénierie produit",
-    "ogDescription": "Nous concevons et construisons des plateformes web, l'automatisation par IA et l'ingénierie produit. Pragmatiques, rapides, sans la surcharge d'une agence.",
+    "title": "Kalebtec | Votre équipe logiciel — web, IA, produit",
+    "description": "Nous concevons, construisons et livrons — et grandissons avec votre produit. Pragmatiques, proactifs, sans la surcharge d'une agence.",
+    "ogTitle": "Kalebtec | Votre équipe logiciel — web, IA, produit",
+    "ogDescription": "Nous concevons, construisons et livrons — et grandissons avec votre produit. Pragmatiques, proactifs, sans la surcharge d'une agence.",
     "projectsTitle": "Nos réalisations — projets logiciels et plateformes",
     "projectsDescription": "Plateformes web, automatisation par IA et architecture logicielle livrées par Kalebtec à des clients du sport, de la santé et du retail.",
     "notFoundTitle": "Projet Non Trouvé | Kalebtec"
@@ -24,9 +24,9 @@
   },
   "hero": {
     "ariaLabel": "Héros",
-    "eyebrow": "Kalebtec — Studio logiciel",
-    "headline": "Du logiciel, prêt quand vous l'êtes.",
-    "subhead": "Nous concevons et livrons des plateformes web, l'automatisation par IA et l'ingénierie produit. Pragmatiques, rapides, sans la surcharge d'une agence — un studio restreint qui livre.",
+    "eyebrow": "Kalebtec — Votre équipe logiciel",
+    "headline": "De l'idée à la production.",
+    "subhead": "Nous concevons, construisons et livrons — et nous grandissons avec votre produit. Communication proactive, responsabilité réelle, sans la surcharge d'une agence.",
     "primaryCta": "Contactez-nous",
     "secondaryCta": "Voir nos réalisations",
     "primaryCtaShort": "Contacter",

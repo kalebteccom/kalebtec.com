@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "title": "Kalebtec | Estudio de software — web, IA, producto",
-    "description": "Diseñamos y construimos plataformas web, automatización con IA e ingeniería de producto. Pragmáticos, rápidos, sin la sobrecarga de una agencia.",
-    "ogTitle": "Kalebtec | Estudio de software — web, IA, producto",
-    "ogDescription": "Diseñamos y construimos plataformas web, automatización con IA e ingeniería de producto. Pragmáticos, rápidos, sin la sobrecarga de una agencia.",
+    "title": "Kalebtec | Tu equipo de software — web, IA, producto",
+    "description": "Diseñamos, construimos y entregamos software — y crecemos con tu producto. Pragmáticos, proactivos, sin la sobrecarga de una agencia.",
+    "ogTitle": "Kalebtec | Tu equipo de software — web, IA, producto",
+    "ogDescription": "Diseñamos, construimos y entregamos software — y crecemos con tu producto. Pragmáticos, proactivos, sin la sobrecarga de una agencia.",
     "projectsTitle": "Nuestro trabajo — proyectos de software de Kalebtec",
     "projectsDescription": "Plataformas web, automatización con IA y arquitectura de software entregadas por Kalebtec para clientes en deporte, salud y retail.",
     "notFoundTitle": "Proyecto No Encontrado | Kalebtec"
@@ -24,9 +24,9 @@
   },
   "hero": {
     "ariaLabel": "Héroe",
-    "eyebrow": "Kalebtec — Estudio de software",
-    "headline": "Software, listo cuando lo estés.",
-    "subhead": "Diseñamos y entregamos plataformas web, automatización con IA e ingeniería de producto. Pragmáticos, rápidos, sin la sobrecarga de una agencia — un estudio pequeño que entrega.",
+    "eyebrow": "Kalebtec — Tu equipo de software",
+    "headline": "De idea a producción.",
+    "subhead": "Diseñamos, construimos y entregamos — y crecemos con tu producto. Comunicación proactiva, responsabilidad real, sin la sobrecarga de una agencia.",
     "primaryCta": "Contactar",
     "secondaryCta": "Ver nuestro trabajo",
     "primaryCtaShort": "Contactar",
