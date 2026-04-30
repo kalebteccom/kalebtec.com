@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "title": "Kalebtec | Arquitetura, plataformas web e automação com IA",
-    "description": "Arquitetura de software, plataformas web e automação com IA por uma equipa liderada por Rowin e Mari Hernandez. Construímos software que dura.",
-    "ogTitle": "Kalebtec | Arquitetura, plataformas web e automação com IA",
-    "ogDescription": "Arquitetura de software, plataformas web e automação com IA por uma equipa liderada por Rowin e Mari Hernandez. Construímos software que dura.",
+    "title": "Kalebtec | Estúdio de software — web, IA, produto",
+    "description": "Desenhamos e construímos plataformas web, automação com IA e engenharia de produto. Pragmáticos, rápidos, sem a sobrecarga de uma agência.",
+    "ogTitle": "Kalebtec | Estúdio de software — web, IA, produto",
+    "ogDescription": "Desenhamos e construímos plataformas web, automação com IA e engenharia de produto. Pragmáticos, rápidos, sem a sobrecarga de uma agência.",
     "projectsTitle": "O nosso trabalho — projetos de software da Kalebtec",
     "projectsDescription": "Plataformas web, automação com IA e arquitetura de software entregues pela Kalebtec a clientes em desporto, saúde e retail.",
     "notFoundTitle": "Projeto Não Encontrado | Kalebtec"
@@ -24,12 +24,12 @@
   },
   "hero": {
     "ariaLabel": "Herói",
-    "eyebrow": "Kalebtec — Consultoria tecnológica",
-    "headline": "Engenharia com propósito.",
-    "subhead": "Arquitetura de software, plataformas web e automação com IA, construídas por uma equipe pequena que entrega.",
-    "primaryCta": "Iniciar projeto",
+    "eyebrow": "Kalebtec — Estúdio de software",
+    "headline": "Software, pronto quando estiveres.",
+    "subhead": "Desenhamos e entregamos plataformas web, automação com IA e engenharia de produto. Pragmáticos, rápidos, sem a sobrecarga de uma agência — um estúdio pequeno que entrega.",
+    "primaryCta": "Contactar",
     "secondaryCta": "Ver nosso trabalho",
-    "primaryCtaShort": "Iniciar",
+    "primaryCtaShort": "Contactar",
     "secondaryCtaShort": "Projetos"
   },
   "about": {

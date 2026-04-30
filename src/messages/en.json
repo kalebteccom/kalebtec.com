@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "title": "Kalebtec | Software architecture, web & AI consulting",
-    "description": "Software architecture, web platforms, and AI automation by a small team led by Rowin and Mari Hernandez. We build software that lasts.",
-    "ogTitle": "Kalebtec | Software architecture, web & AI consulting",
-    "ogDescription": "Software architecture, web platforms, and AI automation by a small team led by Rowin and Mari Hernandez. We build software that lasts.",
+    "title": "Kalebtec | Software studio — web, AI, product engineering",
+    "description": "We design and build web platforms, AI automation, and product engineering. Pragmatic, fast, no agency overhead — a small studio that ships.",
+    "ogTitle": "Kalebtec | Software studio — web, AI, product engineering",
+    "ogDescription": "We design and build web platforms, AI automation, and product engineering. Pragmatic, fast, no agency overhead — a small studio that ships.",
     "projectsTitle": "Our work — Kalebtec software & engineering projects",
     "projectsDescription": "Selected web platforms, AI automation, and software architecture engagements delivered by Kalebtec for clients across sports, health, and retail.",
     "notFoundTitle": "Project Not Found | Kalebtec"
@@ -24,12 +24,12 @@
   },
   "hero": {
     "ariaLabel": "Hero",
-    "eyebrow": "Kalebtec — Tech Consulting",
-    "headline": "Engineering with intent.",
-    "subhead": "Software architecture, web platforms, and AI automation, built by a small team that ships.",
-    "primaryCta": "Start a project",
+    "eyebrow": "Kalebtec — Software studio",
+    "headline": "Software, ready when you are.",
+    "subhead": "We design and ship web platforms, AI automation, and product engineering. Pragmatic, fast, no agency overhead — a small studio that ships.",
+    "primaryCta": "Contact us",
     "secondaryCta": "See our work",
-    "primaryCtaShort": "Start",
+    "primaryCtaShort": "Contact",
     "secondaryCtaShort": "Projects"
   },
   "about": {

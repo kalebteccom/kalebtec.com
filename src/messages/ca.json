@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "title": "Kalebtec | Arquitectura, web i automatització amb IA",
-    "description": "Arquitectura de programari, plataformes web i automatització amb IA per un equip liderat per Rowin i Mari Hernandez. Construïm programari que dura.",
-    "ogTitle": "Kalebtec | Arquitectura, web i automatització amb IA",
-    "ogDescription": "Arquitectura de programari, plataformes web i automatització amb IA per un equip liderat per Rowin i Mari Hernandez. Construïm programari que dura.",
+    "title": "Kalebtec | Estudi de programari — web, IA, producte",
+    "description": "Dissenyem i construïm plataformes web, automatització amb IA i enginyeria de producte. Pragmàtics, ràpids, sense la sobrecàrrega d'una agència.",
+    "ogTitle": "Kalebtec | Estudi de programari — web, IA, producte",
+    "ogDescription": "Dissenyem i construïm plataformes web, automatització amb IA i enginyeria de producte. Pragmàtics, ràpids, sense la sobrecàrrega d'una agència.",
     "projectsTitle": "El nostre treball — projectes de programari Kalebtec",
     "projectsDescription": "Plataformes web, automatització amb IA i arquitectura de programari lliurades per Kalebtec a clients d'esport, salut i retail.",
     "notFoundTitle": "Projecte No Trobat | Kalebtec"
@@ -24,12 +24,12 @@
   },
   "hero": {
     "ariaLabel": "Heroi",
-    "eyebrow": "Kalebtec — Consultoria tecnològica",
-    "headline": "Enginyeria amb propòsit.",
-    "subhead": "Arquitectura de programari, plataformes web i automatització amb IA, construïdes per un equip petit que entrega.",
-    "primaryCta": "Començar projecte",
+    "eyebrow": "Kalebtec — Estudi de programari",
+    "headline": "Programari, llest quan ho estiguis.",
+    "subhead": "Dissenyem i entreguem plataformes web, automatització amb IA i enginyeria de producte. Pragmàtics, ràpids, sense la sobrecàrrega d'una agència — un estudi petit que entrega.",
+    "primaryCta": "Contactar",
     "secondaryCta": "Veure el nostre treball",
-    "primaryCtaShort": "Començar",
+    "primaryCtaShort": "Contactar",
     "secondaryCtaShort": "Projectes"
   },
   "about": {

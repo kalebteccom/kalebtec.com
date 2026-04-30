@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "title": "Kalebtec | Architecture, web et automatisation par IA",
-    "description": "Architecture logicielle, plateformes web et automatisation par IA par une équipe menée par Rowin et Mari Hernandez. Des logiciels qui durent.",
-    "ogTitle": "Kalebtec | Architecture, web et automatisation par IA",
-    "ogDescription": "Architecture logicielle, plateformes web et automatisation par IA par une équipe menée par Rowin et Mari Hernandez. Des logiciels qui durent.",
+    "title": "Kalebtec | Studio logiciel — web, IA, ingénierie produit",
+    "description": "Nous concevons et construisons des plateformes web, l'automatisation par IA et l'ingénierie produit. Pragmatiques, rapides, sans la surcharge d'une agence.",
+    "ogTitle": "Kalebtec | Studio logiciel — web, IA, ingénierie produit",
+    "ogDescription": "Nous concevons et construisons des plateformes web, l'automatisation par IA et l'ingénierie produit. Pragmatiques, rapides, sans la surcharge d'une agence.",
     "projectsTitle": "Nos réalisations — projets logiciels et plateformes",
     "projectsDescription": "Plateformes web, automatisation par IA et architecture logicielle livrées par Kalebtec à des clients du sport, de la santé et du retail.",
     "notFoundTitle": "Projet Non Trouvé | Kalebtec"
@@ -24,12 +24,12 @@
   },
   "hero": {
     "ariaLabel": "Héros",
-    "eyebrow": "Kalebtec — Conseil technologique",
-    "headline": "L'ingénierie avec intention.",
-    "subhead": "Architecture logicielle, plateformes web et automatisation par IA, conçues par une équipe restreinte qui livre.",
-    "primaryCta": "Démarrer un projet",
+    "eyebrow": "Kalebtec — Studio logiciel",
+    "headline": "Du logiciel, prêt quand vous l'êtes.",
+    "subhead": "Nous concevons et livrons des plateformes web, l'automatisation par IA et l'ingénierie produit. Pragmatiques, rapides, sans la surcharge d'une agence — un studio restreint qui livre.",
+    "primaryCta": "Contactez-nous",
     "secondaryCta": "Voir nos réalisations",
-    "primaryCtaShort": "Démarrer",
+    "primaryCtaShort": "Contacter",
     "secondaryCtaShort": "Projets"
   },
   "about": {

@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "title": "Kalebtec | Arquitectura, web e automatización con IA",
-    "description": "Arquitectura de software, plataformas web e automatización con IA por un equipo liderado por Rowin e Mari Hernandez. Construímos software que dura.",
-    "ogTitle": "Kalebtec | Arquitectura, web e automatización con IA",
-    "ogDescription": "Arquitectura de software, plataformas web e automatización con IA por un equipo liderado por Rowin e Mari Hernandez. Construímos software que dura.",
+    "title": "Kalebtec | Estudio de software — web, IA, produto",
+    "description": "Deseñamos e construímos plataformas web, automatización con IA e enxeñería de produto. Pragmáticos, rápidos, sen a sobrecarga dunha axencia.",
+    "ogTitle": "Kalebtec | Estudio de software — web, IA, produto",
+    "ogDescription": "Deseñamos e construímos plataformas web, automatización con IA e enxeñería de produto. Pragmáticos, rápidos, sen a sobrecarga dunha axencia.",
     "projectsTitle": "O noso traballo — proxectos de software de Kalebtec",
     "projectsDescription": "Plataformas web, automatización con IA e arquitectura de software entregadas por Kalebtec a clientes en deporte, saúde e retail.",
     "notFoundTitle": "Proxecto Non Atopado | Kalebtec"
@@ -24,12 +24,12 @@
   },
   "hero": {
     "ariaLabel": "Heroe",
-    "eyebrow": "Kalebtec — Consultoría tecnolóxica",
-    "headline": "Enxeñaría con propósito.",
-    "subhead": "Arquitectura de software, plataformas web e automatización con IA, construídas por un equipo pequeno que entrega.",
-    "primaryCta": "Comezar proxecto",
+    "eyebrow": "Kalebtec — Estudio de software",
+    "headline": "Software, listo cando ti o esteas.",
+    "subhead": "Deseñamos e entregamos plataformas web, automatización con IA e enxeñería de produto. Pragmáticos, rápidos, sen a sobrecarga dunha axencia — un estudio pequeno que entrega.",
+    "primaryCta": "Contactar",
     "secondaryCta": "Ver o noso traballo",
-    "primaryCtaShort": "Comezar",
+    "primaryCtaShort": "Contactar",
     "secondaryCtaShort": "Proxectos"
   },
   "about": {
